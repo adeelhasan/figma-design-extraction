@@ -1,0 +1,151 @@
+/* =================================================================
+   Effect Tokens
+   Extracted from: {{fileName}}
+   Generated: {{date}}
+   
+   Usage:
+   box-shadow: var(--shadow-md);
+   border-radius: var(--radius-lg);
+   ================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------
+     Shadows
+     
+     Elevation levels for depth and hierarchy.
+     --------------------------------------------------------------- */
+  
+  --shadow-none: none;
+  {{#each shadows}}
+  --shadow-{{name}}: {{value}};
+  {{/each}}
+  
+  /* Colored shadows (optional) */
+  --shadow-primary: 0 4px 14px -2px {{primaryShadowColor}};
+  --shadow-error: 0 4px 14px -2px {{errorShadowColor}};
+  
+  /* Inner shadows */
+  {{#each innerShadows}}
+  --shadow-inner-{{name}}: inset {{value}};
+  {{/each}}
+  
+  /* ---------------------------------------------------------------
+     Focus Ring
+     
+     Consistent focus states for accessibility.
+     --------------------------------------------------------------- */
+  
+  --ring-width: 2px;
+  --ring-offset: 2px;
+  --ring-color: var(--color-primary);
+  --ring-offset-color: var(--color-surface);
+  
+  /* Usage: box-shadow: 0 0 0 var(--ring-offset) var(--ring-offset-color), 0 0 0 calc(var(--ring-offset) + var(--ring-width)) var(--ring-color); */
+  --shadow-ring: 0 0 0 var(--ring-offset) var(--ring-offset-color), 0 0 0 calc(var(--ring-offset) + var(--ring-width)) var(--ring-color);
+  
+  /* ---------------------------------------------------------------
+     Border Radius
+     
+     Consistent corner rounding across components.
+     --------------------------------------------------------------- */
+  
+  --radius-none: 0;
+  {{#each radii}}
+  --radius-{{name}}: {{value}}px;
+  {{/each}}
+  --radius-full: 9999px;
+  
+  /* ---------------------------------------------------------------
+     Blur
+     --------------------------------------------------------------- */
+  
+  --blur-none: blur(0);
+  {{#each blurs}}
+  --blur-{{name}}: blur({{value}}px);
+  {{/each}}
+  
+  /* ---------------------------------------------------------------
+     Transitions
+     
+     Common animation timing.
+     --------------------------------------------------------------- */
+  
+  --transition-none: none;
+  --transition-fast: 150ms ease;
+  --transition-normal: 200ms ease;
+  --transition-slow: 300ms ease;
+  
+  /* Property-specific */
+  --transition-colors: color 200ms ease, background-color 200ms ease, border-color 200ms ease;
+  --transition-opacity: opacity 200ms ease;
+  --transition-transform: transform 200ms ease;
+  --transition-shadow: box-shadow 200ms ease;
+  --transition-all: all 200ms ease;
+  
+  /* ---------------------------------------------------------------
+     Z-Index Scale
+     --------------------------------------------------------------- */
+  
+  --z-negative: -1;
+  --z-base: 0;
+  --z-raised: 10;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-popover: 500;
+  --z-tooltip: 600;
+  --z-toast: 700;
+}
+
+/*
+Shadow Reference
+================
+
+{{#each shadows}}
+--shadow-{{name}}:
+  Blur: {{blur}}px
+  Spread: {{spread}}px
+  Offset: {{offsetX}}px, {{offsetY}}px
+  Color: {{color}}
+
+{{/each}}
+
+Radius Reference
+================
+
+{{#each radii}}
+--radius-{{name}}: {{value}}px — {{usage}}
+{{/each}}
+
+Usage Examples
+==============
+
+Card:
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-lg);
+
+Modal:
+  box-shadow: var(--shadow-xl);
+  border-radius: var(--radius-xl);
+
+Button:
+  border-radius: var(--radius-md);
+  transition: var(--transition-colors);
+
+Button focus:
+  box-shadow: var(--shadow-ring);
+
+Input:
+  border-radius: var(--radius-md);
+  transition: var(--transition-colors);
+
+Dropdown:
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-md);
+  z-index: var(--z-dropdown);
+
+Toast:
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-toast);
+*/

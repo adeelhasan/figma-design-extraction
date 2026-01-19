@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - Rendered Preview</title>
+  <link rel="stylesheet" href="../../tokens/colors.css">
+  <link rel="stylesheet" href="../../tokens/typography.css">
+  <link rel="stylesheet" href="../../tokens/spacing.css">
+  <link rel="stylesheet" href="../../tokens/effects.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-family-sans);
+      background: var(--color-background);
+      color: var(--color-text-primary);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    /* ===== LAYOUT STRUCTURE ===== */
+    .app-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      width: 250px;
+      background: var(--color-surface);
+      border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+      box-shadow: var(--shadow-sidebar);
+      padding: var(--spacing-4);
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .sidebar-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      padding: var(--spacing-4) var(--spacing-3);
+      margin-bottom: var(--spacing-4);
+    }
+
+    .sidebar-logo .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .sidebar-logo span {
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-sm);
+    }
+
+    .nav-section {
+      margin-bottom: var(--spacing-4);
+    }
+
+    .nav-section-label {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      padding: var(--spacing-2) var(--spacing-3);
+      letter-spacing: 0.5px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      padding: var(--spacing-2) var(--spacing-3);
+      border-radius: var(--radius-md);
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      margin-bottom: var(--spacing-1);
+      transition: all 0.2s;
+    }
+
+    .nav-item:hover {
+      background: var(--color-gray-100);
+    }
+
+    .nav-item.active {
+      background: var(--gradient-primary);
+      color: white;
+      box-shadow: var(--shadow-button);
+    }
+
+    .nav-item .icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-item.active .icon {
+      background: white;
+      color: var(--color-primary);
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    .main-content {
+      flex: 1;
+      margin-left: 250px;
+      padding: var(--spacing-6);
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--spacing-6);
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+    }
+
+    .breadcrumb a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-size: var(--font-size-sm);
+    }
+
+    .breadcrumb span {
+      color: var(--color-text-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .page-title {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-bold);
+      margin-top: var(--spacing-1);
+    }
+
+    .navbar-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-4);
+    }
+
+    .search-input {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-2) var(--spacing-3);
+      font-size: var(--font-size-sm);
+      color: var(--color-text-muted);
+    }
+
+    .navbar-icon {
+      color: var(--color-text-muted);
+      cursor: pointer;
+    }
+
+    /* ===== PROFILE BANNER ===== */
+    .profile-banner {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: visible; /* Allow info bar to extend below */
+      margin-bottom: 80px; /* Space for the info bar below */
+    }
+
+    .banner-image {
+      width: 100%;
+      height: 300px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      position: relative;
+      /* Use exported image from Figma */
+      background: url('../../assets/images/backgrounds/profile-banner.png') center/cover no-repeat,
+        linear-gradient(310deg, #7928CA 0%, #FF0080 100%);
+    }
+
+    .profile-info-bar {
+      position: absolute;
+      bottom: -50px; /* Position below the banner */
+      left: var(--spacing-6);
+      right: var(--spacing-6);
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-4) var(--spacing-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--shadow-card);
+    }
+
+    .profile-identity {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-4);
+    }
+
+    .avatar {
+      width: 74px;
+      height: 74px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: 3px solid var(--color-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .avatar-placeholder {
+      color: white;
+      font-size: 28px;
+      font-weight: var(--font-weight-bold);
+      display: none; /* Hidden when image is present */
+    }
+
+    .avatar-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-name h2 {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-bold);
+    }
+
+    .profile-name p {
+      color: var(--color-text-muted);
+      font-size: var(--font-size-sm);
+    }
+
+    .profile-tabs {
+      display: flex;
+      gap: var(--spacing-2);
+    }
+
+    .profile-tab {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      padding: var(--spacing-2) var(--spacing-4);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .profile-tab.active {
+      background: var(--gradient-primary);
+      color: white;
+      box-shadow: var(--shadow-button);
+    }
+
+    .profile-tab:hover:not(.active) {
+      background: var(--color-gray-100);
+    }
+
+    /* ===== TOP CARDS ROW ===== */
+    .top-cards-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: var(--spacing-6);
+      margin-bottom: var(--spacing-6);
+    }
+
+    /* ===== PLATFORM SETTINGS ===== */
+    .settings-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      padding: var(--spacing-5);
+    }
+
+    .card-title {
+      font-size: var(--font-size-md);
+      font-weight: var(--font-weight-bold);
+      margin-bottom: var(--spacing-4);
+    }
+
+    .settings-section-label {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      margin-bottom: var(--spacing-3);
+      margin-top: var(--spacing-4);
+    }
+
+    .settings-section-label:first-of-type {
+      margin-top: 0;
+    }
+
+    .toggle-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--spacing-2) 0;
+    }
+
+    .toggle-label {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+    }
+
+    .toggle {
+      width: 40px;
+      height: 20px;
+      border-radius: var(--radius-full);
+      background: var(--color-gray-300);
+      position: relative;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .toggle.active {
+      background: var(--gradient-primary);
+    }
+
+    .toggle::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: var(--radius-full);
+      background: white;
+      top: 2px;
+      left: 2px;
+      transition: transform 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .toggle.active::after {
+      transform: translateX(20px);
+    }
+
+    /* ===== PROFILE INFORMATION ===== */
+    .info-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      padding: var(--spacing-5);
+    }
+
+    .info-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .info-header .edit-btn {
+      color: var(--color-text-muted);
+      cursor: pointer;
+    }
+
+    .info-bio {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--spacing-4);
+      padding-bottom: var(--spacing-4);
+      border-bottom: 1px solid var(--color-border-light);
+    }
+
+    .info-details {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-2);
+    }
+
+    .info-row {
+      display: flex;
+      font-size: var(--font-size-sm);
+    }
+
+    .info-row .label {
+      color: var(--color-text-muted);
+      width: 100px;
+      flex-shrink: 0;
+    }
+
+    .info-row .value {
+      color: var(--color-text-secondary);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .social-links {
+      display: flex;
+      gap: var(--spacing-2);
+      margin-top: var(--spacing-2);
+    }
+
+    .social-icon {
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .social-icon:hover {
+      color: var(--color-primary);
+    }
+
+    /* ===== CONVERSATIONS ===== */
+    .conversations-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      padding: var(--spacing-5);
+    }
+
+    .conversation-item {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      padding: var(--spacing-3) 0;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+
+    .conversation-item:last-child {
+      border-bottom: none;
+    }
+
+    .conversation-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-sm);
+      flex-shrink: 0;
+    }
+
+    .conversation-avatar-img {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-lg);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .conversation-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .conversation-name {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--spacing-1);
+    }
+
+    .conversation-preview {
+      font-size: var(--font-size-xs);
+      color: var(--color-text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .conversation-action {
+      color: var(--color-primary);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    /* ===== PROJECTS SECTION ===== */
+    .projects-section {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      padding: var(--spacing-5);
+    }
+
+    .projects-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: var(--spacing-5);
+    }
+
+    .projects-header .subtitle {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-muted);
+      margin-top: var(--spacing-1);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--spacing-6);
+    }
+
+    .project-card {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+    }
+
+    .project-image {
+      height: 180px;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-image-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-muted);
+    }
+
+    .project-content {
+      padding: var(--spacing-4) 0;
+    }
+
+    .project-label {
+      font-size: var(--font-size-xs);
+      color: var(--color-text-muted);
+      margin-bottom: var(--spacing-1);
+    }
+
+    .project-title {
+      font-size: var(--font-size-md);
+      font-weight: var(--font-weight-bold);
+      margin-bottom: var(--spacing-2);
+    }
+
+    .project-description {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-muted);
+      margin-bottom: var(--spacing-3);
+      line-height: 1.5;
+    }
+
+    .project-action {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+      color: var(--color-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-bold);
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .project-authors {
+      display: flex;
+      align-items: center;
+      margin-top: var(--spacing-3);
+    }
+
+    .author-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: 2px solid var(--color-surface);
+      margin-left: -8px;
+    }
+
+    .author-avatar:first-child {
+      margin-left: 0;
+    }
+
+    /* Upload Card */
+    .upload-card {
+      border: 2px dashed var(--color-border-light);
+      border-radius: var(--radius-xl);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-8);
+      cursor: pointer;
+      transition: all 0.2s;
+      min-height: 300px;
+    }
+
+    .upload-card:hover {
+      border-color: var(--color-primary);
+      background: var(--color-gray-50);
+    }
+
+    .upload-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      margin-bottom: var(--spacing-3);
+    }
+
+    .upload-text {
+      font-size: var(--font-size-md);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-secondary);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--spacing-6) 0;
+      margin-top: var(--spacing-6);
+      font-size: var(--font-size-sm);
+      color: var(--color-text-muted);
+    }
+
+    footer a {
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      margin-left: var(--spacing-4);
+    }
+
+    /* ===== SPEC LINK ===== */
+    .spec-link {
+      position: fixed;
+      top: var(--spacing-4);
+      right: var(--spacing-4);
+      background: var(--gradient-primary);
+      color: white;
+      padding: var(--spacing-2) var(--spacing-4);
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      text-decoration: none;
+      box-shadow: var(--shadow-button);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+    }
+  </style>
+</head>
+<body>
+  <a href="../../specs/layouts/Profile.md" class="spec-link">
+    <i data-lucide="eye" style="width:16px;height:16px"></i>
+    Rendered Preview
+    <span style="opacity:0.7">View Spec</span>
+  </a>
+
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-icon">
+          <i data-lucide="sparkles" style="width:18px;height:18px"></i>
+        </div>
+        <span>Soft UI Dashboard</span>
+      </div>
+
+      <nav class="nav-section">
+        <a href="#" class="nav-item">
+          <span class="icon"><i data-lucide="layout-dashboard" style="width:16px;height:16px"></i></span>
+          Dashboard
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon"><i data-lucide="table" style="width:16px;height:16px"></i></span>
+          Tables
+        </a>
+        <a href="Billing-rendered.html" class="nav-item">
+          <span class="icon"><i data-lucide="credit-card" style="width:16px;height:16px"></i></span>
+          Billing
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon"><i data-lucide="box" style="width:16px;height:16px"></i></span>
+          Virtual Reality
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon"><i data-lucide="type" style="width:16px;height:16px"></i></span>
+          RTL
+        </a>
+      </nav>
+
+      <nav class="nav-section">
+        <div class="nav-section-label">Account Pages</div>
+        <a href="#" class="nav-item active">
+          <span class="icon"><i data-lucide="user" style="width:16px;height:16px"></i></span>
+          Profile
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon"><i data-lucide="log-in" style="width:16px;height:16px"></i></span>
+          Sign In
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon"><i data-lucide="user-plus" style="width:16px;height:16px"></i></span>
+          Sign Up
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Navbar -->
+      <nav class="navbar">
+        <div>
+          <div class="breadcrumb">
+            <a href="#">Pages</a>
+            <span>/</span>
+            <span>Profile</span>
+          </div>
+          <div class="page-title">Profile</div>
+        </div>
+        <div class="navbar-actions">
+          <div class="search-input">
+            <i data-lucide="search" style="width:16px;height:16px"></i>
+            <span>Type here...</span>
+          </div>
+          <i data-lucide="user" class="navbar-icon" style="width:16px;height:16px"></i>
+          <i data-lucide="settings" class="navbar-icon" style="width:16px;height:16px"></i>
+          <i data-lucide="bell" class="navbar-icon" style="width:16px;height:16px"></i>
+        </div>
+      </nav>
+
+      <!-- Profile Banner -->
+      <div class="profile-banner">
+        <div class="banner-image"></div>
+        <div class="profile-info-bar">
+          <div class="profile-identity">
+            <div class="avatar">
+              <img src="../../assets/images/avatars/profile-alec.png" alt="Alec Thompson" class="avatar-image" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <span class="avatar-placeholder">AT</span>
+            </div>
+            <div class="profile-name">
+              <h2>Alec Thompson</h2>
+              <p>CEO / Co-Founder</p>
+            </div>
+          </div>
+          <div class="profile-tabs">
+            <div class="profile-tab active">
+              <i data-lucide="layout-grid" style="width:14px;height:14px"></i>
+              Overview
+            </div>
+            <div class="profile-tab">
+              <i data-lucide="file-text" style="width:14px;height:14px"></i>
+              Teams
+            </div>
+            <div class="profile-tab">
+              <i data-lucide="settings" style="width:14px;height:14px"></i>
+              Projects
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Area -->
+      <div class="content-area">
+        <!-- Top Cards Row -->
+        <div class="top-cards-row">
+          <!-- Platform Settings -->
+          <div class="settings-card">
+            <h3 class="card-title">Platform Settings</h3>
+
+            <div class="settings-section-label">Account</div>
+            <div class="toggle-item">
+              <span class="toggle-label">Email me when someone follows me</span>
+              <div class="toggle active"></div>
+            </div>
+            <div class="toggle-item">
+              <span class="toggle-label">Email me when someone answers me</span>
+              <div class="toggle"></div>
+            </div>
+            <div class="toggle-item">
+              <span class="toggle-label">Email me when someone mentions me</span>
+              <div class="toggle active"></div>
+            </div>
+
+            <div class="settings-section-label">Application</div>
+            <div class="toggle-item">
+              <span class="toggle-label">New launches and projects</span>
+              <div class="toggle"></div>
+            </div>
+            <div class="toggle-item">
+              <span class="toggle-label">Monthly product updates</span>
+              <div class="toggle active"></div>
+            </div>
+            <div class="toggle-item">
+              <span class="toggle-label">Subscribe to newsletter</span>
+              <div class="toggle active"></div>
+            </div>
+          </div>
+
+          <!-- Profile Information -->
+          <div class="info-card">
+            <div class="info-header">
+              <h3 class="card-title">Profile Information</h3>
+              <i data-lucide="pencil" class="edit-btn" style="width:14px;height:14px"></i>
+            </div>
+            <p class="info-bio">
+              Hi, I'm Alec Thompson, Decisions: If you can't decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).
+            </p>
+            <div class="info-details">
+              <div class="info-row">
+                <span class="label">Full Name:</span>
+                <span class="value">Alec M. Thompson</span>
+              </div>
+              <div class="info-row">
+                <span class="label">Mobile:</span>
+                <span class="value">(44) 123 1234 123</span>
+              </div>
+              <div class="info-row">
+                <span class="label">Email:</span>
+                <span class="value">alecthompson@mail.com</span>
+              </div>
+              <div class="info-row">
+                <span class="label">Location:</span>
+                <span class="value">USA</span>
+              </div>
+              <div class="info-row">
+                <span class="label">Social:</span>
+                <div class="social-links">
+                  <i data-lucide="facebook" class="social-icon" style="width:16px;height:16px"></i>
+                  <i data-lucide="twitter" class="social-icon" style="width:16px;height:16px"></i>
+                  <i data-lucide="instagram" class="social-icon" style="width:16px;height:16px"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Conversations -->
+          <div class="conversations-card">
+            <h3 class="card-title">Conversations</h3>
+
+            <div class="conversation-item">
+              <img src="../../assets/images/avatars/profile-sophie.png" alt="Sophie B" class="conversation-avatar-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="conversation-avatar" style="display:none">SB</div>
+              <div class="conversation-content">
+                <div class="conversation-name">Sophie B.</div>
+                <div class="conversation-preview">Hi! I need more information...</div>
+              </div>
+              <span class="conversation-action">Reply</span>
+            </div>
+
+            <div class="conversation-item">
+              <img src="../../assets/images/avatars/profile-anne.png" alt="Anne Marie" class="conversation-avatar-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="conversation-avatar" style="display:none">AM</div>
+              <div class="conversation-content">
+                <div class="conversation-name">Anne Marie</div>
+                <div class="conversation-preview">Awesome work, can you...</div>
+              </div>
+              <span class="conversation-action">Reply</span>
+            </div>
+
+            <div class="conversation-item">
+              <img src="../../assets/images/avatars/profile-ivanna.png" alt="Ivanna" class="conversation-avatar-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="conversation-avatar" style="display:none">IV</div>
+              <div class="conversation-content">
+                <div class="conversation-name">Ivanna</div>
+                <div class="conversation-preview">About files I can...</div>
+              </div>
+              <span class="conversation-action">Reply</span>
+            </div>
+
+            <div class="conversation-item">
+              <img src="../../assets/images/avatars/profile-peterson.png" alt="Peterson" class="conversation-avatar-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="conversation-avatar" style="display:none">PT</div>
+              <div class="conversation-content">
+                <div class="conversation-name">Peterson</div>
+                <div class="conversation-preview">Have a great afternoon...</div>
+              </div>
+              <span class="conversation-action">Reply</span>
+            </div>
+
+            <div class="conversation-item">
+              <img src="../../assets/images/avatars/profile-nick.png" alt="Nick Daniel" class="conversation-avatar-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <div class="conversation-avatar" style="display:none">ND</div>
+              <div class="conversation-content">
+                <div class="conversation-name">Nick Daniel</div>
+                <div class="conversation-preview">Hi! I need more information...</div>
+              </div>
+              <span class="conversation-action">Reply</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="projects-section">
+          <div class="projects-header">
+            <div>
+              <h3 class="card-title">Projects</h3>
+              <p class="subtitle">Architects design houses</p>
+            </div>
+          </div>
+
+          <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+              <div class="project-image">
+                <img src="../../assets/images/content/profile-project-modern.png" alt="Modern Interior" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="project-image-placeholder" style="display:none">
+                  <i data-lucide="image" style="width:48px;height:48px"></i>
+                </div>
+              </div>
+              <div class="project-content">
+                <div class="project-label">Project #1</div>
+                <div class="project-title">Modern</div>
+                <div class="project-description">As Uber works through a huge..</div>
+                <div class="project-action">
+                  View Project
+                  <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+                </div>
+                <div class="project-authors">
+                  <div class="author-avatar"></div>
+                  <div class="author-avatar"></div>
+                  <div class="author-avatar"></div>
+                  <div class="author-avatar"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+              <div class="project-image">
+                <img src="../../assets/images/content/profile-project-scandinavian.png" alt="Scandinavian Interior" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="project-image-placeholder" style="display:none">
+                  <i data-lucide="image" style="width:48px;height:48px"></i>
+                </div>
+              </div>
+              <div class="project-content">
+                <div class="project-label">Project #2</div>
+                <div class="project-title">Scandinavian</div>
+                <div class="project-description">Music is something that...</div>
+                <div class="project-action">
+                  View Project
+                  <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+                </div>
+                <div class="project-authors">
+                  <div class="author-avatar"></div>
+                  <div class="author-avatar"></div>
+                  <div class="author-avatar"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+              <div class="project-image">
+                <img src="../../assets/images/content/profile-project-minimalist.png" alt="Minimalist Interior" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="project-image-placeholder" style="display:none">
+                  <i data-lucide="image" style="width:48px;height:48px"></i>
+                </div>
+              </div>
+              <div class="project-content">
+                <div class="project-label">Project #3</div>
+                <div class="project-title">Minimalist</div>
+                <div class="project-description">Different people have different...</div>
+                <div class="project-action">
+                  View Project
+                  <i data-lucide="arrow-right" style="width:14px;height:14px"></i>
+                </div>
+                <div class="project-authors">
+                  <div class="author-avatar"></div>
+                  <div class="author-avatar"></div>
+                  <div class="author-avatar"></div>
+                  <div class="author-avatar"></div>
+                  <div class="author-avatar"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Upload Card -->
+            <div class="upload-card">
+              <div class="upload-icon">
+                <i data-lucide="plus" style="width:24px;height:24px"></i>
+              </div>
+              <span class="upload-text">Upload New Project</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer>
+        <span>&copy; 2021, made with <i data-lucide="heart" style="width:12px;height:12px;color:var(--color-error)"></i> by Creative Tim for a better web.</span>
+        <div>
+          <a href="#">Creative Tim</a>
+          <a href="#">About Us</a>
+          <a href="#">Blog</a>
+          <a href="#">License</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

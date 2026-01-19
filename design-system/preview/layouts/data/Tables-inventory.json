@@ -1,0 +1,68 @@
+{
+  "screenName": "Tables",
+  "screenshotPath": "screenshots/Tables.png",
+  "analyzedAt": "2026-01-18T00:00:00Z",
+  "dimensions": {
+    "width": 1440,
+    "height": 1262
+  },
+  "sections": [
+    {
+      "id": "sidebar",
+      "type": "navigation",
+      "location": "left",
+      "bounds": { "approximate": "left-edge, full-height", "width": "~250px" },
+      "children": { "count": 7, "type": "nav-item" },
+      "hasHeader": true,
+      "hasActions": false
+    },
+    {
+      "id": "authors-table",
+      "type": "table",
+      "location": "top-main",
+      "hasHeader": true,
+      "headerTitle": "Authors Table",
+      "columns": ["AUTHOR", "FUNCTION", "STATUS", "EMPLOYED", ""],
+      "children": { "count": 6, "type": "author-row" },
+      "items": [
+        { "name": "Michael John", "email": "michael@creative-tim.com", "role": "Manager", "department": "Organization", "status": "ONLINE", "date": "23/04/18", "hasEdit": true },
+        { "name": "Alexa Liras", "email": "alexa@creative-tim.com", "role": "Programator", "department": "Developer", "status": "OFFLINE", "date": "11/01/19", "hasEdit": true },
+        { "name": "Laura Perner", "email": "laura@creative-tim.com", "role": "Executive", "department": "Projects", "status": "ONLINE", "date": "04/05/21", "hasEdit": true },
+        { "name": "Miriam Eric", "email": "miriam@creative-tim.com", "role": "Programator", "department": "Developer", "status": "OFFLINE", "date": "14/09/20", "hasEdit": true },
+        { "name": "Richard Gran", "email": "richard@creative-tim.com", "role": "Manager", "department": "Executive", "status": "ONLINE", "date": "04/10/21", "hasEdit": true },
+        { "name": "John Levi", "email": "john@creative-tim.com", "role": "Programator", "department": "Developer", "status": "ONLINE", "date": "14/09/20", "hasEdit": true }
+      ]
+    },
+    {
+      "id": "projects-table",
+      "type": "table",
+      "location": "bottom-main",
+      "hasHeader": true,
+      "headerTitle": "Projects Table",
+      "columns": ["COMPANIES", "BUDGET", "STATUS", "COMPLETION", ""],
+      "children": { "count": 6, "type": "project-row" },
+      "items": [
+        { "name": "Spotify Version", "budget": "$2,500", "status": "working", "completion": 60 },
+        { "name": "Progress Track", "budget": "$5,000", "status": "cancelled", "completion": 10 },
+        { "name": "Jira Platform Errors", "budget": "Not set", "status": "done", "completion": 100 },
+        { "name": "Launch new Mobile App", "budget": "$20,000", "status": "done", "completion": 100 },
+        { "name": "Web Dev", "budget": "$5,000", "status": "working", "completion": 80 },
+        { "name": "Redesign Online Store", "budget": "$2,000", "status": "cancelled", "completion": 0 }
+      ]
+    },
+    {
+      "id": "footer",
+      "type": "footer",
+      "location": "bottom",
+      "content": { "copyright": true, "links": ["Creative Tim", "About Us", "Blog"] }
+    }
+  ],
+  "patterns": {
+    "author-row": { "count": 6, "location": "authors-table" },
+    "project-row": { "count": 6, "location": "projects-table" },
+    "nav-item": { "count": 7, "location": "sidebar" },
+    "status-badge": { "count": 12, "types": ["ONLINE", "OFFLINE", "working", "done", "cancelled"] }
+  },
+  "totalSections": 4,
+  "totalContentItems": 19
+}

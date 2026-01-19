@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Billing - Rendered Preview</title>
+  <link rel="stylesheet" href="../../tokens/colors.css">
+  <link rel="stylesheet" href="../../tokens/typography.css">
+  <link rel="stylesheet" href="../../tokens/spacing.css">
+  <link rel="stylesheet" href="../../tokens/effects.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-family-sans);
+      background: var(--color-background);
+      color: var(--color-text-primary);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    /* ===== LAYOUT STRUCTURE ===== */
+    .app-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      width: 250px;
+      background: var(--color-surface);
+      border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+      box-shadow: var(--shadow-sidebar);
+      padding: var(--spacing-4);
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .sidebar-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      padding: var(--spacing-4) var(--spacing-3);
+      margin-bottom: var(--spacing-4);
+    }
+
+    .sidebar-logo .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .sidebar-logo span {
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-sm);
+    }
+
+    .nav-section {
+      margin-bottom: var(--spacing-4);
+    }
+
+    .nav-section-label {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      padding: var(--spacing-2) var(--spacing-3);
+      letter-spacing: 0.5px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      padding: var(--spacing-2) var(--spacing-3);
+      border-radius: var(--radius-md);
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      margin-bottom: var(--spacing-1);
+      transition: all 0.2s;
+    }
+
+    .nav-item:hover {
+      background: var(--color-gray-100);
+    }
+
+    .nav-item.active {
+      background: var(--gradient-primary);
+      color: white;
+      box-shadow: var(--shadow-button);
+    }
+
+    .nav-item .icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-item.active .icon {
+      background: white;
+      color: var(--color-primary);
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    .main-content {
+      flex: 1;
+      margin-left: 250px;
+      padding: var(--spacing-6);
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--spacing-6);
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+    }
+
+    .breadcrumb a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-size: var(--font-size-sm);
+    }
+
+    .breadcrumb span {
+      color: var(--color-text-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .navbar-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-4);
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      padding: var(--spacing-2) var(--spacing-3);
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--radius-md);
+      background: var(--color-surface);
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      font-size: var(--font-size-sm);
+      background: transparent;
+      width: 150px;
+    }
+
+    .navbar-icon {
+      color: var(--color-text-muted);
+      cursor: pointer;
+    }
+
+    /* ===== TOP CARDS ROW ===== */
+    /* Grid layout inferred from Figma section dimensions:
+       - Credit Card: 407px (2fr)
+       - Salary: 214px (1fr)
+       - Paypal: 203px (1fr)
+       - Invoices: 406px (2fr), height 433px spans 2 rows
+    */
+    .top-cards {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 2fr;
+      /* First row: 245px (card height), Second row: 188px (invoices extends this much further) */
+      grid-template-rows: 245px 188px;
+      gap: var(--spacing-4);
+      margin-bottom: var(--spacing-6);
+      grid-template-areas:
+        "credit-card credit-card salary paypal invoices invoices"
+        ".           .           .      .      invoices invoices";
+    }
+
+    .top-cards > .credit-card { grid-area: credit-card; }
+    .top-cards > .salary-card { grid-area: salary; }
+    .top-cards > .paypal-card { grid-area: paypal; }
+    .top-cards > .invoices-card { grid-area: invoices; }
+
+    /* Credit Card */
+    .credit-card {
+      background: var(--gradient-dark);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-5);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .credit-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 200px;
+      height: 200px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+    }
+
+    .credit-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .credit-card-chip {
+      display: flex;
+      gap: var(--spacing-2);
+      align-items: center;
+    }
+
+    .credit-card-chip .chip {
+      width: 36px;
+      height: 28px;
+      background: linear-gradient(135deg, #d4af37 0%, #f5e7a3 50%, #d4af37 100%);
+      border-radius: var(--radius-sm);
+    }
+
+    .credit-card-number {
+      font-size: var(--font-size-xl);
+      letter-spacing: 3px;
+      font-weight: var(--font-weight-semibold);
+      margin: var(--spacing-4) 0;
+    }
+
+    .credit-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .credit-card-info {
+      font-size: var(--font-size-xs);
+    }
+
+    .credit-card-info .label {
+      opacity: 0.7;
+      text-transform: uppercase;
+      font-size: 10px;
+      margin-bottom: 2px;
+    }
+
+    .credit-card-brand {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-bold);
+      font-style: italic;
+    }
+
+    /* Stat Cards */
+    .stat-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      padding: var(--spacing-4);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 200px;
+    }
+
+    .stat-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .stat-card-icon.primary { background: var(--gradient-primary); }
+    .stat-card-icon.info { background: var(--gradient-info); }
+    .stat-card-icon.success { background: var(--gradient-success); }
+    .stat-card-icon.paypal { background: var(--gradient-primary); }
+
+    .stat-card-content {
+      margin-top: auto;
+    }
+
+    .stat-card-value {
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-primary);
+    }
+
+    .stat-card-label {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-muted);
+    }
+
+    .stat-card-sublabel {
+      font-size: var(--font-size-xs);
+      color: var(--color-text-muted);
+    }
+
+    /* Invoices Card */
+    .invoices-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      padding: var(--spacing-4);
+      height: 100%; /* stretch to fill grid area when spanning multiple rows */
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--spacing-3);
+    }
+
+    .card-header h3 {
+      font-size: var(--font-size-md);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .card-header .action {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .invoice-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--spacing-2) 0;
+    }
+
+    .invoice-info .date {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .invoice-info .id {
+      font-size: var(--font-size-xs);
+      color: var(--color-text-muted);
+    }
+
+    .invoice-action {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+    }
+
+    .invoice-amount {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .pdf-btn {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-muted);
+      text-decoration: none;
+    }
+
+    /* ===== PAYMENT METHOD ===== */
+    .payment-method-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      padding: var(--spacing-4);
+      margin-bottom: var(--spacing-6);
+    }
+
+    .payment-methods {
+      display: flex;
+      gap: var(--spacing-6);
+      margin-top: var(--spacing-3);
+    }
+
+    .payment-card-wrapper {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+    }
+
+    .payment-card {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      padding: var(--spacing-3) var(--spacing-4);
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--radius-lg);
+      min-width: 200px;
+    }
+
+    .payment-card-logo {
+      width: 40px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .payment-card-info {
+      flex: 1;
+    }
+
+    .payment-card-info .number {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .payment-card-info .expiry {
+      font-size: var(--font-size-xs);
+      color: var(--color-text-muted);
+    }
+
+    .payment-card-edit {
+      cursor: pointer;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+      color: var(--color-text-muted);
+    }
+
+    .payment-card-edit:hover {
+      opacity: 1;
+    }
+
+    .add-card-btn {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      padding: var(--spacing-2) var(--spacing-4);
+      background: var(--gradient-dark);
+      color: white;
+      border: none;
+      border-radius: var(--radius-DEFAULT);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    /* ===== BOTTOM SECTION ===== */
+    .bottom-section {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--spacing-6);
+    }
+
+    /* Billing Information */
+    .billing-info-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      padding: var(--spacing-4);
+    }
+
+    .billing-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-4);
+      margin-top: var(--spacing-3);
+    }
+
+    .billing-info-item {
+      background: var(--color-gray-50);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-4);
+    }
+
+    .billing-info-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--spacing-2);
+    }
+
+    .billing-info-item-header h4 {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .billing-info-actions {
+      display: flex;
+      gap: var(--spacing-3);
+    }
+
+    .billing-info-actions a {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .billing-info-actions .delete { color: var(--color-error); }
+    .billing-info-actions .edit { color: var(--color-text-muted); }
+
+    .billing-info-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-1) var(--spacing-4);
+      font-size: var(--font-size-xs);
+      color: var(--color-text-muted);
+    }
+
+    .billing-info-details .detail-item {
+      display: flex;
+      gap: var(--spacing-1);
+    }
+
+    .billing-info-details .detail-label {
+      color: var(--color-text-muted);
+    }
+
+    .billing-info-details .detail-value {
+      color: var(--color-text-secondary);
+      font-weight: var(--font-weight-bold);
+    }
+
+    /* Transactions */
+    .transactions-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      padding: var(--spacing-4);
+    }
+
+    .transactions-header {
+      margin-bottom: var(--spacing-4);
+    }
+
+    .transactions-header h3 {
+      font-size: var(--font-size-md);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .transactions-header .subtitle {
+      font-size: var(--font-size-xs);
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+    }
+
+    .transaction-group {
+      margin-bottom: var(--spacing-4);
+    }
+
+    .transaction-group-label {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      margin-bottom: var(--spacing-2);
+    }
+
+    .transaction-item {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      padding: var(--spacing-2) 0;
+    }
+
+    .transaction-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .transaction-icon.income {
+      background: rgba(130, 214, 22, 0.15);
+      color: var(--color-success);
+    }
+
+    .transaction-icon.expense {
+      background: rgba(234, 6, 6, 0.15);
+      color: var(--color-error);
+    }
+
+    .transaction-icon.pending {
+      background: rgba(245, 57, 57, 0.15);
+      color: var(--color-warning);
+    }
+
+    .transaction-info {
+      flex: 1;
+    }
+
+    .transaction-info .description {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .transaction-info .date {
+      font-size: var(--font-size-xs);
+      color: var(--color-text-muted);
+    }
+
+    .transaction-amount {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-bold);
+    }
+
+    .transaction-amount.income { color: var(--color-success); }
+    .transaction-amount.expense { color: var(--color-error); }
+    .transaction-amount.pending { color: var(--color-text-muted); }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      margin-top: var(--spacing-8);
+      padding: var(--spacing-4) 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: var(--font-size-xs);
+      color: var(--color-text-muted);
+    }
+
+    .footer a {
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      margin-left: var(--spacing-4);
+    }
+
+    /* Preview badge */
+    .preview-badge {
+      position: fixed;
+      top: var(--spacing-4);
+      right: var(--spacing-4);
+      background: var(--gradient-primary);
+      color: white;
+      padding: var(--spacing-2) var(--spacing-4);
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+    }
+
+    .preview-badge a {
+      color: white;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-badge">
+    <i data-lucide="eye" style="width:14px;height:14px"></i>
+    Rendered Preview
+    <a href="Billing.html">View Spec</a>
+  </div>
+
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-icon">
+          <i data-lucide="box" style="width:18px;height:18px"></i>
+        </div>
+        <span>Soft UI Dashboard</span>
+      </div>
+
+      <nav class="nav-section">
+        <a href="#" class="nav-item">
+          <span class="icon"><i data-lucide="layout-dashboard" style="width:16px;height:16px"></i></span>
+          Dashboard
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon"><i data-lucide="table" style="width:16px;height:16px"></i></span>
+          Tables
+        </a>
+        <a href="#" class="nav-item active">
+          <span class="icon"><i data-lucide="credit-card" style="width:16px;height:16px"></i></span>
+          Billing
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon"><i data-lucide="glasses" style="width:16px;height:16px"></i></span>
+          Virtual Reality
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon"><i data-lucide="type" style="width:16px;height:16px"></i></span>
+          RTL
+        </a>
+      </nav>
+
+      <div class="nav-section-label">Account Pages</div>
+      <nav class="nav-section">
+        <a href="#" class="nav-item">
+          <span class="icon"><i data-lucide="user" style="width:16px;height:16px"></i></span>
+          Profile
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon"><i data-lucide="log-in" style="width:16px;height:16px"></i></span>
+          Sign In
+        </a>
+        <a href="#" class="nav-item">
+          <span class="icon"><i data-lucide="user-plus" style="width:16px;height:16px"></i></span>
+          Sign Up
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Navbar -->
+      <nav class="navbar">
+        <div class="breadcrumb">
+          <a href="#">Pages</a>
+          <span>/</span>
+          <span>Billing</span>
+        </div>
+        <div class="navbar-actions">
+          <div class="search-box">
+            <!-- Search icon - using exported SVG -->
+            <img src="../../assets/icons/custom/search.svg" alt="search" style="width:16px;height:16px">
+            <input type="text" placeholder="Type here...">
+          </div>
+          <!-- User icon - using exported SVG -->
+          <img src="../../assets/icons/custom/user-circle.svg" alt="user" class="navbar-icon" style="width:18px;height:18px">
+          <!-- Settings icon - using exported SVG -->
+          <img src="../../assets/icons/custom/settings.svg" alt="settings" class="navbar-icon" style="width:18px;height:18px">
+          <!-- Bell icon - using exported SVG -->
+          <img src="../../assets/icons/custom/bell.svg" alt="notifications" class="navbar-icon" style="width:18px;height:18px">
+        </div>
+      </nav>
+
+      <!-- Top Cards Row -->
+      <div class="top-cards">
+        <!-- Credit Card -->
+        <div class="credit-card">
+          <div class="credit-card-header">
+            <div class="credit-card-chip">
+              <!-- WiFi icon - using exported SVG -->
+              <img src="../../assets/icons/custom/wifi.svg" alt="wifi" style="width:20px;height:20px;transform:rotate(90deg);filter:brightness(0) invert(1)">
+              <div class="chip"></div>
+            </div>
+          </div>
+          <div class="credit-card-number">4562 1122 4594 7852</div>
+          <div class="credit-card-footer">
+            <div class="credit-card-info">
+              <div class="label">Card Holder</div>
+              <div>Jack Peterson</div>
+            </div>
+            <div class="credit-card-info">
+              <div class="label">Expires</div>
+              <div>11/22</div>
+            </div>
+            <div class="credit-card-brand">
+              <!-- Mastercard circles logo -->
+              <svg width="50" height="30" viewBox="0 0 50 30">
+                <circle cx="17" cy="15" r="12" fill="#EB001B" opacity="0.9"/>
+                <circle cx="33" cy="15" r="12" fill="#F79E1B" opacity="0.9"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Salary Card -->
+        <div class="stat-card salary-card">
+          <div class="stat-card-icon primary">
+            <i data-lucide="landmark" style="width:24px;height:24px"></i>
+          </div>
+          <div class="stat-card-content">
+            <div class="stat-card-value">+$2,000</div>
+            <div class="stat-card-label">Salary</div>
+            <div class="stat-card-sublabel">Belong Interactive</div>
+          </div>
+        </div>
+
+        <!-- Paypal Card -->
+        <div class="stat-card paypal-card">
+          <div class="stat-card-icon paypal">
+            <!-- PayPal text label as shown in Figma -->
+            <span style="font-size:12px;font-weight:700;letter-spacing:-0.3px">Paypal</span>
+          </div>
+          <div class="stat-card-content">
+            <div class="stat-card-value">$49,000</div>
+            <div class="stat-card-label">Paypal</div>
+            <div class="stat-card-sublabel">Freelance Payment</div>
+          </div>
+        </div>
+
+        <!-- Invoices -->
+        <div class="invoices-card">
+          <div class="card-header">
+            <h3>Invoices</h3>
+            <a href="#" class="action">View All</a>
+          </div>
+          <div class="invoice-item">
+            <div class="invoice-info">
+              <div class="date">March, 01, 2021</div>
+              <div class="id">#MS-415646</div>
+            </div>
+            <div class="invoice-action">
+              <span class="invoice-amount">$180</span>
+              <a href="#" class="pdf-btn"><i data-lucide="file-text" style="width:14px;height:14px"></i> PDF</a>
+            </div>
+          </div>
+          <div class="invoice-item">
+            <div class="invoice-info">
+              <div class="date">February, 12, 2021</div>
+              <div class="id">#MS-415647</div>
+            </div>
+            <div class="invoice-action">
+              <span class="invoice-amount">$250</span>
+              <a href="#" class="pdf-btn"><i data-lucide="file-text" style="width:14px;height:14px"></i> PDF</a>
+            </div>
+          </div>
+          <div class="invoice-item">
+            <div class="invoice-info">
+              <div class="date">April, 05, 2020</div>
+              <div class="id">#MS-415648</div>
+            </div>
+            <div class="invoice-action">
+              <span class="invoice-amount">$560</span>
+              <a href="#" class="pdf-btn"><i data-lucide="file-text" style="width:14px;height:14px"></i> PDF</a>
+            </div>
+          </div>
+          <div class="invoice-item">
+            <div class="invoice-info">
+              <div class="date">March, 25, 2019</div>
+              <div class="id">#MS-415649</div>
+            </div>
+            <div class="invoice-action">
+              <span class="invoice-amount">$120</span>
+              <a href="#" class="pdf-btn"><i data-lucide="file-text" style="width:14px;height:14px"></i> PDF</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment Method -->
+      <div class="payment-method-card">
+        <div class="card-header">
+          <h3>Payment Method</h3>
+          <button class="add-card-btn">
+            <i data-lucide="plus" style="width:14px;height:14px"></i>
+            Add New Card
+          </button>
+        </div>
+        <div class="payment-methods">
+          <div class="payment-card-wrapper">
+            <div class="payment-card">
+              <div class="payment-card-logo">
+                <!-- Mastercard logo -->
+                <svg width="40" height="24" viewBox="0 0 40 24">
+                  <circle cx="14" cy="12" r="10" fill="#EB001B"/>
+                  <circle cx="26" cy="12" r="10" fill="#F79E1B"/>
+                  <path d="M20 4.5a10 10 0 0 0 0 15 10 10 0 0 0 0-15z" fill="#FF5F00"/>
+                </svg>
+              </div>
+              <div class="payment-card-info">
+                <div class="number">****  ****  ****  7852</div>
+                <div class="expiry">Expires 11/22</div>
+              </div>
+            </div>
+            <div class="payment-card-edit">
+              <i data-lucide="pencil" style="width:14px;height:14px"></i>
+            </div>
+          </div>
+          <div class="payment-card-wrapper">
+            <div class="payment-card">
+              <div class="payment-card-logo">
+                <!-- Visa logo -->
+                <svg width="40" height="24" viewBox="0 0 40 24">
+                  <text x="5" y="17" font-family="Arial" font-size="14" font-weight="bold" font-style="italic" fill="#1A1F71">VISA</text>
+                </svg>
+              </div>
+              <div class="payment-card-info">
+                <div class="number">****  ****  ****  5765</div>
+                <div class="expiry">Expires 06/24</div>
+              </div>
+            </div>
+            <div class="payment-card-edit">
+              <i data-lucide="pencil" style="width:14px;height:14px"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Section -->
+      <div class="bottom-section">
+        <!-- Billing Information -->
+        <div class="billing-info-card">
+          <div class="card-header">
+            <h3>Billing Information</h3>
+          </div>
+          <div class="billing-info-list">
+            <div class="billing-info-item">
+              <div class="billing-info-item-header">
+                <h4>Oliver Liam</h4>
+                <div class="billing-info-actions">
+                  <a href="#" class="delete">Delete</a>
+                  <a href="#" class="edit">Edit</a>
+                </div>
+              </div>
+              <div class="billing-info-details">
+                <div class="detail-item"><span class="detail-label">Company Name:</span> <span class="detail-value">Viking Burrito</span></div>
+                <div class="detail-item"><span class="detail-label">Email Address:</span> <span class="detail-value">oliver@burrito.com</span></div>
+                <div class="detail-item"><span class="detail-label">VAT Number:</span> <span class="detail-value">FRB1235476</span></div>
+              </div>
+            </div>
+            <div class="billing-info-item">
+              <div class="billing-info-item-header">
+                <h4>Lucas Harper</h4>
+                <div class="billing-info-actions">
+                  <a href="#" class="delete">Delete</a>
+                  <a href="#" class="edit">Edit</a>
+                </div>
+              </div>
+              <div class="billing-info-details">
+                <div class="detail-item"><span class="detail-label">Company Name:</span> <span class="detail-value">Stone Tech Zone</span></div>
+                <div class="detail-item"><span class="detail-label">Email Address:</span> <span class="detail-value">lucas@stone-tech.com</span></div>
+                <div class="detail-item"><span class="detail-label">VAT Number:</span> <span class="detail-value">FRB1235476</span></div>
+              </div>
+            </div>
+            <div class="billing-info-item">
+              <div class="billing-info-item-header">
+                <h4>Ethan James</h4>
+                <div class="billing-info-actions">
+                  <a href="#" class="delete">Delete</a>
+                  <a href="#" class="edit">Edit</a>
+                </div>
+              </div>
+              <div class="billing-info-details">
+                <div class="detail-item"><span class="detail-label">Company Name:</span> <span class="detail-value">Fiber Notion</span></div>
+                <div class="detail-item"><span class="detail-label">Email Address:</span> <span class="detail-value">ethan@fiber.com</span></div>
+                <div class="detail-item"><span class="detail-label">VAT Number:</span> <span class="detail-value">FRB1235476</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Your Transactions -->
+        <div class="transactions-card">
+          <div class="transactions-header">
+            <h3>Your Transactions</h3>
+            <div class="subtitle">
+              <i data-lucide="calendar" style="width:12px;height:12px"></i>
+              23 - 30 March 2020
+            </div>
+          </div>
+
+          <div class="transaction-group">
+            <div class="transaction-group-label">Newest</div>
+            <div class="transaction-item">
+              <div class="transaction-icon expense">
+                <i data-lucide="arrow-down" style="width:16px;height:16px"></i>
+              </div>
+              <div class="transaction-info">
+                <div class="description">Netflix</div>
+                <div class="date">27 March 2020, at 12:30 PM</div>
+              </div>
+              <div class="transaction-amount expense">- $2,500</div>
+            </div>
+            <div class="transaction-item">
+              <div class="transaction-icon income">
+                <i data-lucide="arrow-up" style="width:16px;height:16px"></i>
+              </div>
+              <div class="transaction-info">
+                <div class="description">Apple</div>
+                <div class="date">27 March 2020, at 04:30 AM</div>
+              </div>
+              <div class="transaction-amount income">+ $2,000</div>
+            </div>
+          </div>
+
+          <div class="transaction-group">
+            <div class="transaction-group-label">Yesterday</div>
+            <div class="transaction-item">
+              <div class="transaction-icon income">
+                <i data-lucide="arrow-up" style="width:16px;height:16px"></i>
+              </div>
+              <div class="transaction-info">
+                <div class="description">Stripe</div>
+                <div class="date">26 March 2020, at 13:45 PM</div>
+              </div>
+              <div class="transaction-amount income">+ $750</div>
+            </div>
+            <div class="transaction-item">
+              <div class="transaction-icon income">
+                <i data-lucide="arrow-up" style="width:16px;height:16px"></i>
+              </div>
+              <div class="transaction-info">
+                <div class="description">HubSpot</div>
+                <div class="date">26 March 2020, at 12:30 PM</div>
+              </div>
+              <div class="transaction-amount income">+ $1,000</div>
+            </div>
+            <div class="transaction-item">
+              <div class="transaction-icon income">
+                <i data-lucide="arrow-up" style="width:16px;height:16px"></i>
+              </div>
+              <div class="transaction-info">
+                <div class="description">Creative Tim</div>
+                <div class="date">26 March 2020, at 08:30 AM</div>
+              </div>
+              <div class="transaction-amount income">+ $2,500</div>
+            </div>
+            <div class="transaction-item">
+              <div class="transaction-icon pending">
+                <i data-lucide="alert-circle" style="width:16px;height:16px"></i>
+              </div>
+              <div class="transaction-info">
+                <div class="description">Webflow</div>
+                <div class="date">26 March 2020, at 05:00 AM</div>
+              </div>
+              <div class="transaction-amount pending">Pending</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div>© 2021, made with ❤️ by Creative Tim for a better web.</div>
+        <div>
+          <a href="#">Creative Tim</a>
+          <a href="#">About Us</a>
+          <a href="#">Blog</a>
+          <a href="#">License</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

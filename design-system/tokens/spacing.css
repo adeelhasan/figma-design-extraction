@@ -1,0 +1,97 @@
+/* =================================================================
+   Spacing Tokens
+   Extracted from: Soft UI Dashboard Free (Community)
+   Generated: 2026-01-18
+
+   Base unit: 4px
+   Grid: 4px (with some 8px variants)
+   ================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------
+     Spacing Scale
+     --------------------------------------------------------------- */
+  --spacing-px: 1px;
+  --spacing-0: 0;
+  --spacing-0-5: 2px;   /* 0.125rem */
+  --spacing-1: 4px;     /* 0.25rem */
+  --spacing-1-5: 6px;   /* 0.375rem */
+  --spacing-2: 8px;     /* 0.5rem */
+  --spacing-2-5: 10px;  /* 0.625rem */
+  --spacing-3: 12px;    /* 0.75rem */
+  --spacing-4: 16px;    /* 1rem */
+  --spacing-5: 20px;    /* 1.25rem */
+  --spacing-6: 24px;    /* 1.5rem */
+  --spacing-7: 28px;    /* 1.75rem */
+  --spacing-8: 32px;    /* 2rem */
+  --spacing-9: 36px;    /* 2.25rem */
+  --spacing-10: 40px;   /* 2.5rem */
+  --spacing-12: 48px;   /* 3rem */
+  --spacing-14: 56px;   /* 3.5rem */
+  --spacing-16: 64px;   /* 4rem */
+  --spacing-20: 80px;   /* 5rem */
+  --spacing-24: 96px;   /* 6rem */
+  --spacing-32: 128px;  /* 8rem */
+
+  /* ---------------------------------------------------------------
+     Semantic Spacing (aliases)
+     --------------------------------------------------------------- */
+  /* Component internal spacing */
+  --spacing-component-xs: var(--spacing-1);    /* 4px - tight spacing */
+  --spacing-component-sm: var(--spacing-2);    /* 8px - small gaps */
+  --spacing-component-md: var(--spacing-3);    /* 12px - default */
+  --spacing-component-lg: var(--spacing-4);    /* 16px - relaxed */
+  --spacing-component-xl: var(--spacing-6);    /* 24px - loose */
+
+  /* Card/Section padding */
+  --spacing-card-sm: var(--spacing-3);         /* 12px */
+  --spacing-card-md: var(--spacing-4);         /* 16px */
+  --spacing-card-lg: var(--spacing-6);         /* 24px */
+
+  /* Section spacing */
+  --spacing-section-sm: var(--spacing-4);      /* 16px */
+  --spacing-section-md: var(--spacing-6);      /* 24px */
+  --spacing-section-lg: var(--spacing-8);      /* 32px */
+  --spacing-section-xl: var(--spacing-12);     /* 48px */
+
+  /* Page-level spacing */
+  --spacing-page-gutter: var(--spacing-4);     /* 16px - sidebar gutter */
+  --spacing-page-margin: var(--spacing-6);     /* 24px - page margins */
+  --spacing-page-padding: var(--spacing-8);    /* 32px - main content padding */
+
+  /* Form spacing */
+  --spacing-input-x: var(--spacing-3);         /* 12px - horizontal padding */
+  --spacing-input-y: var(--spacing-2);         /* 8px - vertical padding */
+  --spacing-form-gap: var(--spacing-4);        /* 16px - between form fields */
+
+  /* Stack spacing (vertical lists) */
+  --spacing-stack-xs: var(--spacing-1);        /* 4px */
+  --spacing-stack-sm: var(--spacing-2);        /* 8px */
+  --spacing-stack-md: var(--spacing-4);        /* 16px */
+  --spacing-stack-lg: var(--spacing-6);        /* 24px */
+
+  /* Inline spacing (horizontal) */
+  --spacing-inline-xs: var(--spacing-1);       /* 4px */
+  --spacing-inline-sm: var(--spacing-2);       /* 8px */
+  --spacing-inline-md: var(--spacing-3);       /* 12px */
+  --spacing-inline-lg: var(--spacing-4);       /* 16px */
+}
+
+/*
+Spacing Scale Reference
+=======================
+--spacing-1:  4px   (component gaps, icon spacing)
+--spacing-2:  8px   (button padding, list gaps)
+--spacing-3:  12px  (card padding, input padding)
+--spacing-4:  16px  (section gaps, card gaps)
+--spacing-6:  24px  (major sections, page margins)
+--spacing-8:  32px  (page padding, large gaps)
+--spacing-12: 48px  (major layout divisions)
+--spacing-16: 64px  (hero sections)
+
+Most common values detected:
+- 8px  (253 uses) - primary gap/padding
+- 10px (113 uses) - common padding variant
+- 12px (55 uses)  - card padding
+- 16px (35 uses)  - section spacing
+*/

@@ -1,0 +1,107 @@
+/* =================================================================
+   Typography Tokens
+   Extracted from: {{fileName}}
+   Generated: {{date}}
+   
+   Usage:
+   font-family: var(--font-family-sans);
+   font-size: var(--font-size-base);
+   ================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------
+     Font Families
+     --------------------------------------------------------------- */
+  
+  --font-family-sans: '{{fontFamilySans}}', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-family-serif: '{{fontFamilySerif}}', ui-serif, Georgia, Cambria, "Times New Roman", serif;
+  --font-family-mono: '{{fontFamilyMono}}', ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  
+  /* ---------------------------------------------------------------
+     Font Sizes
+     
+     Use these for consistent sizing across the UI.
+     --------------------------------------------------------------- */
+  
+  {{#each fontSizes}}
+  --font-size-{{name}}: {{value}}px; /* {{remValue}}rem */
+  {{/each}}
+  
+  /* ---------------------------------------------------------------
+     Font Weights
+     --------------------------------------------------------------- */
+  
+  --font-weight-thin: 100;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+  
+  /* ---------------------------------------------------------------
+     Line Heights
+     --------------------------------------------------------------- */
+  
+  --font-leading-none: 1;
+  --font-leading-tight: 1.25;
+  --font-leading-snug: 1.375;
+  --font-leading-normal: 1.5;
+  --font-leading-relaxed: 1.625;
+  --font-leading-loose: 2;
+  
+  /* Specific line heights from design */
+  {{#each lineHeights}}
+  --font-leading-{{name}}: {{value}};
+  {{/each}}
+  
+  /* ---------------------------------------------------------------
+     Letter Spacing
+     --------------------------------------------------------------- */
+  
+  --font-tracking-tighter: -0.05em;
+  --font-tracking-tight: -0.025em;
+  --font-tracking-normal: 0;
+  --font-tracking-wide: 0.025em;
+  --font-tracking-wider: 0.05em;
+  --font-tracking-widest: 0.1em;
+  
+  {{#each letterSpacings}}
+  --font-tracking-{{name}}: {{value}}em;
+  {{/each}}
+}
+
+/*
+Typography Scale Reference
+==========================
+
+{{#each typographyStyles}}
+{{name}}:
+  font-family: var(--font-family-{{family}})
+  font-size: var(--font-size-{{size}}) ({{sizeValue}}px)
+  font-weight: var(--font-weight-{{weight}}) ({{weightValue}})
+  line-height: var(--font-leading-{{leading}}) ({{leadingValue}})
+  letter-spacing: var(--font-tracking-{{tracking}}) ({{trackingValue}})
+
+{{/each}}
+
+Usage Examples
+==============
+
+Heading:
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--font-leading-tight);
+
+Body:
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--font-leading-normal);
+
+Caption:
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--font-leading-normal);
+  color: var(--color-text-muted);
+*/

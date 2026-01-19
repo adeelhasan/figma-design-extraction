@@ -1,0 +1,88 @@
+{
+  "screenName": "Billing",
+  "extractedAt": "2026-01-18T00:00:00Z",
+  "sections": {
+    "creditCard": {
+      "number": "4562 1122 4594 7852",
+      "holder": "Jack Peterson",
+      "expiry": "11/22",
+      "type": "visa"
+    },
+    "salaryCard": {
+      "icon": "plus-circle",
+      "value": "+$2,000",
+      "label": "Salary",
+      "sublabel": "Belong Interactive"
+    },
+    "paypalCard": {
+      "icon": "paypal",
+      "value": "$49,000",
+      "label": "Paypal",
+      "sublabel": "Freelance Payment"
+    },
+    "invoices": {
+      "title": "Invoices",
+      "action": "VIEW ALL",
+      "items": [
+        { "date": "March 01, 2021", "id": "#MS-415646", "amount": "$180" },
+        { "date": "February 12, 2021", "id": "#MS-415647", "amount": "$250" },
+        { "date": "April 05, 2020", "id": "#MS-415648", "amount": "$560" },
+        { "date": "March 25, 2019", "id": "#MS-415649", "amount": "$120" },
+        { "date": "March 01, 2019", "id": "#MS-415650", "amount": "$43" }
+      ]
+    },
+    "paymentMethod": {
+      "title": "Payment Method",
+      "action": "ADD NEW CARD",
+      "cards": [
+        { "type": "mastercard", "number": "****7852", "expiry": "11/22" },
+        { "type": "visa", "number": "****5765", "expiry": "06/24" }
+      ]
+    },
+    "billingInformation": {
+      "title": "Billing Information",
+      "items": [
+        {
+          "name": "Oliver Liam",
+          "company": "Viking Burrito",
+          "email": "oliver@burrito.com",
+          "vat": "FRB1235476"
+        },
+        {
+          "name": "Lucas Harper",
+          "company": "Stone Tech Zone",
+          "email": "lucas@stone-tech.com",
+          "vat": "FRB1235476"
+        },
+        {
+          "name": "Ethan James",
+          "company": "Fiber Notion",
+          "email": "ethan@fiber.com",
+          "vat": "FRB1235476"
+        }
+      ]
+    },
+    "transactions": {
+      "title": "Your Transactions",
+      "subtitle": "23 - 30 March 2020",
+      "groups": [
+        {
+          "label": "NEWEST",
+          "items": [
+            { "icon": "minus", "description": "Netflix", "date": "27 March 2020", "amount": "-$2,500", "type": "expense" },
+            { "icon": "plus", "description": "Apple", "date": "27 March 2020", "amount": "+$2,000", "type": "income" }
+          ]
+        },
+        {
+          "label": "YESTERDAY",
+          "items": [
+            { "icon": "plus", "description": "Stripe", "date": "26 March 2020", "amount": "+$750", "type": "income" },
+            { "icon": "plus", "description": "HubSpot", "date": "26 March 2020", "amount": "+$1,000", "type": "income" },
+            { "icon": "plus", "description": "Creative Tim", "date": "26 March 2020", "amount": "+$2,500", "type": "income" },
+            { "icon": "alert", "description": "Webflow", "date": "26 March 2020", "amount": "Pending", "type": "pending" }
+          ]
+        }
+      ]
+    }
+  }
+}

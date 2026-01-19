@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Tokens - Soft UI Dashboard</title>
+  <link rel="stylesheet" href="../tokens/colors.css">
+  <link rel="stylesheet" href="../tokens/typography.css">
+  <link rel="stylesheet" href="../tokens/spacing.css">
+  <link rel="stylesheet" href="../tokens/effects.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: var(--font-family-sans);
+      background: var(--color-background);
+      color: var(--color-text-primary);
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--spacing-8);
+    }
+    header {
+      background: var(--gradient-dark);
+      color: white;
+      padding: var(--spacing-8) var(--spacing-8);
+      margin-bottom: var(--spacing-8);
+    }
+    header h1 {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      margin-bottom: var(--spacing-2);
+    }
+    header p {
+      opacity: 0.8;
+      font-size: var(--font-size-md);
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      margin-bottom: var(--spacing-4);
+    }
+    .breadcrumb a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+    }
+    .breadcrumb a:hover {
+      color: white;
+    }
+    .section {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      padding: var(--spacing-6);
+      margin-bottom: var(--spacing-6);
+    }
+    .section h2 {
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--spacing-4);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+    }
+    .section h3 {
+      font-size: var(--font-size-md);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-secondary);
+      margin: var(--spacing-4) 0 var(--spacing-2);
+    }
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: var(--spacing-3);
+    }
+    .color-swatch {
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .color-swatch .preview {
+      height: 60px;
+      position: relative;
+    }
+    .color-swatch .info {
+      padding: var(--spacing-2);
+      background: var(--color-surface);
+    }
+    .color-swatch .name {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+    .color-swatch .value {
+      font-size: var(--font-size-xs);
+      color: var(--color-text-muted);
+      font-family: var(--font-family-mono);
+    }
+    .gradient-swatch .preview {
+      height: 80px;
+    }
+    .typography-sample {
+      padding: var(--spacing-3);
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .typography-sample:last-child {
+      border-bottom: none;
+    }
+    .typography-sample .label {
+      font-size: var(--font-size-xs);
+      color: var(--color-text-muted);
+      margin-bottom: var(--spacing-1);
+      font-family: var(--font-family-mono);
+    }
+    .spacing-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-4);
+    }
+    .spacing-item {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+    }
+    .spacing-item .bar {
+      background: var(--gradient-primary);
+      height: 20px;
+      border-radius: var(--radius-sm);
+    }
+    .spacing-item .label {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+      min-width: 100px;
+    }
+    .effects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--spacing-4);
+    }
+    .shadow-demo {
+      background: var(--color-surface);
+      padding: var(--spacing-4);
+      border-radius: var(--radius-lg);
+      text-align: center;
+    }
+    .shadow-demo .label {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      margin-top: var(--spacing-2);
+    }
+    .shadow-demo .value {
+      font-size: var(--font-size-xs);
+      color: var(--color-text-muted);
+      font-family: var(--font-family-mono);
+    }
+    .radius-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-4);
+      align-items: flex-end;
+    }
+    .radius-demo {
+      text-align: center;
+    }
+    .radius-demo .box {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-info);
+      margin-bottom: var(--spacing-2);
+    }
+    .radius-demo .label {
+      font-size: var(--font-size-xs);
+      color: var(--color-text-secondary);
+    }
+    .font-family-demo {
+      padding: var(--spacing-3);
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--spacing-2);
+    }
+    .font-family-demo .name {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+    .font-family-demo .sample {
+      font-size: var(--font-size-lg);
+      margin-top: var(--spacing-1);
+    }
+    .font-family-demo .value {
+      font-size: var(--font-size-xs);
+      color: var(--color-text-muted);
+      font-family: var(--font-family-mono);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="index.html"><i data-lucide="home" style="width:16px;height:16px"></i></a>
+        <span>/</span>
+        <span>Design Tokens</span>
+      </nav>
+      <h1><i data-lucide="palette"></i> Design Tokens</h1>
+      <p>Complete token reference for Soft UI Dashboard</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Colors Section -->
+    <section class="section">
+      <h2><i data-lucide="droplet"></i> Colors</h2>
+
+      <h3>Semantic Colors</h3>
+      <div class="color-grid">
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--color-primary)"></div>
+          <div class="info">
+            <div class="name">Primary</div>
+            <div class="value">--color-primary</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--color-secondary)"></div>
+          <div class="info">
+            <div class="name">Secondary</div>
+            <div class="value">--color-secondary</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--color-info)"></div>
+          <div class="info">
+            <div class="name">Info</div>
+            <div class="value">--color-info</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--color-success)"></div>
+          <div class="info">
+            <div class="name">Success</div>
+            <div class="value">--color-success</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--color-warning)"></div>
+          <div class="info">
+            <div class="name">Warning</div>
+            <div class="value">--color-warning</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--color-error)"></div>
+          <div class="info">
+            <div class="name">Error</div>
+            <div class="value">--color-error</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Gray Scale</h3>
+      <div class="color-grid">
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--color-gray-50)"></div>
+          <div class="info">
+            <div class="name">Gray 50</div>
+            <div class="value">--color-gray-50</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--color-gray-100)"></div>
+          <div class="info">
+            <div class="name">Gray 100</div>
+            <div class="value">--color-gray-100</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--color-gray-200)"></div>
+          <div class="info">
+            <div class="name">Gray 200</div>
+            <div class="value">--color-gray-200</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--color-gray-300)"></div>
+          <div class="info">
+            <div class="name">Gray 300</div>
+            <div class="value">--color-gray-300</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--color-gray-400)"></div>
+          <div class="info">
+            <div class="name">Gray 400</div>
+            <div class="value">--color-gray-400</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--color-gray-500)"></div>
+          <div class="info">
+            <div class="name">Gray 500</div>
+            <div class="value">--color-gray-500</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--color-gray-600)"></div>
+          <div class="info">
+            <div class="name">Gray 600</div>
+            <div class="value">--color-gray-600</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--color-gray-700)"></div>
+          <div class="info">
+            <div class="name">Gray 700</div>
+            <div class="value">--color-gray-700</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--color-gray-800)"></div>
+          <div class="info">
+            <div class="name">Gray 800</div>
+            <div class="value">--color-gray-800</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--color-gray-900)"></div>
+          <div class="info">
+            <div class="name">Gray 900</div>
+            <div class="value">--color-gray-900</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Text Colors</h3>
+      <div class="color-grid">
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--color-text-primary)"></div>
+          <div class="info">
+            <div class="name">Text Primary</div>
+            <div class="value">--color-text-primary</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--color-text-secondary)"></div>
+          <div class="info">
+            <div class="name">Text Secondary</div>
+            <div class="value">--color-text-secondary</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--color-text-muted)"></div>
+          <div class="info">
+            <div class="name">Text Muted</div>
+            <div class="value">--color-text-muted</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="preview" style="background: var(--color-text-link)"></div>
+          <div class="info">
+            <div class="name">Text Link</div>
+            <div class="value">--color-text-link</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Gradients</h3>
+      <div class="color-grid">
+        <div class="color-swatch gradient-swatch">
+          <div class="preview" style="background: var(--gradient-primary)"></div>
+          <div class="info">
+            <div class="name">Primary</div>
+            <div class="value">--gradient-primary</div>
+          </div>
+        </div>
+        <div class="color-swatch gradient-swatch">
+          <div class="preview" style="background: var(--gradient-secondary)"></div>
+          <div class="info">
+            <div class="name">Secondary</div>
+            <div class="value">--gradient-secondary</div>
+          </div>
+        </div>
+        <div class="color-swatch gradient-swatch">
+          <div class="preview" style="background: var(--gradient-info)"></div>
+          <div class="info">
+            <div class="name">Info</div>
+            <div class="value">--gradient-info</div>
+          </div>
+        </div>
+        <div class="color-swatch gradient-swatch">
+          <div class="preview" style="background: var(--gradient-success)"></div>
+          <div class="info">
+            <div class="name">Success</div>
+            <div class="value">--gradient-success</div>
+          </div>
+        </div>
+        <div class="color-swatch gradient-swatch">
+          <div class="preview" style="background: var(--gradient-warning)"></div>
+          <div class="info">
+            <div class="name">Warning</div>
+            <div class="value">--gradient-warning</div>
+          </div>
+        </div>
+        <div class="color-swatch gradient-swatch">
+          <div class="preview" style="background: var(--gradient-danger)"></div>
+          <div class="info">
+            <div class="name">Danger</div>
+            <div class="value">--gradient-danger</div>
+          </div>
+        </div>
+        <div class="color-swatch gradient-swatch">
+          <div class="preview" style="background: var(--gradient-dark)"></div>
+          <div class="info">
+            <div class="name">Dark</div>
+            <div class="value">--gradient-dark</div>
+          </div>
+        </div>
+        <div class="color-swatch gradient-swatch">
+          <div class="preview" style="background: var(--gradient-light)"></div>
+          <div class="info">
+            <div class="name">Light</div>
+            <div class="value">--gradient-light</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography Section -->
+    <section class="section">
+      <h2><i data-lucide="type"></i> Typography</h2>
+
+      <h3>Font Families</h3>
+      <div class="font-family-demo">
+        <div class="name">Sans (Primary)</div>
+        <div class="sample" style="font-family: var(--font-family-sans)">The quick brown fox jumps over the lazy dog</div>
+        <div class="value">--font-family-sans: 'Open Sans', system-ui, sans-serif</div>
+      </div>
+      <div class="font-family-demo">
+        <div class="name">Display</div>
+        <div class="sample" style="font-family: var(--font-family-display)">The quick brown fox jumps over the lazy dog</div>
+        <div class="value">--font-family-display: 'Montserrat', var(--font-family-sans)</div>
+      </div>
+      <div class="font-family-demo">
+        <div class="name">Monospace</div>
+        <div class="sample" style="font-family: var(--font-family-mono)">const greeting = "Hello World";</div>
+        <div class="value">--font-family-mono: 'Fira Code', 'SF Mono', monospace</div>
+      </div>
+
+      <h3>Headings</h3>
+      <div class="typography-sample">
+        <div class="label">H1 - 48px / Bold</div>
+        <div style="font-size: var(--text-h1-size); font-weight: var(--text-h1-weight); line-height: var(--text-h1-line-height)">Heading One</div>
+      </div>
+      <div class="typography-sample">
+        <div class="label">H2 - 36px / Bold</div>
+        <div style="font-size: var(--text-h2-size); font-weight: var(--text-h2-weight); line-height: var(--text-h2-line-height)">Heading Two</div>
+      </div>
+      <div class="typography-sample">
+        <div class="label">H3 - 30px / Semibold</div>
+        <div style="font-size: var(--text-h3-size); font-weight: var(--text-h3-weight); line-height: var(--text-h3-line-height)">Heading Three</div>
+      </div>
+      <div class="typography-sample">
+        <div class="label">H4 - 24px / Bold</div>
+        <div style="font-size: var(--text-h4-size); font-weight: var(--text-h4-weight); line-height: var(--text-h4-line-height)">Heading Four</div>
+      </div>
+      <div class="typography-sample">
+        <div class="label">H5 - 20px / Semibold</div>
+        <div style="font-size: var(--text-h5-size); font-weight: var(--text-h5-weight); line-height: var(--text-h5-line-height)">Heading Five</div>
+      </div>
+      <div class="typography-sample">
+        <div class="label">H6 - 16px / Semibold</div>
+        <div style="font-size: var(--text-h6-size); font-weight: var(--text-h6-weight); line-height: var(--text-h6-line-height)">Heading Six</div>
+      </div>
+
+      <h3>Body Text</h3>
+      <div class="typography-sample">
+        <div class="label">Body Large - 18px</div>
+        <div style="font-size: var(--text-body-lg-size); font-weight: var(--text-body-lg-weight); line-height: var(--text-body-lg-line-height)">From colors, cards, typography to complex elements, you will find the full documentation.</div>
+      </div>
+      <div class="typography-sample">
+        <div class="label">Body Regular - 14px</div>
+        <div style="font-size: var(--text-body-size); font-weight: var(--text-body-weight); line-height: var(--text-body-line-height)">From colors, cards, typography to complex elements, you will find the full documentation.</div>
+      </div>
+      <div class="typography-sample">
+        <div class="label">Body Small - 12px</div>
+        <div style="font-size: var(--text-body-sm-size); font-weight: var(--text-body-sm-weight); line-height: var(--text-body-sm-line-height)">From colors, cards, typography to complex elements, you will find the full documentation.</div>
+      </div>
+
+      <h3>UI Text</h3>
+      <div class="typography-sample">
+        <div class="label">Button - 12px / Bold / Uppercase</div>
+        <div style="font-size: var(--text-button-size); font-weight: var(--text-button-weight); letter-spacing: var(--text-button-letter-spacing); text-transform: uppercase">Sign In</div>
+      </div>
+      <div class="typography-sample">
+        <div class="label">Label - 10px / Bold</div>
+        <div style="font-size: var(--text-label-size); font-weight: var(--text-label-weight); letter-spacing: var(--text-label-letter-spacing); text-transform: uppercase">Companies</div>
+      </div>
+      <div class="typography-sample">
+        <div class="label">Caption - 10px</div>
+        <div style="font-size: var(--text-caption-size); font-weight: var(--text-caption-weight); color: var(--color-text-muted)">22 DEC 7:20 PM</div>
+      </div>
+    </section>
+
+    <!-- Spacing Section -->
+    <section class="section">
+      <h2><i data-lucide="ruler"></i> Spacing</h2>
+      <p style="color: var(--color-text-muted); margin-bottom: var(--spacing-4)">Base unit: 4px</p>
+
+      <div class="spacing-grid">
+        <div class="spacing-item">
+          <div class="label">--spacing-1</div>
+          <div class="bar" style="width: 4px"></div>
+          <span style="font-size: var(--font-size-xs); color: var(--color-text-muted)">4px</span>
+        </div>
+        <div class="spacing-item">
+          <div class="label">--spacing-2</div>
+          <div class="bar" style="width: 8px"></div>
+          <span style="font-size: var(--font-size-xs); color: var(--color-text-muted)">8px</span>
+        </div>
+        <div class="spacing-item">
+          <div class="label">--spacing-3</div>
+          <div class="bar" style="width: 12px"></div>
+          <span style="font-size: var(--font-size-xs); color: var(--color-text-muted)">12px</span>
+        </div>
+        <div class="spacing-item">
+          <div class="label">--spacing-4</div>
+          <div class="bar" style="width: 16px"></div>
+          <span style="font-size: var(--font-size-xs); color: var(--color-text-muted)">16px</span>
+        </div>
+        <div class="spacing-item">
+          <div class="label">--spacing-5</div>
+          <div class="bar" style="width: 20px"></div>
+          <span style="font-size: var(--font-size-xs); color: var(--color-text-muted)">20px</span>
+        </div>
+        <div class="spacing-item">
+          <div class="label">--spacing-6</div>
+          <div class="bar" style="width: 24px"></div>
+          <span style="font-size: var(--font-size-xs); color: var(--color-text-muted)">24px</span>
+        </div>
+        <div class="spacing-item">
+          <div class="label">--spacing-8</div>
+          <div class="bar" style="width: 32px"></div>
+          <span style="font-size: var(--font-size-xs); color: var(--color-text-muted)">32px</span>
+        </div>
+        <div class="spacing-item">
+          <div class="label">--spacing-10</div>
+          <div class="bar" style="width: 40px"></div>
+          <span style="font-size: var(--font-size-xs); color: var(--color-text-muted)">40px</span>
+        </div>
+        <div class="spacing-item">
+          <div class="label">--spacing-12</div>
+          <div class="bar" style="width: 48px"></div>
+          <span style="font-size: var(--font-size-xs); color: var(--color-text-muted)">48px</span>
+        </div>
+        <div class="spacing-item">
+          <div class="label">--spacing-16</div>
+          <div class="bar" style="width: 64px"></div>
+          <span style="font-size: var(--font-size-xs); color: var(--color-text-muted)">64px</span>
+        </div>
+        <div class="spacing-item">
+          <div class="label">--spacing-20</div>
+          <div class="bar" style="width: 80px"></div>
+          <span style="font-size: var(--font-size-xs); color: var(--color-text-muted)">80px</span>
+        </div>
+        <div class="spacing-item">
+          <div class="label">--spacing-24</div>
+          <div class="bar" style="width: 96px"></div>
+          <span style="font-size: var(--font-size-xs); color: var(--color-text-muted)">96px</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Effects Section -->
+    <section class="section">
+      <h2><i data-lucide="sparkles"></i> Effects</h2>
+
+      <h3>Shadows</h3>
+      <div class="effects-grid">
+        <div class="shadow-demo" style="box-shadow: var(--shadow-xs)">
+          <div class="label">Extra Small</div>
+          <div class="value">--shadow-xs</div>
+        </div>
+        <div class="shadow-demo" style="box-shadow: var(--shadow-sm)">
+          <div class="label">Small</div>
+          <div class="value">--shadow-sm</div>
+        </div>
+        <div class="shadow-demo" style="box-shadow: var(--shadow-md)">
+          <div class="label">Medium</div>
+          <div class="value">--shadow-md</div>
+        </div>
+        <div class="shadow-demo" style="box-shadow: var(--shadow-lg)">
+          <div class="label">Large</div>
+          <div class="value">--shadow-lg</div>
+        </div>
+        <div class="shadow-demo" style="box-shadow: var(--shadow-xl)">
+          <div class="label">Extra Large</div>
+          <div class="value">--shadow-xl</div>
+        </div>
+        <div class="shadow-demo" style="box-shadow: var(--shadow-card)">
+          <div class="label">Card (Soft UI)</div>
+          <div class="value">--shadow-card</div>
+        </div>
+        <div class="shadow-demo" style="box-shadow: var(--shadow-button)">
+          <div class="label">Button</div>
+          <div class="value">--shadow-button</div>
+        </div>
+        <div class="shadow-demo" style="box-shadow: var(--shadow-input-focus)">
+          <div class="label">Input Focus</div>
+          <div class="value">--shadow-input-focus</div>
+        </div>
+      </div>
+
+      <h3>Border Radius</h3>
+      <div class="radius-grid">
+        <div class="radius-demo">
+          <div class="box" style="border-radius: var(--radius-none)"></div>
+          <div class="label">none (0)</div>
+        </div>
+        <div class="radius-demo">
+          <div class="box" style="border-radius: var(--radius-sm)"></div>
+          <div class="label">sm (4px)</div>
+        </div>
+        <div class="radius-demo">
+          <div class="box" style="border-radius: var(--radius-DEFAULT)"></div>
+          <div class="label">default (6px)</div>
+        </div>
+        <div class="radius-demo">
+          <div class="box" style="border-radius: var(--radius-md)"></div>
+          <div class="label">md (8px)</div>
+        </div>
+        <div class="radius-demo">
+          <div class="box" style="border-radius: var(--radius-lg)"></div>
+          <div class="label">lg (10px)</div>
+        </div>
+        <div class="radius-demo">
+          <div class="box" style="border-radius: var(--radius-xl)"></div>
+          <div class="label">xl (12px)</div>
+        </div>
+        <div class="radius-demo">
+          <div class="box" style="border-radius: var(--radius-2xl)"></div>
+          <div class="label">2xl (16px)</div>
+        </div>
+        <div class="radius-demo">
+          <div class="box" style="border-radius: var(--radius-full)"></div>
+          <div class="label">full (pill)</div>
+        </div>
+      </div>
+
+      <h3>Transitions</h3>
+      <div style="display: flex; gap: var(--spacing-4); flex-wrap: wrap; margin-top: var(--spacing-3)">
+        <div style="padding: var(--spacing-3); border: 1px solid var(--color-border-light); border-radius: var(--radius-md)">
+          <div style="font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold)">Fast</div>
+          <div style="font-size: var(--font-size-xs); color: var(--color-text-muted); font-family: var(--font-family-mono)">--transition-fast: 150ms ease</div>
+        </div>
+        <div style="padding: var(--spacing-3); border: 1px solid var(--color-border-light); border-radius: var(--radius-md)">
+          <div style="font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold)">Base</div>
+          <div style="font-size: var(--font-size-xs); color: var(--color-text-muted); font-family: var(--font-family-mono)">--transition-base: 200ms ease</div>
+        </div>
+        <div style="padding: var(--spacing-3); border: 1px solid var(--color-border-light); border-radius: var(--radius-md)">
+          <div style="font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold)">Slow</div>
+          <div style="font-size: var(--font-size-xs); color: var(--color-text-muted); font-family: var(--font-family-mono)">--transition-slow: 300ms ease</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

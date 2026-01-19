@@ -1,0 +1,289 @@
+{
+  "extractedAt": "2026-01-18T17:01:00Z",
+  "source": "Soft UI Dashboard Free (Community)",
+  "totalAssets": 24,
+  "summary": {
+    "totalImages": 24,
+    "byType": {
+      "decorative": 3,
+      "avatar": 8,
+      "photo": 3,
+      "logo": 4,
+      "illustration": 1
+    },
+    "exported": 10,
+    "placeholders": 14
+  },
+  "images": [
+    {
+      "id": "hero-wave-dark",
+      "type": "decorative",
+      "description": "Dark gradient wave background for Sign Up",
+      "usedIn": ["SignUp"],
+      "placeholder": {
+        "type": "gradient",
+        "colors": ["#141727", "#3a416f"]
+      }
+    },
+    {
+      "id": "hero-wave-colorful",
+      "type": "decorative",
+      "description": "Colorful 3D wave background for Sign In",
+      "usedIn": ["SignIn"],
+      "placeholder": {
+        "type": "gradient",
+        "colors": ["#ff0080", "#7928ca", "#21d4fd", "#f97316"]
+      }
+    },
+    {
+      "id": "profile-banner",
+      "figmaNodeId": "0:2520",
+      "type": "decorative",
+      "description": "Pink/purple gradient wave for profile header",
+      "usedIn": ["Profile"],
+      "dimensions": "1572x313",
+      "exportPath": "images/backgrounds/profile-banner.png",
+      "hasOriginal": true,
+      "placeholder": {
+        "type": "gradient",
+        "colors": ["#cb0c9f", "#7928ca"]
+      }
+    },
+    {
+      "id": "avatar-alec",
+      "figmaNodeId": "0:2531",
+      "type": "avatar",
+      "description": "Profile photo of Alec Thompson",
+      "usedIn": ["Profile"],
+      "dimensions": "81x81",
+      "exportPath": "images/avatars/profile-alec.png",
+      "hasOriginal": true,
+      "placeholder": {
+        "type": "initials",
+        "text": "AT",
+        "bgColor": "#cb0c9f"
+      }
+    },
+    {
+      "id": "avatar-sophie",
+      "figmaNodeId": "0:2621",
+      "type": "avatar",
+      "description": "Conversation avatar - Sophie B",
+      "usedIn": ["Profile"],
+      "dimensions": "49x49",
+      "exportPath": "images/avatars/profile-sophie.png",
+      "hasOriginal": true,
+      "placeholder": {
+        "type": "initials",
+        "text": "SB",
+        "bgColor": "#17c1e8"
+      }
+    },
+    {
+      "id": "avatar-anne",
+      "figmaNodeId": "0:2629",
+      "type": "avatar",
+      "description": "Conversation avatar - Anne Marie",
+      "usedIn": ["Profile"],
+      "dimensions": "49x49",
+      "exportPath": "images/avatars/profile-anne.png",
+      "hasOriginal": true,
+      "placeholder": {
+        "type": "initials",
+        "text": "AM",
+        "bgColor": "#82d616"
+      }
+    },
+    {
+      "id": "avatar-ivanna",
+      "figmaNodeId": "0:2637",
+      "type": "avatar",
+      "description": "Conversation avatar - Ivanna",
+      "usedIn": ["Profile"],
+      "dimensions": "50x50",
+      "exportPath": "images/avatars/profile-ivanna.png",
+      "hasOriginal": true,
+      "placeholder": {
+        "type": "initials",
+        "text": "IV",
+        "bgColor": "#f5365c"
+      }
+    },
+    {
+      "id": "avatar-peterson",
+      "figmaNodeId": "0:2645",
+      "type": "avatar",
+      "description": "Conversation avatar - Peterson",
+      "usedIn": ["Profile"],
+      "dimensions": "50x50",
+      "exportPath": "images/avatars/profile-peterson.png",
+      "hasOriginal": true,
+      "placeholder": {
+        "type": "initials",
+        "text": "PE",
+        "bgColor": "#fb6340"
+      }
+    },
+    {
+      "id": "avatar-nick",
+      "figmaNodeId": "0:2653",
+      "type": "avatar",
+      "description": "Conversation avatar - Nick Daniel",
+      "usedIn": ["Profile"],
+      "dimensions": "50x50",
+      "exportPath": "images/avatars/profile-nick.png",
+      "hasOriginal": true,
+      "placeholder": {
+        "type": "initials",
+        "text": "ND",
+        "bgColor": "#2684ff"
+      }
+    },
+    {
+      "id": "avatar-michael",
+      "type": "avatar",
+      "description": "Avatar for Michael John",
+      "usedIn": ["Tables"],
+      "dimensions": "40x40",
+      "placeholder": {
+        "type": "initials",
+        "text": "MJ",
+        "bgColor": "#2684ff"
+      }
+    },
+    {
+      "id": "avatar-alexa",
+      "type": "avatar",
+      "description": "Avatar for Alexa Liras",
+      "usedIn": ["Tables"],
+      "dimensions": "40x40",
+      "placeholder": {
+        "type": "initials",
+        "text": "AL",
+        "bgColor": "#82d616"
+      }
+    },
+    {
+      "id": "project-modern",
+      "figmaNodeId": "0:2662",
+      "type": "photo",
+      "description": "Modern interior design project",
+      "usedIn": ["Profile"],
+      "dimensions": "272x155",
+      "exportPath": "images/content/profile-project-modern.png",
+      "hasOriginal": true,
+      "placeholder": {
+        "type": "image-placeholder",
+        "label": "Modern Interior"
+      }
+    },
+    {
+      "id": "project-scandinavian",
+      "figmaNodeId": "0:2690",
+      "type": "photo",
+      "description": "Scandinavian interior design project",
+      "usedIn": ["Profile"],
+      "dimensions": "267x152",
+      "exportPath": "images/content/profile-project-scandinavian.png",
+      "hasOriginal": true,
+      "placeholder": {
+        "type": "image-placeholder",
+        "label": "Scandinavian Design"
+      }
+    },
+    {
+      "id": "project-minimalist",
+      "figmaNodeId": "0:2718",
+      "type": "photo",
+      "description": "Minimalist interior design project",
+      "usedIn": ["Profile"],
+      "dimensions": "260x148",
+      "exportPath": "images/content/profile-project-minimalist.png",
+      "hasOriginal": true,
+      "placeholder": {
+        "type": "image-placeholder",
+        "label": "Minimalist Style"
+      }
+    },
+    {
+      "id": "logo-spotify",
+      "type": "logo",
+      "description": "Spotify company logo",
+      "usedIn": ["Tables - Projects"],
+      "dimensions": "24x24",
+      "placeholder": {
+        "type": "icon",
+        "icon": "music"
+      }
+    },
+    {
+      "id": "logo-jira",
+      "type": "logo",
+      "description": "Jira platform logo",
+      "usedIn": ["Tables - Projects"],
+      "dimensions": "24x24",
+      "placeholder": {
+        "type": "icon",
+        "icon": "kanban"
+      }
+    },
+    {
+      "id": "logo-slack",
+      "type": "logo",
+      "description": "Slack app logo",
+      "usedIn": ["Dashboard - Projects"],
+      "dimensions": "24x24",
+      "placeholder": {
+        "type": "icon",
+        "icon": "hash"
+      }
+    },
+    {
+      "id": "logo-shopify",
+      "type": "logo",
+      "description": "Shopify platform logo",
+      "usedIn": ["Dashboard - Projects"],
+      "dimensions": "24x24",
+      "placeholder": {
+        "type": "icon",
+        "icon": "shopping-bag"
+      }
+    },
+    {
+      "id": "rocket-illustration",
+      "type": "illustration",
+      "description": "3D rocket illustration for feature card",
+      "usedIn": ["Dashboard"],
+      "dimensions": "200x200",
+      "placeholder": {
+        "type": "icon",
+        "icon": "rocket",
+        "size": "large"
+      }
+    }
+  ],
+  "placeholderStrategies": {
+    "avatar": {
+      "method": "initials",
+      "fallback": "gradient-circle",
+      "defaultBg": "#cb0c9f"
+    },
+    "photo": {
+      "method": "solid-with-icon",
+      "fallback": "gray-placeholder",
+      "defaultBg": "#f0f0f0"
+    },
+    "logo": {
+      "method": "icon-substitute",
+      "fallback": "circle-initial"
+    },
+    "decorative": {
+      "method": "css-gradient",
+      "fallback": "solid-color"
+    },
+    "illustration": {
+      "method": "lucide-icon-large",
+      "fallback": "placeholder-box"
+    }
+  }
+}

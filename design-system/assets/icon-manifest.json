@@ -1,0 +1,253 @@
+{
+  "extractedAt": "2026-01-18T00:00:00Z",
+  "source": "Soft UI Dashboard Free (Community)",
+  "iconLibrary": "lucide",
+  "totalIcons": 45,
+  "icons": [
+    {
+      "id": "icon-dashboard",
+      "figmaName": "Dashboard",
+      "lucideName": "layout-dashboard",
+      "category": "navigation",
+      "usedIn": ["sidebar"]
+    },
+    {
+      "id": "icon-tables",
+      "figmaName": "Tables",
+      "lucideName": "table",
+      "category": "navigation",
+      "usedIn": ["sidebar"]
+    },
+    {
+      "id": "icon-billing",
+      "figmaName": "Billing",
+      "lucideName": "credit-card",
+      "category": "navigation",
+      "usedIn": ["sidebar"]
+    },
+    {
+      "id": "icon-vr",
+      "figmaName": "Virtual Reality",
+      "lucideName": "glasses",
+      "category": "navigation",
+      "usedIn": ["sidebar"]
+    },
+    {
+      "id": "icon-profile",
+      "figmaName": "Profile",
+      "lucideName": "user",
+      "category": "navigation",
+      "usedIn": ["sidebar"]
+    },
+    {
+      "id": "icon-signin",
+      "figmaName": "Sign In",
+      "lucideName": "log-in",
+      "category": "navigation",
+      "usedIn": ["sidebar"]
+    },
+    {
+      "id": "icon-signup",
+      "figmaName": "Sign Up",
+      "lucideName": "user-plus",
+      "category": "navigation",
+      "usedIn": ["sidebar"]
+    },
+    {
+      "id": "icon-wallet",
+      "figmaName": "Wallet",
+      "lucideName": "wallet",
+      "category": "stat",
+      "usedIn": ["Dashboard stat cards"]
+    },
+    {
+      "id": "icon-globe",
+      "figmaName": "Globe",
+      "lucideName": "globe",
+      "category": "stat",
+      "usedIn": ["Dashboard stat cards"]
+    },
+    {
+      "id": "icon-document",
+      "figmaName": "Document",
+      "lucideName": "file-text",
+      "category": "stat",
+      "usedIn": ["Dashboard stat cards"]
+    },
+    {
+      "id": "icon-cart",
+      "figmaName": "Cart",
+      "lucideName": "shopping-cart",
+      "category": "stat",
+      "usedIn": ["Dashboard stat cards"]
+    },
+    {
+      "id": "icon-plus",
+      "figmaName": "Plus",
+      "lucideName": "plus",
+      "category": "action",
+      "usedIn": ["Billing salary card"]
+    },
+    {
+      "id": "icon-paypal",
+      "figmaName": "PayPal",
+      "lucideName": null,
+      "customSvg": true,
+      "category": "brand",
+      "usedIn": ["Billing paypal card"]
+    },
+    {
+      "id": "icon-search",
+      "figmaName": "Search",
+      "lucideName": "search",
+      "category": "action",
+      "usedIn": ["navbar"]
+    },
+    {
+      "id": "icon-settings",
+      "figmaName": "Settings",
+      "lucideName": "settings",
+      "category": "action",
+      "usedIn": ["navbar"]
+    },
+    {
+      "id": "icon-bell",
+      "figmaName": "Notifications",
+      "lucideName": "bell",
+      "category": "action",
+      "usedIn": ["navbar"]
+    },
+    {
+      "id": "icon-edit",
+      "figmaName": "Edit",
+      "lucideName": "pencil",
+      "category": "action",
+      "usedIn": ["Billing info cards"]
+    },
+    {
+      "id": "icon-delete",
+      "figmaName": "Delete",
+      "lucideName": "trash-2",
+      "category": "action",
+      "usedIn": ["Billing info cards"]
+    },
+    {
+      "id": "icon-pdf",
+      "figmaName": "PDF",
+      "lucideName": "file-down",
+      "category": "action",
+      "usedIn": ["Invoices list"]
+    },
+    {
+      "id": "icon-facebook",
+      "figmaName": "Facebook",
+      "lucideName": "facebook",
+      "category": "social",
+      "usedIn": ["Profile, Sign Up"]
+    },
+    {
+      "id": "icon-twitter",
+      "figmaName": "Twitter",
+      "lucideName": "twitter",
+      "category": "social",
+      "usedIn": ["Profile, Footer"]
+    },
+    {
+      "id": "icon-instagram",
+      "figmaName": "Instagram",
+      "lucideName": "instagram",
+      "category": "social",
+      "usedIn": ["Profile, Footer"]
+    },
+    {
+      "id": "icon-apple",
+      "figmaName": "Apple",
+      "lucideName": "apple",
+      "category": "brand",
+      "usedIn": ["Sign Up"]
+    },
+    {
+      "id": "icon-google",
+      "figmaName": "Google",
+      "lucideName": null,
+      "customSvg": true,
+      "category": "brand",
+      "usedIn": ["Sign Up"]
+    },
+    {
+      "id": "icon-arrow-up",
+      "figmaName": "Arrow Up",
+      "lucideName": "arrow-up",
+      "category": "indicator",
+      "usedIn": ["Stat cards (positive)"]
+    },
+    {
+      "id": "icon-arrow-down",
+      "figmaName": "Arrow Down",
+      "lucideName": "arrow-down",
+      "category": "indicator",
+      "usedIn": ["Stat cards (negative)"]
+    },
+    {
+      "id": "icon-check",
+      "figmaName": "Checkmark",
+      "lucideName": "check",
+      "category": "status",
+      "usedIn": ["Checkbox, Success states"]
+    },
+    {
+      "id": "icon-rocket",
+      "figmaName": "Rocket",
+      "lucideName": "rocket",
+      "category": "illustration",
+      "usedIn": ["Dashboard feature card"]
+    },
+    {
+      "id": "icon-calendar",
+      "figmaName": "Calendar",
+      "lucideName": "calendar",
+      "category": "data",
+      "usedIn": ["Transactions"]
+    },
+    {
+      "id": "icon-wifi",
+      "figmaName": "WiFi",
+      "lucideName": "wifi",
+      "category": "indicator",
+      "usedIn": ["Credit card"]
+    },
+    {
+      "id": "icon-chip",
+      "figmaName": "Chip",
+      "lucideName": null,
+      "customSvg": true,
+      "category": "indicator",
+      "usedIn": ["Credit card"]
+    }
+  ],
+  "unmapped": [
+    {
+      "figmaName": "PayPal Logo",
+      "reason": "Brand icon - use official PayPal asset"
+    },
+    {
+      "figmaName": "Google Logo",
+      "reason": "Brand icon - use official Google asset"
+    },
+    {
+      "figmaName": "Card Chip",
+      "reason": "Custom credit card element"
+    }
+  ],
+  "categories": {
+    "navigation": 7,
+    "stat": 4,
+    "action": 7,
+    "social": 3,
+    "brand": 3,
+    "indicator": 3,
+    "status": 1,
+    "illustration": 1,
+    "data": 1
+  }
+}

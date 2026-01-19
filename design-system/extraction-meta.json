@@ -1,0 +1,30 @@
+{
+  "figma": {
+    "fileKey": "YA7YmI2VAeQKM556gvGupf",
+    "fileName": "Soft UI Dashboard Free (Community)",
+    "url": "https://www.figma.com/design/YA7YmI2VAeQKM556gvGupf/Soft-UI-Dashboard-Free--Community-",
+    "lastModified": "2026-01-11T22:23:04Z"
+  },
+  "extraction": {
+    "startedAt": "2026-01-18T00:00:00Z",
+    "version": "1.0.0",
+    "tool": "figma-extraction-skill",
+    "mode": "thorough"
+  },
+  "structure": {
+    "pages": 6,
+    "componentSets": 22,
+    "screens": 14
+  },
+  "screens": [
+    {"id": "0:263", "name": "Dashboard-sidebar transparent", "page": "🚀 Dashboard"},
+    {"id": "1:88", "name": "Dashboard-sidebar transparent", "page": "🚀 Dashboard"},
+    {"id": "0:1777", "name": "Tables", "page": "🚀 Dashboard"},
+    {"id": "0:2136", "name": "Billing", "page": "🚀 Dashboard"},
+    {"id": "0:2505", "name": "Profile", "page": "🚀 Dashboard"},
+    {"id": "0:2877", "name": "Sign Up", "page": "🚀 Dashboard"},
+    {"id": "0:2957", "name": "Sign In", "page": "🚀 Dashboard"}
+  ],
+  "tokens": {},
+  "components": {}
+}

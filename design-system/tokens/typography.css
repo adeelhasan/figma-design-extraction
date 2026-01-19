@@ -1,0 +1,177 @@
+/* =================================================================
+   Typography Tokens
+   Extracted from: Soft UI Dashboard Free (Community)
+   Generated: 2026-01-18
+   ================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------
+     Font Families
+     --------------------------------------------------------------- */
+  --font-family-sans: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-display: 'Montserrat', var(--font-family-sans);
+  --font-family-mono: 'Fira Code', 'SF Mono', Consolas, monospace;
+  --font-family-icons: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+
+  /* ---------------------------------------------------------------
+     Font Sizes
+     --------------------------------------------------------------- */
+  --font-size-xs: 10px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 30px;
+  --font-size-4xl: 36px;
+  --font-size-5xl: 48px;
+  --font-size-6xl: 50px;
+
+  /* ---------------------------------------------------------------
+     Font Weights
+     --------------------------------------------------------------- */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* ---------------------------------------------------------------
+     Line Heights
+     --------------------------------------------------------------- */
+  --font-line-height-none: 1;
+  --font-line-height-tight: 1.17;
+  --font-line-height-snug: 1.25;
+  --font-line-height-normal: 1.36;
+  --font-line-height-relaxed: 1.5;
+  --font-line-height-loose: 1.62;
+
+  /* ---------------------------------------------------------------
+     Letter Spacing
+     --------------------------------------------------------------- */
+  --font-letter-spacing-tighter: -1.33px;
+  --font-letter-spacing-tight: -1px;
+  --font-letter-spacing-normal: -0.55px;
+  --font-letter-spacing-wide: -0.44px;
+  --font-letter-spacing-wider: 0;
+  --font-letter-spacing-widest: 0.5px;
+
+  /* =================================================================
+     Composite Text Styles
+     ================================================================= */
+
+  /* ---------------------------------------------------------------
+     Headings
+     --------------------------------------------------------------- */
+  /* H1 - 48px */
+  --text-h1-size: var(--font-size-5xl);
+  --text-h1-weight: var(--font-weight-bold);
+  --text-h1-line-height: var(--font-line-height-tight);
+  --text-h1-letter-spacing: var(--font-letter-spacing-tighter);
+
+  /* H2 - 36px */
+  --text-h2-size: var(--font-size-4xl);
+  --text-h2-weight: var(--font-weight-bold);
+  --text-h2-line-height: var(--font-line-height-tight);
+  --text-h2-letter-spacing: var(--font-letter-spacing-tight);
+
+  /* H3 - 30px */
+  --text-h3-size: var(--font-size-3xl);
+  --text-h3-weight: var(--font-weight-semibold);
+  --text-h3-line-height: var(--font-line-height-tight);
+  --text-h3-letter-spacing: -0.83px;
+
+  /* H4 - 24px */
+  --text-h4-size: var(--font-size-2xl);
+  --text-h4-weight: var(--font-weight-bold);
+  --text-h4-line-height: var(--font-line-height-tight);
+  --text-h4-letter-spacing: -0.66px;
+
+  /* H5 - 20px */
+  --text-h5-size: var(--font-size-xl);
+  --text-h5-weight: var(--font-weight-semibold);
+  --text-h5-line-height: var(--font-line-height-tight);
+  --text-h5-letter-spacing: var(--font-letter-spacing-normal);
+
+  /* H6 - 16px */
+  --text-h6-size: var(--font-size-md);
+  --text-h6-weight: var(--font-weight-semibold);
+  --text-h6-line-height: var(--font-line-height-tight);
+  --text-h6-letter-spacing: var(--font-letter-spacing-wide);
+
+  /* ---------------------------------------------------------------
+     Body Text
+     --------------------------------------------------------------- */
+  /* Body Large - 18px */
+  --text-body-lg-size: var(--font-size-lg);
+  --text-body-lg-weight: var(--font-weight-regular);
+  --text-body-lg-line-height: var(--font-line-height-relaxed);
+
+  /* Body Regular - 14px */
+  --text-body-size: var(--font-size-base);
+  --text-body-weight: var(--font-weight-regular);
+  --text-body-line-height: var(--font-line-height-relaxed);
+
+  /* Body Small - 12px */
+  --text-body-sm-size: var(--font-size-sm);
+  --text-body-sm-weight: var(--font-weight-regular);
+  --text-body-sm-line-height: var(--font-line-height-normal);
+
+  /* ---------------------------------------------------------------
+     UI Text
+     --------------------------------------------------------------- */
+  /* Button Text */
+  --text-button-size: var(--font-size-sm);
+  --text-button-weight: var(--font-weight-bold);
+  --text-button-letter-spacing: var(--font-letter-spacing-widest);
+
+  /* Label */
+  --text-label-size: var(--font-size-xs);
+  --text-label-weight: var(--font-weight-bold);
+  --text-label-letter-spacing: var(--font-letter-spacing-widest);
+
+  /* Caption */
+  --text-caption-size: var(--font-size-xs);
+  --text-caption-weight: var(--font-weight-regular);
+  --text-caption-line-height: var(--font-line-height-normal);
+
+  /* Overline (uppercase labels) */
+  --text-overline-size: var(--font-size-xs);
+  --text-overline-weight: var(--font-weight-bold);
+  --text-overline-letter-spacing: var(--font-letter-spacing-widest);
+
+  /* ---------------------------------------------------------------
+     Stat/Metric Text
+     --------------------------------------------------------------- */
+  /* Large stat values */
+  --text-stat-size: var(--font-size-xl);
+  --text-stat-weight: var(--font-weight-bold);
+  --text-stat-line-height: var(--font-line-height-tight);
+
+  /* Stat labels */
+  --text-stat-label-size: var(--font-size-base);
+  --text-stat-label-weight: var(--font-weight-regular);
+}
+
+/*
+Typography Scale Reference
+==========================
+
+Display:      50px / 1.22 / 400-700 (Montserrat)
+
+Heading 1:    48px / 1.17 / 700
+Heading 2:    36px / 1.17 / 700
+Heading 3:    30px / 1.17 / 600
+Heading 4:    24px / 1.17 / 700
+Heading 5:    20px / 1.17 / 600
+Heading 6:    16px / 1.17 / 600
+
+Body Large:   18px / 1.5  / 400
+Body Regular: 14px / 1.5  / 400
+Body Small:   12px / 1.36 / 400
+
+Caption:      10px / 1.36 / 400
+Label:        10px / 1.36 / 700
+
+Button:       12px / 1.17 / 700 (uppercase)
+*/

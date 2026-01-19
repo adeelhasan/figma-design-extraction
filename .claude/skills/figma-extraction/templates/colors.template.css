@@ -1,0 +1,149 @@
+/* =================================================================
+   Color Tokens
+   Extracted from: {{fileName}}
+   Generated: {{date}}
+   
+   Usage:
+   background-color: var(--color-primary);
+   color: var(--color-text-primary);
+   ================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------
+     Primitive Colors
+     
+     Raw color values organized by hue. Use semantic tokens in 
+     components whenever possible.
+     --------------------------------------------------------------- */
+  
+  {{#each primitiveScales}}
+  /* {{name}} */
+  {{#each shades}}
+  --color-{{../name}}-{{shade}}: {{hex}};
+  {{/each}}
+  
+  {{/each}}
+  
+  /* ---------------------------------------------------------------
+     Semantic Colors
+     
+     Purpose-driven colors for consistent UI. These reference
+     primitives and should be used in components.
+     --------------------------------------------------------------- */
+  
+  /* Brand */
+  --color-primary: var(--color-{{primary.ref}});
+  --color-primary-hover: var(--color-{{primary.hoverRef}});
+  --color-primary-active: var(--color-{{primary.activeRef}});
+  --color-secondary: var(--color-{{secondary.ref}});
+  --color-secondary-hover: var(--color-{{secondary.hoverRef}});
+  
+  /* Feedback */
+  --color-error: {{error.hex}};
+  --color-error-light: {{error.lightHex}};
+  --color-warning: {{warning.hex}};
+  --color-warning-light: {{warning.lightHex}};
+  --color-success: {{success.hex}};
+  --color-success-light: {{success.lightHex}};
+  --color-info: {{info.hex}};
+  --color-info-light: {{info.lightHex}};
+  
+  /* ---------------------------------------------------------------
+     Surface Colors
+     
+     Background colors for different elevation levels.
+     --------------------------------------------------------------- */
+  
+  --color-surface: {{surface.hex}};
+  --color-surface-secondary: {{surface.secondaryHex}};
+  --color-surface-elevated: {{surface.elevatedHex}};
+  --color-surface-overlay: {{surface.overlayHex}};
+  --color-surface-inverse: {{surface.inverseHex}};
+  
+  /* ---------------------------------------------------------------
+     Text Colors
+     
+     Text colors for different contexts and emphasis levels.
+     --------------------------------------------------------------- */
+  
+  --color-text-primary: {{text.primaryHex}};
+  --color-text-secondary: {{text.secondaryHex}};
+  --color-text-muted: {{text.mutedHex}};
+  --color-text-disabled: {{text.disabledHex}};
+  --color-text-inverse: {{text.inverseHex}};
+  --color-text-link: var(--color-primary);
+  --color-text-link-hover: var(--color-primary-hover);
+  
+  /* ---------------------------------------------------------------
+     Border Colors
+     --------------------------------------------------------------- */
+
+  --color-border: {{border.hex}};
+  --color-border-muted: {{border.mutedHex}};
+  --color-border-focus: var(--color-primary);
+  --color-border-error: var(--color-error);
+
+  /* ---------------------------------------------------------------
+     Gradients
+
+     Pre-defined gradient values for buttons, cards, and decorative
+     elements. Use with background: var(--gradient-primary);
+     --------------------------------------------------------------- */
+
+  {{#each gradients}}
+  --gradient-{{name}}: {{value}};
+  {{/each}}
+}
+
+/* ---------------------------------------------------------------
+   Dark Mode (if detected)
+   --------------------------------------------------------------- */
+
+{{#if hasDarkMode}}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-surface: {{dark.surface.hex}};
+    --color-surface-secondary: {{dark.surface.secondaryHex}};
+    --color-surface-elevated: {{dark.surface.elevatedHex}};
+    --color-text-primary: {{dark.text.primaryHex}};
+    --color-text-secondary: {{dark.text.secondaryHex}};
+    --color-text-muted: {{dark.text.mutedHex}};
+    --color-border: {{dark.border.hex}};
+    --color-border-muted: {{dark.border.mutedHex}};
+  }
+}
+
+/* Manual dark mode class */
+.dark {
+  --color-surface: {{dark.surface.hex}};
+  --color-surface-secondary: {{dark.surface.secondaryHex}};
+  --color-surface-elevated: {{dark.surface.elevatedHex}};
+  --color-text-primary: {{dark.text.primaryHex}};
+  --color-text-secondary: {{dark.text.secondaryHex}};
+  --color-text-muted: {{dark.text.mutedHex}};
+  --color-border: {{dark.border.hex}};
+  --color-border-muted: {{dark.border.mutedHex}};
+}
+{{/if}}
+
+/*
+Token Reference
+===============
+
+Primitives:
+{{#each primitiveScales}}
+  {{name}}: {{shadeList}}
+{{/each}}
+
+Semantic:
+  primary, secondary, error, warning, success, info
+
+Surface:
+  surface, surface-secondary, surface-elevated, surface-overlay, surface-inverse
+
+Text:
+  text-primary, text-secondary, text-muted, text-disabled, text-inverse, text-link
+
+Border:
+  border, border-muted, border-focus, border-error
+*/

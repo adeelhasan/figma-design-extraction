@@ -1,0 +1,110 @@
+{
+  "screenName": "Profile",
+  "screenshotPath": "screenshots/Profile.png",
+  "analyzedAt": "2026-01-18T00:00:00Z",
+  "dimensions": {
+    "width": 1440,
+    "height": 1409
+  },
+  "sections": [
+    {
+      "id": "sidebar",
+      "type": "navigation",
+      "location": "left",
+      "bounds": { "approximate": "left-edge, full-height", "width": "~250px" },
+      "children": { "count": 7, "type": "nav-item" },
+      "hasHeader": true,
+      "hasActions": false
+    },
+    {
+      "id": "profile-header",
+      "type": "card",
+      "subtype": "profile-banner",
+      "location": "top-main",
+      "content": {
+        "hasBackgroundImage": true,
+        "backgroundType": "gradient-wave",
+        "avatar": { "name": "Alec Thompson", "role": "CEO / Co-Founder" },
+        "tabs": ["Overview", "Teams", "Projects"],
+        "stats": []
+      }
+    },
+    {
+      "id": "platform-settings",
+      "type": "card",
+      "subtype": "settings-card",
+      "location": "second-row-first",
+      "hasHeader": true,
+      "headerTitle": "Platform Settings",
+      "children": { "count": 6, "type": "toggle-setting" },
+      "groups": [
+        { "label": "ACCOUNT", "items": ["Email follow", "Email answers", "Email mentions"] },
+        { "label": "APPLICATION", "items": ["New launches", "Monthly updates", "Newsletter"] }
+      ]
+    },
+    {
+      "id": "profile-information",
+      "type": "card",
+      "subtype": "info-card",
+      "location": "second-row-second",
+      "hasHeader": true,
+      "headerTitle": "Profile Information",
+      "hasEdit": true,
+      "content": {
+        "bio": "Hi, I'm Alec Thompson, Decisions: If you can't decide...",
+        "fields": [
+          { "label": "Full Name", "value": "Sarah Emily Jacob" },
+          { "label": "Mobile", "value": "(44) 123 1234 123" },
+          { "label": "Email", "value": "sarahemily@mail.com" },
+          { "label": "Location", "value": "USA" }
+        ],
+        "socialLinks": ["facebook", "twitter", "instagram"]
+      }
+    },
+    {
+      "id": "conversations",
+      "type": "list",
+      "location": "second-row-third",
+      "hasHeader": true,
+      "headerTitle": "Conversations",
+      "children": { "count": 5, "type": "conversation-item" },
+      "items": [
+        { "avatar": true, "name": "Sophie B", "message": "Hi! I need more information..." },
+        { "avatar": true, "name": "Anne Marie", "message": "Awesome work, can you..." },
+        { "avatar": true, "name": "Ivanna", "message": "About files I can..." },
+        { "avatar": true, "name": "Peterson", "message": "Have a great afternoon..." },
+        { "avatar": true, "name": "Nick Daniel", "message": "Hi! I need more information..." }
+      ]
+    },
+    {
+      "id": "projects",
+      "type": "card-grid",
+      "location": "third-row",
+      "hasHeader": true,
+      "headerTitle": "Projects",
+      "headerSubtitle": "Architects Design Houses",
+      "headerAction": "Upload New Project",
+      "children": { "count": 4, "type": "project-card" },
+      "items": [
+        { "image": true, "title": "Modern", "description": "As Uber works through...", "hasAction": true, "actionText": "VIEW PROJECT" },
+        { "image": true, "title": "Scandinavian", "description": "Music is something that...", "hasAction": true, "actionText": "VIEW PROJECT" },
+        { "image": true, "title": "Minimalist", "description": "Different people have different...", "hasAction": true, "actionText": "VIEW PROJECT" },
+        { "image": false, "isPlaceholder": true, "label": "Upload New Project" }
+      ]
+    },
+    {
+      "id": "footer",
+      "type": "footer",
+      "location": "bottom",
+      "content": { "copyright": true, "links": ["Creative Tim", "About Us", "Blog"] }
+    }
+  ],
+  "patterns": {
+    "toggle-setting": { "count": 6, "location": "platform-settings" },
+    "conversation-item": { "count": 5, "location": "conversations" },
+    "project-card": { "count": 4, "location": "projects" },
+    "nav-item": { "count": 7, "location": "sidebar" }
+  },
+  "totalSections": 7,
+  "totalContentItems": 28
+}

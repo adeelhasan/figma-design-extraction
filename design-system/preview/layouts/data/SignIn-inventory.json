@@ -1,0 +1,72 @@
+{
+  "screenName": "SignIn",
+  "screenshotPath": "screenshots/SignIn.png",
+  "analyzedAt": "2026-01-18T00:00:00Z",
+  "dimensions": {
+    "width": 1440,
+    "height": 1137
+  },
+  "sections": [
+    {
+      "id": "top-nav",
+      "type": "navigation",
+      "subtype": "top-bar",
+      "location": "top",
+      "content": {
+        "logo": "Soft UI Dashboard",
+        "links": ["Dashboard", "Profile", "Sign Up", "Sign In"],
+        "action": { "text": "FREE DOWNLOAD", "type": "button" }
+      }
+    },
+    {
+      "id": "hero-image",
+      "type": "decoration",
+      "location": "right-half",
+      "content": {
+        "hasImage": true,
+        "imageType": "gradient-wave-3d"
+      }
+    },
+    {
+      "id": "sign-in-form",
+      "type": "form",
+      "location": "left-center",
+      "hasHeader": true,
+      "headerTitle": "Sign In",
+      "headerSubtitle": "Enter your email and password to sign in",
+      "children": { "count": 4, "type": "form-field" },
+      "fields": [
+        { "type": "email", "label": "Email", "placeholder": "Email" },
+        { "type": "password", "label": "Password", "placeholder": "Password" }
+      ],
+      "extras": [
+        { "type": "toggle", "label": "Remember me" }
+      ],
+      "actions": [
+        { "type": "submit", "label": "SIGN IN", "style": "primary" }
+      ],
+      "footer": {
+        "text": "Don't have an account?",
+        "link": { "text": "Sign Up", "href": "/signup" }
+      }
+    },
+    {
+      "id": "footer",
+      "type": "footer",
+      "location": "bottom",
+      "content": {
+        "links": ["Company", "About Us", "Team", "Products", "Blog", "Pricing"],
+        "socialIcons": ["dribbble", "twitter", "instagram", "pinterest", "github"],
+        "copyright": "Copyright © 2021 Soft by Creative Tim."
+      }
+    }
+  ],
+  "patterns": {
+    "form-field": { "count": 2, "location": "sign-in-form" },
+    "nav-link": { "count": 4, "location": "top-nav" },
+    "footer-link": { "count": 6, "location": "footer" },
+    "social-icon": { "count": 5, "location": "footer" }
+  },
+  "totalSections": 4,
+  "totalContentItems": 15
+}

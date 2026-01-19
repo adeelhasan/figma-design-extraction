@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - Soft UI Dashboard</title>
+  <link rel="stylesheet" href="../../tokens/colors.css">
+  <link rel="stylesheet" href="../../tokens/typography.css">
+  <link rel="stylesheet" href="../../tokens/spacing.css">
+  <link rel="stylesheet" href="../../tokens/effects.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-family-sans);
+      background: var(--color-background);
+      color: var(--color-text-primary);
+      line-height: 1.5;
+    }
+    .container { max-width: 1400px; margin: 0 auto; padding: var(--spacing-8); }
+    header {
+      background: var(--gradient-dark);
+      color: white;
+      padding: var(--spacing-8);
+      margin-bottom: var(--spacing-8);
+    }
+    header h1 {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      margin-bottom: var(--spacing-2);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+    }
+    header p { opacity: 0.8; font-size: var(--font-size-md); }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      margin-bottom: var(--spacing-4);
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    .breadcrumb a:hover { color: white; }
+    .meta-info {
+      display: flex;
+      gap: var(--spacing-4);
+      margin-top: var(--spacing-4);
+      flex-wrap: wrap;
+    }
+    .meta-item {
+      background: rgba(255,255,255,0.1);
+      padding: var(--spacing-2) var(--spacing-3);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-sm);
+    }
+    .content-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: var(--spacing-6);
+    }
+    .screenshot-panel {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+    .screenshot-panel img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .screenshot-panel .placeholder {
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-gray-100);
+      color: var(--color-text-muted);
+      gap: var(--spacing-2);
+    }
+    .spec-panel {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-4);
+    }
+    .section {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      padding: var(--spacing-4);
+    }
+    .section h2 {
+      font-size: var(--font-size-md);
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--spacing-3);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+    }
+    .structure-diagram {
+      background: var(--color-gray-50);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-4);
+      font-family: var(--font-family-mono);
+      font-size: var(--font-size-xs);
+      overflow-x: auto;
+      white-space: pre;
+      line-height: 1.4;
+    }
+    .component-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-2);
+    }
+    .component-tag {
+      background: var(--color-gray-100);
+      color: var(--color-text-secondary);
+      padding: var(--spacing-1) var(--spacing-2);
+      border-radius: var(--radius-sm);
+      font-size: var(--font-size-xs);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+    }
+    .component-tag .count {
+      background: var(--color-primary);
+      color: white;
+      padding: 0 var(--spacing-1);
+      border-radius: var(--radius-sm);
+      font-weight: var(--font-weight-bold);
+    }
+    .token-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--font-size-sm);
+    }
+    .token-table th, .token-table td {
+      text-align: left;
+      padding: var(--spacing-2);
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .token-table th {
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-muted);
+      font-size: var(--font-size-xs);
+      text-transform: uppercase;
+    }
+    .token-name {
+      font-family: var(--font-family-mono);
+      font-size: var(--font-size-xs);
+      color: var(--color-primary);
+    }
+    .profile-banner {
+      background: var(--gradient-primary);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-6);
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-4);
+    }
+    .profile-banner .avatar {
+      width: 74px;
+      height: 74px;
+      border-radius: var(--radius-full);
+      background: var(--color-gray-300);
+      border: 3px solid white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .profile-banner .info h3 {
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-bold);
+    }
+    .profile-banner .info p {
+      opacity: 0.8;
+      font-size: var(--font-size-sm);
+    }
+    .toggle-list { list-style: none; }
+    .toggle-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--spacing-2) 0;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .toggle-list li:last-child { border-bottom: none; }
+    .toggle {
+      width: 40px;
+      height: 22px;
+      border-radius: var(--radius-full);
+      background: var(--color-gray-300);
+      position: relative;
+      cursor: pointer;
+    }
+    .toggle.active { background: var(--gradient-primary); }
+    .toggle::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: var(--radius-full);
+      background: white;
+      top: 2px;
+      left: 2px;
+      transition: transform 0.2s;
+    }
+    .toggle.active::after { transform: translateX(18px); }
+    .conversation-list { list-style: none; }
+    .conversation-list li {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      padding: var(--spacing-2) 0;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .conversation-list li:last-child { border-bottom: none; }
+    .conversation-list .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      background: var(--color-gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .conversation-list .preview {
+      flex: 1;
+      font-size: var(--font-size-sm);
+      color: var(--color-text-muted);
+    }
+    .conversation-list .name { font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
+    @media (max-width: 1024px) {
+      .content-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="../index.html"><i data-lucide="home" style="width:16px;height:16px"></i></a>
+        <span>/</span>
+        <a href="index.html">Layouts</a>
+        <span>/</span>
+        <span>Profile</span>
+      </nav>
+      <h1><i data-lucide="user"></i> Profile</h1>
+      <p>User profile with settings, info, and projects</p>
+      <div class="meta-info">
+        <span class="meta-item">1440 x 1409</span>
+        <span class="meta-item">sidebar-content</span>
+        <span class="meta-item">Node: 0:2505</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="content-grid">
+      <div class="screenshot-panel">
+        <img src="screenshots/Profile.png" alt="Profile screenshot" onerror="this.parentElement.innerHTML='<div class=placeholder><i data-lucide=user style=width:64px;height:64px></i><span>Screenshot not available</span></div>';lucide.createIcons()">
+      </div>
+
+      <div class="spec-panel">
+        <section class="section">
+          <h2><i data-lucide="grid-3x3"></i> Layout Structure</h2>
+          <div class="structure-diagram">┌─────────────────────────────────────────────────────────────────┐
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │           Profile Banner (gradient wave image)           │   │
+│  │  ┌──────┐                                                │   │
+│  │  │Avatar│ Alec Thompson                                  │   │
+│  │  └──────┘ CEO / Co-Founder                              │   │
+│  │                              [Overview] [Teams] [Projects]│   │
+│  └─────────────────────────────────────────────────────────┘   │
+├──────────┬──────────────────────────────────────────────────────┤
+│          │                                                      │
+│ Sidebar  │  ┌───────────┐┌──────────────┐┌──────────────────┐  │
+│          │  │ Platform  ││ Profile      ││ Conversations    │  │
+│ • Dashboard │ │ Settings  ││ Information  ││ (5 items)        │  │
+│ • Tables  │  │ (toggles) ││ (bio + info) ││                  │  │
+│ • Billing │  └───────────┘└──────────────┘└──────────────────┘  │
+│ • VR      │                                                     │
+│ • RTL     │  ┌────────────────────────────────────────────────┐│
+│          │  │ Projects                   [Upload New Project]││
+│ ACCOUNT  │  │ ┌────────┐ ┌────────┐ ┌────────┐ ┌──────────┐ ││
+│ • Profile◄│  │ │ Modern │ │Scandina│ │Minimali│ │ + Upload │ ││
+│ • Sign In│  │ │        │ │  vian  │ │   st   │ │          │ ││
+│ • Sign Up│  │ └────────┘ └────────┘ └────────┘ └──────────┘ ││
+│          │  └────────────────────────────────────────────────┘│
+├──────────┴──────────────────────────────────────────────────────┤
+│  Footer                                                         │
+└─────────────────────────────────────────────────────────────────┘</div>
+        </section>
+
+        <section class="section">
+          <h2><i data-lucide="image"></i> Profile Banner</h2>
+          <div class="profile-banner">
+            <div class="avatar">
+              <i data-lucide="user" style="width:32px;height:32px;color:var(--color-text-muted)"></i>
+            </div>
+            <div class="info">
+              <h3>Alec Thompson</h3>
+              <p>CEO / Co-Founder</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2><i data-lucide="settings"></i> Platform Settings</h2>
+          <ul class="toggle-list">
+            <li>
+              <span>Email me when someone follows me</span>
+              <div class="toggle active"></div>
+            </li>
+            <li>
+              <span>Email me when someone answers me</span>
+              <div class="toggle"></div>
+            </li>
+            <li>
+              <span>Email me when someone mentions me</span>
+              <div class="toggle active"></div>
+            </li>
+            <li>
+              <span>New launches and projects</span>
+              <div class="toggle"></div>
+            </li>
+            <li>
+              <span>Monthly product updates</span>
+              <div class="toggle active"></div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2><i data-lucide="message-circle"></i> Conversations</h2>
+          <ul class="conversation-list">
+            <li>
+              <div class="avatar"><i data-lucide="user" style="width:16px;height:16px;color:var(--color-text-muted)"></i></div>
+              <div class="preview"><span class="name">Sophie B</span> - "Hi! I need more information..."</div>
+            </li>
+            <li>
+              <div class="avatar"><i data-lucide="user" style="width:16px;height:16px;color:var(--color-text-muted)"></i></div>
+              <div class="preview"><span class="name">Anne Marie</span> - "Awesome work, can you..."</div>
+            </li>
+            <li>
+              <div class="avatar"><i data-lucide="user" style="width:16px;height:16px;color:var(--color-text-muted)"></i></div>
+              <div class="preview"><span class="name">Ivanna</span> - "About files I can..."</div>
+            </li>
+            <li>
+              <div class="avatar"><i data-lucide="user" style="width:16px;height:16px;color:var(--color-text-muted)"></i></div>
+              <div class="preview"><span class="name">Peterson</span> - "Have a great afternoon..."</div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2><i data-lucide="component"></i> Components Used</h2>
+          <div class="component-list">
+            <span class="component-tag">Profile Banner <span class="count">1</span></span>
+            <span class="component-tag">Avatar <span class="count">6</span></span>
+            <span class="component-tag">Toggle Switch <span class="count">6</span></span>
+            <span class="component-tag">Info Card <span class="count">1</span></span>
+            <span class="component-tag">Conversation Item <span class="count">5</span></span>
+            <span class="component-tag">Project Card <span class="count">4</span></span>
+            <span class="component-tag">Button (reply) <span class="count">5</span></span>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2><i data-lucide="palette"></i> Token Usage</h2>
+          <table class="token-table">
+            <thead>
+              <tr><th>Element</th><th>Token</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Banner gradient</td><td class="token-name">--gradient-hero</td></tr>
+              <tr><td>Card background</td><td class="token-name">--color-surface</td></tr>
+              <tr><td>Toggle active</td><td class="token-name">--gradient-primary</td></tr>
+              <tr><td>Toggle inactive</td><td class="token-name">--color-gray-300</td></tr>
+              <tr><td>Avatar border</td><td class="token-name">--color-surface</td></tr>
+              <tr><td>Social icon color</td><td class="token-name">--color-text-muted</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

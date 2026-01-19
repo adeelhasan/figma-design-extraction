@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Soft UI Dashboard</title>
+  <link rel="stylesheet" href="../../tokens/colors.css">
+  <link rel="stylesheet" href="../../tokens/typography.css">
+  <link rel="stylesheet" href="../../tokens/spacing.css">
+  <link rel="stylesheet" href="../../tokens/effects.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-family-sans);
+      background: var(--color-background);
+      color: var(--color-text-primary);
+      line-height: 1.5;
+    }
+    .container { max-width: 1400px; margin: 0 auto; padding: var(--spacing-8); }
+    header {
+      background: var(--gradient-dark);
+      color: white;
+      padding: var(--spacing-8);
+      margin-bottom: var(--spacing-8);
+    }
+    header h1 {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      margin-bottom: var(--spacing-2);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+    }
+    header p { opacity: 0.8; font-size: var(--font-size-md); }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      margin-bottom: var(--spacing-4);
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    .breadcrumb a:hover { color: white; }
+    .meta-info {
+      display: flex;
+      gap: var(--spacing-4);
+      margin-top: var(--spacing-4);
+      flex-wrap: wrap;
+    }
+    .meta-item {
+      background: rgba(255,255,255,0.1);
+      padding: var(--spacing-2) var(--spacing-3);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-sm);
+    }
+    .content-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: var(--spacing-6);
+    }
+    .screenshot-panel {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+    .screenshot-panel img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .screenshot-panel .placeholder {
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-gray-100);
+      color: var(--color-text-muted);
+    }
+    .spec-panel {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-4);
+    }
+    .section {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      padding: var(--spacing-4);
+    }
+    .section h2 {
+      font-size: var(--font-size-md);
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--spacing-3);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+    }
+    .section h3 {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-secondary);
+      margin: var(--spacing-3) 0 var(--spacing-2);
+    }
+    .structure-diagram {
+      background: var(--color-gray-50);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-4);
+      font-family: var(--font-family-mono);
+      font-size: var(--font-size-xs);
+      overflow-x: auto;
+      white-space: pre;
+      line-height: 1.4;
+    }
+    .component-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-2);
+    }
+    .component-tag {
+      background: var(--color-gray-100);
+      color: var(--color-text-secondary);
+      padding: var(--spacing-1) var(--spacing-2);
+      border-radius: var(--radius-sm);
+      font-size: var(--font-size-xs);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+    }
+    .component-tag .count {
+      background: var(--color-primary);
+      color: white;
+      padding: 0 var(--spacing-1);
+      border-radius: var(--radius-sm);
+      font-weight: var(--font-weight-bold);
+    }
+    .token-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--font-size-sm);
+    }
+    .token-table th, .token-table td {
+      text-align: left;
+      padding: var(--spacing-2);
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .token-table th {
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-muted);
+      font-size: var(--font-size-xs);
+      text-transform: uppercase;
+    }
+    .token-name {
+      font-family: var(--font-family-mono);
+      font-size: var(--font-size-xs);
+      color: var(--color-primary);
+    }
+    .section-list { list-style: none; }
+    .section-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--spacing-2) 0;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .section-list li:last-child { border-bottom: none; }
+    .section-type {
+      font-size: var(--font-size-xs);
+      color: var(--color-text-muted);
+      background: var(--color-gray-100);
+      padding: var(--spacing-0-5) var(--spacing-2);
+      border-radius: var(--radius-sm);
+    }
+    .stat-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-3); }
+    .stat-card-demo {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-3);
+    }
+    .stat-card-demo .icon {
+      width: 40px;
+      height: 40px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      margin-bottom: var(--spacing-2);
+    }
+    .stat-card-demo .value {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-bold);
+    }
+    .stat-card-demo .label {
+      font-size: var(--font-size-xs);
+      color: var(--color-text-muted);
+    }
+    .stat-card-demo .change {
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+    }
+    .stat-card-demo .change.positive { color: var(--color-success); }
+    .stat-card-demo .change.negative { color: var(--color-error); }
+    @media (max-width: 1024px) {
+      .content-grid { grid-template-columns: 1fr; }
+      .stat-cards { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .stat-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="../index.html"><i data-lucide="home" style="width:16px;height:16px"></i></a>
+        <span>/</span>
+        <a href="index.html">Layouts</a>
+        <span>/</span>
+        <span>Dashboard</span>
+      </nav>
+      <h1><i data-lucide="layout-dashboard"></i> Dashboard</h1>
+      <p>Main dashboard screen with stats, charts, and data tables</p>
+      <div class="meta-info">
+        <span class="meta-item">1440 x 1584</span>
+        <span class="meta-item">sidebar-content</span>
+        <span class="meta-item">Node: 0:263</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="content-grid">
+      <div class="screenshot-panel">
+        <img src="screenshots/Dashboard.png" alt="Dashboard screenshot" onerror="this.parentElement.innerHTML='<div class=placeholder><i data-lucide=layout-dashboard style=width:64px;height:64px></i><br>Screenshot not available</div>';lucide.createIcons()">
+      </div>
+
+      <div class="spec-panel">
+        <section class="section">
+          <h2><i data-lucide="grid-3x3"></i> Layout Structure</h2>
+          <div class="structure-diagram">┌─────────────────────────────────────────────────────────────────┐
+│  Navbar (search, user profile, settings)                        │
+├──────────┬──────────────────────────────────────────────────────┤
+│          │  ┌──────────┐┌──────────┐┌──────────┐┌──────────┐   │
+│          │  │ Stat 1   ││ Stat 2   ││ Stat 3   ││ Stat 4   │   │
+│ Sidebar  │  │ $53,000  ││ 2,300    ││ +3,462   ││ $103,430 │   │
+│          │  └──────────┘└──────────┘└──────────┘└──────────┘   │
+│ • Dashboard │  ┌─────────────────────┐┌────────────────────┐   │
+│ • Tables   │  │ Built by developers  ││ Work with rockets  │   │
+│ • Billing  │  │ (Promo Card)         ││ (Feature Card)     │   │
+│ • VR       │  └─────────────────────┘└────────────────────┘   │
+│ • RTL      │  ┌─────────────────────┐┌────────────────────┐    │
+│ ACCOUNT  │  │ Bar Chart           ││ Line Chart         │    │
+│ • Profile│  │ Active Users: 3.6K  ││ Sales Overview     │    │
+│ • Sign In│  └─────────────────────┘└────────────────────┘    │
+│ • Sign Up│  ┌─────────────────────┐┌────────────────────┐    │
+│          │  │ Projects Table      ││ Orders History     │    │
+│          │  │ (6 rows)            ││ (5 items)          │    │
+│          │  └─────────────────────┘└────────────────────┘    │
+├──────────┴──────────────────────────────────────────────────────┤
+│  Footer (© Creative Tim | About Us | Blog)                      │
+└─────────────────────────────────────────────────────────────────┘</div>
+        </section>
+
+        <section class="section">
+          <h2><i data-lucide="layers"></i> Sections</h2>
+          <ul class="section-list">
+            <li><span>sidebar</span><span class="section-type">navigation (248x1002)</span></li>
+            <li><span>navbar</span><span class="section-type">header (1085x45)</span></li>
+            <li><span>stat-cards-row</span><span class="section-type">card-row (4 cards)</span></li>
+            <li><span>welcome-card</span><span class="section-type">promo-card</span></li>
+            <li><span>rocket-card</span><span class="section-type">feature-card</span></li>
+            <li><span>chart-bar</span><span class="section-type">chart (bar)</span></li>
+            <li><span>chart-line</span><span class="section-type">chart (line)</span></li>
+            <li><span>projects-table</span><span class="section-type">table (6 rows)</span></li>
+            <li><span>orders-history</span><span class="section-type">list (5 items)</span></li>
+            <li><span>footer</span><span class="section-type">footer (1116x20)</span></li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2><i data-lucide="bar-chart-3"></i> Stat Cards</h2>
+          <div class="stat-cards">
+            <div class="stat-card-demo">
+              <div class="icon"><i data-lucide="wallet" style="width:20px;height:20px"></i></div>
+              <div class="value">$53,000</div>
+              <div class="label">Today's Money</div>
+              <div class="change positive">+55%</div>
+            </div>
+            <div class="stat-card-demo">
+              <div class="icon"><i data-lucide="globe" style="width:20px;height:20px"></i></div>
+              <div class="value">2,300</div>
+              <div class="label">Today's Users</div>
+              <div class="change positive">+3%</div>
+            </div>
+            <div class="stat-card-demo">
+              <div class="icon"><i data-lucide="file-text" style="width:20px;height:20px"></i></div>
+              <div class="value">+3,462</div>
+              <div class="label">New Clients</div>
+              <div class="change negative">-2%</div>
+            </div>
+            <div class="stat-card-demo">
+              <div class="icon"><i data-lucide="shopping-cart" style="width:20px;height:20px"></i></div>
+              <div class="value">$103,430</div>
+              <div class="label">Sales</div>
+              <div class="change positive">+5%</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2><i data-lucide="component"></i> Components Used</h2>
+          <div class="component-list">
+            <span class="component-tag">Stat Card <span class="count">4</span></span>
+            <span class="component-tag">Info Card <span class="count">2</span></span>
+            <span class="component-tag">Chart Card <span class="count">2</span></span>
+            <span class="component-tag">Table <span class="count">1</span></span>
+            <span class="component-tag">List <span class="count">1</span></span>
+            <span class="component-tag">Nav Item <span class="count">10</span></span>
+            <span class="component-tag">Button <span class="count">2</span></span>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2><i data-lucide="palette"></i> Token Usage</h2>
+          <table class="token-table">
+            <thead>
+              <tr><th>Element</th><th>Token</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Page background</td><td class="token-name">--color-background</td></tr>
+              <tr><td>Sidebar/Card bg</td><td class="token-name">--color-surface</td></tr>
+              <tr><td>Stat icon bg</td><td class="token-name">--gradient-primary</td></tr>
+              <tr><td>Card shadow</td><td class="token-name">--shadow-card</td></tr>
+              <tr><td>Card radius</td><td class="token-name">--radius-xl</td></tr>
+              <tr><td>Section gap</td><td class="token-name">--spacing-6</td></tr>
+              <tr><td>Card padding</td><td class="token-name">--spacing-4</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

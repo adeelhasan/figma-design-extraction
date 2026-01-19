@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Screen Layouts - Soft UI Dashboard</title>
+  <link rel="stylesheet" href="../../tokens/colors.css">
+  <link rel="stylesheet" href="../../tokens/typography.css">
+  <link rel="stylesheet" href="../../tokens/spacing.css">
+  <link rel="stylesheet" href="../../tokens/effects.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: var(--font-family-sans);
+      background: var(--color-background);
+      color: var(--color-text-primary);
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: var(--spacing-8);
+    }
+    header {
+      background: var(--gradient-dark);
+      color: white;
+      padding: var(--spacing-8) var(--spacing-8);
+      margin-bottom: var(--spacing-8);
+    }
+    header h1 {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      margin-bottom: var(--spacing-2);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+    }
+    header p {
+      opacity: 0.8;
+      font-size: var(--font-size-md);
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      margin-bottom: var(--spacing-4);
+    }
+    .breadcrumb a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+    }
+    .breadcrumb a:hover {
+      color: white;
+    }
+    .layout-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: var(--spacing-6);
+    }
+    .layout-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .layout-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .layout-card a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .layout-card .preview {
+      height: 220px;
+      background: var(--color-gray-100);
+      position: relative;
+      overflow: hidden;
+    }
+    .layout-card .preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+    .layout-card .preview .placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-muted);
+    }
+    .layout-card .info {
+      padding: var(--spacing-4);
+    }
+    .layout-card .info h3 {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--spacing-1);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+    }
+    .layout-card .info .meta {
+      display: flex;
+      gap: var(--spacing-3);
+      color: var(--color-text-muted);
+      font-size: var(--font-size-sm);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-1);
+      background: var(--color-gray-100);
+      color: var(--color-text-secondary);
+      padding: var(--spacing-1) var(--spacing-2);
+      border-radius: var(--radius-sm);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+    }
+    .badge.sidebar-content {
+      background: rgba(203, 12, 159, 0.1);
+      color: var(--color-primary);
+    }
+    .badge.split-screen {
+      background: rgba(23, 193, 232, 0.1);
+      color: var(--color-info);
+    }
+    .pattern-legend {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      padding: var(--spacing-4);
+      margin-bottom: var(--spacing-6);
+    }
+    .pattern-legend h2 {
+      font-size: var(--font-size-md);
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--spacing-3);
+    }
+    .pattern-legend .patterns {
+      display: flex;
+      gap: var(--spacing-4);
+      flex-wrap: wrap;
+    }
+    .pattern-item {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+    }
+    .pattern-item .diagram {
+      width: 60px;
+      height: 40px;
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--radius-sm);
+      display: flex;
+      overflow: hidden;
+    }
+    .pattern-item.sidebar-content .diagram .sidebar {
+      width: 20%;
+      background: var(--color-gray-200);
+    }
+    .pattern-item.sidebar-content .diagram .content {
+      flex: 1;
+      background: var(--color-gray-100);
+    }
+    .pattern-item.split-screen .diagram .left {
+      width: 50%;
+      background: var(--color-gray-100);
+    }
+    .pattern-item.split-screen .diagram .right {
+      width: 50%;
+      background: var(--gradient-dark);
+    }
+    .pattern-item .label {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="../index.html"><i data-lucide="home" style="width:16px;height:16px"></i></a>
+        <span>/</span>
+        <span>Layouts</span>
+      </nav>
+      <h1><i data-lucide="layout"></i> Screen Layouts</h1>
+      <p>6 screens extracted from Soft UI Dashboard</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="pattern-legend">
+      <h2>Layout Patterns</h2>
+      <div class="patterns">
+        <div class="pattern-item sidebar-content">
+          <div class="diagram">
+            <div class="sidebar"></div>
+            <div class="content"></div>
+          </div>
+          <div class="label">Sidebar + Content (4 screens)</div>
+        </div>
+        <div class="pattern-item split-screen">
+          <div class="diagram">
+            <div class="left"></div>
+            <div class="right"></div>
+          </div>
+          <div class="label">Split Screen / Auth (2 screens)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layout-grid">
+      <!-- Dashboard -->
+      <div class="layout-card">
+        <a href="Dashboard.html">
+          <div class="preview">
+            <img src="screenshots/Dashboard.png" alt="Dashboard preview" onerror="this.parentElement.innerHTML='<div class=placeholder><i data-lucide=layout-dashboard style=width:48px;height:48px></i></div>';lucide.createIcons()">
+          </div>
+          <div class="info">
+            <h3><i data-lucide="layout-dashboard"></i> Dashboard</h3>
+            <div class="meta">
+              <span>1440 x 1584</span>
+              <span class="badge sidebar-content">sidebar-content</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Tables -->
+      <div class="layout-card">
+        <a href="Tables.html">
+          <div class="preview">
+            <img src="screenshots/Tables.png" alt="Tables preview" onerror="this.parentElement.innerHTML='<div class=placeholder><i data-lucide=table style=width:48px;height:48px></i></div>';lucide.createIcons()">
+          </div>
+          <div class="info">
+            <h3><i data-lucide="table"></i> Tables</h3>
+            <div class="meta">
+              <span>1440 x 1262</span>
+              <span class="badge sidebar-content">sidebar-content</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Billing -->
+      <div class="layout-card">
+        <a href="Billing.html">
+          <div class="preview">
+            <img src="screenshots/Billing.png" alt="Billing preview" onerror="this.parentElement.innerHTML='<div class=placeholder><i data-lucide=credit-card style=width:48px;height:48px></i></div>';lucide.createIcons()">
+          </div>
+          <div class="info">
+            <h3><i data-lucide="credit-card"></i> Billing</h3>
+            <div class="meta">
+              <span>1440 x 1204</span>
+              <span class="badge sidebar-content">sidebar-content</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Profile -->
+      <div class="layout-card">
+        <a href="Profile.html">
+          <div class="preview">
+            <img src="screenshots/Profile.png" alt="Profile preview" onerror="this.parentElement.innerHTML='<div class=placeholder><i data-lucide=user style=width:48px;height:48px></i></div>';lucide.createIcons()">
+          </div>
+          <div class="info">
+            <h3><i data-lucide="user"></i> Profile</h3>
+            <div class="meta">
+              <span>1440 x 1409</span>
+              <span class="badge sidebar-content">sidebar-content</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Sign In -->
+      <div class="layout-card">
+        <a href="SignIn.html">
+          <div class="preview">
+            <img src="screenshots/SignIn.png" alt="Sign In preview" onerror="this.parentElement.innerHTML='<div class=placeholder><i data-lucide=log-in style=width:48px;height:48px></i></div>';lucide.createIcons()">
+          </div>
+          <div class="info">
+            <h3><i data-lucide="log-in"></i> Sign In</h3>
+            <div class="meta">
+              <span>1440 x 1137</span>
+              <span class="badge split-screen">split-screen</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Sign Up -->
+      <div class="layout-card">
+        <a href="SignUp.html">
+          <div class="preview">
+            <img src="screenshots/SignUp.png" alt="Sign Up preview" onerror="this.parentElement.innerHTML='<div class=placeholder><i data-lucide=user-plus style=width:48px;height:48px></i></div>';lucide.createIcons()">
+          </div>
+          <div class="info">
+            <h3><i data-lucide="user-plus"></i> Sign Up</h3>
+            <div class="meta">
+              <span>1440 x 1252</span>
+              <span class="badge split-screen">split-screen</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

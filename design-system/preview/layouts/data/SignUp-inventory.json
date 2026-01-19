@@ -1,0 +1,87 @@
+{
+  "screenName": "SignUp",
+  "screenshotPath": "screenshots/SignUp.png",
+  "analyzedAt": "2026-01-18T00:00:00Z",
+  "dimensions": {
+    "width": 1440,
+    "height": 1252
+  },
+  "sections": [
+    {
+      "id": "top-nav",
+      "type": "navigation",
+      "subtype": "top-bar",
+      "location": "top",
+      "content": {
+        "logo": "Soft UI Dashboard",
+        "links": ["Dashboard", "Profile", "Sign Up", "Sign In"],
+        "action": { "text": "FREE DOWNLOAD", "type": "button" }
+      }
+    },
+    {
+      "id": "hero-background",
+      "type": "decoration",
+      "location": "top-half",
+      "content": {
+        "hasImage": true,
+        "imageType": "gradient-wave-dark"
+      }
+    },
+    {
+      "id": "sign-up-header",
+      "type": "header",
+      "location": "top-center",
+      "content": {
+        "title": "Sign Up",
+        "subtitle": "Use these awesome forms to login or create new account in your project for free."
+      }
+    },
+    {
+      "id": "sign-up-form",
+      "type": "card",
+      "subtype": "form-card",
+      "location": "center",
+      "hasHeader": true,
+      "headerTitle": "Register with",
+      "socialButtons": [
+        { "icon": "facebook", "type": "icon-button" },
+        { "icon": "apple", "type": "icon-button" },
+        { "icon": "google", "type": "icon-button" }
+      ],
+      "divider": "or",
+      "children": { "count": 4, "type": "form-field" },
+      "fields": [
+        { "type": "text", "label": "Name", "placeholder": "Name" },
+        { "type": "email", "label": "Email", "placeholder": "Email" },
+        { "type": "password", "label": "Password", "placeholder": "Password" }
+      ],
+      "extras": [
+        { "type": "checkbox", "label": "I agree the Terms and Conditions" }
+      ],
+      "actions": [
+        { "type": "submit", "label": "SIGN UP", "style": "primary" }
+      ],
+      "footer": {
+        "text": "Already have an account?",
+        "link": { "text": "Sign In", "href": "/signin" }
+      }
+    },
+    {
+      "id": "footer",
+      "type": "footer",
+      "location": "bottom",
+      "content": {
+        "links": ["Company", "About Us", "Team", "Products", "Blog", "Pricing"],
+        "copyright": "Copyright © 2021 Soft by Creative Tim."
+      }
+    }
+  ],
+  "patterns": {
+    "form-field": { "count": 3, "location": "sign-up-form" },
+    "social-button": { "count": 3, "location": "sign-up-form" },
+    "nav-link": { "count": 4, "location": "top-nav" },
+    "footer-link": { "count": 6, "location": "footer" }
+  },
+  "totalSections": 5,
+  "totalContentItems": 18
+}

@@ -1,0 +1,133 @@
+{
+  "metadata": {
+    "extractedAt": "2026-01-18",
+    "source": "Figma",
+    "totalIcons": 16
+  },
+  "icons": {
+    "brand": {
+      "mastercard": {
+        "name": "mastercard",
+        "category": "brand",
+        "exportPath": "assets/icons/brand/mastercard.svg",
+        "lucideEquivalent": null,
+        "description": "Mastercard brand logo"
+      },
+      "logo-mastercard": {
+        "name": "logo-mastercard",
+        "category": "brand",
+        "exportPath": "assets/icons/brand/logo-mastercard.svg",
+        "lucideEquivalent": null,
+        "description": "Mastercard logo (large)"
+      },
+      "visa": {
+        "name": "visa",
+        "category": "brand",
+        "exportPath": "assets/icons/brand/visa-logo.svg",
+        "lucideEquivalent": null,
+        "description": "Visa brand logo"
+      },
+      "paypal": {
+        "name": "paypal",
+        "category": "brand",
+        "exportPath": "assets/icons/brand/paypal.svg",
+        "lucideEquivalent": null,
+        "description": "PayPal brand logo (text)"
+      },
+      "paypal-icon": {
+        "name": "paypal-icon",
+        "category": "brand",
+        "exportPath": "assets/icons/brand/paypal-2.svg",
+        "lucideEquivalent": null,
+        "description": "PayPal brand icon"
+      },
+      "apple": {
+        "name": "apple",
+        "category": "brand",
+        "exportPath": "assets/icons/brand/logo-apple.svg",
+        "lucideEquivalent": null,
+        "description": "Apple brand logo"
+      },
+      "google": {
+        "name": "google",
+        "category": "brand",
+        "exportPath": "assets/icons/brand/google-g-logo-svg.svg",
+        "lucideEquivalent": null,
+        "description": "Google G logo"
+      }
+    },
+    "navigation": {
+      "cart": {
+        "name": "cart",
+        "category": "navigation",
+        "exportPath": "assets/icons/navigation/cart.svg",
+        "lucideEquivalent": "shopping-cart",
+        "description": "Shopping cart icon"
+      },
+      "credit-card": {
+        "name": "credit-card",
+        "category": "navigation",
+        "exportPath": "assets/icons/navigation/credit-card.svg",
+        "lucideEquivalent": "credit-card",
+        "description": "Credit card icon"
+      }
+    },
+    "custom": {
+      "document": {
+        "name": "document",
+        "category": "custom",
+        "exportPath": "assets/icons/custom/document.svg",
+        "lucideEquivalent": "file-text",
+        "description": "Document/file icon"
+      },
+      "plus": {
+        "name": "plus",
+        "category": "custom",
+        "exportPath": "assets/icons/custom/plus.svg",
+        "lucideEquivalent": "plus",
+        "description": "Plus/add icon"
+      },
+      "settings": {
+        "name": "settings",
+        "category": "custom",
+        "exportPath": "assets/icons/custom/settings.svg",
+        "lucideEquivalent": "settings",
+        "description": "Settings/gear icon"
+      },
+      "bell": {
+        "name": "bell",
+        "category": "custom",
+        "exportPath": "assets/icons/custom/bell.svg",
+        "lucideEquivalent": "bell",
+        "description": "Notification bell icon"
+      },
+      "search": {
+        "name": "search",
+        "category": "custom",
+        "exportPath": "assets/icons/custom/search.svg",
+        "lucideEquivalent": "search",
+        "description": "Search/magnifying glass icon"
+      },
+      "user-circle": {
+        "name": "user-circle",
+        "category": "custom",
+        "exportPath": "assets/icons/custom/user-circle.svg",
+        "lucideEquivalent": "user",
+        "description": "User avatar circle icon"
+      },
+      "wifi": {
+        "name": "wifi",
+        "category": "custom",
+        "exportPath": "assets/icons/custom/wifi.svg",
+        "lucideEquivalent": "wifi",
+        "description": "Wifi signal icon"
+      }
+    }
+  },
+  "usage": {
+    "brandIcons": "Use exported SVGs directly - no Lucide equivalent available",
+    "customIcons": "Can use either exported SVG or Lucide equivalent",
+    "navigationIcons": "Can use either exported SVG or Lucide equivalent",
+    "importPath": "design-system/assets/icons/{category}/{name}.svg"
+  }
+}

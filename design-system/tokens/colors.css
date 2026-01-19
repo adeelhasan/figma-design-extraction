@@ -1,0 +1,154 @@
+/* =================================================================
+   Color Tokens
+   Extracted from: Soft UI Dashboard Free (Community)
+   Generated: 2026-01-18
+   ================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------
+     Primitives - Neutrals (Gray Scale)
+     --------------------------------------------------------------- */
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #f0f0f0;
+  --color-gray-300: #e9ecef;
+  --color-gray-400: #d9d9d9;
+  --color-gray-500: #d8d8d8;
+  --color-gray-600: #bfbfbf;
+  --color-gray-700: #8c8c8c;
+  --color-gray-800: #67748e;
+  --color-gray-900: #252f40;
+  --color-gray-950: #141414;
+
+  /* ---------------------------------------------------------------
+     Primitives - Slate (Blue-Gray)
+     --------------------------------------------------------------- */
+  --color-slate-400: #8392ab;
+  --color-slate-500: #6b7891;
+  --color-slate-600: #67748e;
+  --color-slate-700: #3a416f;
+  --color-slate-800: #3e4655;
+  --color-slate-900: #252f40;
+  --color-slate-950: #141727;
+
+  /* ---------------------------------------------------------------
+     Primitives - Brand Colors
+     --------------------------------------------------------------- */
+  /* Pink/Magenta */
+  --color-pink-500: #cb0c9f;
+  --color-pink-600: #dc395f;
+
+  /* Blue */
+  --color-blue-400: #17c1e8;
+  --color-blue-500: #1890ff;
+  --color-blue-600: #2684ff;
+  --color-blue-700: #2152ff;
+  --color-blue-800: #0052cc;
+
+  /* Green */
+  --color-green-400: #82d616;
+  --color-green-500: #52c41a;
+  --color-green-600: #17ad37;
+  --color-green-700: #2ebd59;
+
+  /* Red */
+  --color-red-500: #f53939;
+  --color-red-600: #ea0606;
+  --color-red-700: #f5222d;
+
+  /* Yellow/Orange */
+  --color-yellow-400: #fbcf33;
+  --color-yellow-500: #ecb22e;
+
+  /* Purple */
+  --color-purple-500: #7928ca;
+  --color-purple-600: #7000f2;
+
+  /* ---------------------------------------------------------------
+     Semantic Colors
+     --------------------------------------------------------------- */
+  --color-primary: #cb0c9f;
+  --color-primary-hover: #dc395f;
+  --color-secondary: #8392ab;
+  --color-info: #17c1e8;
+  --color-success: #82d616;
+  --color-warning: #f53939;
+  --color-danger: #ea0606;
+  --color-error: #ea0606;
+
+  /* ---------------------------------------------------------------
+     Surface / Background Colors
+     --------------------------------------------------------------- */
+  --color-surface: #ffffff;
+  --color-surface-secondary: #f8f9fa;
+  --color-surface-elevated: #ffffff;
+  --color-surface-overlay: rgba(0, 0, 0, 0.5);
+  --color-background: #f8f9fa;
+  --color-background-sidebar: #ffffff;
+
+  /* ---------------------------------------------------------------
+     Text Colors
+     --------------------------------------------------------------- */
+  --color-text-primary: #252f40;
+  --color-text-secondary: #67748e;
+  --color-text-muted: #8392ab;
+  --color-text-inverse: #ffffff;
+  --color-text-dark: #141414;
+  --color-text-link: #cb0c9f;
+
+  /* ---------------------------------------------------------------
+     Border Colors
+     --------------------------------------------------------------- */
+  --color-border: #d8d8d8;
+  --color-border-light: #e9ecef;
+  --color-border-muted: #f0f0f0;
+  --color-border-input: #d2d6da;
+
+  /* ---------------------------------------------------------------
+     Status Colors (for badges, tags)
+     --------------------------------------------------------------- */
+  --color-status-online: #82d616;
+  --color-status-offline: #8392ab;
+  --color-status-working: #17c1e8;
+  --color-status-done: #82d616;
+  --color-status-cancelled: #67748e;
+  --color-status-pending: #f53939;
+
+  /* ---------------------------------------------------------------
+     Brand / Social Colors
+     --------------------------------------------------------------- */
+  --color-facebook: #344e86;
+  --color-twitter: #3ea1ec;
+  --color-instagram: #e1306c;
+  --color-slack-blue: #36c5f0;
+  --color-slack-green: #2eb67d;
+  --color-slack-yellow: #ecb22e;
+  --color-slack-red: #e01e5a;
+  --color-spotify: #2ebd59;
+  --color-shopify: #95bf46;
+  --color-jira: #2684ff;
+  --color-apple: #000000;
+
+  /* ===========================================
+     GRADIENTS
+     =========================================== */
+  --gradient-primary: linear-gradient(310deg, #7928ca 0%, #ff0080 100%);
+  --gradient-secondary: linear-gradient(310deg, #627594 0%, #a8b8d8 100%);
+  --gradient-info: linear-gradient(310deg, #2152ff 0%, #21d4fd 100%);
+  --gradient-success: linear-gradient(310deg, #17ad37 0%, #98ec2d 100%);
+  --gradient-warning: linear-gradient(310deg, #f53939 0%, #fbcf33 100%);
+  --gradient-danger: linear-gradient(310deg, #ea0606 0%, #ff667c 100%);
+  --gradient-dark: linear-gradient(310deg, #141727 0%, #3a416f 100%);
+  --gradient-light: linear-gradient(310deg, #ced4da 0%, #ebeff4 100%);
+
+  /* Card-specific gradients */
+  --gradient-card-primary: linear-gradient(310deg, #7928ca 0%, #ff0080 100%);
+  --gradient-card-info: linear-gradient(310deg, #2152ff 0%, #21d4fd 100%);
+  --gradient-card-dark: linear-gradient(310deg, #141727 0%, #3a416f 100%);
+
+  /* Credit card gradient */
+  --gradient-credit-card: linear-gradient(310deg, #141727 0%, #3a416f 100%);
+
+  /* Background wave gradient (for auth pages) */
+  --gradient-hero: linear-gradient(310deg, #141727 0%, #3a416f 100%);
+}

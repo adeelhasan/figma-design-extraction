@@ -1,0 +1,93 @@
+/* =================================================================
+   Spacing Tokens
+   Extracted from: {{fileName}}
+   Generated: {{date}}
+   
+   Base unit: {{baseUnit}}px
+   Grid: {{gridType}}
+   
+   Usage:
+   padding: var(--spacing-md);
+   gap: var(--spacing-lg);
+   ================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------
+     Spacing Scale
+     
+     Consistent spacing values for margins, padding, and gaps.
+     Based on a {{baseUnit}}px grid.
+     --------------------------------------------------------------- */
+  
+  --spacing-px: 1px;
+  --spacing-0: 0;
+  --spacing-0-5: 2px;   /* 0.125rem */
+  {{#each spacingScale}}
+  --spacing-{{name}}: {{value}}px; /* {{remValue}}rem */
+  {{/each}}
+  
+  /* ---------------------------------------------------------------
+     Semantic Spacing
+     
+     Named spacing for specific use cases.
+     --------------------------------------------------------------- */
+  
+  /* Component internals */
+  --spacing-component-xs: var(--spacing-{{componentXs}});
+  --spacing-component-sm: var(--spacing-{{componentSm}});
+  --spacing-component-md: var(--spacing-{{componentMd}});
+  --spacing-component-lg: var(--spacing-{{componentLg}});
+  
+  /* Between elements */
+  --spacing-element-xs: var(--spacing-{{elementXs}});
+  --spacing-element-sm: var(--spacing-{{elementSm}});
+  --spacing-element-md: var(--spacing-{{elementMd}});
+  --spacing-element-lg: var(--spacing-{{elementLg}});
+  
+  /* Sections */
+  --spacing-section-sm: var(--spacing-{{sectionSm}});
+  --spacing-section-md: var(--spacing-{{sectionMd}});
+  --spacing-section-lg: var(--spacing-{{sectionLg}});
+  --spacing-section-xl: var(--spacing-{{sectionXl}});
+  
+  /* Page level */
+  --spacing-page-gutter: var(--spacing-{{pageGutter}});
+  --spacing-page-margin: var(--spacing-{{pageMargin}});
+  
+  /* ---------------------------------------------------------------
+     Negative Spacing (for margins)
+     --------------------------------------------------------------- */
+  
+  {{#each spacingScale}}
+  --spacing-neg-{{name}}: -{{value}}px;
+  {{/each}}
+}
+
+/*
+Spacing Scale Reference
+=======================
+
+Scale ({{baseUnit}}px base):
+{{#each spacingScale}}
+  --spacing-{{name}}: {{value}}px ({{remValue}}rem) {{#if usage}}— {{usage}}{{/if}}
+{{/each}}
+
+Common Usage Patterns
+=====================
+
+Button padding:
+  padding: var(--spacing-component-sm) var(--spacing-component-md);
+
+Card padding:
+  padding: var(--spacing-element-md);
+
+Form field gap:
+  gap: var(--spacing-element-sm);
+
+Section margin:
+  margin-bottom: var(--spacing-section-md);
+
+Page container:
+  padding: var(--spacing-page-margin);
+  max-width: 1200px;
+*/

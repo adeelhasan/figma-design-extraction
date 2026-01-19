@@ -1,0 +1,47 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules/
+
+# Environment files with secrets
+.env
+.env.local
+*.local
+
+# Credentials (keep example, ignore actual)
+credentials.json
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build outputs
+dist/
+build/
+.next/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Cache
+.cache/
+*.cache
+design-system/.cache/
+
+# Temporary files
+tmp/
+temp/
+
+# Claude plans (personal, session-specific)
+.claude/plans/
+
+# Extraction outputs (timestamped, treat as build artifacts)
+design-system-*/
+
+# Keep the current design-system folder in git for now
+# (will be replaced by timestamped folders in future)

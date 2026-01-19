@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - Soft UI Dashboard</title>
+  <link rel="stylesheet" href="../../tokens/colors.css">
+  <link rel="stylesheet" href="../../tokens/typography.css">
+  <link rel="stylesheet" href="../../tokens/spacing.css">
+  <link rel="stylesheet" href="../../tokens/effects.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-family-sans);
+      background: var(--color-background);
+      color: var(--color-text-primary);
+      line-height: 1.5;
+    }
+    .container { max-width: 1400px; margin: 0 auto; padding: var(--spacing-8); }
+    header {
+      background: var(--gradient-dark);
+      color: white;
+      padding: var(--spacing-8);
+      margin-bottom: var(--spacing-8);
+    }
+    header h1 {
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      margin-bottom: var(--spacing-2);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+    }
+    header p { opacity: 0.8; font-size: var(--font-size-md); }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      margin-bottom: var(--spacing-4);
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    .breadcrumb a:hover { color: white; }
+    .meta-info {
+      display: flex;
+      gap: var(--spacing-4);
+      margin-top: var(--spacing-4);
+      flex-wrap: wrap;
+    }
+    .meta-item {
+      background: rgba(255,255,255,0.1);
+      padding: var(--spacing-2) var(--spacing-3);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-sm);
+    }
+    .meta-item.auth { background: rgba(23, 193, 232, 0.3); }
+    .content-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: var(--spacing-6);
+    }
+    .screenshot-panel {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+    .screenshot-panel img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .screenshot-panel .placeholder {
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-gray-100);
+      color: var(--color-text-muted);
+      gap: var(--spacing-2);
+    }
+    .spec-panel {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-4);
+    }
+    .section {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      padding: var(--spacing-4);
+    }
+    .section h2 {
+      font-size: var(--font-size-md);
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--spacing-3);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+    }
+    .structure-diagram {
+      background: var(--color-gray-50);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-4);
+      font-family: var(--font-family-mono);
+      font-size: var(--font-size-xs);
+      overflow-x: auto;
+      white-space: pre;
+      line-height: 1.4;
+    }
+    .component-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-2);
+    }
+    .component-tag {
+      background: var(--color-gray-100);
+      color: var(--color-text-secondary);
+      padding: var(--spacing-1) var(--spacing-2);
+      border-radius: var(--radius-sm);
+      font-size: var(--font-size-xs);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+    }
+    .component-tag .count {
+      background: var(--color-primary);
+      color: white;
+      padding: 0 var(--spacing-1);
+      border-radius: var(--radius-sm);
+      font-weight: var(--font-weight-bold);
+    }
+    .token-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--font-size-sm);
+    }
+    .token-table th, .token-table td {
+      text-align: left;
+      padding: var(--spacing-2);
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .token-table th {
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-muted);
+      font-size: var(--font-size-xs);
+      text-transform: uppercase;
+    }
+    .token-name {
+      font-family: var(--font-family-mono);
+      font-size: var(--font-size-xs);
+      color: var(--color-primary);
+    }
+    .form-demo {
+      max-width: 320px;
+      padding: var(--spacing-4);
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--radius-xl);
+    }
+    .form-demo h3 {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      margin-bottom: var(--spacing-1);
+    }
+    .form-demo .subtitle {
+      color: var(--color-text-muted);
+      font-size: var(--font-size-sm);
+      margin-bottom: var(--spacing-4);
+    }
+    .form-demo .field {
+      margin-bottom: var(--spacing-3);
+    }
+    .form-demo .field label {
+      display: block;
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+      margin-bottom: var(--spacing-1);
+    }
+    .form-demo .field input {
+      width: 100%;
+      height: 40px;
+      padding: var(--spacing-2) var(--spacing-3);
+      border: 1px solid var(--color-border-input);
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-sm);
+    }
+    .form-demo .toggle-row {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      margin-bottom: var(--spacing-4);
+    }
+    .form-demo .toggle {
+      width: 40px;
+      height: 22px;
+      border-radius: var(--radius-full);
+      background: var(--gradient-primary);
+      position: relative;
+    }
+    .form-demo .toggle::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: var(--radius-full);
+      background: white;
+      top: 2px;
+      right: 2px;
+    }
+    .form-demo .toggle-label {
+      font-size: var(--font-size-sm);
+    }
+    .form-demo .submit-btn {
+      width: 100%;
+      height: 40px;
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius-DEFAULT);
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-sm);
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .form-demo .footer-link {
+      text-align: center;
+      margin-top: var(--spacing-4);
+      font-size: var(--font-size-sm);
+      color: var(--color-text-muted);
+    }
+    .form-demo .footer-link a {
+      color: var(--color-primary);
+      text-decoration: none;
+      font-weight: var(--font-weight-semibold);
+    }
+    @media (max-width: 1024px) {
+      .content-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="../index.html"><i data-lucide="home" style="width:16px;height:16px"></i></a>
+        <span>/</span>
+        <a href="index.html">Layouts</a>
+        <span>/</span>
+        <span>Sign In</span>
+      </nav>
+      <h1><i data-lucide="log-in"></i> Sign In</h1>
+      <p>Authentication page with split-screen layout</p>
+      <div class="meta-info">
+        <span class="meta-item">1440 x 1137</span>
+        <span class="meta-item auth">split-screen (auth)</span>
+        <span class="meta-item">Node: 0:2957</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="content-grid">
+      <div class="screenshot-panel">
+        <img src="screenshots/SignIn.png" alt="Sign In screenshot" onerror="this.parentElement.innerHTML='<div class=placeholder><i data-lucide=log-in style=width:64px;height:64px></i><span>Screenshot not available</span></div>';lucide.createIcons()">
+      </div>
+
+      <div class="spec-panel">
+        <section class="section">
+          <h2><i data-lucide="grid-3x3"></i> Layout Structure</h2>
+          <div class="structure-diagram">┌─────────────────────────────────────────────────────────────────┐
+│  Navbar (logo + links: Dashboard, Profile, Sign Up, Sign In)    │
+│                                            [FREE DOWNLOAD]       │
+├────────────────────────────────┬────────────────────────────────┤
+│                                │                                │
+│                                │                                │
+│    ┌─────────────────────┐    │                                │
+│    │      Sign In        │    │     Gradient Wave Image       │
+│    │                     │    │     (3D abstract)              │
+│    │  Email              │    │                                │
+│    │  [                ] │    │                                │
+│    │                     │    │                                │
+│    │  Password           │    │                                │
+│    │  [                ] │    │                                │
+│    │                     │    │                                │
+│    │  [x] Remember me    │    │                                │
+│    │                     │    │                                │
+│    │  [    SIGN IN    ]  │    │                                │
+│    │                     │    │                                │
+│    │  Don't have account?│    │                                │
+│    │  Sign Up            │    │                                │
+│    └─────────────────────┘    │                                │
+│                                │                                │
+├────────────────────────────────┴────────────────────────────────┤
+│  Footer (Company links + Social icons + Copyright)              │
+└─────────────────────────────────────────────────────────────────┘</div>
+        </section>
+
+        <section class="section">
+          <h2><i data-lucide="form-input"></i> Sign In Form</h2>
+          <div class="form-demo">
+            <h3>Sign In</h3>
+            <p class="subtitle">Enter your email and password to sign in</p>
+            <div class="field">
+              <label>Email</label>
+              <input type="email" placeholder="Email">
+            </div>
+            <div class="field">
+              <label>Password</label>
+              <input type="password" placeholder="Password">
+            </div>
+            <div class="toggle-row">
+              <div class="toggle"></div>
+              <span class="toggle-label">Remember me</span>
+            </div>
+            <button class="submit-btn">SIGN IN</button>
+            <div class="footer-link">
+              Don't have an account? <a href="#">Sign Up</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2><i data-lucide="layers"></i> Sections</h2>
+          <table class="token-table">
+            <thead>
+              <tr><th>Section</th><th>Type</th><th>Size</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>navbar</td><td>navigation</td><td>1174x70</td></tr>
+              <tr><td>hero-image</td><td>decoration</td><td>754x876</td></tr>
+              <tr><td>sign-in-form</td><td>form</td><td>361x320</td></tr>
+              <tr><td>footer</td><td>footer</td><td>583x132</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="section">
+          <h2><i data-lucide="component"></i> Components Used</h2>
+          <div class="component-list">
+            <span class="component-tag">Input <span class="count">2</span></span>
+            <span class="component-tag">Toggle Switch <span class="count">1</span></span>
+            <span class="component-tag">Button <span class="count">2</span></span>
+            <span class="component-tag">Text Link <span class="count">7</span></span>
+            <span class="component-tag">Social Icon <span class="count">5</span></span>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2><i data-lucide="palette"></i> Token Usage</h2>
+          <table class="token-table">
+            <thead>
+              <tr><th>Element</th><th>Token</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Page background</td><td class="token-name">--color-surface</td></tr>
+              <tr><td>Form title</td><td class="token-name">--color-text-dark</td></tr>
+              <tr><td>Form subtitle</td><td class="token-name">--color-text-muted</td></tr>
+              <tr><td>Input border</td><td class="token-name">--color-border-input</td></tr>
+              <tr><td>Input focus</td><td class="token-name">--shadow-input-focus</td></tr>
+              <tr><td>Button gradient</td><td class="token-name">--gradient-primary</td></tr>
+              <tr><td>Link color</td><td class="token-name">--color-primary</td></tr>
+              <tr><td>Footer text</td><td class="token-name">--color-text-muted</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

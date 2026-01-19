@@ -1,0 +1,132 @@
+{
+  "screenName": "Billing",
+  "screenshotPath": "screenshots/Billing.png",
+  "analyzedAt": "2026-01-18T00:00:00Z",
+  "dimensions": {
+    "width": 1440,
+    "height": 1204
+  },
+  "sections": [
+    {
+      "id": "sidebar",
+      "type": "navigation",
+      "location": "left",
+      "bounds": { "approximate": "left-edge, full-height", "width": "~250px" },
+      "children": { "count": 7, "type": "nav-item" },
+      "hasHeader": true,
+      "hasActions": false
+    },
+    {
+      "id": "credit-card",
+      "type": "card",
+      "subtype": "credit-card",
+      "location": "top-row-first",
+      "pattern": "credit-card",
+      "content": {
+        "cardNumber": "4562 1122 4594 7852",
+        "holderName": "Jack Peterson",
+        "expiry": "11/22",
+        "hasChip": true,
+        "hasWifi": true
+      }
+    },
+    {
+      "id": "salary-card",
+      "type": "card",
+      "subtype": "stat-card",
+      "location": "top-row-second",
+      "pattern": "stat-card",
+      "content": {
+        "icon": "plus-circle",
+        "value": "+$2,000",
+        "label": "Salary",
+        "sublabel": "Belong Interactive"
+      }
+    },
+    {
+      "id": "paypal-card",
+      "type": "card",
+      "subtype": "stat-card",
+      "location": "top-row-third",
+      "pattern": "stat-card",
+      "content": {
+        "icon": "paypal",
+        "value": "$49,000",
+        "label": "Paypal",
+        "sublabel": "Freelance Payment"
+      }
+    },
+    {
+      "id": "invoices",
+      "type": "list",
+      "location": "top-row-fourth",
+      "hasHeader": true,
+      "headerTitle": "Invoices",
+      "headerAction": "VIEW ALL",
+      "children": { "count": 5, "type": "invoice-item" },
+      "items": [
+        { "date": "March 01, 2021", "id": "#MS-415646", "amount": "$180" },
+        { "date": "February 12, 2021", "id": "#MS-415647", "amount": "$250" },
+        { "date": "April 05, 2020", "id": "#MS-415648", "amount": "$560" },
+        { "date": "March 25, 2019", "id": "#MS-415649", "amount": "$120" },
+        { "date": "March 01, 2019", "id": "#MS-415650", "amount": "$43" }
+      ]
+    },
+    {
+      "id": "payment-method",
+      "type": "card",
+      "location": "second-row",
+      "hasHeader": true,
+      "headerTitle": "Payment Method",
+      "headerAction": "ADD NEW CARD",
+      "content": {
+        "cards": [
+          { "type": "mastercard", "number": "****7852", "expiry": "11/22" },
+          { "type": "visa", "number": "****5765", "expiry": "06/24" }
+        ]
+      }
+    },
+    {
+      "id": "billing-information",
+      "type": "list",
+      "location": "third-row-left",
+      "hasHeader": true,
+      "headerTitle": "Billing Information",
+      "children": { "count": 3, "type": "info-card" },
+      "items": [
+        { "name": "Oliver Liam", "company": "Viking Burrito", "email": "oliver@burrito.com", "vat": "FRB1235476", "hasEdit": true, "hasDelete": true },
+        { "name": "Lucas Harper", "company": "Stone Tech Zone", "email": "lucas@stone-tech.com", "vat": "FRB1235476", "hasEdit": true, "hasDelete": true },
+        { "name": "Ethan James", "company": "Fiber Notion", "email": "ethan@fiber.com", "vat": "FRB1235476", "hasEdit": true, "hasDelete": true }
+      ]
+    },
+    {
+      "id": "transactions",
+      "type": "list",
+      "location": "third-row-right",
+      "hasHeader": true,
+      "headerTitle": "Your Transactions",
+      "headerSubtitle": "23 - 30 March 2020",
+      "children": { "count": 6, "type": "transaction-item" },
+      "groups": [
+        { "label": "NEWEST", "items": 2 },
+        { "label": "YESTERDAY", "items": 4 }
+      ]
+    },
+    {
+      "id": "footer",
+      "type": "footer",
+      "location": "bottom",
+      "content": { "copyright": true, "links": ["Creative Tim", "About Us", "Blog"] }
+    }
+  ],
+  "patterns": {
+    "stat-card": { "count": 2, "instances": ["salary-card", "paypal-card"] },
+    "credit-card": { "count": 1, "instances": ["credit-card"] },
+    "invoice-item": { "count": 5, "location": "invoices" },
+    "info-card": { "count": 3, "location": "billing-information" },
+    "transaction-item": { "count": 6, "location": "transactions" },
+    "nav-item": { "count": 7, "location": "sidebar" }
+  },
+  "totalSections": 9,
+  "totalContentItems": 28
+}

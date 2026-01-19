@@ -1,0 +1,117 @@
+{
+  "screenName": "Dashboard",
+  "screenshotPath": "screenshots/Dashboard.png",
+  "analyzedAt": "2026-01-18T00:00:00Z",
+  "dimensions": {
+    "width": 1440,
+    "height": 1584
+  },
+  "sections": [
+    {
+      "id": "sidebar",
+      "type": "navigation",
+      "location": "left",
+      "bounds": { "approximate": "left-edge, full-height", "width": "~250px" },
+      "children": { "count": 7, "type": "nav-item" },
+      "hasHeader": true,
+      "hasActions": false
+    },
+    {
+      "id": "stat-cards-row",
+      "type": "card-row",
+      "location": "top-main",
+      "children": { "count": 4, "type": "stat-card" },
+      "items": [
+        { "id": "money-stat", "icon": "wallet", "value": "$53,000", "label": "Today's Money", "change": "+55%" },
+        { "id": "users-stat", "icon": "globe", "value": "2,300", "label": "Today's Users", "change": "+3%" },
+        { "id": "clients-stat", "icon": "document", "value": "+3,462", "label": "New Clients", "change": "-2%" },
+        { "id": "sales-stat", "icon": "cart", "value": "$103,430", "label": "Sales", "change": "+5%" }
+      ]
+    },
+    {
+      "id": "welcome-card",
+      "type": "card",
+      "subtype": "promo-card",
+      "location": "second-row-left",
+      "content": {
+        "title": "Built by developers",
+        "subtitle": "Soft UI Dashboard",
+        "description": "From colors, cards, typography...",
+        "hasAction": true,
+        "actionText": "Read More"
+      }
+    },
+    {
+      "id": "rocket-card",
+      "type": "card",
+      "subtype": "feature-card",
+      "location": "second-row-right",
+      "content": {
+        "title": "Work with the rockets",
+        "description": "Wealth creation is an evolutionary...",
+        "hasAction": true,
+        "actionText": "Read More",
+        "hasImage": true
+      }
+    },
+    {
+      "id": "chart-bar",
+      "type": "card",
+      "subtype": "chart",
+      "location": "third-row-left",
+      "content": {
+        "chartType": "bar",
+        "hasLegend": false
+      },
+      "children": { "count": 3, "type": "stat-mini" },
+      "stats": [
+        { "label": "Active Users", "value": "3.6K", "change": "(+5) more" },
+        { "label": "Clicks", "value": "2m" },
+        { "label": "Sales", "value": "$772" }
+      ]
+    },
+    {
+      "id": "chart-line",
+      "type": "card",
+      "subtype": "chart",
+      "location": "third-row-right",
+      "content": {
+        "title": "Sales Overview",
+        "chartType": "line",
+        "hasLegend": true
+      }
+    },
+    {
+      "id": "projects-table",
+      "type": "table",
+      "location": "fourth-row-left",
+      "hasHeader": true,
+      "headerTitle": "Projects",
+      "columns": ["COMPANIES", "MEMBERS", "BUDGET", "COMPLETION"],
+      "children": { "count": 6, "type": "table-row" }
+    },
+    {
+      "id": "orders-history",
+      "type": "list",
+      "location": "fourth-row-right",
+      "hasHeader": true,
+      "headerTitle": "Orders History",
+      "children": { "count": 5, "type": "order-item" }
+    },
+    {
+      "id": "footer",
+      "type": "footer",
+      "location": "bottom",
+      "content": { "copyright": true, "links": ["Creative Tim", "About Us", "Blog"] }
+    }
+  ],
+  "patterns": {
+    "stat-card": { "count": 4, "instances": ["money-stat", "users-stat", "clients-stat", "sales-stat"] },
+    "chart-card": { "count": 2, "instances": ["chart-bar", "chart-line"] },
+    "table-row": { "count": 6, "location": "projects-table" },
+    "order-item": { "count": 5, "location": "orders-history" },
+    "nav-item": { "count": 7, "location": "sidebar" }
+  },
+  "totalSections": 9,
+  "totalContentItems": 32
+}

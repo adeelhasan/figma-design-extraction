@@ -1,0 +1,75 @@
+{
+  "screenName": "Dashboard",
+  "extractedAt": "2026-01-18T00:00:00Z",
+  "sections": {
+    "statCards": [
+      { "icon": "wallet", "value": "$53,000", "label": "Today's Money", "change": "+55%", "changeType": "positive" },
+      { "icon": "globe", "value": "2,300", "label": "Today's Users", "change": "+3%", "changeType": "positive" },
+      { "icon": "file-text", "value": "+3,462", "label": "New Clients", "change": "-2%", "changeType": "negative" },
+      { "icon": "shopping-cart", "value": "$103,430", "label": "Sales", "change": "+5%", "changeType": "positive" }
+    ],
+    "welcomeCard": {
+      "eyebrow": "Built by developers",
+      "title": "Soft UI Dashboard",
+      "description": "From colors, cards, typography to complex elements, you will find the full documentation.",
+      "action": { "label": "Read More", "href": "#" }
+    },
+    "rocketCard": {
+      "title": "Work with the rockets",
+      "description": "Wealth creation is an evolutionarily recent positive-sum game. It is all about who take the opportunity first.",
+      "action": { "label": "Read More", "href": "#" }
+    },
+    "activeUsersChart": {
+      "type": "bar",
+      "stats": [
+        { "label": "Active Users", "value": "3.6K", "change": "(+5) more" },
+        { "value": "2m", "label": "Clicks" },
+        { "value": "$772", "label": "Sales" }
+      ]
+    },
+    "salesChart": {
+      "type": "line",
+      "title": "Sales Overview",
+      "subtitle": "(+5) more in 2021"
+    },
+    "projectsTable": {
+      "title": "Projects",
+      "subtitle": "Done this month",
+      "columns": ["COMPANIES", "MEMBERS", "BUDGET", "COMPLETION"],
+      "rows": [
+        { "company": "Soft UI Shopify Version", "members": 4, "budget": "$14,000", "completion": 60 },
+        { "company": "Progress Track", "members": 2, "budget": "$3,000", "completion": 10 },
+        { "company": "Fix Platform Errors", "members": 2, "budget": "Not Set", "completion": 100 },
+        { "company": "Launch new Mobile App", "members": 4, "budget": "$20,500", "completion": 100 },
+        { "company": "Add the New Landing Page", "members": 2, "budget": "$500", "completion": 25 },
+        { "company": "Redesign Online Store", "members": 6, "budget": "$2,000", "completion": 40 }
+      ]
+    },
+    "ordersHistory": {
+      "title": "Orders History",
+      "subtitle": "23% this month",
+      "items": [
+        { "icon": "bell", "description": "$2,400 - Redesign store", "date": "22 DEC 7:20 PM" },
+        { "icon": "code", "description": "New order #4845433", "date": "21 DEC 11:21 PM" },
+        { "icon": "cart", "description": "Company server payments", "date": "21 DEC 9:28 PM" },
+        { "icon": "credit-card", "description": "New card added #4845433", "date": "20 DEC 3:52 PM" },
+        { "icon": "unlock", "description": "Unlock folders for development", "date": "19 DEC 11:35 AM" },
+        { "icon": "credit-card", "description": "New order #48453", "date": "18 DEC 4:41 PM" }
+      ]
+    }
+  },
+  "navigation": {
+    "mainItems": [
+      { "icon": "layout-dashboard", "label": "Dashboard", "active": true },
+      { "icon": "table", "label": "Tables" },
+      { "icon": "credit-card", "label": "Billing" },
+      { "icon": "glasses", "label": "Virtual Reality" },
+      { "icon": "type", "label": "RTL" }
+    ],
+    "accountItems": [
+      { "icon": "user", "label": "Profile" },
+      { "icon": "log-in", "label": "Sign In" },
+      { "icon": "user-plus", "label": "Sign Up" }
+    ]
+  }
+}

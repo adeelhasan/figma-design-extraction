@@ -1,0 +1,126 @@
+/* =================================================================
+   Effect Tokens
+   Extracted from: Soft UI Dashboard Free (Community)
+   Generated: 2026-01-18
+   ================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------
+     Shadows - Soft UI Style
+     --------------------------------------------------------------- */
+  --shadow-none: none;
+
+  /* Extra small - subtle depth */
+  --shadow-xs: 0 2px 4px -1px rgba(0, 0, 0, 0.07);
+
+  /* Small - cards, inputs */
+  --shadow-sm: 0 2px 4px -1px rgba(0, 0, 0, 0.12);
+
+  /* Medium - elevated cards, dropdowns */
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.12);
+
+  /* Large - modals, popovers */
+  --shadow-lg: 0 10px 16px 0 rgba(0, 0, 0, 0.1);
+
+  /* Extra large - floating elements */
+  --shadow-xl: 0 20px 27px 0 rgba(0, 0, 0, 0.05);
+
+  /* 2XL - hero images, prominent elements */
+  --shadow-2xl: 0 10px 40px 0 rgba(0, 0, 0, 0.3);
+
+  /* ---------------------------------------------------------------
+     Soft UI Specific Shadows
+     --------------------------------------------------------------- */
+  /* Neumorphic inset shadow for soft pressed effect */
+  --shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+
+  /* Card shadow - the signature soft shadow */
+  --shadow-card: 0 20px 27px 0 rgba(0, 0, 0, 0.05);
+
+  /* Button shadow */
+  --shadow-button: 0 4px 7px -1px rgba(0, 0, 0, 0.11);
+  --shadow-button-hover: 0 4px 6px -1px rgba(0, 0, 0, 0.12);
+
+  /* Input focus shadow (pink glow) */
+  --shadow-input-focus: 0 0 0 2px rgba(203, 12, 159, 0.25);
+
+  /* Sidebar shadow */
+  --shadow-sidebar: 0 20px 27px 0 rgba(0, 0, 0, 0.05);
+
+  /* ---------------------------------------------------------------
+     Border Radius
+     --------------------------------------------------------------- */
+  --radius-none: 0;
+  --radius-sm: 4px;       /* Small elements, badges */
+  --radius-DEFAULT: 6px;  /* Buttons, inputs (default) */
+  --radius-md: 8px;       /* Cards, dropdowns */
+  --radius-lg: 10px;      /* Larger cards */
+  --radius-xl: 12px;      /* Modal corners */
+  --radius-2xl: 16px;     /* Large cards, images */
+  --radius-3xl: 24px;     /* Extra rounded elements */
+  --radius-full: 9999px;  /* Pills, avatars, circles */
+
+  /* ---------------------------------------------------------------
+     Semantic Radius Aliases
+     --------------------------------------------------------------- */
+  --radius-button: var(--radius-DEFAULT);  /* 6px */
+  --radius-input: var(--radius-md);        /* 8px */
+  --radius-card: var(--radius-xl);         /* 12px - Soft UI uses rounded cards */
+  --radius-modal: var(--radius-xl);        /* 12px */
+  --radius-avatar: var(--radius-full);     /* Circular */
+  --radius-badge: var(--radius-sm);        /* 4px */
+  --radius-tag: var(--radius-DEFAULT);     /* 6px */
+
+  /* ---------------------------------------------------------------
+     Blur Effects
+     --------------------------------------------------------------- */
+  --blur-none: blur(0);
+  --blur-sm: blur(4px);
+  --blur-md: blur(8px);
+  --blur-lg: blur(16px);
+  --blur-xl: blur(24px);
+
+  /* Backdrop blur for glass effect */
+  --backdrop-blur: blur(10px);
+
+  /* ---------------------------------------------------------------
+     Transitions
+     --------------------------------------------------------------- */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+  --transition-slower: 500ms ease;
+
+  /* ---------------------------------------------------------------
+     Focus Ring
+     --------------------------------------------------------------- */
+  --ring-width: 2px;
+  --ring-color: rgba(203, 12, 159, 0.5);
+  --ring-offset: 2px;
+  --ring-offset-color: #ffffff;
+}
+
+/*
+Shadow Reference
+================
+--shadow-xs:   Subtle depth (blur: 4px, offset-y: 2px, alpha: 0.07)
+--shadow-sm:   Small elevation (blur: 4px, offset-y: 2px, alpha: 0.12)
+--shadow-md:   Medium elevation (blur: 6px, offset-y: 4px, alpha: 0.12)
+--shadow-lg:   Large elevation (blur: 16px, offset-y: 10px, alpha: 0.1)
+--shadow-xl:   Extra large (blur: 27px, offset-y: 20px, alpha: 0.05)
+--shadow-2xl:  Maximum elevation (blur: 40px, offset-y: 10px, alpha: 0.3)
+--shadow-card: Soft UI signature (blur: 27px, offset-y: 20px, alpha: 0.05)
+
+Radius Reference
+================
+--radius-sm:   4px   (badges, small elements)
+--radius-DEFAULT: 6px (buttons - default)
+--radius-md:   8px   (inputs, tags)
+--radius-lg:   10px  (cards)
+--radius-xl:   12px  (modals, larger cards)
+--radius-2xl:  16px  (profile cards)
+--radius-full: 9999px (avatars, pills)
+
+Detected from 326 shadow instances and 588 radius instances.
+Most common radius: 8px (253 uses)
+*/

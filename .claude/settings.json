@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Read(.claude/**)",
+      "Read(src/**)",
+      "Read(design-system/**)",
+
+      "Write(src/components/**)",
+      "Write(design-system/**)",
+      "Write(design-system/.cache/**)",
+
+      "Bash(python3 *)",
+      "Bash(python *)",
+      "Bash(./scripts/*)",
+      "Bash(curl *)",
+      "Bash(mkdir *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(npx *)",
+      "Bash(npm *)",
+      "Bash(node *)",
+
+      "WebFetch(domain:api.figma.com)",
+      "WebFetch(domain:www.figma.com)",
+      "WebFetch(domain:mcp.figma.com)",
+      "WebFetch(domain:developers.figma.com)",
+      "WebFetch(domain:figma.com)",
+
+      "Skill(extract-design)",
+      "Skill(sync)",
+      "Skill(preview-tokens)",
+      "Skill(clean)",
+
+      "mcp__figma__get_metadata",
+      "mcp__figma__get_variable_defs",
+      "mcp__figma__get_design_context",
+      "mcp__figma__get_screenshot",
+      "mcp__figma__whoami",
+      "mcp__figma__get_code_connect_map"
+    ]
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "/extract-design",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./scripts/check-existing-output.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

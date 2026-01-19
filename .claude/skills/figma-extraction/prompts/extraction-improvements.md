@@ -1,0 +1,724 @@
+# Extraction Improvement Plan
+
+> Based on analysis of Billing page extraction gaps (50% section coverage)
+> Goal: Achieve ≥90% section coverage consistently across all layouts
+
+## Problem Summary
+
+The current extraction missed 5 of 10 sections in the Billing page:
+- ❌ salary-card (stat-card pattern)
+- ❌ paypal-card (stat-card pattern)
+- ❌ payment-method (card row with action button)
+- ❌ billing-information (3 info-cards with actions)
+- ❌ footer
+
+Root causes:
+1. Shallow traversal depth (maxDepth: 3)
+2. Horizontal siblings absorbed into parent
+3. Pattern detection not applied to nested children
+4. Actions/buttons not captured
+5. No reconciliation against visual inventory
+6. **Hardcoded pattern library** — patterns are dashboard-specific, not derived from the design
+
+---
+
+## Improvement 0: Hybrid Pattern Discovery (Generalizable)
+
+> **Critical for generalizability**: Instead of hardcoding patterns like "stat-card" or "credit-card",
+> derive patterns dynamically from the Figma file itself.
+
+### Pattern Discovery Priority
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  Priority 1: FIGMA COMPONENTS (Highest Confidence)                  │
+│  Designer-defined reusable patterns with explicit names             │
+│  Source: componentId, mainComponent references                      │
+└─────────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼ (fills gaps)
+┌─────────────────────────────────────────────────────────────────────┐
+│  Priority 2: VISUAL ANALYSIS                                        │
+│  Screenshot-based pattern detection for non-component elements      │
+│  Source: Visual inventory analysis                                  │
+└─────────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼ (fallback)
+┌─────────────────────────────────────────────────────────────────────┐
+│  Priority 3: STRUCTURAL HEURISTICS                                  │
+│  Fingerprint-based clustering when neither above works              │
+│  Source: Node structure analysis                                    │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Step 1: Discover Component Definitions
+
+Query the Figma API for component metadata:
+
+```typescript
+interface ComponentPattern {
+  componentId: string;
+  name: string;                    // "Stat Card", "Invoice Item"
+  description?: string;           // Designer's intent
+  documentationLinks?: string[];
+  properties: PropertyDefinition[];
+  structure: StructuralFingerprint;
+  instances: string[];            // Node IDs using this component
+}
+
+async function discoverComponentPatterns(fileKey: string): Promise<ComponentPattern[]> {
+  // 1. Get component metadata from file
+  const response = await figmaApi.get(`/files/${fileKey}/components`);
+  const components = response.meta.components;
+
+  const patterns: ComponentPattern[] = [];
+
+  for (const comp of components) {
+    // 2. Get full node data for structure analysis
+    const nodeData = await figmaApi.get(`/files/${fileKey}/nodes?ids=${comp.node_id}`);
+    const node = nodeData.nodes[comp.node_id].document;
+
+    // 3. Find all instances in the file
+    const instances = await findInstancesOf(fileKey, comp.key);
+
+    patterns.push({
+      componentId: comp.key,
+      name: comp.name,
+      description: comp.description,
+      properties: extractPropertyDefinitions(node),
+      structure: computeStructuralFingerprint(node),
+      instances: instances.map(i => i.id)
+    });
+  }
+
+  return patterns;
+}
+```
+
+### Step 2: Visual Analysis Gap Detection
+
+For sections not covered by components, use visual analysis:
+
+```typescript
+interface VisualPattern {
+  id: string;
+  inferredType: string;           // "stat-display", "card-row"
+  confidence: number;             // 0-1
+  visualSignature: {
+    hasIcon: boolean;
+    hasLargeText: boolean;
+    hasSubtext: boolean;
+    colorScheme: string[];
+    approximateLayout: 'horizontal' | 'vertical' | 'grid';
+  };
+  matchedNodeIds: string[];
+}
+
+function analyzeVisualGaps(
+  inventory: VisualInventory,
+  componentPatterns: ComponentPattern[]
+): VisualPattern[] {
+  const visualPatterns: VisualPattern[] = [];
+
+  for (const section of inventory.sections) {
+    // Check if already covered by a component
+    const hasComponentMatch = componentPatterns.some(cp =>
+      cp.instances.some(inst =>
+        section.nodeIds?.includes(inst) ||
+        nodeIsChildOf(inst, section.nodeIds)
+      )
+    );
+
+    if (!hasComponentMatch) {
+      // This section needs visual pattern inference
+      visualPatterns.push({
+        id: section.id,
+        inferredType: inferTypeFromVisualCues(section),
+        confidence: calculateConfidence(section),
+        visualSignature: extractVisualSignature(section),
+        matchedNodeIds: section.nodeIds || []
+      });
+    }
+  }
+
+  return visualPatterns;
+}
+```
+
+### Step 3: Structural Fingerprinting Fallback
+
+For elements with no component and ambiguous visuals:
+
+```typescript
+interface StructuralFingerprint {
+  childTypes: string[];           // ['TEXT', 'FRAME', 'TEXT']
+  layoutMode: string;
+  depth: number;
+  textCount: number;
+  frameCount: number;
+  hasIcon: boolean;
+  hasImage: boolean;
+}
+
+function computeStructuralFingerprint(node: FigmaNode): StructuralFingerprint {
+  return {
+    childTypes: node.children?.map(c => c.type) || [],
+    layoutMode: node.layoutMode || 'NONE',
+    depth: computeMaxDepth(node),
+    textCount: countNodeType(node, 'TEXT'),
+    frameCount: countNodeType(node, 'FRAME'),
+    hasIcon: hasIconChild(node),
+    hasImage: hasImageChild(node)
+  };
+}
+
+function clusterByFingerprint(nodes: FigmaNode[]): Map<string, FigmaNode[]> {
+  const clusters = new Map<string, FigmaNode[]>();
+
+  for (const node of nodes) {
+    const fp = computeStructuralFingerprint(node);
+    const key = fingerprintToKey(fp);  // Normalize to comparable string
+
+    if (!clusters.has(key)) {
+      clusters.set(key, []);
+    }
+    clusters.get(key)!.push(node);
+  }
+
+  return clusters;
+}
+```
+
+### Step 4: Unified Pattern Registry
+
+Combine all sources into a single registry used during extraction:
+
+```typescript
+interface PatternRegistry {
+  patterns: Map<string, UnifiedPattern>;
+
+  // Methods
+  getPatternForNode(nodeId: string): UnifiedPattern | null;
+  getPatternByFingerprint(fp: StructuralFingerprint): UnifiedPattern | null;
+  getAllPatternsOfType(type: string): UnifiedPattern[];
+}
+
+interface UnifiedPattern {
+  id: string;
+  name: string;
+  source: 'component' | 'visual' | 'structural';
+  confidence: number;
+  requiredFields: string[];       // Derived from structure
+  optionalFields: string[];
+  extractionHints: {
+    lookForText: boolean;
+    lookForIcon: boolean;
+    expectChildren: number;
+  };
+}
+
+async function buildPatternRegistry(
+  fileKey: string,
+  visualInventory: VisualInventory
+): Promise<PatternRegistry> {
+  // 1. Components first (highest confidence)
+  const componentPatterns = await discoverComponentPatterns(fileKey);
+
+  // 2. Visual analysis for gaps
+  const visualPatterns = analyzeVisualGaps(visualInventory, componentPatterns);
+
+  // 3. Structural clustering for remainder
+  const uncoveredNodes = findUncoveredNodes(visualInventory, componentPatterns, visualPatterns);
+  const structuralClusters = clusterByFingerprint(uncoveredNodes);
+
+  // 4. Merge into unified registry
+  return mergeIntoRegistry(componentPatterns, visualPatterns, structuralClusters);
+}
+```
+
+### Why This Generalizes
+
+| Approach | Generalizability |
+|----------|------------------|
+| Hardcoded patterns | ❌ Only works for known UI types |
+| Component-first | ✓ Works for any design system using components |
+| Visual analysis | ✓ Works for any visual layout |
+| Structural clustering | ✓ Works for any node structure |
+| **Hybrid (all three)** | ✓✓ Works across all design systems |
+
+### Integration Point
+
+This pattern discovery runs **before** all other improvements:
+
+```
+Pattern Discovery (Improvement 0)
+        │
+        ▼ (PatternRegistry)
+Deep Traversal (Improvement 1) ─────────────────┐
+        │                                        │
+        ▼                                        │
+Row-Aware Extraction (Improvement 2)            │
+        │                                        │
+        ▼                                        │
+Inventory-Driven Extraction (Improvement 3) ◄───┘
+        │
+        ▼ (uses PatternRegistry.getPatternForNode)
+Pattern Validation (Improvement 4)
+        │
+        ...
+```
+
+---
+
+## Improvement 1: Mandatory Deep Traversal
+
+### Current Behavior
+```typescript
+const STANDARD_CONFIG: TraversalConfig = {
+  maxDepth: 3,  // Too shallow for dashboard layouts
+  minSectionSize: 100,
+  gapThreshold: 16
+};
+```
+
+### New Behavior
+```typescript
+const DASHBOARD_CONFIG: TraversalConfig = {
+  maxDepth: 10,  // Deep enough for nested cards
+  minSectionSize: 50,  // Catch smaller stat cards
+  gapThreshold: 8,
+  expandHorizontalSiblings: true,  // NEW: Don't absorb rows
+  patternMatchFirst: true  // NEW: Try pattern matching before filtering
+};
+
+// Auto-detect dashboard layouts and use deep config
+function selectConfig(frame: FigmaNode): TraversalConfig {
+  const pattern = detectLayoutPattern(frame);
+  if (pattern === 'dashboard-grid' || pattern === 'card-layout') {
+    return DASHBOARD_CONFIG;
+  }
+  return STANDARD_CONFIG;
+}
+```
+
+### Implementation Location
+Update: [extract-layouts.md](extract-layouts.md) Step 3: Analyze Section Structure
+
+---
+
+## Improvement 2: Row-Aware Extraction
+
+### Problem
+Horizontal rows with multiple cards are extracted as single sections.
+
+### Solution
+Before section extraction, identify all horizontal container rows:
+
+```typescript
+interface LayoutRow {
+  id: string;
+  name: string;
+  expectedChildCount: number;
+  children: { id: string; name: string; pattern?: string }[];
+}
+
+function identifyLayoutRows(frame: FigmaNode): LayoutRow[] {
+  const rows: LayoutRow[] = [];
+
+  traverseDeep(frame, (node) => {
+    // Horizontal auto-layout with multiple direct children
+    if (node.layoutMode === 'HORIZONTAL' && node.children?.length > 1) {
+      const childrenLookLikeSections = node.children.every(c =>
+        c.type === 'FRAME' && c.absoluteBoundingBox?.width > 100
+      );
+
+      if (childrenLookLikeSections) {
+        rows.push({
+          id: node.id,
+          name: node.name,
+          expectedChildCount: node.children.length,
+          children: node.children.map(c => ({
+            id: c.id,
+            name: c.name,
+            pattern: detectUIPattern(c)
+          }))
+        });
+      }
+    }
+  });
+
+  return rows;
+}
+```
+
+### Extraction Rule
+**If a row is identified with N children, the extraction MUST produce N sections from that row.**
+
+---
+
+## Improvement 3: Inventory-Driven Extraction
+
+### Current Flow
+```
+Visual Analysis → Inventory → Extraction → Verification
+                     ↓             ↓
+              (not connected)  (post-hoc check)
+```
+
+### New Flow
+```
+Visual Analysis → Inventory → Extraction → Reconciliation Loop
+                     ↓             ↑              ↓
+              Target List ───────────────→ Re-extract if missing
+```
+
+### Implementation
+
+```typescript
+interface ExtractionTarget {
+  sectionId: string;
+  pattern: string;
+  location: string;  // "top-row-second"
+  expectedContent: string[];  // ["$2,000", "Salary"]
+  required: boolean;
+}
+
+function extractWithTargets(
+  frame: FigmaNode,
+  targets: ExtractionTarget[]
+): ExtractionResult {
+  const extracted: Section[] = [];
+  const missing: ExtractionTarget[] = [];
+
+  // Pass 1: Standard extraction
+  const sections = extractSectionsRecursive(frame, DASHBOARD_CONFIG);
+
+  // Pass 2: Match against targets
+  for (const target of targets) {
+    const match = sections.find(s =>
+      s.id === target.sectionId ||
+      s.name.toLowerCase().includes(target.sectionId) ||
+      matchesByContent(s, target.expectedContent)
+    );
+
+    if (match) {
+      extracted.push(match);
+    } else {
+      missing.push(target);
+    }
+  }
+
+  // Pass 3: Targeted re-extraction for missing
+  for (const target of missing) {
+    const section = targetedExtract(frame, target);
+    if (section) {
+      extracted.push(section);
+    }
+  }
+
+  return { extracted, stillMissing: missing.filter(t => !extracted.find(s => s.id === t.sectionId)) };
+}
+```
+
+---
+
+## Improvement 4: Pattern-Specific Required Fields
+
+Each UI pattern must have validated fields:
+
+### Stat Card Pattern
+```typescript
+interface StatCardValidation {
+  required: ['icon', 'value', 'label'];
+  optional: ['sublabel', 'trend'];
+  valueFormat: /[\$\€\£]?[\d,]+/;  // Currency or number
+}
+
+function validateStatCard(section: Section): ValidationResult {
+  const content = section.content;
+  const missing: string[] = [];
+
+  if (!content.icon && !content.iconBox) missing.push('icon');
+  if (!content.value || !StatCardValidation.valueFormat.test(content.value)) {
+    missing.push('value');
+  }
+  if (!content.label) missing.push('label');
+
+  return {
+    valid: missing.length === 0,
+    missing,
+    section
+  };
+}
+```
+
+### Pattern Validation Table
+
+| Pattern | Required Fields | Validation |
+|---------|-----------------|------------|
+| stat-card | icon, value, label | value matches currency/number format |
+| credit-card | number, holder, expires | number is 16 digits (possibly masked) |
+| info-card | title, fields[], actions[] | fields is array of {label, value} |
+| list-section | title, items[] | items.length matches inventory count |
+| transaction-item | name, date, amount | amount has +/- prefix |
+
+---
+
+## Improvement 5: Sibling-Aware Pattern Extraction
+
+When a pattern is detected, automatically extract siblings:
+
+```typescript
+function extractPatternWithSiblings(
+  node: FigmaNode,
+  pattern: PatternType
+): Section[] {
+  const sections: Section[] = [];
+
+  // Extract the found node
+  sections.push(extractByPattern(node, pattern));
+
+  // Check parent for similar siblings
+  const parent = findParent(node);
+  if (parent?.layoutMode === 'HORIZONTAL' || parent?.layoutMode === 'VERTICAL') {
+    for (const sibling of parent.children) {
+      if (sibling.id !== node.id) {
+        const siblingPattern = detectUIPattern(sibling);
+        if (siblingPattern === pattern) {
+          sections.push(extractByPattern(sibling, pattern));
+        }
+      }
+    }
+  }
+
+  return sections;
+}
+```
+
+---
+
+## Improvement 6: Action Button Detection
+
+### Current Issue
+Actions like "VIEW ALL", "ADD NEW CARD" are missed.
+
+### Solution
+Multi-location action scanning:
+
+```typescript
+const ACTION_KEYWORDS = [
+  'VIEW ALL', 'VIEW MORE', 'SEE ALL', 'SEE MORE',
+  'ADD', 'ADD NEW', 'CREATE', 'NEW',
+  'DELETE', 'REMOVE', 'EDIT', 'UPDATE',
+  'PDF', 'DOWNLOAD', 'EXPORT'
+];
+
+function extractActions(section: FigmaNode): Action[] {
+  const actions: Action[] = [];
+  const textNodes = findAllTextNodes(section);
+
+  for (const textNode of textNodes) {
+    const text = textNode.characters?.toUpperCase() || '';
+
+    for (const keyword of ACTION_KEYWORDS) {
+      if (text.includes(keyword)) {
+        actions.push({
+          type: inferActionType(keyword),
+          label: textNode.characters,
+          location: getRelativePosition(textNode, section)  // 'header', 'inline', 'footer'
+        });
+      }
+    }
+  }
+
+  return actions;
+}
+```
+
+---
+
+## Improvement 7: Reconciliation Report
+
+After extraction, generate a detailed reconciliation:
+
+```markdown
+## Extraction Reconciliation: Billing
+
+### Section Coverage: 10/10 (100%) ✓
+
+| Inventory Section | Extracted | Pattern | Content Match |
+|-------------------|-----------|---------|---------------|
+| sidebar | ✓ | navigation | ✓ |
+| header | ✓ | header | ✓ |
+| credit-card | ✓ | credit-card | ✓ |
+| salary-card | ✓ | stat-card | ✓ |
+| paypal-card | ✓ | stat-card | ✓ |
+| invoices-list | ✓ | list | 5/5 items |
+| payment-method | ✓ | card | 2 cards + action |
+| billing-information | ✓ | info-list | 3/3 cards |
+| transactions | ✓ | transaction-list | 7/7 items |
+| footer | ✓ | footer | ✓ |
+
+### Action Coverage: 8/8 (100%) ✓
+
+| Section | Expected Actions | Found |
+|---------|-----------------|-------|
+| invoices-list | VIEW ALL | ✓ |
+| payment-method | ADD NEW CARD | ✓ |
+| billing-information | DELETE (×3), EDIT (×3) | ✓ |
+| invoices items | PDF (×5) | ✓ |
+```
+
+---
+
+## Implementation Priority
+
+0. **CRITICAL:** Hybrid pattern discovery (enables generalizability)
+1. **HIGH:** Deep traversal for dashboard layouts (immediate fix)
+2. **HIGH:** Row-aware extraction (catches sibling cards)
+3. **MEDIUM:** Inventory-driven extraction loop
+4. **MEDIUM:** Pattern validation with required fields
+5. **LOW:** Action button detection enhancement
+6. **LOW:** Reconciliation report generation
+
+---
+
+## Testing the Improvements
+
+After implementing, re-run extraction on Billing page:
+
+```bash
+/sync --check  # Preview what would change
+/sync Billing  # Re-extract just Billing
+```
+
+Expected outcome:
+- Section coverage: 50% → 90%+
+- Missing stat-cards: captured
+- Missing payment-method: captured
+- Missing billing-information: captured
+- Actions: VIEW ALL, ADD NEW CARD captured
+
+---
+
+## Generalizable to Other Layouts
+
+These improvements apply to any dashboard layout:
+- Profile page (similar card-heavy structure)
+- Dashboard page (stat cards, chart sections)
+- Any page with grid/card layouts
+
+The key principle: **Visual inventory is ground truth. Extraction must reconcile against it.**
+
+---
+
+## Improvement 8: Claude Code Settings Configuration
+
+### Problem
+
+Running the extraction skill requires repeated permission approvals:
+1. Each Python script invocation prompts for permission
+2. Writing Figma API responses to cache requires permission
+3. `settings.local.json` accumulates cruft from one-off approvals
+
+### Solution
+
+Configure `.claude/settings.json` with proper permission patterns upfront.
+
+### Updated settings.json
+
+```json
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Read(.claude/**)",
+      "Read(src/**)",
+      "Read(design-system/**)",
+
+      "Write(src/components/**)",
+      "Write(design-system/**)",
+      "Write(design-system/.cache/**)",
+
+      "Bash(python3 *)",
+      "Bash(python *)",
+      "Bash(./scripts/*)",
+      "Bash(curl *)",
+      "Bash(mkdir *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(npx *)",
+      "Bash(npm *)",
+      "Bash(node *)",
+
+      "WebFetch(domain:api.figma.com)",
+      "WebFetch(domain:www.figma.com)",
+      "WebFetch(domain:mcp.figma.com)",
+      "WebFetch(domain:developers.figma.com)",
+      "WebFetch(domain:figma.com)",
+
+      "Skill(extract-design)",
+      "Skill(sync)",
+      "Skill(preview-tokens)",
+      "Skill(clean)",
+
+      "mcp__figma__get_metadata",
+      "mcp__figma__get_variable_defs",
+      "mcp__figma__get_design_context",
+      "mcp__figma__get_screenshot",
+      "mcp__figma__whoami",
+      "mcp__figma__get_code_connect_map"
+    ]
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "/extract-design",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./scripts/check-existing-output.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+### Key Changes
+
+| Before | After | Why |
+|--------|-------|-----|
+| `Bash(python3:*)` | `Bash(python3 *)` | Colon syntax doesn't match space-separated args |
+| No cache write | `Write(design-system/.cache/**)` | Allow caching Figma API responses |
+| Scattered in local | Consolidated in main | Single source of truth |
+
+### Cache Directory Setup
+
+```bash
+mkdir -p design-system/.cache
+echo "design-system/.cache/" >> .gitignore
+```
+
+### Clean settings.local.json
+
+After updating `settings.json`, reset `settings.local.json` to minimal:
+
+```json
+{
+  "permissions": {
+    "allow": []
+  }
+}
+```
+
+Any new one-off permissions will accumulate here, keeping `settings.json` clean.
+
+### Verification
+
+After applying these changes, running `/extract-design` or `/sync` should:
+- ✓ Execute Python scripts without prompts
+- ✓ Write to cache directory without prompts
+- ✓ Call Figma MCP tools without prompts
+- ✓ Run shell scripts without prompts

@@ -1,0 +1,36 @@
+/* Design System Token Imports */
+@import '../../design-system/tokens/colors.css';
+@import '../../design-system/tokens/typography.css';
+@import '../../design-system/tokens/spacing.css';
+@import '../../design-system/tokens/effects.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles - Soft UI uses light theme by default */
+body {
+  font-family: var(--font-family-primary);
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+}
+
+/* Utility classes for design tokens */
+@layer utilities {
+  .text-primary {
+    color: var(--color-text-primary);
+  }
+  .text-secondary {
+    color: var(--color-text-secondary);
+  }
+  .text-muted {
+    color: var(--color-text-muted);
+  }
+  .bg-surface {
+    background-color: var(--color-surface);
+  }
+  .bg-surface-elevated {
+    background-color: var(--color-surface-elevated);
+  }
+}
