@@ -14,6 +14,8 @@ Extract layout spec AND generate HTML preview for a SINGLE screen in ONE session
 - Token CSS files: `${OUTPUT_DIR}/tokens/*.css`
 - Icon manifest: `${OUTPUT_DIR}/assets/icon-manifest.json`
 - Asset manifest: `${OUTPUT_DIR}/assets/asset-manifest.json`
+- **Shell definitions (if exists)**: `${OUTPUT_DIR}/layout-shells.json`
+- **Shell HTML fragments (if exists)**: `${OUTPUT_DIR}/preview/layouts/shells/*.html`
 
 ### Figma Query Tool
 
@@ -35,6 +37,17 @@ $QUERY section "{ScreenName}" "content/Widget-1"
 ```
 
 Query incrementally — start with `screen-layout`, then fetch sections one at a time. Only fetch sub-sections if the parent section is too large.
+
+### Pre-Built Shells (Phase 5a output)
+
+**Before querying Figma**, check if `${OUTPUT_DIR}/layout-shells.json` exists. If it does:
+
+1. Read it and look up `screenShellMap["{ScreenName}"]` to get this screen's shell list.
+2. For each shell name in the list, read the corresponding HTML fragment from `${OUTPUT_DIR}/preview/layouts/shells/{shell-name}.html`.
+3. **Skip querying Figma for shell sections.** Do NOT run `$QUERY section "{ScreenName}" "sidebar"` or similar for sections covered by shells. Only query the **content sections** that are NOT shells.
+4. Record shell metadata in the layout schema (see Step 3).
+
+If `layout-shells.json` does not exist, proceed with the full extraction as before (query all sections including sidebar/navbar/footer).
 
 ## Outputs (write all four)
 
@@ -73,10 +86,11 @@ This returns section names, types, bounds, and first-level children (~2-15KB) �
 
 Using visual analysis from Step 0 and the screen-layout query, extract sections.
 
-For each section that needs detail, query it individually:
+**If pre-built shells are available:** Skip querying sections that are covered by shells (e.g., don't query "sidebar" or "navbar" if they're in `screenShellMap`). Only query the content sections.
+
+For each non-shell section that needs detail, query it individually:
 
 ```bash
-$QUERY section "{ScreenName}" "sidebar"    # ~80-160KB for complex sections
 $QUERY section "{ScreenName}" "content"    # May be large — check children first
 ```
 
@@ -125,6 +139,7 @@ Write to: `${OUTPUT_DIR}/specs/layouts/{ScreenName}.json`
   "screen": "{ScreenName}",
   "figmaFrameId": "{frameId}",
   "dimensions": { "width": 1440, "height": 900, "viewport": "desktop" },
+  "shells": ["sidebar", "navbar"],
   "contentArea": {
     "bounds": { "x": 296, "y": 60, "width": 1120, "height": 1100 },
     "padding": { "left": 24, "right": 24, "top": 24, "bottom": 24 },
@@ -153,6 +168,8 @@ Write to: `${OUTPUT_DIR}/specs/layouts/{ScreenName}.json`
   "css": { "gridTemplate": "...", "containerStyles": {} }
 }
 ```
+
+**`shells` field:** List the shell names from `layout-shells.json` that apply to this screen. If no shells exist, omit this field or set to `[]`.
 
 ### Step 4: Generate Layout Spec (Markdown)
 
@@ -183,6 +200,18 @@ Create a self-contained HTML file using:
 - Content data (Step 5)
 - Icons from icon-manifest.json via Lucide CDN
 - Asset placeholders from asset-manifest.json
+- **Pre-built shell HTML fragments** (if available from Phase 5a)
+
+#### Shell Composition
+
+If `layout-shells.json` exists and this screen has shells:
+
+1. Read each shell HTML fragment from `${OUTPUT_DIR}/preview/layouts/shells/{shell-name}.html`
+2. Insert shell HTML into `<body>` **before** `<main class="main-content">`
+3. Apply `mainContentOffset` CSS from `layout-shells.json` to `.main-content` (e.g., `margin-left: 273px` for a fixed sidebar)
+4. Set the active nav item: in the sidebar shell HTML, find the nav item with `data-screen="{ScreenName}"` and add an active class/style
+
+If shells are NOT available, generate sidebar/navbar/footer HTML inline as before.
 
 ```html
 <!DOCTYPE html>
@@ -206,7 +235,8 @@ Create a self-contained HTML file using:
       width: {dimensions.width}px;
       min-height: {dimensions.height}px;
     }
-    .main-content { {gridCss} }
+    /* mainContentOffset from layout-shells.json applied here */
+    .main-content { {gridCss}; {mainContentOffsetCss} }
     {sectionPositionCss}
     .section {
       background: var(--color-surface);
@@ -217,7 +247,7 @@ Create a self-contained HTML file using:
   </style>
 </head>
 <body>
-  <nav class="sidebar"><!-- Sidebar --></nav>
+  {shellsHtml}
   <main class="main-content">{sectionsHtml}</main>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -233,6 +263,8 @@ Create a self-contained HTML file using:
 - Row-spanning elements need `height: 100%`
 - Section order in JSON matches visual reading order
 - Token CSS imports use relative paths `../../tokens/`
+- **Shell HTML is included verbatim** — do not regenerate sidebar/navbar if shells exist
+- **Active state**: Update the shell's nav item for this screen to show as active
 
 ## Verification
 

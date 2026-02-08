@@ -826,3 +826,71 @@ Three targeted changes to `extract-screen.md` (no new scripts, agents, or pipeli
 ### Implementation Location
 
 Updated: `extract-screen.md` — Step 2 (container detection), Step 3 (schema field), Verification (alignment check).
+
+---
+
+## Improvement 11: Cross-Screen Shell Extraction (Phase 5a/5b Split)
+
+### Problem
+
+N screen agents independently extract the same sidebar, navbar, and footer — producing slightly different HTML each time. This wastes tokens (sidebar alone is ~80-160KB of Figma query data per screen), introduces visual inconsistency between screens, and makes maintenance harder.
+
+### Root Cause
+
+Phase 5 treats each screen as fully independent. Every agent queries the sidebar section from Figma, interprets it, and generates HTML — with no shared context. The same sidebar can end up with different nav item ordering, spacing, or active-state styling across screens.
+
+### Solution: Phase 5a/5b Split
+
+Split Phase 5 into two sub-phases:
+
+```
+Phase 5a: Shell Detection & Extraction  → 1 sequential agent
+Phase 5b: Screen Content Extraction     → N parallel agents (compose shells + content)
+```
+
+**Phase 5a** (new `extract-shells.md` prompt):
+1. Queries `screen-layout` for ALL screens
+2. Compares top-level section names across screens
+3. Groups sections appearing in ≥50% of screens with consistent position/dimensions
+4. Picks a representative screen per shell group
+5. Extracts shell HTML/CSS from representative screens
+6. Writes `layout-shells.json` + HTML fragments to `preview/layouts/shells/`
+
+**Phase 5b** (updated `extract-screen.md`):
+1. Reads `layout-shells.json` to check which shells apply to this screen
+2. Reads pre-built shell HTML fragments
+3. Skips Figma queries for shell sections — only queries content sections
+4. Composes: shells + content → full screen HTML
+
+### Output Files
+
+| File | Description |
+|------|-------------|
+| `layout-shells.json` | Shell definitions, screen-shell mapping, CSS offsets |
+| `preview/layouts/shells/{name}.html` | Self-contained HTML fragments per shell |
+
+### Benefits
+
+| Metric | Before (Phase 5 only) | After (5a + 5b) |
+|--------|----------------------|------------------|
+| Sidebar queries | N screens × ~100KB | 1 query × ~100KB |
+| Visual consistency | Each screen generates its own | Single source of truth |
+| Active nav state | Inconsistent | `data-screen` attribute, set per screen |
+| Total tokens (6 screens) | ~600KB sidebar data | ~100KB + 6 × tiny compose |
+
+### Limitation: Name-Based Matching
+
+Phase 5a uses Figma section name matching to detect shared shells. If a designer names the sidebar "left-panel" in one screen and "nav-container" in another, the match fails. Mitigations:
+
+1. **Position/dimension clustering**: Sections at the same position with the same dimensions are likely the same shell, even with different names. Phase 5a applies a 20px tolerance check.
+2. **Graceful fallback**: If a screen isn't in `screenShellMap` or has an empty shell list, Phase 5b falls back to full extraction (the pre-existing behavior).
+
+### Future: Vision-Based Shell Detection (Step 3, deferred)
+
+If name-based matching proves insufficient, a `detect-layout-shells.py` script can compare screenshot edge strips via SSIM (using Pillow/NumPy/scikit-image) to detect shared visual regions regardless of naming. This is deferred until actually needed — name matching works for well-structured Figma files.
+
+### Implementation Location
+
+- Created: `extract-shells.md` (Phase 5a agent prompt)
+- Updated: `extract-screen.md` (Phase 5b shell composition)
+- Updated: `extract-design.md` (orchestrator Phase 5a/5b split)
