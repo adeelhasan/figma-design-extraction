@@ -696,10 +696,7 @@ Configure `.claude/settings.json` with proper permission patterns upfront.
 
 ### Cache Directory Setup
 
-```bash
-mkdir -p design-system/.cache
-echo "design-system/.cache/" >> .gitignore
-```
+The cache directory is created automatically by `init-extraction.py` during pre-flight. The `.gitignore` already includes `design-system-latest` and cache patterns.
 
 ### Clean settings.local.json
 
@@ -722,3 +719,110 @@ After applying these changes, running `/extract-design` or `/sync` should:
 - ✓ Write to cache directory without prompts
 - ✓ Call Figma MCP tools without prompts
 - ✓ Run shell scripts without prompts
+
+---
+
+## Improvement 9: Screen Agents Must Use Asset Manifest for Images
+
+### Problem
+
+Screen extraction agents (Phase 5) generate HTML previews with gradient placeholder divs instead of referencing actual downloaded images from Phase 4b. The asset manifest (`assets/asset-manifest.json`) maps every image to its screen and section, but the `extract-screen.md` prompt never instructs agents to read it.
+
+### Impact
+
+- All avatars render as colored circles with initials instead of photos
+- All banners/backgrounds render as flat gradients instead of images
+- All illustrations render as "Project Image" text placeholders
+- Preview fidelity is significantly degraded
+
+### Solution
+
+Update `extract-screen.md` to:
+
+1. **Read asset manifest** at the start of screen extraction:
+   ```
+   Read ${OUTPUT_DIR}/assets/asset-manifest.json and filter for images where
+   usedIn[].screenName matches the current screen name.
+   ```
+
+2. **Wire image paths into HTML** using relative paths from `preview/layouts/` to `assets/images/`:
+   ```
+   ../../assets/images/{category}/{filename}.png
+   ```
+
+3. **Always include gradient fallback backgrounds** on image containers, since Figma API sometimes exports images at wrong dimensions (e.g., 44x44 thumbnails for 255x180 illustrations).
+
+### Additional Fix: Use `<link>` Tags Not `@import`
+
+Screen agents generate CSS token imports as `@import` inside `<style>` tags. This is unreliable on `file://` protocol. The prompt should specify:
+
+```html
+<!-- Use <link> tags in <head>, NOT @import inside <style> -->
+<link rel="stylesheet" href="../../tokens/colors.css">
+<link rel="stylesheet" href="../../tokens/typography.css">
+<link rel="stylesheet" href="../../tokens/spacing.css">
+<link rel="stylesheet" href="../../tokens/effects.css">
+```
+
+### Additional Fix: Don't Use CSS Grid for Fixed Sidebar Layouts
+
+Screen agents use `display: grid; grid-template-columns: 273px 1fr;` on the page layout, but the sidebar is `position: fixed`. Fixed elements are removed from grid flow, causing the main content to collapse into the first (narrow) grid column. The prompt should specify:
+
+```css
+/* DON'T: grid + fixed sidebar */
+.page-layout { display: grid; grid-template-columns: 273px 1fr; }
+.sidebar { position: fixed; }
+
+/* DO: simple margin offset for fixed sidebar */
+.page-layout { min-height: 100vh; }
+.sidebar { position: fixed; width: 250px; }
+.main-content { margin-left: 273px; }
+```
+
+### Implementation Location
+
+Update: `extract-screen.md` — add steps before HTML generation to read asset manifest and include asset paths.
+
+---
+
+## Improvement 10: Container-First Layout Alignment
+
+### Problem
+
+In the Billing HTML preview, the navbar's right edge doesn't align with the invoices card below it. This happens because the screen extraction agent maps each section to CSS grid columns independently using absolute bounding boxes, without recognizing that sections share a parent container with consistent padding. Alignment is implicit in Figma (same parent = same edges) but lost during extraction.
+
+### Root Cause
+
+Grid column calculations use absolute page coordinates as the denominator. Each row computes its own effective width independently, so rows with slightly different bounding boxes produce slightly different grid spans — breaking vertical edge alignment.
+
+### Solution
+
+Three targeted changes to `extract-screen.md` (no new scripts, agents, or pipeline phases):
+
+1. **Container detection in Step 2**: Before grid mapping, identify the content container (shared parent of non-sidebar, non-footer sections). Extract its padding from auto-layout properties or infer from child-to-container gaps.
+
+2. **`contentArea` schema field in Step 3**: Record the container's bounds, padding, and `effectiveWidth` (= width − left padding − right padding). All column span calculations use `effectiveWidth` as their denominator.
+
+3. **Alignment self-check in Verification**: For each row, verify that `sum(columnSpan × columnWidth + gaps) = contentArea.effectiveWidth`. Flag rows differing by >8px for re-examination.
+
+### Why This Works
+
+| Phase | Before | After |
+|-------|--------|-------|
+| **Extraction** | Each section gets independent grid columns from absolute bounds | All sections computed relative to shared `contentArea.effectiveWidth` |
+| **HTML Preview** | Navbar and cards have different effective widths | Shared `.main-content` container with consistent padding aligns edges |
+| **Build** (`/build-screen`) | Already wraps sections in container | No change needed — container padding naturally aligns children |
+
+### Why NOT Screenshot Comparison
+
+- Project history: "LLM verification consumed time/tokens but never fixed anything"
+- Requires headless browser dependency (Puppeteer/Playwright)
+- Container-based alignment is deterministic — no need to verify what's structurally guaranteed
+
+### Data Availability
+
+`figma-query.py` node summaries already expose `layoutMode`, `itemSpacing`, `paddingLeft`, `paddingRight`, `paddingTop`, `paddingBottom` for auto-layout frames. For non-auto-layout frames, the prompt instructs agents to infer padding from child-to-container gaps.
+
+### Implementation Location
+
+Updated: `extract-screen.md` — Step 2 (container detection), Step 3 (schema field), Verification (alignment check).
