@@ -1,13 +1,24 @@
 /* =================================================================
    Color Tokens
    Extracted from: Soft UI Dashboard Free (Community)
-   Generated: 2026-01-18
+   Generated: 2026-02-06
+   Source: design-system-context.json + Figma file analysis
    ================================================================= */
 
 :root {
-  /* ---------------------------------------------------------------
-     Primitives - Neutrals (Gray Scale)
-     --------------------------------------------------------------- */
+  /* ========== PRIMITIVE COLORS — GRAY SCALE ========== */
+  /* Light to dark progression (foundation for all semantic colors) */
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-400: #ced4da;
+  --gray-500: #adb5bd;
+  --gray-600: #8392ab;
+  --gray-700: #67748e;
+  --gray-800: #344767;
+  --gray-900: #141727;
+
+  /* Legacy gray naming (compatibility) */
   --color-gray-50: #fafafa;
   --color-gray-100: #f5f5f5;
   --color-gray-200: #f0f0f0;
@@ -20,9 +31,7 @@
   --color-gray-900: #252f40;
   --color-gray-950: #141414;
 
-  /* ---------------------------------------------------------------
-     Primitives - Slate (Blue-Gray)
-     --------------------------------------------------------------- */
+  /* ========== PRIMITIVES — SLATE (BLUE-GRAY) ========== */
   --color-slate-400: #8392ab;
   --color-slate-500: #6b7891;
   --color-slate-600: #67748e;
@@ -31,9 +40,7 @@
   --color-slate-900: #252f40;
   --color-slate-950: #141727;
 
-  /* ---------------------------------------------------------------
-     Primitives - Brand Colors
-     --------------------------------------------------------------- */
+  /* ========== PRIMITIVES — BRAND COLORS ========== */
   /* Pink/Magenta */
   --color-pink-500: #cb0c9f;
   --color-pink-600: #dc395f;
@@ -64,21 +71,18 @@
   --color-purple-500: #7928ca;
   --color-purple-600: #7000f2;
 
-  /* ---------------------------------------------------------------
-     Semantic Colors
-     --------------------------------------------------------------- */
+  /* ========== SEMANTIC COLORS ========== */
+  /* Intent-based colors: Use these in component logic */
   --color-primary: #cb0c9f;
   --color-primary-hover: #dc395f;
   --color-secondary: #8392ab;
   --color-info: #17c1e8;
   --color-success: #82d616;
-  --color-warning: #f53939;
+  --color-warning: #fbcf33;
   --color-danger: #ea0606;
   --color-error: #ea0606;
 
-  /* ---------------------------------------------------------------
-     Surface / Background Colors
-     --------------------------------------------------------------- */
+  /* ========== SURFACE / BACKGROUND COLORS ========== */
   --color-surface: #ffffff;
   --color-surface-secondary: #f8f9fa;
   --color-surface-elevated: #ffffff;
@@ -86,9 +90,8 @@
   --color-background: #f8f9fa;
   --color-background-sidebar: #ffffff;
 
-  /* ---------------------------------------------------------------
-     Text Colors
-     --------------------------------------------------------------- */
+  /* ========== TEXT COLORS ========== */
+  /* Text hierarchy: primary → secondary → muted */
   --color-text-primary: #252f40;
   --color-text-secondary: #67748e;
   --color-text-muted: #8392ab;
@@ -96,17 +99,13 @@
   --color-text-dark: #141414;
   --color-text-link: #cb0c9f;
 
-  /* ---------------------------------------------------------------
-     Border Colors
-     --------------------------------------------------------------- */
+  /* ========== BORDER COLORS ========== */
   --color-border: #d8d8d8;
   --color-border-light: #e9ecef;
   --color-border-muted: #f0f0f0;
   --color-border-input: #d2d6da;
 
-  /* ---------------------------------------------------------------
-     Status Colors (for badges, tags)
-     --------------------------------------------------------------- */
+  /* ========== STATUS COLORS (badges, tags) ========== */
   --color-status-online: #82d616;
   --color-status-offline: #8392ab;
   --color-status-working: #17c1e8;
@@ -114,9 +113,7 @@
   --color-status-cancelled: #67748e;
   --color-status-pending: #f53939;
 
-  /* ---------------------------------------------------------------
-     Brand / Social Colors
-     --------------------------------------------------------------- */
+  /* ========== BRAND / SOCIAL COLORS ========== */
   --color-facebook: #344e86;
   --color-twitter: #3ea1ec;
   --color-instagram: #e1306c;
@@ -129,19 +126,33 @@
   --color-jira: #2684ff;
   --color-apple: #000000;
 
-  /* ===========================================
-     GRADIENTS
-     =========================================== */
+  /* ========== GRADIENTS (All use 310deg angle) ========== */
+  /* Primary gradient: Purple to Pink (brand identity) */
   --gradient-primary: linear-gradient(310deg, #7928ca 0%, #ff0080 100%);
+
+  /* Secondary gradient: Gray-Blue to Slate (neutral alternative) */
   --gradient-secondary: linear-gradient(310deg, #627594 0%, #a8b8d8 100%);
+
+  /* Info gradient: Blue to Cyan (informational, secondary actions) */
   --gradient-info: linear-gradient(310deg, #2152ff 0%, #21d4fd 100%);
+
+  /* Success gradient: Lime to Green (positive feedback) */
   --gradient-success: linear-gradient(310deg, #17ad37 0%, #98ec2d 100%);
+
+  /* Warning gradient: Red to Yellow (caution) */
   --gradient-warning: linear-gradient(310deg, #f53939 0%, #fbcf33 100%);
+
+  /* Error gradient: Pink to Red (destructive, errors) */
   --gradient-danger: linear-gradient(310deg, #ea0606 0%, #ff667c 100%);
+  --gradient-error: linear-gradient(310deg, #ff667c 0%, #ea0606 100%);
+
+  /* Dark gradient: Navy to Blue-Gray (dark surfaces, sidebars) */
   --gradient-dark: linear-gradient(310deg, #141727 0%, #3a416f 100%);
+
+  /* Light gradient: Light gray accent (subtle backgrounds) */
   --gradient-light: linear-gradient(310deg, #ced4da 0%, #ebeff4 100%);
 
-  /* Card-specific gradients */
+  /* Card-specific gradients (component-scoped) */
   --gradient-card-primary: linear-gradient(310deg, #7928ca 0%, #ff0080 100%);
   --gradient-card-info: linear-gradient(310deg, #2152ff 0%, #21d4fd 100%);
   --gradient-card-dark: linear-gradient(310deg, #141727 0%, #3a416f 100%);
@@ -149,6 +160,6 @@
   /* Credit card gradient */
   --gradient-credit-card: linear-gradient(310deg, #141727 0%, #3a416f 100%);
 
-  /* Background wave gradient (for auth pages) */
+  /* Background wave gradient (for auth pages, hero sections) */
   --gradient-hero: linear-gradient(310deg, #141727 0%, #3a416f 100%);
 }

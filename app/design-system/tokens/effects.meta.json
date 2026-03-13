@@ -1,0 +1,49 @@
+{
+  "tokenType": "Effects",
+  "outputFile": "tokens/effects.css",
+  "extractedAt": "2026-03-11T15:10:00Z",
+  "statistics": {
+    "totalShadows": 7,
+    "totalBlurs": 2,
+    "totalRadii": 14,
+    "totalTokens": 23
+  },
+  "categories": {
+    "shadows": [
+      "--shadow-sm (0 2px 4px -1px rgba(0, 0, 0, 0.07))",
+      "--shadow-md (0 4px 6px -1px rgba(0, 0, 0, 0.12))",
+      "--shadow-lg (0 20px 27px rgba(0, 0, 0, 0.05))",
+      "--shadow-xl (0 5px 10px rgba(0, 0, 0, 0.12))",
+      "--shadow-2xl (0 10px 40px rgba(0, 0, 0, 0.30))",
+      "--shadow-2xl-soft (0 10px 16px rgba(0, 0, 0, 0.10))",
+      "--shadow-focus (0 0 0 2px rgba(226, 147, 211, 0.50))"
+    ],
+    "blurs": [
+      "--blur-sm (27.18px)",
+      "--blur-md (29.90px)"
+    ],
+    "radii": [
+      "--radius-1 (1.5px)",
+      "--radius-2 (3px)",
+      "--radius-sm (4px)",
+      "--radius-3 (6px)",
+      "--radius-md (8px)",
+      "--radius-4 (10.5px)",
+      "--radius-5 (12px)",
+      "--radius-lg (16px)",
+      "--radius-6 (17px)",
+      "--radius-7 (18px)",
+      "--radius-8 (20px)",
+      "--radius-xl (24px)",
+      "--radius-full (35px)",
+      "--radius-DEFAULT (8px, semantic alias)"
+    ]
+  },
+  "notes": {
+    "shadowPattern": "Soft UI design system uses multi-layer shadows for subtle depth. Consistent with design-system-context.json shadowStyle definition.",
+    "radiusPattern": "Extracted 14 unique radius values from design system. Includes semantic aliases for common sizes (DEFAULT=8px, sm=4px, md=8px, lg=16px, xl=24px, full=35px).",
+    "focusShadow": "Focus ring uses primary color overlay (rgba(226, 147, 211, 0.50)) matching magenta accent theme.",
+    "blurs": "Two backdrop blur values detected from sidebar and floating elements. Values are precise Figma measurements (rounded to 2 decimals)."
+  },
+  "warnings": []
+}

@@ -202,6 +202,75 @@ Optimizations 3 and 4 (strip tools, direct API calls) reduce token count — but
 
 ---
 
+## 12. Give agents the artifact, not a description of the artifact
+
+When generating React screens from extracted design data, the first approach gave agents natural-language prompts paraphrased from the markdown specs: "The billing page has a credit card section on the left, invoices on the right…" The agents interpreted these descriptions loosely and produced layouts that diverged from the design — flex directions were wrong, grid rows were missing, component structures were guessed.
+
+The fix was to give agents the **actual HTML preview files** as primary input and instruct them to **translate** rather than **interpret**. Reading `preview/layouts/Billing.html` directly and converting its CSS grid/flex to React produced far more faithful output than reasoning from a prose summary.
+
+| Input type | Fidelity | Failure mode |
+|---|---|---|
+| Prose description of layout | Low | Agent "interprets" — invents structure |
+| Markdown spec with CSS snippets | Medium | Agent paraphrases CSS — loses grid-template-rows, row spans |
+| HTML+CSS source file | High | Agent translates — preserves structure verbatim |
+
+**Rule:** If a machine-readable artifact exists (HTML, JSON schema, SQL DDL), give the agent that artifact directly. Natural-language summaries are lossy — every paraphrasing step is a chance for the LLM to drift.
+
+---
+
+## 13. CSS grid templates must be copied verbatim — not "approximated"
+
+Grid layouts depend on exact values: `grid-template-rows: 245px 205px auto`, `grid-row: 1 / 3`. When agents received these as prose ("the invoices section spans two rows"), they dropped the explicit row heights and row spans. The result: sections that should overlap or span multiple rows collapsed into single-row layouts.
+
+**What broke (v1):**
+- Billing: credit cards rendered vertically (column) instead of horizontally (row) — agent defaulted to column when the spec said "three cards"
+- Billing: invoices didn't span rows 1-2 — `grid-row: 1 / 3` was lost in paraphrasing
+- Billing: `grid-template-rows: 245px 205px auto` was omitted — all rows collapsed to auto height
+- Tables: both tables rendered without card containers — agent skipped wrapper styling
+
+**What fixed it:** The updated `/build-screen` skill now requires agents to read the CSS Grid Template section from the spec and use it verbatim as inline styles. No interpretation, no Tailwind approximation.
+
+**Rule:** Structural CSS (grid templates, explicit dimensions, row/column spans) is code, not guidance. Treat it like an API contract — copy it exactly.
+
+---
+
+## 14. Layer your reference hierarchy for code generation
+
+A single source of truth sounds clean in theory, but design-to-code translation benefits from multiple references read in a specific order, each serving a different purpose:
+
+```
+1. HTML preview     → Structure (grid, flex, nesting)
+2. Data JSON        → Content (labels, values, dates — no inventing)
+3. Markdown spec    → Semantics (component descriptions, token mappings)
+4. Screenshot       → Visual intent (tie-breaker when sources disagree)
+5. Existing components → Reuse (Button, Input, Checkbox from components/ui/)
+```
+
+Each layer constrains a different failure mode:
+- Without the HTML, agents guess structure
+- Without the data JSON, agents invent placeholder content
+- Without the screenshot, subtle visual issues go unnoticed
+- Without existing components, agents rebuild primitives inline
+
+**Rule:** When translating between representations (design → code), give agents a ranked reference stack, not a single document. Each layer catches errors the others miss.
+
+---
+
+## 15. Parallel screen generation works when screens are independent
+
+Building 6 screens (Dashboard, Billing, Tables, Profile, SignIn, SignUp) ran as 6 parallel agents. Each agent reads its own HTML preview, data JSON, and spec — no shared mutable state. All 6 completed successfully in parallel.
+
+This works because:
+- Each screen's inputs are independent files
+- Shared components (DashboardLayout, Input, Checkbox) are read-only
+- No screen depends on another screen's output
+
+It would **not** work if screens shared state, wrote to common files, or needed outputs from each other. The lesson from #10 (parallelize independent work) extends directly to code generation.
+
+**Rule:** Code generation parallelizes cleanly when the dependency graph is a forest (independent trees), not a DAG. Shared read-only dependencies (layout shells, UI components) are fine — shared writes are not.
+
+---
+
 ## Related Documents
 
 - [Cost Reduction Plan](./cost-reduction-by-minimizing-turns.md) — detailed implementation of steps 1-3

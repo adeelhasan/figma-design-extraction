@@ -1,0 +1,130 @@
+{
+  "$schema": "design-system-context-v1",
+  "figmaFile": "Soft UI Dashboard Free (Community)",
+  "designSystemType": "soft-ui",
+  "confidence": 0.95,
+
+  "semanticColors": {
+    "primary": {
+      "hex": "#cb0c9f",
+      "role": "Brand primary, used in CTAs and accents",
+      "source": "Button gradient end-stop, frequent accent color (39 uses)"
+    },
+    "secondary": {
+      "hex": "#8392ab",
+      "role": "Secondary text, muted labels, borders",
+      "source": "High-frequency gray-blue (116 uses)"
+    },
+    "success": {
+      "hex": "#82d616",
+      "role": "Success states, positive indicators",
+      "source": "Green accent color (23 uses)"
+    },
+    "warning": {
+      "hex": "#fbcf33",
+      "role": "Warning states, caution indicators",
+      "source": "Yellow gradient stop"
+    },
+    "error": {
+      "hex": "#ea0606",
+      "role": "Error states, destructive actions",
+      "source": "Red color (8 uses), gradient stop"
+    },
+    "info": {
+      "hex": "#17c1e8",
+      "role": "Informational states, links, cyan accent",
+      "source": "Cyan accent (3 uses)"
+    }
+  },
+
+  "gradientRules": {
+    "primaryAngle": "310deg",
+    "semanticMapping": {
+      "gradient-primary": {
+        "angle": "310deg",
+        "stops": ["#7928ca", "#ff0080"],
+        "usage": "Primary buttons, accent elements, CTAs"
+      },
+      "gradient-info": {
+        "angle": "310deg",
+        "stops": ["#21d4fd", "#2152ff"],
+        "usage": "Info cards, secondary buttons"
+      },
+      "gradient-success": {
+        "angle": "310deg",
+        "stops": ["#98ec2d", "#17ad37"],
+        "usage": "Success states, positive cards"
+      },
+      "gradient-warning": {
+        "angle": "310deg",
+        "stops": ["#fbcf33", "#f53939"],
+        "usage": "Warning states"
+      },
+      "gradient-error": {
+        "angle": "310deg",
+        "stops": ["#ff667c", "#ea0606"],
+        "usage": "Error states, destructive"
+      },
+      "gradient-dark": {
+        "angle": "310deg",
+        "stops": ["#141727", "#3a416f"],
+        "usage": "Dark backgrounds, sidebar, dark cards"
+      }
+    }
+  },
+
+  "grayScaleConvention": "light-to-dark",
+  "grayScaleMapping": {
+    "gray-100": "#f8f9fa",
+    "gray-200": "#e9ecef",
+    "gray-300": "#dee2e6",
+    "gray-400": "#ced4da",
+    "gray-500": "#adb5bd",
+    "gray-600": "#8392ab",
+    "gray-700": "#67748e",
+    "gray-800": "#344767",
+    "gray-900": "#141727"
+  },
+
+  "shadowStyle": {
+    "mode": "multi-layer",
+    "signature": "0 2px 4px -1px rgba(0,0,0,0.07), 0 4px 6px -1px rgba(0,0,0,0.12)",
+    "softVariant": "0 20px 27px 0 rgba(0,0,0,0.05)"
+  },
+
+  "surfaceColors": {
+    "background": "#f8f9fa",
+    "card": "#ffffff",
+    "sidebar": "gradient-dark",
+    "input-border": "#d2d6da"
+  },
+
+  "extractionHints": {
+    "colorMatching": { "tolerance": 5 },
+    "gradientMatching": { "angleTolerance": 10 },
+    "surfaces": {
+      "glassmorphicElements": ["sidebar"],
+      "backdropBlur": "10px"
+    },
+    "radius": {
+      "cardRadius": "16px",
+      "buttonRadius": "8px",
+      "inputRadius": "8px",
+      "pillRadius": "100px"
+    }
+  },
+
+  "metadata": {
+    "createdAt": "2026-02-06T08:40:00Z",
+    "screenshotsAnalyzed": 3,
+    "indicators": [
+      "Multi-layer shadows on cards (2px+4px combo)",
+      "310deg gradient on primary buttons (#7928ca → #ff0080)",
+      "Magenta primary (#cb0c9f)",
+      "Dark sidebar with gradient (#141727 → #3a416f)",
+      "Light gray background (#f8f9fa)",
+      "Soft rounded cards (16px radius)",
+      "Creative Tim Soft UI Dashboard family"
+    ]
+  }
+}

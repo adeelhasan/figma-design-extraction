@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1440">
+  <title>SignUp - Layout Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    @import '../../tokens/colors.css';
+    @import '../../tokens/typography.css';
+    @import '../../tokens/spacing.css';
+    @import '../../tokens/effects.css';
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-family-primary);
+      background: var(--color-background);
+      color: var(--color-text-primary);
+      width: 1440px;
+      min-height: 1252px;
+      position: relative;
+    }
+
+    /* ── Hero Section ── */
+    .hero-section {
+      position: relative;
+      width: 1408px;
+      height: 549px;
+      margin: 16px auto 0;
+      border-radius: 12px;
+      overflow: hidden;
+      background-image: url('../../assets/images/photos/bg-signup.png');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-dark);
+      opacity: 0.75;
+      border-radius: 12px;
+    }
+
+    .hero-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 48px;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-family: var(--font-family-primary);
+      font-size: 3rem; /* 48px */
+      font-weight: var(--font-weight-bold);
+      color: var(--color-surface);
+      letter-spacing: -0.083em;
+      line-height: 1.17;
+      text-align: center;
+      margin-bottom: var(--spacing-3);
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-regular);
+      color: var(--color-surface);
+      text-align: center;
+      max-width: 480px;
+      line-height: 1.5625;
+      letter-spacing: -0.025em;
+    }
+
+    /* ── Form Card ── */
+    .form-card {
+      position: relative;
+      width: 409px;
+      margin: -172px auto 0;
+      background: var(--color-surface);
+      border-radius: 12px;
+      box-shadow: 0px 20px 27px rgba(0, 0, 0, 0.05);
+      padding: var(--spacing-8) var(--spacing-6);
+      z-index: 2;
+    }
+
+    .form-heading {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      text-align: center;
+      margin-bottom: var(--spacing-4);
+      letter-spacing: -0.031em;
+    }
+
+    /* Social Buttons Row */
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-2);
+      margin-bottom: var(--spacing-4);
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 76px;
+      height: 56px;
+      background: rgba(255, 255, 255, 0.20);
+      border: 1px solid var(--color-text-secondary);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .social-btn svg,
+    .social-btn img {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* OR separator */
+    .separator {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      margin-bottom: var(--spacing-4);
+    }
+
+    .separator-line {
+      flex: 1;
+      height: 1px;
+      background: var(--color-border);
+    }
+
+    .separator-text {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-secondary);
+    }
+
+    /* Inputs */
+    .input-group {
+      margin-bottom: var(--spacing-3);
+    }
+
+    .input-field {
+      width: 100%;
+      height: 40px;
+      padding: 0 var(--spacing-3);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-regular);
+      color: var(--color-text-primary);
+      background: var(--color-surface);
+      border: 1px solid var(--color-divider);
+      border-radius: 6px;
+      outline: none;
+    }
+
+    .input-field.active {
+      border: 1px solid #e293d3;
+      box-shadow: 0 0 0 2px rgba(226, 147, 211, 0.50);
+    }
+
+    .input-field::placeholder {
+      color: var(--color-text-primary);
+      font-size: var(--font-size-sm);
+    }
+
+    .input-field.active::placeholder {
+      color: var(--color-text-primary);
+    }
+
+    .input-field.muted::placeholder {
+      color: var(--color-divider);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    /* Checkbox row */
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      margin-bottom: var(--spacing-4);
+    }
+
+    .checkbox-box {
+      width: 20px;
+      height: 20px;
+      background: var(--color-text-primary);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .checkbox-box i {
+      width: 10px;
+      height: 10px;
+      color: var(--color-surface);
+    }
+
+    .checkbox-label {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-regular);
+      color: var(--color-text-primary);
+    }
+
+    .checkbox-label a {
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-primary);
+      text-decoration: none;
+    }
+
+    /* Submit Button */
+    .submit-btn {
+      display: block;
+      width: 100%;
+      height: 40px;
+      background: var(--gradient-dark);
+      border: none;
+      border-radius: var(--radius-md);
+      box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.07), 0px 4px 6px -1px rgba(0, 0, 0, 0.12);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-surface);
+      text-transform: uppercase;
+      letter-spacing: -0.025em;
+      cursor: pointer;
+      margin-bottom: var(--spacing-4);
+    }
+
+    /* Footer signin link */
+    .form-footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--spacing-1);
+    }
+
+    .form-footer-text {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-regular);
+      color: var(--color-text-secondary);
+    }
+
+    .form-footer-link {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-primary);
+      text-decoration: none;
+    }
+
+    /* ── Page wrapper (below hero + form overlap) ── */
+    .page-body {
+      background: var(--color-background);
+      padding-top: calc(172px + 549px + 32px); /* hero overlap offset + card height + gap */
+      padding-bottom: 0;
+    }
+
+    /* Active nav state for Sign Up */
+    [data-screen="Sign Up"] {
+      color: white !important;
+      font-weight: var(--font-weight-bold) !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Shell: navbar-auth -->
+  <!-- Shell: navbar-auth | Source: Sign Up -->
+<header class="shell-navbar-auth" style="
+  position: sticky;
+  top: 0;
+  height: 34px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius-pill);
+  margin: var(--spacing-4) var(--spacing-8);
+  padding: 0 var(--spacing-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 50;
+  box-shadow: var(--shadow-lg);
+">
+  <!-- Brand Name -->
+  <span style="
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: white;
+  ">Soft UI Dashboard</span>
+
+  <!-- Nav Links -->
+  <nav style="display: flex; align-items: center; gap: var(--spacing-4);">
+    <a href="#" data-screen="Dashboard-sidebar transparent" style="
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+      text-decoration: none;
+      color: rgba(255,255,255,0.85);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-regular);
+    ">
+      <i data-lucide="layout-dashboard" style="width: 12px; height: 12px;"></i>
+      Dashboard
+    </a>
+    <a href="#" data-screen="Profile" style="
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+      text-decoration: none;
+      color: rgba(255,255,255,0.85);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-regular);
+    ">
+      <i data-lucide="user" style="width: 12px; height: 12px;"></i>
+      Profile
+    </a>
+    <a href="#" data-screen="Sign Up" style="
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+      text-decoration: none;
+      color: white;
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-bold);
+    ">
+      <i data-lucide="user-plus" style="width: 12px; height: 12px;"></i>
+      Sign Up
+    </a>
+    <a href="#" data-screen="Sign In" style="
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+      text-decoration: none;
+      color: rgba(255,255,255,0.85);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-regular);
+    ">
+      <i data-lucide="calendar" style="width: 12px; height: 12px;"></i>
+      Sign In
+    </a>
+  </nav>
+
+  <!-- Free Download Button -->
+  <a href="#" style="
+    display: inline-flex;
+    align-items: center;
+    padding: var(--spacing-1) var(--spacing-3);
+    background: white;
+    color: var(--color-dark);
+    font-family: var(--font-family-primary);
+    font-size: 0.625rem;
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  ">FREE DOWNLOAD</a>
+</header>
+
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Sign Up</h1>
+      <p class="hero-subtitle">Use these awesome forms to login or create new account in your project for free.</p>
+    </div>
+  </div>
+
+  <!-- Registration Form Card (overlaps hero bottom) -->
+  <div class="form-card">
+    <h5 class="form-heading">Register with</h5>
+
+    <!-- Social Buttons -->
+    <div class="social-buttons">
+      <!-- Facebook -->
+      <a href="#" class="social-btn" aria-label="Sign up with Facebook">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#3350873">
+          <path fill="#344e86" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      </a>
+      <!-- Apple -->
+      <a href="#" class="social-btn" aria-label="Sign up with Apple">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#000000">
+          <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/>
+        </svg>
+      </a>
+      <!-- Google -->
+      <a href="#" class="social-btn" aria-label="Sign up with Google">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M23.745 12.27c0-.79-.07-1.54-.19-2.27h-11.3v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/>
+          <path fill="#34A853" d="M12.255 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96h-3.98v3.09C3.515 21.3 7.565 24 12.255 24z"/>
+          <path fill="#FBBC05" d="M5.525 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62h-3.98a11.86 11.86 0 000 10.76l3.98-3.09z"/>
+          <path fill="#EA4335" d="M12.255 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C18.205 1.19 15.495 0 12.255 0c-4.69 0-8.74 2.7-10.71 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- OR separator -->
+    <div class="separator">
+      <div class="separator-line"></div>
+      <span class="separator-text">or</span>
+      <div class="separator-line"></div>
+    </div>
+
+    <!-- Input Fields -->
+    <div class="input-group">
+      <input
+        type="text"
+        class="input-field active"
+        placeholder="Name"
+        aria-label="Name"
+      >
+    </div>
+    <div class="input-group">
+      <input
+        type="email"
+        class="input-field muted"
+        placeholder="Email"
+        aria-label="Email"
+      >
+    </div>
+    <div class="input-group" style="margin-bottom: var(--spacing-4);">
+      <input
+        type="password"
+        class="input-field muted"
+        placeholder="Password"
+        aria-label="Password"
+      >
+    </div>
+
+    <!-- Checkbox -->
+    <div class="checkbox-row">
+      <div class="checkbox-box">
+        <i data-lucide="check" style="width: 10px; height: 10px; color: white;"></i>
+      </div>
+      <span class="checkbox-label">
+        I agree the <a href="#">Terms and Conditions</a>
+      </span>
+    </div>
+
+    <!-- Submit Button -->
+    <button class="submit-btn">SIGN UP</button>
+
+    <!-- Footer sign-in link -->
+    <div class="form-footer">
+      <span class="form-footer-text">Already have an account?</span>
+      <a href="#" class="form-footer-link">Sign In</a>
+    </div>
+  </div>
+
+  <!-- Spacer between form card bottom and footer -->
+  <div style="height: 64px;"></div>
+
+  <!-- Shell: footer-auth -->
+  <!-- Shell: footer-auth | Source: Sign Up -->
+<footer class="shell-footer-auth" style="
+  width: 100%;
+  padding: var(--spacing-8) var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+  background: transparent;
+">
+  <!-- Social Icons Row -->
+  <div style="display: flex; align-items: center; gap: var(--spacing-4);">
+    <a href="#" aria-label="Instagram" style="
+      color: var(--color-secondary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--color-surface);
+      box-shadow: var(--shadow-sm);
+    ">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+    </a>
+    <a href="#" aria-label="Twitter" style="
+      color: var(--color-secondary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--color-surface);
+      box-shadow: var(--shadow-sm);
+    ">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+      </svg>
+    </a>
+    <a href="#" aria-label="Pinterest" style="
+      color: var(--color-secondary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--color-surface);
+      box-shadow: var(--shadow-sm);
+    ">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+      </svg>
+    </a>
+    <a href="#" aria-label="GitHub" style="
+      color: var(--color-secondary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--color-surface);
+      box-shadow: var(--shadow-sm);
+    ">
+      <i data-lucide="github" style="width: 14px; height: 14px;"></i>
+    </a>
+  </div>
+
+  <!-- Footer Links -->
+  <nav style="display: flex; flex-wrap: wrap; justify-content: center; gap: var(--spacing-4);">
+    <span style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-secondary);
+      font-weight: var(--font-weight-semibold);
+    ">Company</span>
+    <a href="#" style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-secondary);
+      text-decoration: none;
+    ">About Us</a>
+    <a href="#" style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-secondary);
+      text-decoration: none;
+    ">Team</a>
+    <a href="#" style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-secondary);
+      text-decoration: none;
+    ">Products</a>
+    <a href="#" style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-secondary);
+      text-decoration: none;
+    ">Blog</a>
+    <a href="#" style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-secondary);
+      text-decoration: none;
+    ">Pricing</a>
+  </nav>
+
+  <!-- Copyright -->
+  <p style="
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-2xs);
+    color: var(--color-secondary);
+    margin: 0;
+    text-align: center;
+  ">Copyright &#169; 2021 Soft by Creative Tim.</p>
+</footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    });
+  </script>
+</body>
+</html>

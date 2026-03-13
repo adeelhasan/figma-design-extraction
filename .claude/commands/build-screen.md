@@ -1,17 +1,19 @@
 # Build Screen from Layout Spec
 
-Build a complete screen/page from layout specifications using generated components.
+Build a complete screen/page by translating the extracted HTML preview into a React component.
 
 ## Usage
 
 ```
 /build-screen <screen-name> [--path <output-path>]
+/build-screen --all
 ```
 
 ## Arguments
 
-- `screen-name` (required): Name of layout from `specs/layouts.md` (Dashboard, Login, Analytics)
-- `--path` (optional): Output path (default: auto-detect app router location)
+- `screen-name` (required unless `--all`): Name of layout (Dashboard, Billing, Profile, Tables, SignIn, SignUp)
+- `--all`: Build all screens found in `design-system/specs/layouts/`
+- `--path` (optional): Output path (default: `src/app/[screen]/page.tsx`)
 
 ## Prerequisites
 
@@ -20,148 +22,101 @@ Build a complete screen/page from layout specifications using generated componen
 
 ## Process
 
-1. **Load layout specification**
-   - Read from `design-system/specs/layouts.md`
-   - Get structure, sections, component placement
+### Step 1: Gather all references
 
-2. **Identify required components**
-   - Parse layout sections
-   - Map to generated components from `src/components/ui/`
+For screen `{Name}`, read these files **in this order**:
 
-3. **Generate page code**
-   - Create React page component
-   - Import generated UI components
-   - Build layout structure matching spec
-   - Use design tokens for spacing/styling
+1. **`design-system/preview/layouts/{Name}.html`** — PRIMARY REFERENCE. This is the framework-neutral HTML+CSS that faithfully represents the Figma extraction. The agent's job is to **translate** this HTML/CSS into React+Tailwind, preserving structure and styles exactly.
 
-4. **Generate mock data**
-   - Create sample data for KPI cards, tables, charts
-   - Output to `src/lib/mock-data.ts`
+2. **`design-system/preview/layouts/data/{Name}.json`** — Exact data values for all sections (labels, amounts, dates, names). Use these values verbatim. Do not invent data.
 
-5. **Output**
-   - Write page to `src/app/[screen]/page.tsx` (Next.js App Router)
-   - Or `src/pages/[screen].tsx` (Pages Router / other frameworks)
+3. **`design-system/specs/layouts/{Name}.md`** — Component descriptions, token mappings, and the CSS Grid Template. The `## CSS Grid Template` section contains exact CSS that must be preserved in the React output.
 
-## Available Screens
+4. **`design-system/preview/layouts/screenshots/{Name}.png`** — Visual reference. View this to understand the intended visual result.
 
-From `specs/layouts.md`:
+5. **`design-system/layout-shells.json`** — Determines which shell layout to use (DashboardLayout vs AuthLayout).
 
-| Screen | Description |
-|--------|-------------|
-| Dashboard | Main dashboard with KPIs, tabs, charts, data table |
-| Analytics | Data visualization focused layout |
-| Login | Authentication/login form layout |
+6. **Existing UI components in `src/components/ui/`** — Use these where they match (Button, Input, Checkbox).
 
-## Generated Code Structure
+### Step 2: Determine layout wrapper
 
-```tsx
-// src/app/dashboard/page.tsx
-import { Sidebar, Header, KPICard, TabList, ChartCard, DataTable } from '@/components/ui';
-import { dashboardData, kpiData, tableData } from '@/lib/mock-data';
+From `layout-shells.json`, check `screenShellMap`:
+- If screen uses `sidebar + navbar + footer` → wrap in `DashboardLayout`
+- If screen uses `navbar-auth + footer-auth` → use auth layout pattern (AuthNavbar + AuthFooter)
 
-export default function DashboardPage() {
-  return (
-    <div className="flex min-h-screen" style={{ gap: 'var(--spacing-2-5)' }}>
-      {/* Sidebar - 258px fixed */}
-      <Sidebar />
+### Step 3: Translate HTML to React
 
-      {/* Main Content */}
-      <main className="flex-1 flex flex-col" style={{ gap: 'var(--spacing-6)' }}>
-        {/* Header - 84px */}
-        <Header title="Dashboard" />
+Convert the HTML preview to React/JSX:
 
-        {/* KPI Cards Row - 150px */}
-        <section className="flex" style={{ gap: 'var(--spacing-6)' }}>
-          {kpiData.map((kpi) => (
-            <KPICard key={kpi.id} {...kpi} />
-          ))}
-        </section>
+**CSS Grid Template — copy verbatim.** The `## CSS Grid Template` section in the markdown spec contains exact grid-template-columns, grid-template-rows, grid-column, and grid-row values. Use these as inline styles or Tailwind classes. Do not approximate or simplify the grid. Example:
 
-        {/* Tab Navigation */}
-        <TabList
-          tabs={['Overview', 'Revenue', 'Pipeline', 'Team', 'Product']}
-          defaultTab="Overview"
-        />
-
-        {/* Charts Section */}
-        <section className="grid grid-cols-2" style={{ gap: 'var(--spacing-6)' }}>
-          <ChartCard title="Revenue Trend" />
-          <ChartCard title="Pipeline Status" />
-        </section>
-
-        {/* Data Table */}
-        <DataTable data={tableData} />
-      </main>
-    </div>
-  );
+```css
+/* From the spec — use these values exactly */
+.main-content {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 245px 205px auto;
+  gap: 24px;
 }
+.section-credit-card   { grid-column: 1 / 8;  grid-row: 1 / 2; display: flex; gap: var(--spacing-4); }
+.section-invoices      { grid-column: 8 / 13; grid-row: 1 / 3; }
 ```
+
+**Flex directions and internal layout — match the HTML.** If the HTML preview uses `display: flex` with no `flex-direction` (defaults to row), keep it as row. If it uses `flex-direction: column`, use column. Do not guess.
+
+**Token usage — preserve exactly.** The HTML preview uses `var(--color-*)`, `var(--gradient-*)`, `var(--spacing-*)` etc. Carry these through. Do not replace tokens with hardcoded values or Tailwind approximations.
+
+**Data — use the JSON file.** Read `data/{Name}.json` for all labels, values, dates, amounts. Use these exactly.
+
+**Images — use `/images/` paths.** Photo assets are in `public/images/`. Reference them as `/images/{filename}.png`.
+
+### Step 4: Visual verification (human-in-loop)
+
+After writing the page file:
+
+1. Tell the user the screen has been built
+2. Ask: "Would you like me to screenshot this page and compare it against the Figma extraction?"
+3. If yes:
+   - Use Playwright to screenshot: `npx playwright screenshot --browser chromium --viewport-size 1440,2000 --full-page http://localhost:3001/{route} /tmp/screen-{name}.png`
+   - Show both images (the screenshot and `design-system/preview/layouts/screenshots/{Name}.png`) to the user
+   - Ask: "Here's the current build vs. the Figma extraction. Want me to adjust anything?"
+4. The user decides whether to iterate or move on. Do not loop automatically.
+
+## Key Rules
+
+1. **The HTML preview is the source of truth for layout structure.** Read it first, translate it faithfully.
+2. **The CSS Grid Template from the spec must be used verbatim.** Grid column/row placements, template-rows definitions, and explicit row heights are critical for multi-row spanning and section sizing.
+3. **The data JSON is the source of truth for content.** Do not invent labels, amounts, or dates.
+4. **The screenshot is the source of truth for visual intent.** If the HTML and spec disagree with what the screenshot shows, match the screenshot.
+5. **Use existing UI components** from `src/components/ui/` where they match (Button, Input, Checkbox). Build other widgets inline.
+6. **All styling must use design tokens** — never hardcode colors, spacing, or effects.
 
 ## Example
 
 ```
-/build-screen Dashboard
+/build-screen Billing
 
-Loading layout specification...
-✓ Found Dashboard in specs/layouts.md
+Loading references...
+✓ Read preview/layouts/Billing.html (primary layout reference)
+✓ Read preview/layouts/data/Billing.json (data values)
+✓ Read specs/layouts/Billing.md (spec + CSS grid template)
+✓ Viewed preview/layouts/screenshots/Billing.png (visual reference)
+✓ Shell map: sidebar + navbar + footer → DashboardLayout
 
-Layout structure:
-- Sidebar (258px fixed)
-- Content area:
-  - Header (84px)
-  - KPI Cards Row (150px, 4-5 cards)
-  - Tab Navigation (36px)
-  - Charts Section (396px)
-  - Data Table (flexible)
+Translating to React...
+✓ Created src/app/billing/page.tsx
+  - 12-column grid with explicit row heights (245px, 205px, auto)
+  - Credit card group: horizontal flex (dark card + salary + paypal)
+  - Invoices: spans rows 1-2 (grid-row: 1 / 3)
+  - Payment method: cols 1-7, row 2
+  - Billing info: cols 1-8, row 3
+  - Transactions: cols 9-12, row 3
 
-Required components:
-✓ Sidebar - found in src/components/ui/
-✓ Header - found in src/components/ui/
-✓ KPICard - found in src/components/ui/
-✓ TabList - found in src/components/ui/
-✓ ChartCard - found in src/components/ui/
-✓ DataTable - found in src/components/ui/
-
-Generating page...
-✓ Created src/app/dashboard/page.tsx
-✓ Updated src/lib/mock-data.ts
-
-Dashboard page created!
-
-To view:
-1. Run `npm run dev`
-2. Navigate to http://localhost:3000/dashboard
-
-The page matches the layout specification exactly:
-- Sidebar + Content structure
-- Correct spacing (--spacing-6 between sections)
-- All components use design tokens
+Would you like me to screenshot and compare against the extraction? [y/n]
 ```
-
-## Options
-
-### Preview only
-```
-/build-screen Dashboard --preview
-```
-Shows generated code without creating files
-
-### With routing
-```
-/build-screen Dashboard --with-routing
-```
-Also updates navigation/routing files
-
-### Minimal (no mock data)
-```
-/build-screen Login --minimal
-```
-Generates page without mock data
 
 ## Notes
 
-- Uses generated components from `/gen-component`
-- All styling uses design tokens
-- Mock data is clearly separated for easy replacement
-- Responsive considerations from layout spec are included
-- Page structure matches spec exactly
+- The HTML previews are the closest representation of the Figma design — they were generated directly from the extraction pipeline
+- Chart placeholders are expected — actual chart libraries (recharts, chart.js) can be added later
+- The verification step is optional and human-driven — no automated convergence loop

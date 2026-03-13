@@ -1,0 +1,117 @@
+{
+  "$schema": "semantic-layout-v1",
+  "screen": "Billing",
+  "figmaFrameId": "0:2136",
+  "dimensions": { "width": 1440, "height": 1204, "viewport": "desktop" },
+  "shells": ["sidebar", "navbar", "footer"],
+  "contentArea": {
+    "bounds": { "x": 248, "y": 45, "width": 1160, "height": 1139 },
+    "padding": { "left": 24, "right": 24, "top": 24, "bottom": 24 },
+    "effectiveWidth": 1112
+  },
+  "grid": { "columns": 12, "gap": 24, "margin": { "left": 24, "right": 24 } },
+  "rows": [
+    {
+      "id": "row-1",
+      "y": 69,
+      "height": 245,
+      "description": "Top row: credit card + salary card + paypal card (left ~7 cols) | invoices (right ~5 cols, spans rows 1-2)",
+      "children": [
+        {
+          "id": "section-credit-card",
+          "name": "credit card",
+          "figmaId": "0:2138",
+          "gridColumn": "1 / 8",
+          "gridRow": "1 / 2",
+          "columnSpan": 7,
+          "rowSpan": 1,
+          "bounds": { "x": 0, "y": 0, "width": 824, "height": 245 },
+          "pattern": "credit-card-group",
+          "description": "Dark gradient credit card + Salary mini-card + Paypal mini-card"
+        },
+        {
+          "id": "section-invoices",
+          "name": "invoices",
+          "figmaId": "0:2214",
+          "gridColumn": "8 / 13",
+          "gridRow": "1 / 3",
+          "columnSpan": 5,
+          "rowSpan": 2,
+          "bounds": { "x": 848, "y": 0, "width": 406, "height": 433 },
+          "pattern": "list",
+          "description": "Invoices list with VIEW ALL button, spans rows 1 and 2"
+        }
+      ]
+    },
+    {
+      "id": "row-2",
+      "y": 338,
+      "height": 205,
+      "description": "Payment method section (left ~7 cols), invoices continues (right ~5 cols)",
+      "children": [
+        {
+          "id": "section-payment-method",
+          "name": "payment-metod",
+          "figmaId": "0:2188",
+          "gridColumn": "1 / 8",
+          "gridRow": "2 / 3",
+          "columnSpan": 7,
+          "rowSpan": 1,
+          "bounds": { "x": 0, "y": 245, "width": 787, "height": 205 },
+          "pattern": "payment-cards",
+          "description": "Saved payment cards (Mastercard + Visa) with ADD NEW CARD button"
+        }
+      ]
+    },
+    {
+      "id": "row-3",
+      "y": 567,
+      "height": 615,
+      "description": "Bottom row: Billing Information (left ~8 cols) + Your Transactions (right ~4 cols)",
+      "children": [
+        {
+          "id": "section-billing-info",
+          "name": "billing info",
+          "figmaId": "0:2250",
+          "gridColumn": "1 / 9",
+          "gridRow": "3 / 4",
+          "columnSpan": 8,
+          "rowSpan": 1,
+          "bounds": { "x": 0, "y": 458, "width": 689, "height": 615 },
+          "pattern": "billing-cards-list",
+          "description": "Three billing information cards with name, company, email, VAT; EDIT/DELETE actions"
+        },
+        {
+          "id": "section-your-transaction",
+          "name": "your transaction",
+          "figmaId": "0:2310",
+          "gridColumn": "9 / 13",
+          "gridRow": "3 / 4",
+          "columnSpan": 4,
+          "rowSpan": 1,
+          "bounds": { "x": 713, "y": 458, "width": 499, "height": 615 },
+          "pattern": "transaction-list",
+          "description": "Transactions grouped by NEWEST and YESTERDAY with amounts"
+        }
+      ]
+    }
+  ],
+  "sections": {
+    "order": [
+      "section-credit-card",
+      "section-invoices",
+      "section-payment-method",
+      "section-billing-info",
+      "section-your-transaction"
+    ]
+  },
+  "css": {
+    "gridTemplate": "grid-template-columns: repeat(12, 1fr); grid-template-rows: 245px 205px 615px; gap: 24px;",
+    "containerStyles": {
+      "marginLeft": "248px",
+      "padding": "24px",
+      "background": "var(--color-background)",
+      "minHeight": "100vh"
+    }
+  }
+}

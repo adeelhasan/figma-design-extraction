@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System Preview</title>
+    <link rel="stylesheet" href="../tokens/colors.css">
+    <link rel="stylesheet" href="../tokens/typography.css">
+    <link rel="stylesheet" href="../tokens/spacing.css">
+    <link rel="stylesheet" href="../tokens/effects.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            background-color: var(--color-background);
+            color: var(--color-text-primary);
+            font-family: var(--font-family-primary);
+        }
+
+        body {
+            padding: var(--spacing-8);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: var(--spacing-12);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-3);
+            color: var(--color-text-primary);
+        }
+
+        .tagline {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-8);
+        }
+
+        .hero-gradient {
+            background: var(--gradient-primary);
+            padding: var(--spacing-8);
+            border-radius: var(--radius-lg);
+            color: white;
+            margin-bottom: var(--spacing-12);
+        }
+
+        .hero-gradient h2 {
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--spacing-3);
+        }
+
+        .hero-gradient p {
+            font-size: var(--font-size-base);
+            margin-bottom: var(--spacing-4);
+            opacity: 0.95;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-6);
+            margin-bottom: var(--spacing-12);
+        }
+
+        .card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-6);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .card h3 {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--spacing-3);
+            color: var(--color-text-primary);
+        }
+
+        .card p {
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-4);
+            line-height: var(--line-height-normal);
+        }
+
+        .card-link {
+            display: inline-block;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: var(--font-weight-semibold);
+            padding: var(--spacing-2) var(--spacing-3);
+            border-radius: var(--radius-md);
+            background-color: var(--color-background);
+            transition: all 0.2s ease;
+        }
+
+        .card-link:hover {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .section {
+            margin-bottom: var(--spacing-12);
+        }
+
+        .section-title {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-6);
+            padding-bottom: var(--spacing-3);
+            border-bottom: 2px solid var(--color-border);
+            color: var(--color-text-primary);
+        }
+
+        .screen-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-4);
+        }
+
+        .screen-item {
+            padding: var(--spacing-4);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .screen-item:hover {
+            background-color: var(--color-background);
+            border-color: var(--color-primary);
+        }
+
+        .screen-name {
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-1);
+        }
+
+        .screen-dimensions {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        footer {
+            border-top: 1px solid var(--color-border);
+            padding-top: var(--spacing-6);
+            margin-top: var(--spacing-12);
+            text-align: center;
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        .button {
+            display: inline-block;
+            padding: var(--spacing-3) var(--spacing-6);
+            background-color: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-weight: var(--font-weight-semibold);
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            opacity: 0.9;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: var(--spacing-1) var(--spacing-2);
+            background-color: var(--color-success);
+            color: white;
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-2xs);
+            font-weight: var(--font-weight-semibold);
+            margin-left: var(--spacing-2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Design System</h1>
+            <p class="tagline">Extracted from Figma • Framework-neutral tokens & specifications</p>
+        </header>
+
+        <div class="hero-gradient">
+            <h2>Welcome to the Design System</h2>
+            <p>This design system contains all design tokens, component specifications, and screen layouts extracted from your Figma file. Use these resources to build consistent, accessible interfaces.</p>
+            <a href="./tokens.html" class="button">Explore Tokens</a>
+        </div>
+
+        <div class="grid">
+            <!-- Token Reference Card -->
+            <div class="card">
+                <h3>Design Tokens</h3>
+                <p>Colors, typography, spacing, and effects. All CSS custom properties ready to use.</p>
+                <a href="./tokens.html" class="card-link">View All Tokens →</a>
+            </div>
+
+            <!-- Layout Gallery Card -->
+            <div class="card">
+                <h3>Layout Gallery</h3>
+                <p>Preview all screens and layouts. HTML prototypes linked to specifications.</p>
+                <a href="./layouts/index.html" class="card-link">Open Gallery →</a>
+            </div>
+
+            <!-- Component Specs Card -->
+            <div class="card">
+                <h3>Component Specs</h3>
+                <p>Complete specifications for all reusable components and their variants.</p>
+                <a href="../../design-system/specs/components.md" class="card-link">Read Specs →</a>
+            </div>
+        </div>
+
+        <!-- Screens Section -->
+        <div class="section">
+            <h2 class="section-title">Screens</h2>
+            <div class="screen-list">
+                <a href="./layouts/Dashboard.html" class="screen-item">
+                    <div class="screen-name">Dashboard</div>
+                    <div class="screen-dimensions">1440 × 1584 px</div>
+                </a>
+                <a href="./layouts/Tables.html" class="screen-item">
+                    <div class="screen-name">Tables</div>
+                    <div class="screen-dimensions">1440 × 1262 px</div>
+                </a>
+                <a href="./layouts/Billing.html" class="screen-item">
+                    <div class="screen-name">Billing</div>
+                    <div class="screen-dimensions">1440 × 1204 px</div>
+                </a>
+                <a href="./layouts/Profile.html" class="screen-item">
+                    <div class="screen-name">Profile</div>
+                    <div class="screen-dimensions">1440 × 1409 px</div>
+                </a>
+                <a href="./layouts/SignUp.html" class="screen-item">
+                    <div class="screen-name">SignUp</div>
+                    <div class="screen-dimensions">1440 × 1252 px</div>
+                </a>
+                <a href="./layouts/SignIn.html" class="screen-item">
+                    <div class="screen-name">SignIn</div>
+                    <div class="screen-dimensions">1440 × 1137 px</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Token Overview Section -->
+        <div class="section">
+            <h2 class="section-title">Quick Token Reference</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Colors</h3>
+                    <p>
+                        <strong style="color: var(--color-primary);">Primary:</strong> #cb0c9f<br>
+                        <strong style="color: var(--color-success);">Success:</strong> #82d616<br>
+                        <strong style="color: var(--color-error);">Error:</strong> #ea0606<br>
+                        <strong style="color: var(--color-warning);">Warning:</strong> #fbcf33
+                    </p>
+                    <a href="./tokens.html#colors" class="card-link">View All Colors →</a>
+                </div>
+                <div class="card">
+                    <h3>Typography</h3>
+                    <p>
+                        Font: Open Sans & Montserrat<br>
+                        Base size: 16px (1rem)<br>
+                        Scale: 9px to 50px<br>
+                        Weights: 400, 600, 700
+                    </p>
+                    <a href="./tokens.html#typography" class="card-link">View Typography →</a>
+                </div>
+                <div class="card">
+                    <h3>Spacing & Radius</h3>
+                    <p>
+                        Base: 4px<br>
+                        Scale: 4px to 64px<br>
+                        Radii: 1.5px to 35px<br>
+                        Semantic aliases included
+                    </p>
+                    <a href="./tokens.html#spacing" class="card-link">View Spacing →</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; Design System. Extracted from Figma.</p>
+            <p style="margin-top: var(--spacing-2); font-size: var(--font-size-2xs);">
+                <a href="../../design-system/specs/layouts.md" style="color: var(--color-primary); text-decoration: none;">Full Layout Index</a> •
+                <a href="./tokens.html" style="color: var(--color-primary); text-decoration: none;">Token Reference</a> •
+                <a href="./layouts/index.html" style="color: var(--color-primary); text-decoration: none;">Layout Gallery</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

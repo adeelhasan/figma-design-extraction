@@ -1,0 +1,45 @@
+{
+  "screen": "SignIn",
+  "sections": {
+    "form-area": {
+      "heading": "Sign In",
+      "subtitle": "Enter your email and password to sign in",
+      "inputs": [
+        {
+          "id": "email",
+          "label": "Email",
+          "placeholder": "Email",
+          "type": "email",
+          "state": "active"
+        },
+        {
+          "id": "password",
+          "label": "Password",
+          "placeholder": "Password",
+          "type": "password",
+          "state": "default"
+        }
+      ],
+      "toggle": {
+        "label": "Remember me",
+        "checked": true
+      },
+      "button": {
+        "text": "SIGN IN",
+        "variant": "gradient-info",
+        "fullWidth": true
+      },
+      "footerLink": {
+        "text": "Don\u2019t have an account?",
+        "linkText": "Sign Up",
+        "href": "#"
+      }
+    },
+    "image": {
+      "asset": "curved6",
+      "src": "../../assets/images/photos/curved6.png",
+      "alt": "Colorful abstract wave decoration",
+      "role": "decorative"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+:root {
+  /* Primitive Colors - Light */
+  --gray-50: #fafafa;
+  --gray-100: #f8f9fa;
+  --gray-200: #f0f0f0;
+  --gray-300: #e9ecef;
+  --gray-400: #d2d6da;
+  --gray-500: #adb5bd;
+
+  /* Primitive Colors - Dark */
+  --gray-600: #8392ab;
+  --gray-700: #67748e;
+  --gray-800: #344767;
+  --gray-900: #252f40;
+
+  /* Extended Grays (extracted from Figma) */
+  --gray-950: #141414;
+  --gray-light-alt: #f5f5f5;
+
+  /* Semantic Colors - Brand & Status */
+  --color-primary: #cb0c9f;
+  --color-secondary: #8392ab;
+  --color-success: #82d616;
+  --color-warning: #fbcf33;
+  --color-error: #ea0606;
+  --color-info: #17c1e8;
+
+  /* Semantic Colors - Text & UI */
+  --color-dark: #252f40;
+  --color-body: #67748e;
+  --color-text-primary: #252f40;
+  --color-text-secondary: #8392ab;
+  --color-text-muted: #67748e;
+  --color-text-disabled: #adb5bd;
+
+  /* Surface Colors */
+  --color-background: #f8f9fa;
+  --color-surface: #ffffff;
+
+  /* Gradients - Semantic */
+  --gradient-primary: linear-gradient(135deg, #ff0080 0%, #7928ca 100%);
+  --gradient-secondary: linear-gradient(135deg, #a8b8d8 0%, #627594 100%);
+  --gradient-info: linear-gradient(135deg, #21d4fd 0%, #2152ff 100%);
+  --gradient-success: linear-gradient(135deg, #98ec2d 0%, #17ad37 100%);
+  --gradient-warning: linear-gradient(135deg, #fbcf33 0%, #f53939 100%);
+  --gradient-error: linear-gradient(135deg, #ff667c 0%, #ea0606 100%);
+  --gradient-dark: linear-gradient(135deg, #3a416f 0%, #141727 100%);
+  --gradient-light: linear-gradient(135deg, #ebeff4 0%, #ced4da 100%);
+
+  /* Additional Utility Colors */
+  --color-border: #e9ecef;
+  --color-divider: #d9d9d9;
+  --color-placeholder: #adb5bd;
+
+  /* Brand Accent */
+  --color-accent: #cb0c9f;
+}

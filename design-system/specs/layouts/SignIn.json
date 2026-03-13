@@ -1,0 +1,429 @@
+{
+  "screenName": "SignIn",
+  "frameId": "0:2957",
+  "dimensions": {
+    "width": 1440,
+    "height": 1137
+  },
+  "layout": {
+    "type": "split-auth",
+    "pattern": "auth-form-with-hero",
+    "hasSidebar": false,
+    "hasNavbar": true,
+    "hasFooter": true
+  },
+  "sections": [
+    {
+      "id": "navbar",
+      "name": "navbar",
+      "type": "navigation",
+      "subtype": "top-bar",
+      "location": "top",
+      "dimensions": {
+        "height": 70,
+        "width": 1440
+      },
+      "styling": {
+        "background": "#ffffff",
+        "borderBottom": "1px solid #e9ecef"
+      },
+      "elements": {
+        "logo": {
+          "text": "Soft UI Dashboard",
+          "color": "#252525",
+          "fontSize": 18,
+          "fontWeight": 600
+        },
+        "navLinks": [
+          { "text": "Dashboard", "href": "/dashboard", "color": "#252525" },
+          { "text": "Profile", "href": "/profile", "color": "#252525" },
+          { "text": "Sign Up", "href": "/signup", "color": "#252525" },
+          { "text": "Sign In", "href": "/signin", "color": "#252525", "active": true }
+        ],
+        "ctaButton": {
+          "text": "FREE DOWNLOAD",
+          "style": "gradient-primary",
+          "gradient": {
+            "angle": 310,
+            "stops": ["#7928ca", "#ff0080"]
+          },
+          "textColor": "#ffffff",
+          "fontSize": 12,
+          "fontWeight": 600,
+          "padding": "8px 16px",
+          "borderRadius": "8px"
+        }
+      }
+    },
+    {
+      "id": "content",
+      "name": "content",
+      "type": "main",
+      "layout": "split-grid",
+      "gridConfig": {
+        "columns": "1fr 1fr",
+        "gap": 0
+      },
+      "sections": [
+        {
+          "id": "form-column",
+          "name": "form-column",
+          "type": "form",
+          "location": "left",
+          "dimensions": {
+            "width": 720,
+            "height": 867
+          },
+          "styling": {
+            "padding": "60px 80px",
+            "display": "flex",
+            "flexDirection": "column",
+            "justifyContent": "center",
+            "background": "#ffffff"
+          },
+          "elements": [
+            {
+              "id": "title",
+              "name": "title",
+              "type": "heading",
+              "content": "Sign In",
+              "fontSize": 48,
+              "fontWeight": 700,
+              "gradient": {
+                "angle": 310,
+                "stops": ["#7928ca", "#ff0080"]
+              },
+              "marginBottom": "16px"
+            },
+            {
+              "id": "subtitle",
+              "name": "subtitle",
+              "type": "paragraph",
+              "content": "Enter your email and password to sign in",
+              "color": "#8392ab",
+              "fontSize": 16,
+              "fontWeight": 500,
+              "marginBottom": "32px"
+            },
+            {
+              "id": "email-field",
+              "name": "email-field",
+              "type": "input",
+              "label": "Email",
+              "placeholder": "Email",
+              "inputType": "email",
+              "width": 361,
+              "height": 40,
+              "border": "1px solid #d2d6da",
+              "borderRadius": "8px",
+              "padding": "12px 16px",
+              "marginBottom": "24px",
+              "focusState": {
+                "borderColor": "#cb0c9f",
+                "boxShadow": "0 0 0 3px rgba(203, 12, 159, 0.1)"
+              }
+            },
+            {
+              "id": "password-field",
+              "name": "password-field",
+              "type": "input",
+              "label": "Password",
+              "placeholder": "Password",
+              "inputType": "password",
+              "width": 361,
+              "height": 40,
+              "border": "1px solid #d2d6da",
+              "borderRadius": "8px",
+              "padding": "12px 16px",
+              "marginBottom": "24px",
+              "focusState": {
+                "borderColor": "#cb0c9f",
+                "boxShadow": "0 0 0 3px rgba(203, 12, 159, 0.1)"
+              }
+            },
+            {
+              "id": "remember-me",
+              "name": "remember-me",
+              "type": "toggle-with-label",
+              "label": "Remember me",
+              "checked": true,
+              "marginBottom": "24px",
+              "toggle": {
+                "width": 42,
+                "height": 20,
+                "borderRadius": "10px",
+                "onColor": "#3a414f",
+                "offColor": "#dee2e6",
+                "indicator": {
+                  "width": 16,
+                  "height": 16,
+                  "borderRadius": "50%",
+                  "color": "#ffffff",
+                  "transitionTime": "0.3s"
+                }
+              },
+              "labelColor": "#252525",
+              "fontSize": 14,
+              "fontWeight": 500
+            },
+            {
+              "id": "signin-button",
+              "name": "signin-button",
+              "type": "button",
+              "label": "SIGN IN",
+              "width": 361,
+              "height": 40,
+              "gradient": {
+                "angle": 310,
+                "stops": ["#7928ca", "#ff0080"]
+              },
+              "textColor": "#ffffff",
+              "fontSize": 14,
+              "fontWeight": 700,
+              "borderRadius": "8px",
+              "margin": "24px 0",
+              "cursor": "pointer",
+              "hoverState": {
+                "transform": "translateY(-2px)"
+              }
+            },
+            {
+              "id": "signup-link",
+              "name": "signup-link",
+              "type": "text-with-link",
+              "content": "Don't have an account?",
+              "link": {
+                "text": "Sign Up",
+                "href": "/signup",
+                "gradient": {
+                  "angle": 310,
+                  "stops": ["#7928ca", "#ff0080"]
+                },
+                "fontWeight": 600
+              },
+              "textAlign": "center",
+              "fontSize": 14,
+              "color": "#8392ab"
+            }
+          ]
+        },
+        {
+          "id": "image-column",
+          "name": "image-column",
+          "type": "image-decoration",
+          "location": "right",
+          "dimensions": {
+            "width": 720,
+            "height": 867
+          },
+          "styling": {
+            "background": "linear-gradient(135deg, #ff1493 0%, #00ffff 25%, #ffff00 50%, #00ff00 75%, #ff1493 100%)",
+            "display": "flex",
+            "alignItems": "center",
+            "justifyContent": "center",
+            "position": "relative",
+            "overflow": "hidden"
+          },
+          "content": {
+            "type": "gradient-wave",
+            "description": "Colorful gradient wave pattern",
+            "colors": ["#ff1493", "#00ffff", "#ffff00", "#00ff00", "#ff1493"],
+            "animated": true,
+            "animation": {
+              "name": "wave",
+              "duration": "8s",
+              "timing": "ease-in-out",
+              "infinite": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "footer",
+      "name": "footer",
+      "type": "footer",
+      "location": "bottom",
+      "dimensions": {
+        "height": 132,
+        "width": 1440
+      },
+      "styling": {
+        "background": "#ffffff",
+        "borderTop": "1px solid #e9ecef",
+        "padding": "24px 40px",
+        "display": "flex",
+        "flexDirection": "column",
+        "justifyContent": "space-between"
+      },
+      "sections": [
+        {
+          "id": "footer-content",
+          "name": "footer-content",
+          "type": "flex",
+          "display": "flex",
+          "justifyContent": "space-between",
+          "alignItems": "center",
+          "gap": "24px",
+          "children": [
+            {
+              "id": "copyright",
+              "name": "copyright",
+              "type": "text",
+              "content": "Copyright © 2021 Soft by Creative Tim.",
+              "color": "#8392ab",
+              "fontSize": 14,
+              "flex": 1
+            },
+            {
+              "id": "social-icons",
+              "name": "social-icons",
+              "type": "icon-list",
+              "display": "flex",
+              "gap": "16px",
+              "justifyContent": "center",
+              "flex": 1,
+              "icons": [
+                {
+                  "name": "facebook",
+                  "symbol": "f",
+                  "color": "#8392ab",
+                  "href": "#facebook",
+                  "fontSize": 16
+                },
+                {
+                  "name": "twitter",
+                  "symbol": "𝕏",
+                  "color": "#8392ab",
+                  "href": "#twitter",
+                  "fontSize": 16
+                },
+                {
+                  "name": "linkedin",
+                  "symbol": "in",
+                  "color": "#8392ab",
+                  "href": "#linkedin",
+                  "fontSize": 16
+                },
+                {
+                  "name": "pinterest",
+                  "symbol": "P",
+                  "color": "#8392ab",
+                  "href": "#pinterest",
+                  "fontSize": 16
+                },
+                {
+                  "name": "github",
+                  "symbol": "⭘",
+                  "color": "#8392ab",
+                  "href": "#github",
+                  "fontSize": 16
+                }
+              ]
+            },
+            {
+              "id": "footer-links",
+              "name": "footer-links",
+              "type": "link-group",
+              "display": "flex",
+              "gap": "40px",
+              "justifyContent": "flex-end",
+              "flex": 1,
+              "groups": [
+                {
+                  "title": "Company",
+                  "links": [
+                    { "text": "About Us", "href": "#about" },
+                    { "text": "Team", "href": "#team" },
+                    { "text": "Products", "href": "#products" }
+                  ]
+                },
+                {
+                  "title": "Resources",
+                  "links": [
+                    { "text": "Blog", "href": "#blog" },
+                    { "text": "Pricing", "href": "#pricing" }
+                  ]
+                }
+              ],
+              "linkColor": "#8392ab",
+              "fontSize": 13,
+              "hover": {
+                "textDecoration": "underline"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "tokenUsage": {
+    "colors": {
+      "primary": "#cb0c9f",
+      "secondary": "#8392ab",
+      "background": "#ffffff",
+      "textDark": "#252525",
+      "inputBorder": "#d2d6da",
+      "toggleOnBg": "#3a414f"
+    },
+    "gradients": {
+      "primary": {
+        "angle": 310,
+        "stops": ["#7928ca", "#ff0080"],
+        "usage": "Button backgrounds, heading text, links"
+      },
+      "heroImage": {
+        "angle": 135,
+        "stops": ["#ff1493", "#00ffff", "#ffff00", "#00ff00", "#ff1493"]
+      }
+    },
+    "effects": {
+      "inputBorderRadius": "8px",
+      "buttonBorderRadius": "8px",
+      "cardBorderRadius": "16px",
+      "cardShadow": "0 2px 4px -1px rgba(0,0,0,0.07), 0 4px 6px -1px rgba(0,0,0,0.12)"
+    },
+    "spacing": {
+      "formColumnPadding": "60px 80px",
+      "footerPadding": "24px 40px",
+      "elementGap": "24px",
+      "inputHeight": "40px",
+      "toggleSize": "42x20"
+    }
+  },
+  "componentInstances": {
+    "navbar": 1,
+    "inputFields": 2,
+    "toggleSwitch": 1,
+    "buttons": 2,
+    "textLinks": 7,
+    "socialIcons": 5,
+    "decorativeImage": 1
+  },
+  "metadata": {
+    "extractedAt": "2026-02-06T00:00:00Z",
+    "description": "Authentication sign-in page with split layout: form on left, decorative gradient image on right, navbar header, and footer with company links and social icons",
+    "pattern": "auth-page-split-form",
+    "authPage": true,
+    "hasSidebar": false,
+    "hasNavbar": true,
+    "hasFooter": true,
+    "deviceProfile": "desktop",
+    "extractedFields": [
+      "email",
+      "password",
+      "rememberMe"
+    ],
+    "ctaElements": [
+      "Sign In Button",
+      "Free Download Button"
+    ],
+    "externalLinks": [
+      "Sign Up",
+      "Dashboard",
+      "Profile",
+      "Company Links",
+      "Social Media"
+    ]
+  }
+}

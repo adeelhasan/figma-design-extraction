@@ -1,0 +1,6769 @@
+{
+  "version": "1.0",
+  "extractedAt": "2026-03-11T19:08:22.108469+00:00",
+  "summary": {
+    "totalImages": 217,
+    "byType": {
+      "photo": 97,
+      "image": 70,
+      "logo": 8,
+      "banner": 20,
+      "background": 2,
+      "avatar": 20
+    },
+    "exported": 91,
+    "placeholders": 126
+  },
+  "images": [
+    {
+      "id": "4:47",
+      "name": "\u2764\ufe0f Thumbnail",
+      "type": "photo",
+      "dimensions": {
+        "width": 0,
+        "height": 0
+      },
+      "aspectRatio": 1,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "unknown",
+          "sectionName": "unknown",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4:60",
+      "name": "Frame 1",
+      "type": "photo",
+      "dimensions": {
+        "width": 1600.0,
+        "height": 960.0
+      },
+      "aspectRatio": 1.67,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "unknown",
+          "sectionName": "unknown",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4:61",
+      "name": "opt_ad_thumbnail 1",
+      "type": "photo",
+      "dimensions": {
+        "width": 1600.0,
+        "height": 1200.0
+      },
+      "aspectRatio": 1.33,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/photos/opt_ad_thumbnail-1.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "unknown",
+          "sectionName": "Frame 1",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:58",
+      "name": "Rectangle",
+      "type": "photo",
+      "dimensions": {
+        "width": 1271.0,
+        "height": 1734.0
+      },
+      "aspectRatio": 0.73,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "unknown",
+          "sectionName": "Typography",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-tall",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:86",
+      "name": "Neutral Colors Palette",
+      "type": "photo",
+      "dimensions": {
+        "width": 1321.0,
+        "height": 773.0
+      },
+      "aspectRatio": 1.71,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "unknown",
+          "sectionName": "unknown",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:147",
+      "name": "Colors",
+      "type": "photo",
+      "dimensions": {
+        "width": 1321.0,
+        "height": 773.0
+      },
+      "aspectRatio": 1.71,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "unknown",
+          "sectionName": "unknown",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:193",
+      "name": "Gradients",
+      "type": "photo",
+      "dimensions": {
+        "width": 1501.0,
+        "height": 773.0
+      },
+      "aspectRatio": 1.94,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "unknown",
+          "sectionName": "unknown",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:195",
+      "name": "Rectangle",
+      "type": "image",
+      "dimensions": {
+        "width": 314.0,
+        "height": 146.0
+      },
+      "aspectRatio": 2.15,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "unknown",
+          "sectionName": "Gradients",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:200",
+      "name": "Rectangle",
+      "type": "image",
+      "dimensions": {
+        "width": 314.0,
+        "height": 146.0
+      },
+      "aspectRatio": 2.15,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "unknown",
+          "sectionName": "Gradients",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:205",
+      "name": "Rectangle",
+      "type": "image",
+      "dimensions": {
+        "width": 314.0,
+        "height": 146.0
+      },
+      "aspectRatio": 2.15,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "unknown",
+          "sectionName": "Gradients",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:210",
+      "name": "Rectangle",
+      "type": "image",
+      "dimensions": {
+        "width": 314.0,
+        "height": 146.0
+      },
+      "aspectRatio": 2.15,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "unknown",
+          "sectionName": "Gradients",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:215",
+      "name": "Rectangle",
+      "type": "image",
+      "dimensions": {
+        "width": 314.0,
+        "height": 146.0
+      },
+      "aspectRatio": 2.15,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "unknown",
+          "sectionName": "Gradients",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:220",
+      "name": "Rectangle",
+      "type": "image",
+      "dimensions": {
+        "width": 314.0,
+        "height": 146.0
+      },
+      "aspectRatio": 2.15,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "unknown",
+          "sectionName": "Gradients",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:225",
+      "name": "Rectangle",
+      "type": "image",
+      "dimensions": {
+        "width": 314.0,
+        "height": 146.0
+      },
+      "aspectRatio": 2.15,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "unknown",
+          "sectionName": "Gradients",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:230",
+      "name": "Rectangle",
+      "type": "image",
+      "dimensions": {
+        "width": 314.0,
+        "height": 146.0
+      },
+      "aspectRatio": 2.15,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "unknown",
+          "sectionName": "Gradients",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:263",
+      "name": "Dashboard-sidebar transparent",
+      "type": "photo",
+      "dimensions": {
+        "width": 1440.0,
+        "height": 1584.0
+      },
+      "aspectRatio": 0.91,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "unknown",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:264",
+      "name": "Background",
+      "type": "photo",
+      "dimensions": {
+        "width": 1440.0,
+        "height": 1624.0
+      },
+      "aspectRatio": 0.89,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:268",
+      "name": "logo-ct",
+      "type": "logo",
+      "dimensions": {
+        "width": 108.93333435058594,
+        "height": 38.0
+      },
+      "aspectRatio": 2.87,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/logos/logo-ct.png",
+      "placeholder": {
+        "type": "solid",
+        "config": {
+          "backgroundColor": "var(--color-gray-3)",
+          "text": "LOGO"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "branding",
+          "cssClasses": [
+            "asset-logo",
+            "aspect-wide",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:345",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 218.0,
+        "height": 170.0
+      },
+      "aspectRatio": 1.28,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:344",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 218.0,
+        "height": 170.0
+      },
+      "aspectRatio": 1.28,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:346",
+      "name": "white-curved",
+      "type": "photo",
+      "dimensions": {
+        "width": 254.6666717529297,
+        "height": 191.0
+      },
+      "aspectRatio": 1.33,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/photos/white-curved.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:349",
+      "name": "Mask Copy 2",
+      "type": "photo",
+      "dimensions": {
+        "width": 218.0,
+        "height": 170.0
+      },
+      "aspectRatio": 1.28,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:347",
+      "name": "Mask Copy 2",
+      "type": "photo",
+      "dimensions": {
+        "width": 218.0,
+        "height": 170.0
+      },
+      "aspectRatio": 1.28,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:454",
+      "name": "Rectangle",
+      "type": "photo",
+      "dimensions": {
+        "width": 643.0,
+        "height": 445.0
+      },
+      "aspectRatio": 1.44,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:488",
+      "name": "Rectangle",
+      "type": "photo",
+      "dimensions": {
+        "width": 454.0,
+        "height": 445.0
+      },
+      "aspectRatio": 1.02,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:492",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 422.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.91,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:491",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 422.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.91,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:584",
+      "name": "Rectangle",
+      "type": "photo",
+      "dimensions": {
+        "width": 738.0,
+        "height": 538.0
+      },
+      "aspectRatio": 1.37,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:604",
+      "name": "face-1",
+      "type": "image",
+      "dimensions": {
+        "width": 20.0,
+        "height": 20.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-1.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:608",
+      "name": "face-4",
+      "type": "image",
+      "dimensions": {
+        "width": 20.0,
+        "height": 20.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-4.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:612",
+      "name": "face-2",
+      "type": "image",
+      "dimensions": {
+        "width": 21.0,
+        "height": 21.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-2.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:616",
+      "name": "face-3",
+      "type": "image",
+      "dimensions": {
+        "width": 21.0,
+        "height": 21.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-3.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:632",
+      "name": "face-4",
+      "type": "image",
+      "dimensions": {
+        "width": 20.0,
+        "height": 20.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-4.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:636",
+      "name": "face-3",
+      "type": "image",
+      "dimensions": {
+        "width": 21.0,
+        "height": 21.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-3.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:664",
+      "name": "face-1",
+      "type": "image",
+      "dimensions": {
+        "width": 20.0,
+        "height": 20.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-1.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:668",
+      "name": "face-2",
+      "type": "image",
+      "dimensions": {
+        "width": 21.0,
+        "height": 21.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-2.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:672",
+      "name": "face-3",
+      "type": "image",
+      "dimensions": {
+        "width": 21.0,
+        "height": 21.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-3.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:691",
+      "name": "face-1",
+      "type": "image",
+      "dimensions": {
+        "width": 20.0,
+        "height": 20.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-1.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:695",
+      "name": "face-2",
+      "type": "image",
+      "dimensions": {
+        "width": 21.0,
+        "height": 21.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-2.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:712",
+      "name": "face-1",
+      "type": "image",
+      "dimensions": {
+        "width": 20.0,
+        "height": 20.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-1.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:716",
+      "name": "face-4",
+      "type": "image",
+      "dimensions": {
+        "width": 20.0,
+        "height": 20.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-4.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:720",
+      "name": "face-2",
+      "type": "image",
+      "dimensions": {
+        "width": 21.0,
+        "height": 21.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-2.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:724",
+      "name": "face-3",
+      "type": "image",
+      "dimensions": {
+        "width": 21.0,
+        "height": 21.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-3.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:742",
+      "name": "face-1",
+      "type": "image",
+      "dimensions": {
+        "width": 20.0,
+        "height": 20.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-1.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:746",
+      "name": "face-4",
+      "type": "image",
+      "dimensions": {
+        "width": 20.0,
+        "height": 20.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-4.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:750",
+      "name": "face-3",
+      "type": "image",
+      "dimensions": {
+        "width": 21.0,
+        "height": 21.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-3.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:761",
+      "name": "Rectangle",
+      "type": "photo",
+      "dimensions": {
+        "width": 356.0,
+        "height": 538.0
+      },
+      "aspectRatio": 0.66,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-tall",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:819",
+      "name": "Rectangle",
+      "type": "banner",
+      "dimensions": {
+        "width": 644.0,
+        "height": 253.0
+      },
+      "aspectRatio": 2.55,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "background",
+          "cssClasses": [
+            "asset-banner",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:823",
+      "name": "image",
+      "type": "photo",
+      "dimensions": {
+        "width": 247.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.12,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:826",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 247.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.12,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:825",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 247.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.12,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:983",
+      "name": "rocket-white",
+      "type": "photo",
+      "dimensions": {
+        "width": 281.20001220703125,
+        "height": 185.0
+      },
+      "aspectRatio": 1.52,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/photos/rocket-white.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:989",
+      "name": "Rectangle",
+      "type": "photo",
+      "dimensions": {
+        "width": 450.0,
+        "height": 253.0
+      },
+      "aspectRatio": 1.78,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:990",
+      "name": "image",
+      "type": "photo",
+      "dimensions": {
+        "width": 418.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.89,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:993",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 418.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.89,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:992",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 418.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.89,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:994",
+      "name": "ivancik",
+      "type": "photo",
+      "dimensions": {
+        "width": 445.7680358886719,
+        "height": 474.0
+      },
+      "aspectRatio": 0.94,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/photos/ivancik.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:997",
+      "name": "Mask Copy",
+      "type": "photo",
+      "dimensions": {
+        "width": 418.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.89,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:995",
+      "name": "Mask Copy",
+      "type": "photo",
+      "dimensions": {
+        "width": 418.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.89,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:88",
+      "name": "Dashboard-sidebar transparent",
+      "type": "photo",
+      "dimensions": {
+        "width": 1440.0,
+        "height": 1584.0
+      },
+      "aspectRatio": 0.91,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "unknown",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:89",
+      "name": "Background",
+      "type": "photo",
+      "dimensions": {
+        "width": 1440.0,
+        "height": 1624.0
+      },
+      "aspectRatio": 0.89,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:277",
+      "name": "Rectangle",
+      "type": "photo",
+      "dimensions": {
+        "width": 643.0,
+        "height": 445.0
+      },
+      "aspectRatio": 1.44,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:311",
+      "name": "Rectangle",
+      "type": "photo",
+      "dimensions": {
+        "width": 454.0,
+        "height": 445.0
+      },
+      "aspectRatio": 1.02,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:314",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 422.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.91,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:316",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 422.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.91,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:407",
+      "name": "Rectangle",
+      "type": "photo",
+      "dimensions": {
+        "width": 738.0,
+        "height": 538.0
+      },
+      "aspectRatio": 1.37,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:427",
+      "name": "face-1",
+      "type": "image",
+      "dimensions": {
+        "width": 20.0,
+        "height": 20.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-1.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:431",
+      "name": "face-4",
+      "type": "image",
+      "dimensions": {
+        "width": 20.0,
+        "height": 20.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-4.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:435",
+      "name": "face-2",
+      "type": "image",
+      "dimensions": {
+        "width": 21.0,
+        "height": 21.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-2.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:439",
+      "name": "face-3",
+      "type": "image",
+      "dimensions": {
+        "width": 21.0,
+        "height": 21.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-3.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:455",
+      "name": "face-4",
+      "type": "image",
+      "dimensions": {
+        "width": 20.0,
+        "height": 20.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-4.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:459",
+      "name": "face-3",
+      "type": "image",
+      "dimensions": {
+        "width": 21.0,
+        "height": 21.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-3.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:487",
+      "name": "face-1",
+      "type": "image",
+      "dimensions": {
+        "width": 20.0,
+        "height": 20.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-1.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:491",
+      "name": "face-2",
+      "type": "image",
+      "dimensions": {
+        "width": 21.0,
+        "height": 21.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-2.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:495",
+      "name": "face-3",
+      "type": "image",
+      "dimensions": {
+        "width": 21.0,
+        "height": 21.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-3.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:514",
+      "name": "face-1",
+      "type": "image",
+      "dimensions": {
+        "width": 20.0,
+        "height": 20.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-1.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:518",
+      "name": "face-2",
+      "type": "image",
+      "dimensions": {
+        "width": 21.0,
+        "height": 21.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-2.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:535",
+      "name": "face-1",
+      "type": "image",
+      "dimensions": {
+        "width": 20.0,
+        "height": 20.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-1.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:539",
+      "name": "face-4",
+      "type": "image",
+      "dimensions": {
+        "width": 20.0,
+        "height": 20.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-4.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:543",
+      "name": "face-2",
+      "type": "image",
+      "dimensions": {
+        "width": 21.0,
+        "height": 21.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-2.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:547",
+      "name": "face-3",
+      "type": "image",
+      "dimensions": {
+        "width": 21.0,
+        "height": 21.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-3.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:565",
+      "name": "face-1",
+      "type": "image",
+      "dimensions": {
+        "width": 20.0,
+        "height": 20.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-1.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:569",
+      "name": "face-4",
+      "type": "image",
+      "dimensions": {
+        "width": 20.0,
+        "height": 20.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-4.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:573",
+      "name": "face-3",
+      "type": "image",
+      "dimensions": {
+        "width": 21.0,
+        "height": 21.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-3.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:584",
+      "name": "Rectangle",
+      "type": "photo",
+      "dimensions": {
+        "width": 356.0,
+        "height": 538.0
+      },
+      "aspectRatio": 0.66,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-tall",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:642",
+      "name": "Rectangle",
+      "type": "banner",
+      "dimensions": {
+        "width": 644.0,
+        "height": 253.0
+      },
+      "aspectRatio": 2.55,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "background",
+          "cssClasses": [
+            "asset-banner",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:646",
+      "name": "image",
+      "type": "photo",
+      "dimensions": {
+        "width": 247.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.12,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:648",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 247.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.12,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:649",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 247.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.12,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:806",
+      "name": "rocket-white",
+      "type": "photo",
+      "dimensions": {
+        "width": 281.20001220703125,
+        "height": 185.0
+      },
+      "aspectRatio": 1.52,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/photos/rocket-white.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:812",
+      "name": "Rectangle",
+      "type": "photo",
+      "dimensions": {
+        "width": 450.0,
+        "height": 253.0
+      },
+      "aspectRatio": 1.78,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:813",
+      "name": "image",
+      "type": "photo",
+      "dimensions": {
+        "width": 418.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.89,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:815",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 418.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.89,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:817",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 418.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.89,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:818",
+      "name": "ivancik",
+      "type": "photo",
+      "dimensions": {
+        "width": 445.7680358886719,
+        "height": 474.0
+      },
+      "aspectRatio": 0.94,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/photos/ivancik.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:819",
+      "name": "Mask Copy",
+      "type": "photo",
+      "dimensions": {
+        "width": 418.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.89,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:820",
+      "name": "Mask Copy",
+      "type": "photo",
+      "dimensions": {
+        "width": 418.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.89,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:844",
+      "name": "Rectangle",
+      "type": "background",
+      "dimensions": {
+        "width": 256.0,
+        "height": 988.0
+      },
+      "aspectRatio": 0.26,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "background",
+          "cssClasses": [
+            "asset-background",
+            "aspect-tall",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:847",
+      "name": "logo-ct",
+      "type": "logo",
+      "dimensions": {
+        "width": 108.93333435058594,
+        "height": 38.0
+      },
+      "aspectRatio": 2.87,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/logos/logo-ct.png",
+      "placeholder": {
+        "type": "solid",
+        "config": {
+          "backgroundColor": "var(--color-gray-3)",
+          "text": "LOGO"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "branding",
+          "cssClasses": [
+            "asset-logo",
+            "aspect-wide",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:922",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 218.0,
+        "height": 170.0
+      },
+      "aspectRatio": 1.28,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:924",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 218.0,
+        "height": 170.0
+      },
+      "aspectRatio": 1.28,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:925",
+      "name": "white-curved",
+      "type": "photo",
+      "dimensions": {
+        "width": 254.6666717529297,
+        "height": 191.0
+      },
+      "aspectRatio": 1.33,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/photos/white-curved.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:926",
+      "name": "Mask Copy 2",
+      "type": "photo",
+      "dimensions": {
+        "width": 218.0,
+        "height": 170.0
+      },
+      "aspectRatio": 1.28,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1:927",
+      "name": "Mask Copy 2",
+      "type": "photo",
+      "dimensions": {
+        "width": 218.0,
+        "height": 170.0
+      },
+      "aspectRatio": 1.28,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Dashboard-sidebar transparent",
+          "sectionName": "Dashboard-sidebar transparent",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:1777",
+      "name": "Tables",
+      "type": "photo",
+      "dimensions": {
+        "width": 1440.0,
+        "height": 1262.0
+      },
+      "aspectRatio": 1.14,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "unknown",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:1778",
+      "name": "Background",
+      "type": "photo",
+      "dimensions": {
+        "width": 1440.0,
+        "height": 1318.0
+      },
+      "aspectRatio": 1.09,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "Tables",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:1780",
+      "name": "Rectangle",
+      "type": "background",
+      "dimensions": {
+        "width": 1118.0,
+        "height": 559.0
+      },
+      "aspectRatio": 2.0,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "Tables",
+          "role": "background",
+          "cssClasses": [
+            "asset-background",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:1796",
+      "name": "avatar",
+      "type": "avatar",
+      "dimensions": {
+        "width": 36.0,
+        "height": 36.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "initials",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "shape": "rounded",
+          "fallbackText": "U"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "Tables",
+          "role": "avatar",
+          "cssClasses": [
+            "asset-avatar",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:1799",
+      "name": "team-2",
+      "type": "avatar",
+      "dimensions": {
+        "width": 41.0,
+        "height": 41.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/avatars/team-2.png",
+      "placeholder": {
+        "type": "initials",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "shape": "rounded",
+          "fallbackText": "U"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "Tables",
+          "role": "avatar",
+          "cssClasses": [
+            "asset-avatar",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:1811",
+      "name": "avatar",
+      "type": "avatar",
+      "dimensions": {
+        "width": 36.0,
+        "height": 36.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "initials",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "shape": "rounded",
+          "fallbackText": "U"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "Tables",
+          "role": "avatar",
+          "cssClasses": [
+            "asset-avatar",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:1814",
+      "name": "marie",
+      "type": "avatar",
+      "dimensions": {
+        "width": 41.0,
+        "height": 41.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/avatars/marie.png",
+      "placeholder": {
+        "type": "initials",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "shape": "rounded",
+          "fallbackText": "U"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "Tables",
+          "role": "avatar",
+          "cssClasses": [
+            "asset-avatar",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:1826",
+      "name": "avatar",
+      "type": "avatar",
+      "dimensions": {
+        "width": 36.0,
+        "height": 36.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "initials",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "shape": "rounded",
+          "fallbackText": "U"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "Tables",
+          "role": "avatar",
+          "cssClasses": [
+            "asset-avatar",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:1829",
+      "name": "kal-visuals-square",
+      "type": "avatar",
+      "dimensions": {
+        "width": 37.0,
+        "height": 37.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/avatars/kal-visuals-square.png",
+      "placeholder": {
+        "type": "initials",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "shape": "rounded",
+          "fallbackText": "U"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "Tables",
+          "role": "avatar",
+          "cssClasses": [
+            "asset-avatar",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:1841",
+      "name": "avatar",
+      "type": "avatar",
+      "dimensions": {
+        "width": 36.0,
+        "height": 36.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "initials",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "shape": "rounded",
+          "fallbackText": "U"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "Tables",
+          "role": "avatar",
+          "cssClasses": [
+            "asset-avatar",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:1844",
+      "name": "ivana-square",
+      "type": "avatar",
+      "dimensions": {
+        "width": 38.0,
+        "height": 38.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/avatars/ivana-square.png",
+      "placeholder": {
+        "type": "initials",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "shape": "rounded",
+          "fallbackText": "U"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "Tables",
+          "role": "avatar",
+          "cssClasses": [
+            "asset-avatar",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:1856",
+      "name": "avatar",
+      "type": "avatar",
+      "dimensions": {
+        "width": 36.0,
+        "height": 36.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "initials",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "shape": "rounded",
+          "fallbackText": "U"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "Tables",
+          "role": "avatar",
+          "cssClasses": [
+            "asset-avatar",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:1859",
+      "name": "face-5",
+      "type": "avatar",
+      "dimensions": {
+        "width": 41.0,
+        "height": 41.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/avatars/face-5.png",
+      "placeholder": {
+        "type": "initials",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "shape": "rounded",
+          "fallbackText": "U"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "Tables",
+          "role": "avatar",
+          "cssClasses": [
+            "asset-avatar",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:1871",
+      "name": "avatar",
+      "type": "avatar",
+      "dimensions": {
+        "width": 36.0,
+        "height": 36.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "initials",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "shape": "rounded",
+          "fallbackText": "U"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "Tables",
+          "role": "avatar",
+          "cssClasses": [
+            "asset-avatar",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:1874",
+      "name": "face-6",
+      "type": "avatar",
+      "dimensions": {
+        "width": 36.0,
+        "height": 36.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/avatars/face-6.png",
+      "placeholder": {
+        "type": "initials",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "shape": "rounded",
+          "fallbackText": "U"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "Tables",
+          "role": "avatar",
+          "cssClasses": [
+            "asset-avatar",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:1877",
+      "name": "Rectangle",
+      "type": "banner",
+      "dimensions": {
+        "width": 1119.0,
+        "height": 508.0
+      },
+      "aspectRatio": 2.2,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "Tables",
+          "role": "background",
+          "cssClasses": [
+            "asset-banner",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2001",
+      "name": "logo-ct",
+      "type": "logo",
+      "dimensions": {
+        "width": 108.93333435058594,
+        "height": 38.0
+      },
+      "aspectRatio": 2.87,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/logos/logo-ct.png",
+      "placeholder": {
+        "type": "solid",
+        "config": {
+          "backgroundColor": "var(--color-gray-3)",
+          "text": "LOGO"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "Tables",
+          "role": "branding",
+          "cssClasses": [
+            "asset-logo",
+            "aspect-wide",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2078",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 218.0,
+        "height": 170.0
+      },
+      "aspectRatio": 1.28,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "Tables",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2077",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 218.0,
+        "height": 170.0
+      },
+      "aspectRatio": 1.28,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "Tables",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2079",
+      "name": "white-curved",
+      "type": "photo",
+      "dimensions": {
+        "width": 254.6666717529297,
+        "height": 191.0
+      },
+      "aspectRatio": 1.33,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/photos/white-curved.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "Tables",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2082",
+      "name": "Mask Copy 2",
+      "type": "photo",
+      "dimensions": {
+        "width": 218.0,
+        "height": 170.0
+      },
+      "aspectRatio": 1.28,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "Tables",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2080",
+      "name": "Mask Copy 2",
+      "type": "photo",
+      "dimensions": {
+        "width": 218.0,
+        "height": 170.0
+      },
+      "aspectRatio": 1.28,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Tables",
+          "sectionName": "Tables",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2136",
+      "name": "Billing",
+      "type": "photo",
+      "dimensions": {
+        "width": 1440.0,
+        "height": 1204.0
+      },
+      "aspectRatio": 1.2,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "unknown",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2137",
+      "name": "Background",
+      "type": "photo",
+      "dimensions": {
+        "width": 1440.0,
+        "height": 1204.0
+      },
+      "aspectRatio": 1.2,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2141",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 358.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.62,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2140",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 358.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.62,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2142",
+      "name": "curved14",
+      "type": "photo",
+      "dimensions": {
+        "width": 424.1525573730469,
+        "height": 300.0
+      },
+      "aspectRatio": 1.41,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/photos/curved14.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2145",
+      "name": "Mask Copy",
+      "type": "photo",
+      "dimensions": {
+        "width": 358.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.62,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2143",
+      "name": "Mask Copy",
+      "type": "photo",
+      "dimensions": {
+        "width": 358.0,
+        "height": 221.0
+      },
+      "aspectRatio": 1.62,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2157",
+      "name": "logo-mastercard",
+      "type": "logo",
+      "dimensions": {
+        "width": 38.57951354980469,
+        "height": 23.854999542236328
+      },
+      "aspectRatio": 1.62,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/logos/logo-mastercard.png",
+      "placeholder": {
+        "type": "solid",
+        "config": {
+          "backgroundColor": "var(--color-gray-3)",
+          "text": "LOGO"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "branding",
+          "cssClasses": [
+            "asset-logo",
+            "aspect-wide",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2161",
+      "name": "Rectangle",
+      "type": "image",
+      "dimensions": {
+        "width": 165.0,
+        "height": 221.0
+      },
+      "aspectRatio": 0.75,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-tall",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2177",
+      "name": "Rectangle",
+      "type": "image",
+      "dimensions": {
+        "width": 165.0,
+        "height": 221.0
+      },
+      "aspectRatio": 0.75,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-tall",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2180",
+      "name": "paypal-2",
+      "type": "image",
+      "dimensions": {
+        "width": 28.0,
+        "height": 28.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/paypal-2.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2181",
+      "name": "paypal-2",
+      "type": "image",
+      "dimensions": {
+        "width": 28.0,
+        "height": 28.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/paypal-2.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2189",
+      "name": "Rectangle",
+      "type": "banner",
+      "dimensions": {
+        "width": 738.0,
+        "height": 164.0
+      },
+      "aspectRatio": 4.5,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "background",
+          "cssClasses": [
+            "asset-banner",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2200",
+      "name": "mastercard",
+      "type": "image",
+      "dimensions": {
+        "width": 33.515625,
+        "height": 25.0
+      },
+      "aspectRatio": 1.34,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/mastercard.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2206",
+      "name": "visa-logo",
+      "type": "logo",
+      "dimensions": {
+        "width": 41.07143020629883,
+        "height": 23.0
+      },
+      "aspectRatio": 1.79,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/logos/visa-logo.png",
+      "placeholder": {
+        "type": "solid",
+        "config": {
+          "backgroundColor": "var(--color-gray-3)",
+          "text": "LOGO"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "branding",
+          "cssClasses": [
+            "asset-logo",
+            "aspect-wide",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2215",
+      "name": "Background",
+      "type": "photo",
+      "dimensions": {
+        "width": 358.0,
+        "height": 410.0
+      },
+      "aspectRatio": 0.87,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2251",
+      "name": "Rectangle",
+      "type": "photo",
+      "dimensions": {
+        "width": 643.0,
+        "height": 584.0
+      },
+      "aspectRatio": 1.1,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2254",
+      "name": "Rectangle",
+      "type": "banner",
+      "dimensions": {
+        "width": 607.0,
+        "height": 144.0
+      },
+      "aspectRatio": 4.22,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "background",
+          "cssClasses": [
+            "asset-banner",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2273",
+      "name": "Rectangle",
+      "type": "banner",
+      "dimensions": {
+        "width": 607.0,
+        "height": 144.0
+      },
+      "aspectRatio": 4.22,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "background",
+          "cssClasses": [
+            "asset-banner",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2292",
+      "name": "Rectangle",
+      "type": "banner",
+      "dimensions": {
+        "width": 607.0,
+        "height": 144.0
+      },
+      "aspectRatio": 4.22,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "background",
+          "cssClasses": [
+            "asset-banner",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2311",
+      "name": "Rectangle",
+      "type": "photo",
+      "dimensions": {
+        "width": 451.0,
+        "height": 584.0
+      },
+      "aspectRatio": 0.77,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2370",
+      "name": "logo-ct",
+      "type": "logo",
+      "dimensions": {
+        "width": 108.93333435058594,
+        "height": 38.0
+      },
+      "aspectRatio": 2.87,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/logos/logo-ct.png",
+      "placeholder": {
+        "type": "solid",
+        "config": {
+          "backgroundColor": "var(--color-gray-3)",
+          "text": "LOGO"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "branding",
+          "cssClasses": [
+            "asset-logo",
+            "aspect-wide",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2447",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 218.0,
+        "height": 170.0
+      },
+      "aspectRatio": 1.28,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2446",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 218.0,
+        "height": 170.0
+      },
+      "aspectRatio": 1.28,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2448",
+      "name": "white-curved",
+      "type": "photo",
+      "dimensions": {
+        "width": 254.6666717529297,
+        "height": 191.0
+      },
+      "aspectRatio": 1.33,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/photos/white-curved.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2451",
+      "name": "Mask Copy 2",
+      "type": "photo",
+      "dimensions": {
+        "width": 218.0,
+        "height": 170.0
+      },
+      "aspectRatio": 1.28,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2449",
+      "name": "Mask Copy 2",
+      "type": "photo",
+      "dimensions": {
+        "width": 218.0,
+        "height": 170.0
+      },
+      "aspectRatio": 1.28,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Billing",
+          "sectionName": "Billing",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2506",
+      "name": "Background",
+      "type": "photo",
+      "dimensions": {
+        "width": 1440.0,
+        "height": 1409.0
+      },
+      "aspectRatio": 1.02,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2517",
+      "name": "image",
+      "type": "banner",
+      "dimensions": {
+        "width": 1121.0,
+        "height": 308.0
+      },
+      "aspectRatio": 3.64,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "background",
+          "cssClasses": [
+            "asset-banner",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2519",
+      "name": "Mask",
+      "type": "banner",
+      "dimensions": {
+        "width": 1121.0,
+        "height": 308.0
+      },
+      "aspectRatio": 3.64,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "background",
+          "cssClasses": [
+            "asset-banner",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2518",
+      "name": "Mask",
+      "type": "banner",
+      "dimensions": {
+        "width": 1121.0,
+        "height": 308.0
+      },
+      "aspectRatio": 3.64,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "background",
+          "cssClasses": [
+            "asset-banner",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2520",
+      "name": "curved0",
+      "type": "banner",
+      "dimensions": {
+        "width": 1571.77490234375,
+        "height": 313.0
+      },
+      "aspectRatio": 5.02,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/backgrounds/curved0.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "background",
+          "cssClasses": [
+            "asset-banner",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2523",
+      "name": "Mask Copy",
+      "type": "banner",
+      "dimensions": {
+        "width": 1121.0,
+        "height": 308.0
+      },
+      "aspectRatio": 3.64,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "background",
+          "cssClasses": [
+            "asset-banner",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2521",
+      "name": "Mask Copy",
+      "type": "banner",
+      "dimensions": {
+        "width": 1121.0,
+        "height": 308.0
+      },
+      "aspectRatio": 3.64,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "background",
+          "cssClasses": [
+            "asset-banner",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2525",
+      "name": "Background",
+      "type": "banner",
+      "dimensions": {
+        "width": 1073.0,
+        "height": 114.0
+      },
+      "aspectRatio": 9.41,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "background",
+          "cssClasses": [
+            "asset-banner",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2527",
+      "name": "avatar",
+      "type": "avatar",
+      "dimensions": {
+        "width": 74.0,
+        "height": 81.0
+      },
+      "aspectRatio": 0.91,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "initials",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "shape": "rounded",
+          "fallbackText": "U"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "avatar",
+          "cssClasses": [
+            "asset-avatar",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2530",
+      "name": "face-1",
+      "type": "avatar",
+      "dimensions": {
+        "width": 85.0,
+        "height": 85.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/avatars/face-1.png",
+      "placeholder": {
+        "type": "initials",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "shape": "rounded",
+          "fallbackText": "U"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "avatar",
+          "cssClasses": [
+            "asset-avatar",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2531",
+      "name": "bruce-mars",
+      "type": "avatar",
+      "dimensions": {
+        "width": 81.0,
+        "height": 81.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/avatars/bruce-mars.png",
+      "placeholder": {
+        "type": "initials",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "shape": "rounded",
+          "fallbackText": "U"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "avatar",
+          "cssClasses": [
+            "asset-avatar",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2552",
+      "name": "Rectangle",
+      "type": "photo",
+      "dimensions": {
+        "width": 358.0,
+        "height": 427.0
+      },
+      "aspectRatio": 0.84,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2587",
+      "name": "Rectangle Copy 3",
+      "type": "photo",
+      "dimensions": {
+        "width": 356.0,
+        "height": 428.0
+      },
+      "aspectRatio": 0.83,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2612",
+      "name": "Rectangle Copy 4",
+      "type": "photo",
+      "dimensions": {
+        "width": 357.0,
+        "height": 430.0
+      },
+      "aspectRatio": 0.83,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2621",
+      "name": "face-3",
+      "type": "avatar",
+      "dimensions": {
+        "width": 49.0,
+        "height": 49.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/avatars/face-3.png",
+      "placeholder": {
+        "type": "initials",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "shape": "rounded",
+          "fallbackText": "U"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "avatar",
+          "cssClasses": [
+            "asset-avatar",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2629",
+      "name": "face-4",
+      "type": "avatar",
+      "dimensions": {
+        "width": 49.0,
+        "height": 49.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/avatars/face-4.png",
+      "placeholder": {
+        "type": "initials",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "shape": "rounded",
+          "fallbackText": "U"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "avatar",
+          "cssClasses": [
+            "asset-avatar",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2637",
+      "name": "face-5",
+      "type": "avatar",
+      "dimensions": {
+        "width": 50.0,
+        "height": 50.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/avatars/face-5.png",
+      "placeholder": {
+        "type": "initials",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "shape": "rounded",
+          "fallbackText": "U"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "avatar",
+          "cssClasses": [
+            "asset-avatar",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2645",
+      "name": "face-6",
+      "type": "avatar",
+      "dimensions": {
+        "width": 50.0,
+        "height": 50.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/avatars/face-6.png",
+      "placeholder": {
+        "type": "initials",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "shape": "rounded",
+          "fallbackText": "U"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "avatar",
+          "cssClasses": [
+            "asset-avatar",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2653",
+      "name": "face-2",
+      "type": "avatar",
+      "dimensions": {
+        "width": 50.0,
+        "height": 50.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/avatars/face-2.png",
+      "placeholder": {
+        "type": "initials",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "shape": "rounded",
+          "fallbackText": "U"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "avatar",
+          "cssClasses": [
+            "asset-avatar",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2655",
+      "name": "Background",
+      "type": "banner",
+      "dimensions": {
+        "width": 1120.0,
+        "height": 486.0
+      },
+      "aspectRatio": 2.3,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "background",
+          "cssClasses": [
+            "asset-banner",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2659",
+      "name": "image",
+      "type": "image",
+      "dimensions": {
+        "width": 255.0,
+        "height": 148.0
+      },
+      "aspectRatio": 1.72,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-wide",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2661",
+      "name": "Mask",
+      "type": "image",
+      "dimensions": {
+        "width": 255.0,
+        "height": 148.0
+      },
+      "aspectRatio": 1.72,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-wide",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2660",
+      "name": "Mask",
+      "type": "image",
+      "dimensions": {
+        "width": 255.0,
+        "height": 148.0
+      },
+      "aspectRatio": 1.72,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-wide",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2662",
+      "name": "home-decor-3",
+      "type": "photo",
+      "dimensions": {
+        "width": 271.78082275390625,
+        "height": 155.0
+      },
+      "aspectRatio": 1.75,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/photos/home-decor-3.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4:22",
+      "name": "face-1",
+      "type": "image",
+      "dimensions": {
+        "width": 22.0,
+        "height": 22.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-1.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4:26",
+      "name": "face-4",
+      "type": "image",
+      "dimensions": {
+        "width": 22.0,
+        "height": 22.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-4.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4:30",
+      "name": "face-2",
+      "type": "image",
+      "dimensions": {
+        "width": 22.0,
+        "height": 22.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-2.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4:34",
+      "name": "face-3",
+      "type": "image",
+      "dimensions": {
+        "width": 23.0,
+        "height": 22.0
+      },
+      "aspectRatio": 1.05,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-3.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2687",
+      "name": "image",
+      "type": "image",
+      "dimensions": {
+        "width": 255.0,
+        "height": 148.0
+      },
+      "aspectRatio": 1.72,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-wide",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2689",
+      "name": "Mask",
+      "type": "image",
+      "dimensions": {
+        "width": 255.0,
+        "height": 148.0
+      },
+      "aspectRatio": 1.72,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-wide",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2688",
+      "name": "Mask",
+      "type": "image",
+      "dimensions": {
+        "width": 255.0,
+        "height": 148.0
+      },
+      "aspectRatio": 1.72,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-wide",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2690",
+      "name": "home-decor-2",
+      "type": "photo",
+      "dimensions": {
+        "width": 266.5205383300781,
+        "height": 152.0
+      },
+      "aspectRatio": 1.75,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/photos/home-decor-2.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4:4",
+      "name": "face-1",
+      "type": "image",
+      "dimensions": {
+        "width": 22.0,
+        "height": 22.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-1.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4:8",
+      "name": "face-4",
+      "type": "image",
+      "dimensions": {
+        "width": 22.0,
+        "height": 22.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-4.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4:12",
+      "name": "face-2",
+      "type": "image",
+      "dimensions": {
+        "width": 22.0,
+        "height": 22.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-2.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4:16",
+      "name": "face-3",
+      "type": "image",
+      "dimensions": {
+        "width": 23.0,
+        "height": 22.0
+      },
+      "aspectRatio": 1.05,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-3.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2717",
+      "name": "Mask",
+      "type": "image",
+      "dimensions": {
+        "width": 255.0,
+        "height": 148.0
+      },
+      "aspectRatio": 1.72,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-wide",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2716",
+      "name": "Mask",
+      "type": "image",
+      "dimensions": {
+        "width": 255.0,
+        "height": 148.0
+      },
+      "aspectRatio": 1.72,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-wide",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2718",
+      "name": "home-decor-1",
+      "type": "image",
+      "dimensions": {
+        "width": 259.5068359375,
+        "height": 148.0
+      },
+      "aspectRatio": 1.75,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/home-decor-1.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-wide",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2727",
+      "name": "face-1",
+      "type": "image",
+      "dimensions": {
+        "width": 22.0,
+        "height": 22.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-1.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2731",
+      "name": "face-4",
+      "type": "image",
+      "dimensions": {
+        "width": 22.0,
+        "height": 22.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-4.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2735",
+      "name": "face-2",
+      "type": "image",
+      "dimensions": {
+        "width": 22.0,
+        "height": 22.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-2.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2739",
+      "name": "face-3",
+      "type": "image",
+      "dimensions": {
+        "width": 23.0,
+        "height": 22.0
+      },
+      "aspectRatio": 1.05,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/misc/face-3.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-image",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2743",
+      "name": "Rectangle",
+      "type": "photo",
+      "dimensions": {
+        "width": 256.0,
+        "height": 358.0
+      },
+      "aspectRatio": 0.72,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-tall",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2752",
+      "name": "logo-ct",
+      "type": "logo",
+      "dimensions": {
+        "width": 108.93333435058594,
+        "height": 38.0
+      },
+      "aspectRatio": 2.87,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/logos/logo-ct.png",
+      "placeholder": {
+        "type": "solid",
+        "config": {
+          "backgroundColor": "var(--color-gray-3)",
+          "text": "LOGO"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "branding",
+          "cssClasses": [
+            "asset-logo",
+            "aspect-wide",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2829",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 218.0,
+        "height": 170.0
+      },
+      "aspectRatio": 1.28,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2828",
+      "name": "Mask",
+      "type": "photo",
+      "dimensions": {
+        "width": 218.0,
+        "height": 170.0
+      },
+      "aspectRatio": 1.28,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2830",
+      "name": "white-curved",
+      "type": "photo",
+      "dimensions": {
+        "width": 254.6666717529297,
+        "height": 191.0
+      },
+      "aspectRatio": 1.33,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/photos/white-curved.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2833",
+      "name": "Mask Copy 2",
+      "type": "photo",
+      "dimensions": {
+        "width": 218.0,
+        "height": 170.0
+      },
+      "aspectRatio": 1.28,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2831",
+      "name": "Mask Copy 2",
+      "type": "photo",
+      "dimensions": {
+        "width": 218.0,
+        "height": 170.0
+      },
+      "aspectRatio": 1.28,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Profile",
+          "sectionName": "Profile",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2878",
+      "name": "Background",
+      "type": "photo",
+      "dimensions": {
+        "width": 1440.0,
+        "height": 1252.0
+      },
+      "aspectRatio": 1.15,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Sign Up",
+          "sectionName": "Sign Up",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2879",
+      "name": "image",
+      "type": "banner",
+      "dimensions": {
+        "width": 1408.0,
+        "height": 549.0
+      },
+      "aspectRatio": 2.56,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Sign Up",
+          "sectionName": "Sign Up",
+          "role": "background",
+          "cssClasses": [
+            "asset-banner",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2881",
+      "name": "Mask",
+      "type": "banner",
+      "dimensions": {
+        "width": 1408.0,
+        "height": 549.0
+      },
+      "aspectRatio": 2.56,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Sign Up",
+          "sectionName": "Sign Up",
+          "role": "background",
+          "cssClasses": [
+            "asset-banner",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2880",
+      "name": "Mask",
+      "type": "banner",
+      "dimensions": {
+        "width": 1408.0,
+        "height": 549.0
+      },
+      "aspectRatio": 2.56,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Sign Up",
+          "sectionName": "Sign Up",
+          "role": "background",
+          "cssClasses": [
+            "asset-banner",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2882",
+      "name": "bg-signup",
+      "type": "photo",
+      "dimensions": {
+        "width": 1440.0,
+        "height": 810.0
+      },
+      "aspectRatio": 1.78,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/photos/bg-signup.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Sign Up",
+          "sectionName": "Sign Up",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2883",
+      "name": "curved11-small",
+      "type": "photo",
+      "dimensions": {
+        "width": 1439.71630859375,
+        "height": 870.0
+      },
+      "aspectRatio": 1.65,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/photos/curved11-small.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Sign Up",
+          "sectionName": "Sign Up",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2886",
+      "name": "filter",
+      "type": "banner",
+      "dimensions": {
+        "width": 1408.0,
+        "height": 549.0
+      },
+      "aspectRatio": 2.56,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Sign Up",
+          "sectionName": "Sign Up",
+          "role": "background",
+          "cssClasses": [
+            "asset-banner",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2884",
+      "name": "filter",
+      "type": "banner",
+      "dimensions": {
+        "width": 1408.0,
+        "height": 549.0
+      },
+      "aspectRatio": 2.56,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-primary)",
+          "direction": "135deg"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Sign Up",
+          "sectionName": "Sign Up",
+          "role": "background",
+          "cssClasses": [
+            "asset-banner",
+            "aspect-wide",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2919",
+      "name": "Background",
+      "type": "photo",
+      "dimensions": {
+        "width": 409.0,
+        "height": 549.0
+      },
+      "aspectRatio": 0.74,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Sign Up",
+          "sectionName": "Sign Up",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-tall",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2934",
+      "name": "Google__G__Logo.svg",
+      "type": "logo",
+      "dimensions": {
+        "width": 22.0,
+        "height": 22.0
+      },
+      "aspectRatio": 1.0,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/logos/Google__G__Logosvg.png",
+      "placeholder": {
+        "type": "solid",
+        "config": {
+          "backgroundColor": "var(--color-gray-3)",
+          "text": "LOGO"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Sign Up",
+          "sectionName": "Sign Up",
+          "role": "branding",
+          "cssClasses": [
+            "asset-logo",
+            "aspect-square",
+            "size-sm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2958",
+      "name": "image",
+      "type": "photo",
+      "dimensions": {
+        "width": 753.5,
+        "height": 876.0
+      },
+      "aspectRatio": 0.86,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Sign In",
+          "sectionName": "Sign In",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0:2961",
+      "name": "curved6",
+      "type": "photo",
+      "dimensions": {
+        "width": 900.0,
+        "height": 1273.0
+      },
+      "aspectRatio": 0.71,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/photos/curved6.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "Sign In",
+          "sectionName": "Sign In",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-tall",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4:49",
+      "name": "opt_ad_thumbnail 1",
+      "type": "photo",
+      "dimensions": {
+        "width": 800.0,
+        "height": 600.0
+      },
+      "aspectRatio": 1.33,
+      "hasOriginal": true,
+      "exportPath": "/Users/adeelhasan/work/my-design-system-project/design-system-20260311-150346/assets/images/photos/opt_ad_thumbnail-1.png",
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "unknown",
+          "sectionName": "unknown",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4:43",
+      "name": "License",
+      "type": "photo",
+      "dimensions": {
+        "width": 708.0,
+        "height": 935.0
+      },
+      "aspectRatio": 0.76,
+      "hasOriginal": false,
+      "exportPath": null,
+      "placeholder": {
+        "type": "gradient",
+        "config": {
+          "gradient": "var(--gradient-secondary)",
+          "icon": "image"
+        }
+      },
+      "usedIn": [
+        {
+          "screenName": "unknown",
+          "sectionName": "unknown",
+          "role": "content",
+          "cssClasses": [
+            "asset-photo",
+            "aspect-square",
+            "size-lg"
+          ]
+        }
+      ]
+    }
+  ],
+  "placeholderStyles": {
+    "css": "/* Asset Placeholder Styles */\n/* Generated from Figma extraction */\n\n.asset-placeholder {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  overflow: hidden;\n}\n\n.asset-avatar {\n  background: var(--gradient-secondary);\n  border-radius: var(--radius-lg);\n  color: var(--color-white);\n  font-weight: var(--font-weight-semibold);\n  font-size: 1.25em;\n}\n\n.asset-banner,\n.asset-background {\n  background: var(--gradient-primary);\n}\n\n.asset-illustration {\n  background: var(--color-gray-2);\n  border: 1px dashed var(--color-gray-5);\n}\n\n.asset-photo,\n.asset-image {\n  background: var(--gradient-secondary);\n}\n\n.asset-logo {\n  background: var(--color-gray-3);\n  color: var(--color-gray-7);\n  font-weight: var(--font-weight-bold);\n  font-size: 0.75em;\n  text-transform: uppercase;\n}\n\n.aspect-wide { aspect-ratio: 16/9; }\n.aspect-square { aspect-ratio: 1; }\n.aspect-tall { aspect-ratio: 3/4; }\n\n.size-sm { max-width: 100px; max-height: 100px; }\n.size-md { max-width: 300px; max-height: 300px; }\n.size-lg { max-width: 100%; }\n\n.asset-placeholder-icon {\n  opacity: 0.5;\n  width: 32px;\n  height: 32px;\n}"
+  }
+}

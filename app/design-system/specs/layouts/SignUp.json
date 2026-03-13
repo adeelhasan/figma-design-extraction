@@ -1,0 +1,93 @@
+{
+  "$schema": "semantic-layout-v1",
+  "screen": "SignUp",
+  "figmaFrameId": "0:2877",
+  "dimensions": { "width": 1440, "height": 1252, "viewport": "desktop" },
+  "shells": ["navbar-auth", "footer-auth"],
+  "contentArea": {
+    "bounds": { "x": 0, "y": 0, "width": 1440, "height": 1252 },
+    "padding": { "left": 0, "right": 0, "top": 0, "bottom": 0 },
+    "effectiveWidth": 1440
+  },
+  "grid": { "columns": 1, "gap": 0, "margin": { "left": 0, "right": 0 } },
+  "rows": [
+    {
+      "id": "row-hero",
+      "y": 0,
+      "height": 549,
+      "description": "Full-width hero banner with dark gradient overlay and bg-signup photo",
+      "children": [
+        {
+          "id": "section-image",
+          "name": "image",
+          "gridColumn": "1 / 2",
+          "gridRow": "1 / 2",
+          "columnSpan": 1,
+          "rowSpan": 1,
+          "bounds": { "x": 16, "y": 16, "width": 1408, "height": 549 }
+        }
+      ]
+    },
+    {
+      "id": "row-hero-text",
+      "y": 170,
+      "height": 115,
+      "description": "Hero overlay text: Sign Up heading + subtitle, centered on hero",
+      "children": [
+        {
+          "id": "section-signup-title",
+          "name": "Sign Up",
+          "gridColumn": "1 / 2",
+          "gridRow": "2 / 3",
+          "columnSpan": 1,
+          "rowSpan": 1,
+          "bounds": { "x": 611, "y": 170, "width": 171, "height": 65 }
+        },
+        {
+          "id": "section-subtitle",
+          "name": "Use these awesome fo",
+          "gridColumn": "1 / 2",
+          "gridRow": "2 / 3",
+          "columnSpan": 1,
+          "rowSpan": 1,
+          "bounds": { "x": 478, "y": 241, "width": 480, "height": 50 }
+        }
+      ]
+    },
+    {
+      "id": "row-form",
+      "y": 377,
+      "height": 549,
+      "description": "Centered registration form card (white, with shadow)",
+      "children": [
+        {
+          "id": "section-form",
+          "name": "form",
+          "gridColumn": "1 / 2",
+          "gridRow": "3 / 4",
+          "columnSpan": 1,
+          "rowSpan": 1,
+          "bounds": { "x": 515, "y": 377, "width": 409, "height": 549 }
+        }
+      ]
+    },
+    {
+      "id": "row-footer",
+      "y": 1120,
+      "height": 132,
+      "description": "Footer-auth shell: social icons + nav links + copyright",
+      "children": []
+    }
+  ],
+  "sections": {
+    "order": ["section-image", "section-signup-title", "section-subtitle", "section-form"]
+  },
+  "css": {
+    "gridTemplate": "display: flex; flex-direction: column; align-items: center;",
+    "containerStyles": {
+      "width": "1440px",
+      "background": "var(--color-background)",
+      "position": "relative"
+    }
+  }
+}

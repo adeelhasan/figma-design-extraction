@@ -1,8 +1,9 @@
 # Component Specifications
 
 > Extracted from: Soft UI Dashboard Free (Community)
-> Generated: 2026-01-18
+> Generated: 2026-02-06
 > Components: 22 (standalone components)
+> Symbols Page: ✅ Symbols (main component definitions)
 
 ---
 
@@ -29,31 +30,44 @@ Primary interactive element for actions. Multiple sizes and states available.
 
 ### Dimensions
 
-| Size | Width | Height | Notes |
-|------|-------|--------|-------|
-| small | 104-108px | 32px | Compact button |
-| medium | 104-108px | 40-42px | Standard button |
-| large | 185-189px | 47-48px | Prominent CTA |
-| with-icon | 127-131px | 40-41px | Button with leading icon |
-| just-icon | 40-44px | 40-44px | Icon-only button (square) |
-| outline | 104-114px | 40-44px | Border-only style |
+| Size | Width | Height | Padding | Notes |
+|------|-------|--------|---------|-------|
+| small | 104px | 32px | 8px 16px | Compact button |
+| medium | 104px | 40px | 12px 16px | Standard button |
+| large | 185px | 47px | 16px 24px | Prominent CTA |
+| with-icon | 127px | 40px | 12px 16px | Button with leading icon |
+| just-icon | 40px | 40px | 0px | Icon-only button (square) |
+| outline | 104px | 40px | 12px 16px | Border-only style |
+
+**All Measurements:**
+- Component heights include text baseline + padding
+- Width varies based on content (label vs icon)
+- Padding is symmetric (top/bottom = left/right)
 
 ### Token Usage
 
 **Colors:**
-- Background: `var(--gradient-primary)` or `var(--color-surface)`
-- Text: `var(--color-text-inverse)` (filled), `var(--color-text-primary)` (outline)
-- Border: `var(--color-primary)` (outline variant)
+- Primary Fill: `#000000` (dark navy/black) - needs semantic mapping to `var(--color-primary)`
+- Outline Variant: Border with transparent fill
+- Text: `var(--color-text-inverse)` (white/light on dark)
+- Border (outline): `var(--color-border)`
 
 **Typography:**
-- Font: `var(--font-family-sans)`
-- Size: `var(--font-size-sm)` (12px)
-- Weight: `var(--font-weight-bold)` (700)
-- Transform: uppercase
+- Font: System sans-serif
+- Size:
+  - Small: 12px
+  - Medium: 14px
+  - Large: 16px
+- Weight: 600-700 (semi-bold)
+- Line Height: 1.5
+- Transform: None (mixed case)
 
 **Effects:**
-- Border radius: `var(--radius-DEFAULT)` (6px)
-- Shadow: `var(--shadow-button)` on hover
+- Border Radius: `var(--radius-md)` (8px)
+- Shadow: Dual drop shadow layer
+  - Layer 1: blur 4px, y-offset 2px, spread -1px
+  - Layer 2: blur 6px, y-offset 4px, spread -1px
+- Transition: 150ms ease-in-out
 
 ### States
 
@@ -138,19 +152,23 @@ Form input field for text entry.
 ### Token Usage
 
 **Colors:**
-- Background: `var(--color-surface)`
-- Border: `var(--color-border-input)` (default), `var(--color-primary)` (active)
-- Text: `var(--color-text-primary)`
-- Placeholder: `var(--color-text-muted)`
+- Background: `#ffffff` (white) - map to `var(--color-surface)`
+- Border Default: `#d9d9d9` (light gray) - map to `var(--color-border)`
+- Border Active: Primary color accent
+- Text: `#000000` (black) - map to `var(--color-text)`
+- Placeholder: `#999999` (medium gray) - map to `var(--color-text-muted)`
 
 **Typography:**
-- Font: `var(--font-family-sans)`
-- Size: `var(--font-size-base)` (14px)
-- Weight: `var(--font-weight-regular)` (400)
+- Font: System sans-serif
+- Size: 14px
+- Weight: 400 (regular)
+- Line Height: 1.5
 
 **Effects:**
-- Border radius: `var(--radius-md)` (8px)
-- Focus shadow: `var(--shadow-input-focus)`
+- Border Radius: `var(--radius-sm)` (6px)
+- Border Width: 1px
+- Focus Shadow: 0 0 0 3px with primary color (20% opacity)
+- Transition: 150ms ease-in-out
 
 ### States
 
@@ -203,19 +221,31 @@ Toggle control for boolean selection.
 
 ### Dimensions
 
-| State | Width | Height |
-|-------|-------|--------|
-| active | 20px | 20px |
+| State | Width | Height | Border Radius |
+|-------|-------|--------|----------------|
+| default/unchecked | 20px | 20px | 4px |
+| active/checked | 20px | 20px | 4px |
+| Touch target | 44px | 44px | — |
+
+**Notes:**
+- Minimum touch target: 44x44px (includes surrounding padding)
+- Visual size: 20x20px checkbox
+- Border width: 2px
 
 ### Token Usage
 
 **Colors:**
-- Background (checked): `var(--gradient-primary)`
-- Checkmark: `var(--color-text-inverse)`
-- Border (unchecked): `var(--color-border)`
+- Background (unchecked): `#ffffff` (white) - map to `var(--color-surface)`
+- Background (checked): `#252f40` (dark navy) - map to `var(--color-primary)`
+- Border (unchecked): `#d9d9d9` (light gray) - map to `var(--color-border)`
+- Border (checked): `#252f40` (matches fill)
+- Checkmark: `#ffffff` (white) - map to `var(--color-text-inverse)`
 
 **Effects:**
-- Border radius: `var(--radius-sm)` (4px)
+- Border Radius: `var(--radius-sm)` (4px)
+- Border Width: 2px
+- Focus Shadow: 0 0 0 2px primary color (30% opacity)
+- Transition: 100ms ease-in-out
 
 ### Usage Notes
 
@@ -250,8 +280,109 @@ Toggle control for boolean selection.
 
 ### Notes
 
-1. Components use **gradient backgrounds** for primary actions (Soft UI signature style)
+1. Components primarily use **solid fills** (not gradients as originally thought)
 2. All interactive elements have **hover and active states**
 3. Form inputs use **consistent 40px height**
-4. Buttons use **uppercase text** with bold weight
-5. Border radius is consistent across component types
+4. Buttons use **mixed-case text** with 600-700 weight
+5. Consistent border radius: 4-8px across component types
+6. Dual shadow layers provide depth for buttons
+7. Light neutral border color (#d9d9d9) for default states
+
+---
+
+## Color Extraction Summary
+
+### Extracted Colors (Raw)
+The Soft UI Dashboard components use these colors in raw format:
+
+| Element | Color | Hex | RGB | Usage |
+|---------|-------|-----|-----|-------|
+| Button Fill (default) | Dark Navy | #000000 | 0, 0, 0 | Primary action background |
+| Input Background | White | #ffffff | 255, 255, 255 | Form field surface |
+| Input Border (default) | Light Gray | #d9d9d9 | 217, 217, 217 | Unfocused state |
+| Checkbox (checked) | Dark Navy | #252f40 | 37, 47, 64 | Selected state |
+| Button Stroke | Medium Gray | #949494 | 148, 148, 148 | Border outline |
+| Text (default) | Black | #000000 | 0, 0, 0 | Primary text |
+| Text (inverse) | White | #ffffff | 255, 255, 255 | On dark backgrounds |
+
+### Semantic Token Mapping
+
+**Recommend the following token definitions:**
+
+```css
+/* Primary Colors */
+--color-primary: #252f40;          /* Dark navy - primary actions */
+--color-primary-light: #4a5568;    /* Lighter variant */
+
+/* Neutral Colors */
+--color-white: #ffffff;             /* Backgrounds, text on dark */
+--color-black: #000000;             /* Primary text */
+--color-border: #d9d9d9;            /* Form element borders */
+--color-border-dark: #949494;       /* Darker borders */
+
+/* Text Colors */
+--color-text: #000000;              /* Primary text */
+--color-text-inverse: #ffffff;      /* Text on dark backgrounds */
+--color-text-muted: #999999;        /* Placeholder, disabled text */
+
+/* Surface Colors */
+--color-surface: #ffffff;           /* Form backgrounds */
+--color-background: #f5f5f5;        /* Page background */
+
+/* Effects */
+--shadow-button: 0 2px 4px rgba(0,0,0,0.1),
+                 0 4px 6px rgba(0,0,0,0.1);
+--shadow-input: 0 0 0 3px rgba(37,47,64,0.1);
+--shadow-checkbox: 0 0 0 2px rgba(37,47,64,0.3);
+
+/* Border Radius */
+--radius-sm: 4px;      /* Checkboxes, small buttons */
+--radius-md: 6px;      /* Inputs */
+--radius-lg: 8px;      /* Buttons */
+```
+
+### Design System Fingerprint
+
+- **Color Palette**: Monochromatic + light gray borders (SoftUI minimal approach)
+- **Button Style**: Solid dark fills with soft shadow (not gradient)
+- **Form Style**: Light backgrounds with subtle borders
+- **Interactive States**: Handled through color/shadow changes
+- **Overall**: Clean, minimal, accessibility-focused
+
+---
+
+## Component Architecture
+
+### Hierarchy
+```
+Form Components
+├── Button (18 variants)
+│   ├── Size (small, medium, large)
+│   ├── Style (default, outline, with-icon, icon-only)
+│   └── State (default, hover, active)
+├── Input (3 variants)
+│   ├── State (default, active, error*, disabled*)
+│   └── Props (placeholder, label, helper text)
+└── Checkbox (2 variants)
+    └── State (default, active, indeterminate*, disabled*)
+```
+
+### Shared Patterns
+- **Padding**: Vertical = 8-16px, Horizontal = 12-24px
+- **Borders**: 1-2px solid, primary or neutral colors
+- **Shadows**: Drop shadow with blur 4-6px and y-offset
+- **Transitions**: 150ms ease-in-out on all interactive properties
+- **Focus**: 2px outline in primary color
+
+---
+
+## Implementation Checklist
+
+- [ ] Map extracted colors to semantic token names
+- [ ] Create CSS custom properties for all tokens
+- [ ] Generate React components with variant support
+- [ ] Implement hover/active/focus states
+- [ ] Test keyboard navigation for accessibility
+- [ ] Verify color contrast (WCAG AA)
+- [ ] Create component storybook documentation
+- [ ] Build design system preview HTML

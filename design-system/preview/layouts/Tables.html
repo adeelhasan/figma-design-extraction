@@ -249,21 +249,18 @@
         <section class="section">
           <h2><i data-lucide="grid-3x3"></i> Layout Structure</h2>
           <div class="structure-diagram">┌─────────────────────────────────────────────────────────────────┐
-│  Navbar (breadcrumb: Pages > Tables)                            │
+│  Navbar (Pages / Sign In)                                       │
 ├──────────┬──────────────────────────────────────────────────────┤
 │          │                                                      │
 │ Sidebar  │  ┌────────────────────────────────────────────────┐ │
-│          │  │ Authors Table                                   │ │
-│ • Dashboard │  │ (6 rows with avatars, roles, status)         │ │
-│ • Tables ◄│  └────────────────────────────────────────────────┘ │
-│ • Billing │                                                     │
-│ • VR      │  ┌────────────────────────────────────────────────┐ │
-│ • RTL     │  │ Projects Table                                 │ │
-│          │  │ (6 rows with logos, budgets, progress)         │ │
-│ ACCOUNT  │  └────────────────────────────────────────────────┘ │
-│ • Profile│                                                      │
-│ • Sign In│                                                      │
-│ • Sign Up│                                                      │
+│          │  │ Authors Table (5 rows)                          │ │
+│          │  │ - Columns: AUTHOR, FUNCTION, STATUS, EMPLOYED  │ │
+│ • Dashboard │  └────────────────────────────────────────────────┘ │
+│ • Tables ◄│                                                     │
+│          │  ┌────────────────────────────────────────────────┐ │
+│          │  │ Projects Table (6 rows)                         │ │
+│          │  │ - Columns: COMPANIES, BUDGET, STATUS, COMPLETION│ │
+│          │  └────────────────────────────────────────────────┘ │
 ├──────────┴──────────────────────────────────────────────────────┤
 │  Footer                                                         │
 └─────────────────────────────────────────────────────────────────┘</div>
@@ -291,13 +288,25 @@
                 <td>Alexa Liras</td>
                 <td>Programator / Developer</td>
                 <td><span class="status-badge offline">OFFLINE</span></td>
-                <td>11/01/19</td>
+                <td>23/12/20</td>
               </tr>
               <tr>
-                <td>Laura Perner</td>
+                <td>Laure Perrier</td>
                 <td>Executive / Projects</td>
                 <td><span class="status-badge online">ONLINE</span></td>
-                <td>04/05/21</td>
+                <td>13/04/19</td>
+              </tr>
+              <tr>
+                <td>Miriam Eric</td>
+                <td>Marketing / Organization</td>
+                <td><span class="status-badge online">ONLINE</span></td>
+                <td>03/04/21</td>
+              </tr>
+              <tr>
+                <td>John Murphy</td>
+                <td>Sales</td>
+                <td><span class="status-badge offline">OFFLINE</span></td>
+                <td>10/02/22</td>
               </tr>
             </tbody>
           </table>
@@ -317,20 +326,38 @@
             <tbody>
               <tr>
                 <td>Spotify Version</td>
-                <td>$2,500</td>
+                <td>$14,000</td>
                 <td><span class="status-badge working">working</span></td>
                 <td><div class="progress-bar"><div class="fill" style="width: 60%"></div></div></td>
               </tr>
               <tr>
+                <td>Progress Track</td>
+                <td>$3,000</td>
+                <td><span class="status-badge working">working</span></td>
+                <td><div class="progress-bar"><div class="fill" style="width: 10%"></div></div></td>
+              </tr>
+              <tr>
                 <td>Jira Platform Errors</td>
-                <td>Not set</td>
+                <td>Not Set</td>
                 <td><span class="status-badge done">done</span></td>
                 <td><div class="progress-bar"><div class="fill" style="width: 100%"></div></div></td>
               </tr>
               <tr>
-                <td>Redesign Store</td>
+                <td>Launch new Mobile App</td>
+                <td>$20,600</td>
+                <td><span class="status-badge cancelled">canceled</span></td>
+                <td><div class="progress-bar"><div class="fill" style="width: 50%"></div></div></td>
+              </tr>
+              <tr>
+                <td>Web Dev</td>
+                <td>$4,000</td>
+                <td><span class="status-badge working">working</span></td>
+                <td><div class="progress-bar"><div class="fill" style="width: 80%"></div></div></td>
+              </tr>
+              <tr>
+                <td>Redesign Online Store</td>
                 <td>$2,000</td>
-                <td><span class="status-badge cancelled">cancelled</span></td>
+                <td><span class="status-badge cancelled">canceled</span></td>
                 <td><div class="progress-bar"><div class="fill" style="width: 0%"></div></div></td>
               </tr>
             </tbody>

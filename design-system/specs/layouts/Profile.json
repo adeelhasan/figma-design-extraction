@@ -1,0 +1,493 @@
+{
+  "screenName": "Profile",
+  "frameId": "0:2505",
+  "dimensions": {
+    "width": 1440,
+    "height": 1409
+  },
+  "layout": {
+    "type": "sidebar-content",
+    "pattern": "admin-dashboard",
+    "hasNavbar": true,
+    "hasSidebar": true,
+    "hasMobileMenu": false,
+    "sidebarWidth": 273,
+    "sidebarPosition": "left"
+  },
+  "sections": [
+    {
+      "id": "navbar",
+      "name": "navbar",
+      "type": "navigation",
+      "subtype": "top-bar",
+      "location": "top",
+      "dimensions": {
+        "height": 45,
+        "width": 1440
+      },
+      "styling": {
+        "background": "var(--color-surface)",
+        "borderRadius": 0,
+        "boxShadow": "var(--shadow-sm)"
+      },
+      "elements": {
+        "logo": {
+          "text": "Soft UI Dashboard",
+          "type": "text"
+        },
+        "links": [
+          { "text": "Dashboard", "href": "/dashboard" },
+          { "text": "Profile", "href": "/profile", "active": true }
+        ]
+      }
+    },
+    {
+      "id": "sidebar",
+      "name": "sidebar",
+      "type": "navigation",
+      "subtype": "sidebar",
+      "location": "left",
+      "dimensions": {
+        "width": 273,
+        "height": 1007
+      },
+      "styling": {
+        "background": "var(--gradient-dark)",
+        "angle": "310deg",
+        "colors": ["#141727", "#3a416f"],
+        "backdropBlur": "10px"
+      },
+      "elements": {
+        "menuItems": [
+          { "icon": "layout-dashboard", "label": "Dashboard" },
+          { "icon": "table", "label": "Tables" },
+          { "icon": "credit-card", "label": "Billing" },
+          { "icon": "glasses", "label": "VR" },
+          { "icon": "type", "label": "RTL" }
+        ],
+        "accountSection": {
+          "label": "ACCOUNT",
+          "items": [
+            { "icon": "user", "label": "Profile" },
+            { "icon": "log-in", "label": "Sign In" },
+            { "icon": "user-plus", "label": "Sign Up" }
+          ]
+        }
+      }
+    },
+    {
+      "id": "profile-banner",
+      "name": "image",
+      "type": "decoration",
+      "subtype": "profile-banner",
+      "location": "top-center",
+      "dimensions": {
+        "height": 308,
+        "width": 1121
+      },
+      "styling": {
+        "background": "var(--gradient-primary)",
+        "angle": "310deg",
+        "colors": ["#7928ca", "#ff0080"],
+        "hasImage": true,
+        "imageType": "gradient-wave-with-shapes"
+      }
+    },
+    {
+      "id": "profile-header",
+      "name": "profile-info",
+      "type": "header",
+      "subtype": "profile-header",
+      "location": "top-main",
+      "dimensions": {
+        "height": 114,
+        "width": 1121
+      },
+      "content": {
+        "avatar": {
+          "size": "74x81",
+          "border": "3px solid white",
+          "borderRadius": "100px"
+        },
+        "name": {
+          "text": "Alec Thompson",
+          "size": "33px",
+          "weight": "bold",
+          "color": "var(--color-text-primary)"
+        },
+        "role": {
+          "text": "CEO / Co-Founder",
+          "size": "19px",
+          "weight": "regular",
+          "color": "var(--color-text-secondary)"
+        },
+        "statButtons": [
+          { "label": "Overview", "count": null },
+          { "label": "Teams", "count": null },
+          { "label": "Projects", "count": null }
+        ]
+      }
+    },
+    {
+      "id": "platform-settings",
+      "name": "platform settings",
+      "type": "card",
+      "subtype": "settings-card",
+      "location": "main-first-row-first",
+      "columnIndex": 0,
+      "dimensions": {
+        "width": 358,
+        "height": 430
+      },
+      "styling": {
+        "background": "var(--color-surface)",
+        "borderRadius": "var(--radius-xl)",
+        "boxShadow": "var(--shadow-card)",
+        "padding": "var(--spacing-6)"
+      },
+      "content": {
+        "title": {
+          "text": "Platform Settings",
+          "size": "18px",
+          "weight": "semibold"
+        },
+        "sections": [
+          {
+            "label": "ACCOUNT",
+            "items": [
+              {
+                "id": "toggle-follow",
+                "text": "Email me when someone follows me",
+                "type": "toggle",
+                "defaultValue": true
+              },
+              {
+                "id": "toggle-answers",
+                "text": "Email me when someone answers me",
+                "type": "toggle",
+                "defaultValue": false
+              },
+              {
+                "id": "toggle-mentions",
+                "text": "Email me when someone mentions me",
+                "type": "toggle",
+                "defaultValue": true
+              }
+            ]
+          },
+          {
+            "label": "APPLICATION",
+            "items": [
+              {
+                "id": "toggle-launches",
+                "text": "New launches and projects",
+                "type": "toggle",
+                "defaultValue": false
+              },
+              {
+                "id": "toggle-updates",
+                "text": "Monthly product updates",
+                "type": "toggle",
+                "defaultValue": true
+              },
+              {
+                "id": "toggle-newsletter",
+                "text": "Subscribe to newsletter",
+                "type": "toggle",
+                "defaultValue": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "profile-information",
+      "name": "profile information",
+      "type": "card",
+      "subtype": "info-card",
+      "location": "main-first-row-second",
+      "columnIndex": 1,
+      "dimensions": {
+        "width": 356,
+        "height": 430
+      },
+      "styling": {
+        "background": "var(--color-surface)",
+        "borderRadius": "var(--radius-xl)",
+        "boxShadow": "var(--shadow-card)",
+        "padding": "var(--spacing-6)"
+      },
+      "content": {
+        "title": {
+          "text": "Profile Information",
+          "size": "18px",
+          "weight": "semibold"
+        },
+        "editButton": {
+          "icon": "pencil",
+          "location": "header-right"
+        },
+        "bio": {
+          "text": "Hi, I'm Alec Thompson, Decisions: If you can't decide, the answer is no.",
+          "size": "14px",
+          "color": "var(--color-text-secondary)"
+        },
+        "fields": [
+          {
+            "label": "Full Name",
+            "value": "Sarah Emily Jacob",
+            "type": "text-display"
+          },
+          {
+            "label": "Mobile",
+            "value": "(44) 123 1234 123",
+            "type": "text-display"
+          },
+          {
+            "label": "Email",
+            "value": "sarahemily@mail.com",
+            "type": "text-display"
+          },
+          {
+            "label": "Location",
+            "value": "USA",
+            "type": "text-display"
+          }
+        ],
+        "socialLinks": [
+          { "icon": "facebook", "href": "#" },
+          { "icon": "twitter", "href": "#" },
+          { "icon": "instagram", "href": "#" }
+        ]
+      }
+    },
+    {
+      "id": "conversations",
+      "name": "conversations",
+      "type": "list",
+      "subtype": "message-list",
+      "location": "main-first-row-third",
+      "columnIndex": 2,
+      "dimensions": {
+        "width": 357,
+        "height": 430
+      },
+      "styling": {
+        "background": "var(--color-surface)",
+        "borderRadius": "var(--radius-xl)",
+        "boxShadow": "var(--shadow-card)",
+        "padding": "var(--spacing-6)"
+      },
+      "content": {
+        "title": {
+          "text": "Conversations",
+          "size": "18px",
+          "weight": "semibold"
+        },
+        "items": [
+          {
+            "id": "conv-1",
+            "avatar": true,
+            "name": "Sophie B",
+            "message": "Hi! I need more information...",
+            "hasReplyButton": true
+          },
+          {
+            "id": "conv-2",
+            "avatar": true,
+            "name": "Anne Marie",
+            "message": "Awesome work, can you...",
+            "hasReplyButton": true
+          },
+          {
+            "id": "conv-3",
+            "avatar": true,
+            "name": "Ivanna",
+            "message": "About files I can...",
+            "hasReplyButton": true
+          },
+          {
+            "id": "conv-4",
+            "avatar": true,
+            "name": "Peterson",
+            "message": "Have a great afternoon...",
+            "hasReplyButton": true
+          },
+          {
+            "id": "conv-5",
+            "avatar": true,
+            "name": "Nick Daniel",
+            "message": "Hi! I need more information...",
+            "hasReplyButton": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "projects",
+      "name": "projects",
+      "type": "card-grid",
+      "subtype": "portfolio-grid",
+      "location": "main-second-row",
+      "dimensions": {
+        "width": 1120,
+        "height": 486
+      },
+      "styling": {
+        "background": "var(--color-surface)",
+        "borderRadius": "var(--radius-xl)",
+        "boxShadow": "var(--shadow-card)",
+        "padding": "var(--spacing-6)"
+      },
+      "content": {
+        "header": {
+          "title": {
+            "text": "Projects",
+            "size": "18px",
+            "weight": "semibold"
+          },
+          "subtitle": {
+            "text": "Architects Design Houses",
+            "size": "13px",
+            "color": "var(--color-text-secondary)"
+          },
+          "action": {
+            "text": "Upload New Project",
+            "type": "button",
+            "style": "secondary"
+          }
+        },
+        "gridLayout": {
+          "columns": 3,
+          "gap": "var(--spacing-4)"
+        },
+        "items": [
+          {
+            "id": "project-1",
+            "title": "Modern",
+            "description": "As Uber works through...",
+            "image": true,
+            "imageAspectRatio": "4:3",
+            "badge": "IN PROGRESS",
+            "badgeColor": "var(--color-primary)",
+            "action": {
+              "text": "VIEW PROJECT",
+              "type": "button",
+              "style": "secondary"
+            }
+          },
+          {
+            "id": "project-2",
+            "title": "Scandinavian",
+            "description": "Music is something that...",
+            "image": true,
+            "imageAspectRatio": "4:3",
+            "badge": "IN PROGRESS",
+            "badgeColor": "var(--color-primary)",
+            "action": {
+              "text": "VIEW PROJECT",
+              "type": "button",
+              "style": "secondary"
+            }
+          },
+          {
+            "id": "project-3",
+            "title": "Minimalist",
+            "description": "Different people have different...",
+            "image": true,
+            "imageAspectRatio": "4:3",
+            "badge": "IN PROGRESS",
+            "badgeColor": "var(--color-primary)",
+            "action": {
+              "text": "VIEW PROJECT",
+              "type": "button",
+              "style": "secondary"
+            }
+          },
+          {
+            "id": "project-upload",
+            "isPlaceholder": true,
+            "label": "Upload New Project",
+            "icon": "plus",
+            "borderStyle": "dashed",
+            "borderColor": "var(--color-border-light)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "footer",
+      "name": "footer",
+      "type": "footer",
+      "location": "bottom",
+      "dimensions": {
+        "height": 20,
+        "width": 1118
+      },
+      "styling": {
+        "background": "var(--color-background)",
+        "textAlign": "center"
+      },
+      "content": {
+        "copyright": "© 2021, made with ❤ by Creative Tim",
+        "links": [
+          { "text": "Creative Tim", "href": "#" },
+          { "text": "About Us", "href": "#" },
+          { "text": "Blog", "href": "#" },
+          { "text": "Licenses", "href": "#" }
+        ]
+      }
+    }
+  ],
+  "tokenUsage": {
+    "colors": {
+      "background": "var(--color-background)",
+      "surface": "var(--color-surface)",
+      "textPrimary": "var(--color-text-primary)",
+      "textSecondary": "var(--color-text-secondary)",
+      "textMuted": "var(--color-text-muted)",
+      "primary": "var(--color-primary)",
+      "secondary": "var(--color-secondary)",
+      "borderLight": "var(--color-border-light)"
+    },
+    "gradients": {
+      "dark": "var(--gradient-dark)",
+      "primary": "var(--gradient-primary)"
+    },
+    "effects": {
+      "cardShadow": "var(--shadow-card)",
+      "shadowSmall": "var(--shadow-sm)",
+      "cardRadius": "var(--radius-xl)",
+      "buttonRadius": "var(--radius-DEFAULT)",
+      "inputRadius": "var(--radius-md)",
+      "fullRadius": "var(--radius-full)"
+    },
+    "spacing": {
+      "gapSmall": "var(--spacing-2)",
+      "gapMedium": "var(--spacing-3)",
+      "gapLarge": "var(--spacing-4)",
+      "marginLarge": "var(--spacing-6)",
+      "marginXL": "var(--spacing-8)"
+    }
+  },
+  "componentInstances": {
+    "cards": 4,
+    "toggleSwitches": 6,
+    "avatars": 6,
+    "buttons": 10,
+    "badges": 5,
+    "textInputs": 4,
+    "icons": 25,
+    "links": 12
+  },
+  "metadata": {
+    "extractedAt": "2026-02-06T00:00:00Z",
+    "description": "User profile screen with sidebar navigation, profile header banner, platform settings, profile info, conversations list, and project portfolio grid",
+    "dashboardPattern": true,
+    "profilePattern": true,
+    "gridLayout": "3-column + full-width",
+    "hasSidebar": true,
+    "sidebarGradient": true
+  }
+}

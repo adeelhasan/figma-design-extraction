@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1440">
+  <title>Profile - Layout Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    @import '../../tokens/colors.css';
+    @import '../../tokens/typography.css';
+    @import '../../tokens/spacing.css';
+    @import '../../tokens/effects.css';
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-family-primary);
+      background: var(--color-background);
+      color: var(--color-text-primary);
+      width: 1440px;
+      min-height: 1409px;
+    }
+
+    /* ── Main content area ── */
+    .main-content {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto auto auto auto auto;
+      gap: var(--spacing-6);
+      padding: var(--spacing-6);
+    }
+
+    /* ── Grid placement ── */
+    #profile-header    { grid-column: 1 / 13; grid-row: 1 / 2; }
+    #profile-identity  { grid-column: 1 / 13; grid-row: 2 / 3; }
+    #platform-settings { grid-column: 1 / 5;  grid-row: 3 / 4; }
+    #profile-information { grid-column: 5 / 9; grid-row: 3 / 4; }
+    #conversations     { grid-column: 9 / 13; grid-row: 3 / 4; }
+    #projects          { grid-column: 1 / 13; grid-row: 4 / 5; }
+
+    /* ── Profile Header Banner ── */
+    .profile-header-banner {
+      height: 230px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
+      background-image: url('../../assets/images/backgrounds/curved0.png');
+      background-size: cover;
+      background-position: center top;
+      position: relative;
+      overflow: hidden;
+    }
+    .profile-header-banner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-primary);
+      opacity: 0.5;
+      border-radius: 12px;
+    }
+
+    /* ── Profile Identity Bar ── */
+    .profile-identity-bar {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(27px);
+      -webkit-backdrop-filter: blur(27px);
+      border-radius: 12px;
+      box-shadow: 0px 20px 27px rgba(0, 0, 0, 0.05);
+      padding: var(--spacing-4) var(--spacing-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .profile-identity-left {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-4);
+    }
+    .profile-avatar-wrapper {
+      width: 74px;
+      height: 81px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.12);
+      flex-shrink: 0;
+    }
+    .profile-avatar-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .profile-name-block h4 {
+      font-family: var(--font-family-primary);
+      font-size: 1.5rem;
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      line-height: 1.17;
+    }
+    .profile-name-block p {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-muted);
+      margin-top: 2px;
+    }
+    .profile-identity-tabs {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-6);
+    }
+    .profile-tab {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .profile-tab.active {
+      color: var(--color-text-primary);
+      background: var(--color-surface);
+      border-radius: 8px;
+      padding: var(--spacing-2) var(--spacing-3);
+      box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.07), 0px 4px 6px -1px rgba(0,0,0,0.12);
+    }
+    .profile-tab-icon {
+      color: var(--color-text-muted);
+    }
+
+    /* ── Card base ── */
+    .card {
+      background: var(--color-surface);
+      border-radius: 12px;
+      box-shadow: 0px 20px 27px rgba(0, 0, 0, 0.05);
+      padding: var(--spacing-6);
+    }
+    .card-title {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--spacing-4);
+    }
+
+    /* ── Platform Settings ── */
+    .settings-group-label {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-secondary);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: var(--spacing-4) 0 var(--spacing-3);
+    }
+    .settings-group-label:first-of-type {
+      margin-top: 0;
+    }
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      margin-bottom: var(--spacing-4);
+    }
+    .toggle-switch {
+      width: 34px;
+      height: 21px;
+      border-radius: 10.5px;
+      flex-shrink: 0;
+      position: relative;
+      cursor: pointer;
+    }
+    .toggle-switch.on {
+      background: #3a416f;
+    }
+    .toggle-switch.off {
+      background: var(--color-border);
+    }
+    .toggle-knob {
+      position: absolute;
+      top: 2.5px;
+      width: 16px;
+      height: 16px;
+      border-radius: 8px;
+      background: var(--color-surface);
+      box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.07), 0px 4px 6px -1px rgba(0,0,0,0.12);
+    }
+    .toggle-switch.on .toggle-knob {
+      left: 15px;
+    }
+    .toggle-switch.off .toggle-knob {
+      left: 2.5px;
+    }
+    .toggle-label {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      color: var(--color-text-primary);
+    }
+
+    /* ── Profile Information ── */
+    .profile-bio {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      margin-bottom: var(--spacing-4);
+    }
+    .profile-divider {
+      border: none;
+      border-bottom: 1px solid var(--gray-200, #f0f0f0);
+      margin-bottom: var(--spacing-4);
+    }
+    .profile-field-row {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      margin-bottom: var(--spacing-3);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+    }
+    .profile-field-label {
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      min-width: 80px;
+    }
+    .profile-field-value {
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-muted);
+    }
+    .social-row {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      margin-top: var(--spacing-3);
+    }
+    .social-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-dark);
+      color: white;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .social-icon.facebook { background: #3b5998; }
+    .social-icon.twitter { background: #1da1f2; }
+    .social-icon.instagram { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+
+    /* ── Conversations ── */
+    .conversation-row {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      padding-bottom: var(--spacing-4);
+      margin-bottom: var(--spacing-4);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .conversation-row:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .convo-avatar {
+      width: 49px;
+      height: 49px;
+      border-radius: 10.5px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.07), 0px 4px 6px -1px rgba(0,0,0,0.12);
+    }
+    .convo-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .convo-content {
+      flex: 1;
+      min-width: 0;
+    }
+    .convo-name {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+    .convo-message {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-text-muted);
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .reply-btn {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-secondary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    /* ── Projects ── */
+    .projects-header {
+      display: flex;
+      align-items: baseline;
+      gap: var(--spacing-3);
+      margin-bottom: var(--spacing-6);
+    }
+    .projects-subtitle {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      color: var(--color-text-muted);
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--spacing-6);
+    }
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-3);
+    }
+    .project-image {
+      width: 100%;
+      height: 160px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.07), 0px 4px 6px -1px rgba(0,0,0,0.12);
+    }
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .project-label {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-muted);
+    }
+    .project-title {
+      font-family: var(--font-family-primary);
+      font-size: 1.25rem;
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+    .project-description {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+    .project-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+    }
+    .view-project-btn {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      background: var(--color-surface);
+      border: 1px solid var(--color-primary);
+      border-radius: 6px;
+      padding: var(--spacing-2) var(--spacing-3);
+      cursor: pointer;
+      box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.07), 0px 4px 6px -1px rgba(0,0,0,0.12);
+    }
+    .project-members {
+      display: flex;
+      align-items: center;
+    }
+    .member-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--color-surface);
+      margin-left: -8px;
+    }
+    .member-avatar:first-child { margin-left: 0; }
+    .member-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .upload-slot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 240px;
+      background: var(--color-surface);
+      border-radius: 8px;
+      border: 1px solid rgba(103, 116, 142, 0.2);
+      gap: var(--spacing-3);
+      cursor: pointer;
+    }
+    .upload-icon-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-background);
+    }
+    .upload-text {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Shell: sidebar | Source: Dashboard-sidebar transparent -->
+<nav class="shell-sidebar" style="
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 248px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-right: 1px solid var(--color-border);
+  padding: var(--spacing-4) var(--spacing-4);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow-y: auto;
+  z-index: 100;
+  box-shadow: var(--shadow-lg);
+">
+  <!-- Logo -->
+  <div style="
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    padding: var(--spacing-4) var(--spacing-2);
+    margin-bottom: var(--spacing-2);
+    border-bottom: 1px solid var(--color-border);
+  ">
+    <div style="
+      width: 32px;
+      height: 32px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    ">
+      <i data-lucide="zap" style="width: 16px; height: 16px; color: white;"></i>
+    </div>
+    <span style="
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-dark);
+      white-space: nowrap;
+    ">Soft UI Dashboard</span>
+  </div>
+
+  <!-- Navigation Items -->
+  <ul style="list-style: none; padding: 0; margin: 0; flex: 1; display: flex; flex-direction: column; gap: var(--spacing-1);">
+
+    <!-- Dashboard -->
+    <li>
+      <a href="#" data-screen="Dashboard-sidebar transparent" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="layout-dashboard" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Dashboard
+      </a>
+    </li>
+
+    <!-- Tables -->
+    <li>
+      <a href="#" data-screen="Tables" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="table" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Tables
+      </a>
+    </li>
+
+    <!-- Billing -->
+    <li>
+      <a href="#" data-screen="Billing" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="credit-card" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Billing
+      </a>
+    </li>
+
+    <!-- RTL -->
+    <li>
+      <a href="#" data-screen="RTL" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="settings" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        RTL
+      </a>
+    </li>
+
+    <!-- Section Divider: Account Pages -->
+    <li style="padding: var(--spacing-4) var(--spacing-3) var(--spacing-2);">
+      <span style="
+        font-family: var(--font-family-primary);
+        font-size: 0.625rem;
+        font-weight: var(--font-weight-bold);
+        color: var(--color-secondary);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      ">ACCOUNT PAGES</span>
+    </li>
+
+    <!-- Profile (active) -->
+    <li>
+      <a href="#" data-screen="Profile" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-dark);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-semibold);
+        background: transparent;
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--gradient-primary);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: 0 4px 6px rgba(203, 12, 159, 0.4);
+        ">
+          <i data-lucide="user" style="width: 14px; height: 14px; color: white;"></i>
+        </span>
+        Profile
+      </a>
+    </li>
+
+    <!-- Sign In -->
+    <li>
+      <a href="#" data-screen="Sign In" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="file-text" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Sign In
+      </a>
+    </li>
+
+    <!-- Sign Up -->
+    <li>
+      <a href="#" data-screen="Sign Up" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="rocket" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Sign Up
+      </a>
+    </li>
+  </ul>
+
+  <!-- Help Card (doc) -->
+  <div style="
+    margin: var(--spacing-4) var(--spacing-2) var(--spacing-2);
+    padding: var(--spacing-4);
+    background: var(--gradient-dark);
+    border-radius: var(--radius-xl);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  ">
+    <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.1);"></div>
+    <div style="position:absolute;bottom:-30px;left:-10px;width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,0.07);"></div>
+    <div style="width:40px;height:40px;background:var(--gradient-primary);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;margin:0 auto var(--spacing-3);position:relative;z-index:1;">
+      <i data-lucide="book-open" style="width:18px;height:18px;color:white;"></i>
+    </div>
+    <p style="font-family:var(--font-family-primary);font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);color:white;margin:0 0 var(--spacing-1);position:relative;z-index:1;">Need help?</p>
+    <p style="font-family:var(--font-family-primary);font-size:var(--font-size-2xs);color:rgba(255,255,255,0.7);margin:0 0 var(--spacing-3);position:relative;z-index:1;">Please check our docs</p>
+    <a href="#" style="display:inline-block;padding:var(--spacing-2) var(--spacing-4);background:white;color:var(--color-dark);font-family:var(--font-family-primary);font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);text-decoration:none;border-radius:var(--radius-full);text-transform:uppercase;letter-spacing:0.06em;position:relative;z-index:1;">DOCUMENTATION</a>
+  </div>
+</nav>
+
+  <div class="page-wrapper" style="margin-left: 248px; display: flex; flex-direction: column; min-height: 100vh;">
+
+  <!-- Shell: navbar | Source: Dashboard-sidebar transparent -->
+<header class="shell-navbar" style="
+  height: 45px;
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0 var(--spacing-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 50;
+">
+  <!-- Breadcrumb -->
+  <nav style="display: flex; align-items: center; gap: var(--spacing-1);">
+    <span style="font-family:var(--font-family-primary);font-size:var(--font-size-2xs);color:var(--color-secondary);">Pages</span>
+    <span style="font-family:var(--font-family-primary);font-size:var(--font-size-2xs);color:var(--color-secondary);">/</span>
+    <span style="font-family:var(--font-family-primary);font-size:var(--font-size-2xs);font-weight:var(--font-weight-semibold);color:var(--color-dark);">Profile</span>
+  </nav>
+  <!-- Right side controls -->
+  <div style="display: flex; align-items: center; gap: var(--spacing-3);">
+    <div style="display:flex;align-items:center;gap:var(--spacing-2);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-full);padding:var(--spacing-1) var(--spacing-3);width:160px;">
+      <i data-lucide="search" style="width:13px;height:13px;color:var(--color-secondary);flex-shrink:0;"></i>
+      <input type="text" placeholder="Type here…" style="border:none;background:transparent;font-family:var(--font-family-primary);font-size:var(--font-size-2xs);color:var(--color-dark);outline:none;width:100%;">
+    </div>
+    <a href="#" style="display:flex;align-items:center;gap:var(--spacing-1);text-decoration:none;color:var(--color-body);font-family:var(--font-family-primary);font-size:var(--font-size-2xs);">
+      <i data-lucide="user" style="width:14px;height:14px;"></i>
+      Sign In
+    </a>
+    <button style="background:none;border:none;cursor:pointer;padding:var(--spacing-1);display:flex;align-items:center;color:var(--color-body);">
+      <i data-lucide="settings" style="width:16px;height:16px;"></i>
+    </button>
+    <button style="background:none;border:none;cursor:pointer;padding:var(--spacing-1);display:flex;align-items:center;color:var(--color-body);position:relative;">
+      <i data-lucide="bell" style="width:16px;height:16px;"></i>
+      <span style="position:absolute;top:0;right:0;width:8px;height:8px;background:var(--color-error);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.4rem;font-weight:bold;color:white;">4</span>
+    </button>
+  </div>
+</header>
+
+  <main class="main-content">
+
+    <!-- Row 1: Profile Header Banner -->
+    <section id="profile-header">
+      <div class="profile-header-banner"></div>
+    </section>
+
+    <!-- Row 2: Profile Identity Bar -->
+    <section id="profile-identity">
+      <div class="profile-identity-bar">
+        <div class="profile-identity-left">
+          <div class="profile-avatar-wrapper">
+            <img src="../../assets/images/avatars/bruce-mars.png" alt="Alec Thompson">
+          </div>
+          <div class="profile-name-block">
+            <h4>Alec Thompson</h4>
+            <p>CEO / Co-Founder</p>
+          </div>
+        </div>
+        <div class="profile-identity-tabs">
+          <a href="#" class="profile-tab active">
+            <i data-lucide="layout-grid" class="profile-tab-icon" style="width:14px;height:14px;"></i>
+            Overview
+          </a>
+          <a href="#" class="profile-tab">
+            <i data-lucide="file-text" class="profile-tab-icon" style="width:14px;height:14px;"></i>
+            Teams
+          </a>
+          <a href="#" class="profile-tab">
+            <i data-lucide="settings" class="profile-tab-icon" style="width:14px;height:14px;"></i>
+            Projects
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Row 3 Column 1: Platform Settings -->
+    <section id="platform-settings" class="card">
+      <h6 class="card-title">Platform Settings </h6>
+
+      <div class="settings-group-label">ACCOUNT</div>
+
+      <div class="toggle-row">
+        <div class="toggle-switch on"><div class="toggle-knob"></div></div>
+        <span class="toggle-label">Email me when someone follows me</span>
+      </div>
+      <div class="toggle-row">
+        <div class="toggle-switch off"><div class="toggle-knob"></div></div>
+        <span class="toggle-label">Email me when someone answers me</span>
+      </div>
+      <div class="toggle-row">
+        <div class="toggle-switch on"><div class="toggle-knob"></div></div>
+        <span class="toggle-label">Email me when someone mentions me</span>
+      </div>
+
+      <div class="settings-group-label">APPLICATION</div>
+
+      <div class="toggle-row">
+        <div class="toggle-switch on"><div class="toggle-knob"></div></div>
+        <span class="toggle-label">New launches and projects</span>
+      </div>
+      <div class="toggle-row">
+        <div class="toggle-switch off"><div class="toggle-knob"></div></div>
+        <span class="toggle-label">Monthly product updates</span>
+      </div>
+      <div class="toggle-row">
+        <div class="toggle-switch on"><div class="toggle-knob"></div></div>
+        <span class="toggle-label">Subscribe to newsletter</span>
+      </div>
+    </section>
+
+    <!-- Row 3 Column 2: Profile Information -->
+    <section id="profile-information" class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--spacing-4);">
+        <h6 class="card-title" style="margin-bottom:0;">Profile Information</h6>
+        <i data-lucide="pencil" style="width:14px;height:14px;color:var(--color-text-muted);cursor:pointer;"></i>
+      </div>
+      <p class="profile-bio">Hi, I'm Alec Thompson, Decisions: If you can't decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).</p>
+      <hr class="profile-divider">
+      <div class="profile-field-row">
+        <span class="profile-field-label">Full Name:</span>
+        <span class="profile-field-value">Sarah Emily Jacob</span>
+      </div>
+      <div class="profile-field-row">
+        <span class="profile-field-label">Mobile:</span>
+        <span class="profile-field-value">(44) 123 1234 123</span>
+      </div>
+      <div class="profile-field-row">
+        <span class="profile-field-label">Email:</span>
+        <span class="profile-field-value">sarahjacob@mail.com</span>
+      </div>
+      <div class="profile-field-row">
+        <span class="profile-field-label">Location:</span>
+        <span class="profile-field-value">USA</span>
+      </div>
+      <div class="social-row">
+        <span class="profile-field-label">Social:</span>
+        <div class="social-icon facebook">
+          <i data-lucide="facebook" style="width:13px;height:13px;"></i>
+        </div>
+        <div class="social-icon twitter">
+          <i data-lucide="twitter" style="width:13px;height:13px;"></i>
+        </div>
+        <div class="social-icon instagram">
+          <i data-lucide="instagram" style="width:13px;height:13px;"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- Row 3 Column 3: Conversations -->
+    <section id="conversations" class="card">
+      <h6 class="card-title">Conversations</h6>
+
+      <div class="conversation-row">
+        <div class="convo-avatar">
+          <img src="../../assets/images/avatars/face-3.png" alt="Sophie B.">
+        </div>
+        <div class="convo-content">
+          <div class="convo-name">Sophie B.</div>
+          <div class="convo-message">Hi! I need more information…</div>
+        </div>
+        <button class="reply-btn">REPLY</button>
+      </div>
+
+      <div class="conversation-row">
+        <div class="convo-avatar">
+          <img src="../../assets/images/avatars/face-4.png" alt="Anne Marie">
+        </div>
+        <div class="convo-content">
+          <div class="convo-name">Anne Marie</div>
+          <div class="convo-message">Awesome work, can you…</div>
+        </div>
+        <button class="reply-btn">REPLY</button>
+      </div>
+
+      <div class="conversation-row">
+        <div class="convo-avatar">
+          <img src="../../assets/images/avatars/face-5.png" alt="Ivan">
+        </div>
+        <div class="convo-content">
+          <div class="convo-name">Ivan</div>
+          <div class="convo-message">About files I can…</div>
+        </div>
+        <button class="reply-btn">REPLY</button>
+      </div>
+
+      <div class="conversation-row">
+        <div class="convo-avatar">
+          <img src="../../assets/images/avatars/face-6.png" alt="Peterson">
+        </div>
+        <div class="convo-content">
+          <div class="convo-name">Peterson</div>
+          <div class="convo-message">Have a great afternoon…</div>
+        </div>
+        <button class="reply-btn">REPLY</button>
+      </div>
+
+      <div class="conversation-row">
+        <div class="convo-avatar">
+          <img src="../../assets/images/avatars/face-2.png" alt="Nick Daniel">
+        </div>
+        <div class="convo-content">
+          <div class="convo-name">Nick Daniel</div>
+          <div class="convo-message">Hi! I need more information…</div>
+        </div>
+        <button class="reply-btn">REPLY</button>
+      </div>
+    </section>
+
+    <!-- Row 4: Projects -->
+    <section id="projects" class="card">
+      <div class="projects-header">
+        <h6 class="card-title" style="margin-bottom:0;">Projects</h6>
+        <span class="projects-subtitle">Architects design houses</span>
+      </div>
+      <div class="projects-grid">
+
+        <!-- Project #1: Modern -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="../../assets/images/misc/home-decor-1.png" alt="Modern project image">
+          </div>
+          <div class="project-label">Project #1</div>
+          <div class="project-title">Modern</div>
+          <div class="project-description">As Uber works through a huge amount of internal management turmoil.</div>
+          <div class="project-footer">
+            <button class="view-project-btn">VIEW PROJECT</button>
+            <div class="project-members">
+              <div class="member-avatar"><img src="../../assets/images/misc/face-1.png" alt="member"></div>
+              <div class="member-avatar"><img src="../../assets/images/misc/face-4.png" alt="member"></div>
+              <div class="member-avatar"><img src="../../assets/images/misc/face-2.png" alt="member"></div>
+              <div class="member-avatar"><img src="../../assets/images/misc/face-3.png" alt="member"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project #2: Scandinavian -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="../../assets/images/photos/home-decor-2.png" alt="Scandinavian project image">
+          </div>
+          <div class="project-label">Project #2</div>
+          <div class="project-title">Scandinavian</div>
+          <div class="project-description">Music is something that every person has his or her own specific opinion about.</div>
+          <div class="project-footer">
+            <button class="view-project-btn">VIEW PROJECT</button>
+            <div class="project-members">
+              <div class="member-avatar"><img src="../../assets/images/misc/face-1.png" alt="member"></div>
+              <div class="member-avatar"><img src="../../assets/images/misc/face-4.png" alt="member"></div>
+              <div class="member-avatar"><img src="../../assets/images/misc/face-2.png" alt="member"></div>
+              <div class="member-avatar"><img src="../../assets/images/misc/face-3.png" alt="member"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project #3: Minimalist -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="../../assets/images/photos/home-decor-3.png" alt="Minimalist project image">
+          </div>
+          <div class="project-label">Project #3</div>
+          <div class="project-title">Minimalist</div>
+          <div class="project-description">Different people have different taste, and various types of music, Zimbali Coastal Resort</div>
+          <div class="project-footer">
+            <button class="view-project-btn">VIEW PROJECT</button>
+            <div class="project-members">
+              <div class="member-avatar"><img src="../../assets/images/misc/face-1.png" alt="member"></div>
+              <div class="member-avatar"><img src="../../assets/images/misc/face-4.png" alt="member"></div>
+              <div class="member-avatar"><img src="../../assets/images/misc/face-2.png" alt="member"></div>
+              <div class="member-avatar"><img src="../../assets/images/misc/face-3.png" alt="member"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upload New Project slot -->
+        <div class="upload-slot">
+          <div class="upload-icon-circle">
+            <i data-lucide="upload-cloud" style="width:24px;height:24px;color:var(--color-text-muted);"></i>
+          </div>
+          <span class="upload-text">Upload New Project</span>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Shell: footer | Source: Dashboard-sidebar transparent -->
+<footer class="shell-footer" style="
+  width: 100%;
+  height: 20px;
+  background: transparent;
+  padding: 0 var(--spacing-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--color-border);
+">
+  <span style="font-family:var(--font-family-primary);font-size:var(--font-size-2xs);color:var(--color-body);">
+    © 2021, made with <span style="color:var(--color-error);">&#9829;</span> by
+    <a href="#" style="color:var(--color-dark);font-weight:var(--font-weight-semibold);text-decoration:none;">Creative Tim</a>
+    for a better web.
+  </span>
+  <nav style="display:flex;align-items:center;gap:var(--spacing-4);">
+    <a href="#" style="font-family:var(--font-family-primary);font-size:var(--font-size-2xs);color:var(--color-body);text-decoration:none;">Creative Tim</a>
+    <a href="#" style="font-family:var(--font-family-primary);font-size:var(--font-size-2xs);color:var(--color-body);text-decoration:none;">About Us</a>
+    <a href="#" style="font-family:var(--font-family-primary);font-size:var(--font-size-2xs);color:var(--color-body);text-decoration:none;">Blog</a>
+    <a href="#" style="font-family:var(--font-family-primary);font-size:var(--font-size-2xs);color:var(--color-body);text-decoration:none;">License</a>
+  </nav>
+</footer>
+
+  </div><!-- .page-wrapper -->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    });
+  </script>
+</body>
+</html>

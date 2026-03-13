@@ -1,0 +1,108 @@
+{
+  "$schema": "semantic-layout-v1",
+  "screen": "Profile",
+  "figmaFrameId": "0:2505",
+  "dimensions": { "width": 1440, "height": 1409, "viewport": "desktop" },
+  "shells": ["sidebar", "navbar", "footer"],
+  "contentArea": {
+    "bounds": { "x": 248, "y": 45, "width": 1192, "height": 1364 },
+    "padding": { "left": 24, "right": 24, "top": 24, "bottom": 24 },
+    "effectiveWidth": 1144
+  },
+  "grid": { "columns": 12, "gap": 24, "margin": { "left": 24, "right": 24 } },
+  "rows": [
+    {
+      "id": "row-1",
+      "y": 45,
+      "height": 308,
+      "children": [
+        {
+          "id": "profile-header",
+          "name": "profile header banner",
+          "gridColumn": "1 / 13",
+          "gridRow": "1 / 2",
+          "columnSpan": 12,
+          "rowSpan": 1,
+          "bounds": { "x": 248, "y": 45, "width": 1144, "height": 308 }
+        }
+      ]
+    },
+    {
+      "id": "row-2",
+      "y": 375,
+      "height": 130,
+      "children": [
+        {
+          "id": "profile-identity",
+          "name": "profile identity bar",
+          "gridColumn": "1 / 13",
+          "gridRow": "2 / 3",
+          "columnSpan": 12,
+          "rowSpan": 1,
+          "bounds": { "x": 248, "y": 375, "width": 1144, "height": 130 }
+        }
+      ]
+    },
+    {
+      "id": "row-3",
+      "y": 530,
+      "height": 430,
+      "children": [
+        {
+          "id": "platform-settings",
+          "name": "platform settings",
+          "gridColumn": "1 / 5",
+          "gridRow": "3 / 4",
+          "columnSpan": 4,
+          "rowSpan": 1,
+          "bounds": { "x": 248, "y": 530, "width": 358, "height": 427 }
+        },
+        {
+          "id": "profile-information",
+          "name": "profile information",
+          "gridColumn": "5 / 9",
+          "gridRow": "3 / 4",
+          "columnSpan": 4,
+          "rowSpan": 1,
+          "bounds": { "x": 630, "y": 530, "width": 356, "height": 428 }
+        },
+        {
+          "id": "conversations",
+          "name": "conversations",
+          "gridColumn": "9 / 13",
+          "gridRow": "3 / 4",
+          "columnSpan": 4,
+          "rowSpan": 1,
+          "bounds": { "x": 1010, "y": 530, "width": 357, "height": 430 }
+        }
+      ]
+    },
+    {
+      "id": "row-4",
+      "y": 985,
+      "height": 486,
+      "children": [
+        {
+          "id": "projects",
+          "name": "projects",
+          "gridColumn": "1 / 13",
+          "gridRow": "4 / 5",
+          "columnSpan": 12,
+          "rowSpan": 1,
+          "bounds": { "x": 248, "y": 985, "width": 1144, "height": 486 }
+        }
+      ]
+    }
+  ],
+  "sections": {
+    "order": ["profile-header", "profile-identity", "platform-settings", "profile-information", "conversations", "projects"]
+  },
+  "css": {
+    "gridTemplate": "grid-template-columns: repeat(12, 1fr); grid-template-rows: auto auto auto auto;",
+    "containerStyles": {
+      "display": "grid",
+      "gap": "24px",
+      "padding": "24px"
+    }
+  }
+}

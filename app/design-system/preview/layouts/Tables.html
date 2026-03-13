@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1440">
+  <title>Tables - Layout Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    @import '../../tokens/colors.css';
+    @import '../../tokens/typography.css';
+    @import '../../tokens/spacing.css';
+    @import '../../tokens/effects.css';
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-family-primary);
+      background: var(--color-background);
+      color: var(--color-text-primary);
+      width: 1440px;
+      min-height: 1262px;
+    }
+
+    /* ─── Main content area ─── */
+    .main-content {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto auto;
+      gap: 24px;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    /* ─── Section grid positions ─── */
+    #table-1 { grid-column: 1 / 13; grid-row: 1 / 2; }
+    #table-2 { grid-column: 1 / 13; grid-row: 2 / 3; }
+
+    /* ─── Table card ─── */
+    .table-card {
+      background: var(--color-surface);
+      border-radius: 12px;
+      box-shadow: 0px 20px 27px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      padding: var(--spacing-6);
+    }
+
+    .table-card-title {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--spacing-6);
+      letter-spacing: var(--letter-spacing-tight);
+    }
+
+    /* ─── Generic table styles ─── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead th {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-secondary);
+      text-align: left;
+      padding: var(--spacing-2) var(--spacing-3);
+      border-bottom: 1px solid var(--gray-light-alt);
+      letter-spacing: var(--letter-spacing-tight);
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--gray-light-alt);
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    tbody td {
+      padding: var(--spacing-3);
+      vertical-align: middle;
+    }
+
+    /* ─── Authors table ─── */
+    .author-cell {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+    }
+
+    .author-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: #d8d8d8;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .author-name {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      letter-spacing: var(--letter-spacing-tight);
+    }
+
+    .author-email {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-regular);
+      color: var(--color-text-secondary);
+    }
+
+    .function-title {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      letter-spacing: var(--letter-spacing-tight);
+    }
+
+    .function-dept {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-regular);
+      color: var(--color-text-secondary);
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-bold);
+      color: white;
+      letter-spacing: var(--letter-spacing-tight);
+    }
+
+    .status-badge.online {
+      background: var(--gradient-success);
+    }
+
+    .status-badge.offline {
+      background: var(--gradient-secondary);
+    }
+
+    .employed-date {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-regular);
+      color: var(--color-text-primary);
+    }
+
+    .edit-link {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-regular);
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .edit-link:hover {
+      color: var(--color-text-primary);
+    }
+
+    /* ─── Projects table ─── */
+    .company-cell {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+    }
+
+    .company-logo {
+      width: 24px;
+      height: 24px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+
+    .company-name {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      letter-spacing: var(--letter-spacing-tight);
+    }
+
+    .budget-text {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      letter-spacing: var(--letter-spacing-tight);
+    }
+
+    .project-status {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--letter-spacing-tight);
+    }
+
+    .project-status.working { color: var(--color-info); }
+    .project-status.done { color: var(--color-success); }
+    .project-status.canceled { color: var(--color-error); }
+
+    .completion-cell {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+    }
+
+    .completion-pct {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-regular);
+      color: var(--color-text-primary);
+      min-width: 36px;
+    }
+
+    .progress-track {
+      flex: 1;
+      height: 3px;
+      background: var(--color-border);
+      border-radius: 1.5px;
+      overflow: hidden;
+      max-width: 200px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 1.5px;
+    }
+
+    .more-dots {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
+      padding: var(--spacing-1);
+    }
+
+    .more-dots span {
+      display: block;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--color-text-secondary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Shell: sidebar -->
+  <!-- Shell: sidebar | Source: Dashboard-sidebar transparent -->
+<nav class="shell-sidebar" style="
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 248px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-right: 1px solid var(--color-border);
+  padding: var(--spacing-4) var(--spacing-4);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow-y: auto;
+  z-index: 100;
+  box-shadow: var(--shadow-lg);
+">
+  <!-- Logo -->
+  <div style="
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    padding: var(--spacing-4) var(--spacing-2);
+    margin-bottom: var(--spacing-2);
+    border-bottom: 1px solid var(--color-border);
+  ">
+    <div style="
+      width: 32px;
+      height: 32px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    ">
+      <i data-lucide="zap" style="width: 16px; height: 16px; color: white;"></i>
+    </div>
+    <span style="
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-dark);
+      white-space: nowrap;
+    ">Soft UI Dashboard</span>
+  </div>
+
+  <!-- Navigation Items -->
+  <ul style="list-style: none; padding: 0; margin: 0; flex: 1; display: flex; flex-direction: column; gap: var(--spacing-1);">
+
+    <!-- Dashboard -->
+    <li>
+      <a href="#" data-screen="Dashboard-sidebar transparent" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="layout-dashboard" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Dashboard
+      </a>
+    </li>
+
+    <!-- Tables (active) -->
+    <li>
+      <a href="#" data-screen="Tables" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-dark);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-semibold);
+        background: transparent;
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--gradient-primary);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: 0 4px 6px rgba(203, 12, 159, 0.4);
+        ">
+          <i data-lucide="table" style="width: 14px; height: 14px; color: white;"></i>
+        </span>
+        Tables
+      </a>
+    </li>
+
+    <!-- Billing -->
+    <li>
+      <a href="#" data-screen="Billing" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="credit-card" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Billing
+      </a>
+    </li>
+
+    <!-- RTL -->
+    <li>
+      <a href="#" data-screen="RTL" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="settings" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        RTL
+      </a>
+    </li>
+
+    <!-- Section Divider: Account Pages -->
+    <li style="padding: var(--spacing-4) var(--spacing-3) var(--spacing-2);">
+      <span style="
+        font-family: var(--font-family-primary);
+        font-size: 0.625rem;
+        font-weight: var(--font-weight-bold);
+        color: var(--color-secondary);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      ">ACCOUNT PAGES</span>
+    </li>
+
+    <!-- Profile -->
+    <li>
+      <a href="#" data-screen="Profile" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="user" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Profile
+      </a>
+    </li>
+
+    <!-- Sign In -->
+    <li>
+      <a href="#" data-screen="Sign In" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="file-text" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Sign In
+      </a>
+    </li>
+
+    <!-- Sign Up -->
+    <li>
+      <a href="#" data-screen="Sign Up" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="rocket" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Sign Up
+      </a>
+    </li>
+  </ul>
+
+  <!-- Help Card -->
+  <div style="
+    margin: var(--spacing-4) var(--spacing-2) var(--spacing-2);
+    padding: var(--spacing-4);
+    background: var(--gradient-dark);
+    border-radius: var(--radius-xl);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  ">
+    <div style="
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+    "></div>
+    <div style="
+      position: absolute;
+      bottom: -30px;
+      left: -10px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+    "></div>
+    <div style="
+      width: 40px;
+      height: 40px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--spacing-3);
+      position: relative;
+      z-index: 1;
+    ">
+      <i data-lucide="book-open" style="width: 18px; height: 18px; color: white;"></i>
+    </div>
+    <p style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: white;
+      margin: 0 0 var(--spacing-1);
+      position: relative;
+      z-index: 1;
+    ">Need help?</p>
+    <p style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: rgba(255,255,255,0.7);
+      margin: 0 0 var(--spacing-3);
+      position: relative;
+      z-index: 1;
+    ">Please check our docs</p>
+    <a href="#" style="
+      display: inline-block;
+      padding: var(--spacing-2) var(--spacing-4);
+      background: white;
+      color: var(--color-dark);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-bold);
+      text-decoration: none;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      position: relative;
+      z-index: 1;
+    ">DOCUMENTATION</a>
+  </div>
+</nav>
+
+  <!-- Page wrapper: navbar + main + footer -->
+  <div style="margin-left: 248px; display: flex; flex-direction: column; min-height: 100vh;">
+
+  <!-- Shell: navbar -->
+  <!-- Shell: navbar | Source: Dashboard-sidebar transparent -->
+<header class="shell-navbar" style="
+  height: 45px;
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0 var(--spacing-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 50;
+">
+  <!-- Breadcrumb -->
+  <nav style="display: flex; align-items: center; gap: var(--spacing-1);">
+    <span style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-secondary);
+    ">Pages</span>
+    <span style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-secondary);
+    ">/</span>
+    <span style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-dark);
+    ">Tables</span>
+  </nav>
+
+  <!-- Right side controls -->
+  <div style="display: flex; align-items: center; gap: var(--spacing-3);">
+
+    <!-- Search -->
+    <div style="
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      padding: var(--spacing-1) var(--spacing-3);
+      width: 160px;
+    ">
+      <i data-lucide="search" style="width: 13px; height: 13px; color: var(--color-secondary); flex-shrink: 0;"></i>
+      <input type="text" placeholder="Type here…" style="
+        border: none;
+        background: transparent;
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-2xs);
+        color: var(--color-dark);
+        outline: none;
+        width: 100%;
+      ">
+    </div>
+
+    <!-- Sign In link -->
+    <a href="#" data-screen="Sign In" style="
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+      text-decoration: none;
+      color: var(--color-body);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-regular);
+    ">
+      <i data-lucide="user" style="width: 14px; height: 14px;"></i>
+      Sign In
+    </a>
+
+    <!-- Settings -->
+    <button style="
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: var(--spacing-1);
+      display: flex;
+      align-items: center;
+      color: var(--color-body);
+    ">
+      <i data-lucide="settings" style="width: 16px; height: 16px;"></i>
+    </button>
+
+    <!-- Bell with notification badge -->
+    <button style="
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: var(--spacing-1);
+      display: flex;
+      align-items: center;
+      color: var(--color-body);
+      position: relative;
+    ">
+      <i data-lucide="bell" style="width: 16px; height: 16px;"></i>
+      <span style="
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 8px;
+        height: 8px;
+        background: var(--color-error);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.4rem;
+        font-weight: bold;
+        color: white;
+      ">4</span>
+    </button>
+  </div>
+</header>
+
+  <!-- Main content -->
+  <main class="main-content">
+
+    <!-- table-1: Authors Table -->
+    <section id="table-1">
+      <div class="table-card">
+        <h2 class="table-card-title">Authors Table</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>AUTHOR</th>
+              <th>FUNCTION</th>
+              <th>STATUS</th>
+              <th>EMPLOYED</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Row 1 -->
+            <tr>
+              <td>
+                <div class="author-cell">
+                  <div class="author-avatar">
+                    <i data-lucide="user" style="width: 16px; height: 16px; color: var(--color-secondary);"></i>
+                  </div>
+                  <div>
+                    <div class="author-name">Michael John</div>
+                    <div class="author-email">michael@mail.com</div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="function-title">Manager</div>
+                <div class="function-dept">Organization</div>
+              </td>
+              <td>
+                <span class="status-badge online">ONLINE</span>
+              </td>
+              <td>
+                <span class="employed-date">23/04/18</span>
+              </td>
+              <td>
+                <a href="#" class="edit-link">Edit</a>
+              </td>
+            </tr>
+            <!-- Row 2 -->
+            <tr>
+              <td>
+                <div class="author-cell">
+                  <div class="author-avatar">
+                    <i data-lucide="user" style="width: 16px; height: 16px; color: var(--color-secondary);"></i>
+                  </div>
+                  <div>
+                    <div class="author-name">Alexa Liras</div>
+                    <div class="author-email">alexa@mail.com</div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="function-title">Programator</div>
+                <div class="function-dept">Developer</div>
+              </td>
+              <td>
+                <span class="status-badge offline">OFFLINE</span>
+              </td>
+              <td>
+                <span class="employed-date">23/12/20</span>
+              </td>
+              <td>
+                <a href="#" class="edit-link">Edit</a>
+              </td>
+            </tr>
+            <!-- Row 3 -->
+            <tr>
+              <td>
+                <div class="author-cell">
+                  <div class="author-avatar">
+                    <i data-lucide="user" style="width: 16px; height: 16px; color: var(--color-secondary);"></i>
+                  </div>
+                  <div>
+                    <div class="author-name">Laure Perrier</div>
+                    <div class="author-email">laure@mail.com</div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="function-title">Executive</div>
+                <div class="function-dept">Projects</div>
+              </td>
+              <td>
+                <span class="status-badge online">ONLINE</span>
+              </td>
+              <td>
+                <span class="employed-date">13/04/19</span>
+              </td>
+              <td>
+                <a href="#" class="edit-link">Edit</a>
+              </td>
+            </tr>
+            <!-- Row 4 -->
+            <tr>
+              <td>
+                <div class="author-cell">
+                  <div class="author-avatar">
+                    <i data-lucide="user" style="width: 16px; height: 16px; color: var(--color-secondary);"></i>
+                  </div>
+                  <div>
+                    <div class="author-name">Miriam Eric</div>
+                    <div class="author-email">miriam@mail.com</div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="function-title">Marketing</div>
+                <div class="function-dept">Organization</div>
+              </td>
+              <td>
+                <span class="status-badge online">ONLINE</span>
+              </td>
+              <td>
+                <span class="employed-date">03/04/21</span>
+              </td>
+              <td>
+                <a href="#" class="edit-link">Edit</a>
+              </td>
+            </tr>
+            <!-- Row 5 -->
+            <tr>
+              <td>
+                <div class="author-cell">
+                  <div class="author-avatar">
+                    <i data-lucide="user" style="width: 16px; height: 16px; color: var(--color-secondary);"></i>
+                  </div>
+                  <div>
+                    <div class="author-name">Richard Gran</div>
+                    <div class="author-email">richard@mail.com</div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="function-title">Manager</div>
+                <div class="function-dept">Organization</div>
+              </td>
+              <td>
+                <span class="status-badge offline">OFFLINE</span>
+              </td>
+              <td>
+                <span class="employed-date">23/03/20</span>
+              </td>
+              <td>
+                <a href="#" class="edit-link">Edit</a>
+              </td>
+            </tr>
+            <!-- Row 6 -->
+            <tr>
+              <td>
+                <div class="author-cell">
+                  <div class="author-avatar">
+                    <i data-lucide="user" style="width: 16px; height: 16px; color: var(--color-secondary);"></i>
+                  </div>
+                  <div>
+                    <div class="author-name">John Levi</div>
+                    <div class="author-email">john@mail.com</div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="function-title">Tester</div>
+                <div class="function-dept">Developer</div>
+              </td>
+              <td>
+                <span class="status-badge offline">OFFLINE</span>
+              </td>
+              <td>
+                <span class="employed-date">14/04/17</span>
+              </td>
+              <td>
+                <a href="#" class="edit-link">Edit</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- table-2: Projects Table -->
+    <section id="table-2">
+      <div class="table-card">
+        <h2 class="table-card-title">Projects Table</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>COMPANIES</th>
+              <th>BUDGET</th>
+              <th>STATUS</th>
+              <th>COMPLETION</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Row 1: Spotify Version -->
+            <tr>
+              <td>
+                <div class="company-cell">
+                  <div class="company-logo" style="background: #2ebd59;">
+                    <i data-lucide="music" style="width: 12px; height: 12px; color: white;"></i>
+                  </div>
+                  <span class="company-name">Spotify Version</span>
+                </div>
+              </td>
+              <td><span class="budget-text">$14,000</span></td>
+              <td><span class="project-status working">working</span></td>
+              <td>
+                <div class="completion-cell">
+                  <span class="completion-pct">60%</span>
+                  <div class="progress-track">
+                    <div class="progress-fill" style="width: 60%; background: var(--gradient-info);"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="more-dots">
+                  <span></span><span></span><span></span>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 2: Progress Track -->
+            <tr>
+              <td>
+                <div class="company-cell">
+                  <div class="company-logo" style="background: #2684ff;">
+                    <i data-lucide="triangle" style="width: 12px; height: 12px; color: white;"></i>
+                  </div>
+                  <span class="company-name">Progress Track</span>
+                </div>
+              </td>
+              <td><span class="budget-text">$3,000</span></td>
+              <td><span class="project-status working">working</span></td>
+              <td>
+                <div class="completion-cell">
+                  <span class="completion-pct">10%</span>
+                  <div class="progress-track">
+                    <div class="progress-fill" style="width: 10%; background: var(--gradient-info);"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="more-dots">
+                  <span></span><span></span><span></span>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 3: Jira Platform Errors -->
+            <tr>
+              <td>
+                <div class="company-cell">
+                  <div class="company-logo" style="background: #36c5f0;">
+                    <i data-lucide="hash" style="width: 12px; height: 12px; color: white;"></i>
+                  </div>
+                  <span class="company-name">Jira Platform Errors</span>
+                </div>
+              </td>
+              <td><span class="budget-text">Not Set</span></td>
+              <td><span class="project-status done">done</span></td>
+              <td>
+                <div class="completion-cell">
+                  <span class="completion-pct">100%</span>
+                  <div class="progress-track">
+                    <div class="progress-fill" style="width: 100%; background: var(--gradient-success);"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="more-dots">
+                  <span></span><span></span><span></span>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 4: Launch new Mobile App -->
+            <tr>
+              <td>
+                <div class="company-cell">
+                  <div class="company-logo" style="background: #2ebd59;">
+                    <i data-lucide="music" style="width: 12px; height: 12px; color: white;"></i>
+                  </div>
+                  <span class="company-name">Launch new Mobile App</span>
+                </div>
+              </td>
+              <td><span class="budget-text">$20,600</span></td>
+              <td><span class="project-status canceled">canceled</span></td>
+              <td>
+                <div class="completion-cell">
+                  <span class="completion-pct">50%</span>
+                  <div class="progress-track">
+                    <div class="progress-fill" style="width: 50%; background: var(--gradient-error);"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="more-dots">
+                  <span></span><span></span><span></span>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 5: Web Dev -->
+            <tr>
+              <td>
+                <div class="company-cell">
+                  <div class="company-logo" style="background: #0d55ff;">
+                    <i data-lucide="code" style="width: 12px; height: 12px; color: white;"></i>
+                  </div>
+                  <span class="company-name">Web Dev</span>
+                </div>
+              </td>
+              <td><span class="budget-text">$4,000</span></td>
+              <td><span class="project-status working">working</span></td>
+              <td>
+                <div class="completion-cell">
+                  <span class="completion-pct">80%</span>
+                  <div class="progress-track">
+                    <div class="progress-fill" style="width: 80%; background: var(--gradient-info);"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="more-dots">
+                  <span></span><span></span><span></span>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 6: Redesign Online Store -->
+            <tr>
+              <td>
+                <div class="company-cell">
+                  <div class="company-logo" style="background: #dc395f;">
+                    <i data-lucide="eye" style="width: 12px; height: 12px; color: white;"></i>
+                  </div>
+                  <span class="company-name">Redesign Online Store</span>
+                </div>
+              </td>
+              <td><span class="budget-text">$2,000</span></td>
+              <td><span class="project-status canceled">canceled</span></td>
+              <td>
+                <div class="completion-cell">
+                  <span class="completion-pct">0%</span>
+                  <div class="progress-track">
+                    <div class="progress-fill" style="width: 0%; background: var(--gradient-error);"></div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="more-dots">
+                  <span></span><span></span><span></span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Shell: footer -->
+  <!-- Shell: footer | Source: Dashboard-sidebar transparent -->
+<footer class="shell-footer" style="
+  height: 20px;
+  background: transparent;
+  padding: 0 var(--spacing-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--color-border);
+">
+  <!-- Copyright -->
+  <span style="
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-2xs);
+    color: var(--color-body);
+  ">
+    © 2021, made with
+    <span style="color: var(--color-error);">&#9829;</span>
+    by
+    <a href="#" style="color: var(--color-dark); font-weight: var(--font-weight-semibold); text-decoration: none;">Creative Tim</a>
+    for a better web.
+  </span>
+
+  <!-- Footer Links -->
+  <nav style="display: flex; align-items: center; gap: var(--spacing-4);">
+    <a href="#" style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-body);
+      text-decoration: none;
+    ">Creative Tim</a>
+    <a href="#" style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-body);
+      text-decoration: none;
+    ">About Us</a>
+    <a href="#" style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-body);
+      text-decoration: none;
+    ">Blog</a>
+    <a href="#" style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-body);
+      text-decoration: none;
+    ">License</a>
+  </nav>
+</footer>
+
+  </div><!-- end page-wrapper -->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    });
+  </script>
+</body>
+</html>

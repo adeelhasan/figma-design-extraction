@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1440">
+  <title>Sign In - Layout Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    @import '../../tokens/colors.css';
+    @import '../../tokens/typography.css';
+    @import '../../tokens/spacing.css';
+    @import '../../tokens/effects.css';
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-family-primary);
+      background: var(--color-surface);
+      color: var(--color-text-primary);
+      width: 1440px;
+      min-height: 1137px;
+    }
+
+    /* ── Two-column layout ── */
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(1137px - 34px);
+      width: 1440px;
+    }
+
+    /* ── Form area (left column) ── */
+    .form-area {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--spacing-12) var(--spacing-8) var(--spacing-12) 63px;
+      background: var(--color-surface);
+    }
+
+    .form-heading {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-3xl);
+      font-weight: var(--font-weight-bold);
+      background: var(--gradient-info);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.033em;
+      line-height: 1.17;
+      margin-bottom: var(--spacing-2);
+    }
+
+    .form-subtitle {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-regular);
+      color: var(--color-text-muted);
+      letter-spacing: -0.033em;
+      margin-bottom: var(--spacing-8);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-1);
+      margin-bottom: var(--spacing-4);
+    }
+
+    .form-label {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      letter-spacing: -0.028em;
+    }
+
+    .form-input {
+      width: 361px;
+      height: 40px;
+      background: var(--color-surface);
+      border-radius: 6px;
+      border: 1px solid var(--color-divider);
+      padding: 0 var(--spacing-3);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-regular);
+      color: var(--color-text-primary);
+      outline: none;
+      transition: box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    .form-input::placeholder {
+      color: var(--color-placeholder);
+    }
+
+    .form-input.active {
+      border: 1px solid #e293d3;
+      box-shadow: 0 0 0 2px rgba(226, 147, 211, 0.50);
+    }
+
+    /* ── Remember me toggle row ── */
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      margin-bottom: var(--spacing-4);
+    }
+
+    .toggle-track {
+      position: relative;
+      width: 42px;
+      height: 20px;
+      background: #3a416f;
+      border-radius: 10.5px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .toggle-thumb {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 16px;
+      height: 16px;
+      background: var(--color-surface);
+      border-radius: 8px;
+      box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.07), 0 4px 6px -1px rgba(0, 0, 0, 0.12);
+    }
+
+    .toggle-label {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-regular);
+      color: var(--color-text-primary);
+    }
+
+    /* ── Sign In button ── */
+    .btn-signin {
+      display: block;
+      width: 361px;
+      height: 40px;
+      background: var(--gradient-info);
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.07), 0 4px 6px -1px rgba(0, 0, 0, 0.12);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-surface);
+      text-align: center;
+      letter-spacing: -0.028em;
+      cursor: pointer;
+      margin-bottom: var(--spacing-6);
+    }
+
+    /* ── Signup footer link ── */
+    .signup-link {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+    }
+
+    .signup-link-text {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-muted);
+      letter-spacing: -0.028em;
+    }
+
+    .signup-link-action {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-bold);
+      background: var(--gradient-info);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+      letter-spacing: -0.028em;
+    }
+
+    /* ── Image area (right column) ── */
+    .image-area {
+      background-image: url('../../assets/images/photos/curved6.png');
+      background-size: cover;
+      background-position: center;
+      min-height: 1137px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Shell: navbar-auth -->
+  <!-- Shell: navbar-auth | Source: Sign Up -->
+<header class="shell-navbar-auth" style="
+  position: sticky;
+  top: 0;
+  height: 34px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius-pill);
+  margin: var(--spacing-4) var(--spacing-8);
+  padding: 0 var(--spacing-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 50;
+  box-shadow: var(--shadow-lg);
+">
+  <!-- Brand Name -->
+  <span style="
+    font-family: var(--font-family-secondary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: white;
+  ">Soft UI Dashboard</span>
+
+  <!-- Nav Links -->
+  <nav style="display: flex; align-items: center; gap: var(--spacing-4);">
+    <a href="#" data-screen="Dashboard-sidebar transparent" style="
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+      text-decoration: none;
+      color: rgba(255,255,255,0.85);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-regular);
+    ">
+      <i data-lucide="layout-dashboard" style="width: 12px; height: 12px;"></i>
+      Dashboard
+    </a>
+    <a href="#" data-screen="Profile" style="
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+      text-decoration: none;
+      color: rgba(255,255,255,0.85);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-regular);
+    ">
+      <i data-lucide="user" style="width: 12px; height: 12px;"></i>
+      Profile
+    </a>
+    <a href="#" data-screen="Sign Up" style="
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+      text-decoration: none;
+      color: rgba(255,255,255,0.85);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-regular);
+    ">
+      <i data-lucide="user-plus" style="width: 12px; height: 12px;"></i>
+      Sign Up
+    </a>
+    <a href="#" data-screen="Sign In" style="
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+      text-decoration: none;
+      color: white;
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-bold);
+    ">
+      <i data-lucide="calendar" style="width: 12px; height: 12px;"></i>
+      Sign In
+    </a>
+  </nav>
+
+  <!-- Free Download Button -->
+  <a href="#" style="
+    display: inline-flex;
+    align-items: center;
+    padding: var(--spacing-1) var(--spacing-3);
+    background: white;
+    color: var(--color-dark);
+    font-family: var(--font-family-primary);
+    font-size: 0.625rem;
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  ">FREE DOWNLOAD</a>
+</header>
+
+  <main class="main-content">
+    <!-- Left column: form area -->
+    <div class="form-area">
+      <h1 class="form-heading">Sign In</h1>
+      <p class="form-subtitle">Enter your email and password to sign in</p>
+
+      <!-- Email field (active state) -->
+      <div class="form-group">
+        <label class="form-label" for="email">Email</label>
+        <input
+          id="email"
+          class="form-input active"
+          type="email"
+          placeholder="Email"
+        >
+      </div>
+
+      <!-- Password field (default state) -->
+      <div class="form-group">
+        <label class="form-label" for="password">Password</label>
+        <input
+          id="password"
+          class="form-input"
+          type="password"
+          placeholder="Password"
+        >
+      </div>
+
+      <!-- Remember me toggle -->
+      <div class="toggle-row">
+        <div class="toggle-track" role="switch" aria-checked="true" tabindex="0">
+          <div class="toggle-thumb"></div>
+        </div>
+        <span class="toggle-label">Remember me</span>
+      </div>
+
+      <!-- Sign In button -->
+      <button class="btn-signin" type="button">SIGN IN</button>
+
+      <!-- Don't have an account? -->
+      <div class="signup-link">
+        <span class="signup-link-text">Don&rsquo;t have an account?</span>
+        <a href="#" class="signup-link-action">Sign Up</a>
+      </div>
+    </div>
+
+    <!-- Right column: decorative image -->
+    <div class="image-area" role="img" aria-label="Colorful abstract wave decoration"></div>
+  </main>
+
+  <!-- Shell: footer-auth -->
+  <!-- Shell: footer-auth | Source: Sign Up -->
+<footer class="shell-footer-auth" style="
+  width: 100%;
+  padding: var(--spacing-8) var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+  background: transparent;
+">
+  <!-- Social Icons Row -->
+  <div style="display: flex; align-items: center; gap: var(--spacing-4);">
+    <a href="#" aria-label="Instagram" style="
+      color: var(--color-secondary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--color-surface);
+      box-shadow: var(--shadow-sm);
+    ">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+    </a>
+    <a href="#" aria-label="Twitter" style="
+      color: var(--color-secondary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--color-surface);
+      box-shadow: var(--shadow-sm);
+    ">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+      </svg>
+    </a>
+    <a href="#" aria-label="Pinterest" style="
+      color: var(--color-secondary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--color-surface);
+      box-shadow: var(--shadow-sm);
+    ">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
+      </svg>
+    </a>
+    <a href="#" aria-label="GitHub" style="
+      color: var(--color-secondary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--color-surface);
+      box-shadow: var(--shadow-sm);
+    ">
+      <i data-lucide="github" style="width: 14px; height: 14px;"></i>
+    </a>
+  </div>
+
+  <!-- Footer Links -->
+  <nav style="display: flex; flex-wrap: wrap; justify-content: center; gap: var(--spacing-4);">
+    <span style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-secondary);
+      font-weight: var(--font-weight-semibold);
+    ">Company</span>
+    <a href="#" style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-secondary);
+      text-decoration: none;
+    ">About Us</a>
+    <a href="#" style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-secondary);
+      text-decoration: none;
+    ">Team</a>
+    <a href="#" style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-secondary);
+      text-decoration: none;
+    ">Products</a>
+    <a href="#" style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-secondary);
+      text-decoration: none;
+    ">Blog</a>
+    <a href="#" style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-secondary);
+      text-decoration: none;
+    ">Pricing</a>
+  </nav>
+
+  <!-- Copyright -->
+  <p style="
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-2xs);
+    color: var(--color-secondary);
+    margin: 0;
+    text-align: center;
+  ">Copyright &#169; 2021 Soft by Creative Tim.</p>
+</footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    });
+  </script>
+</body>
+</html>

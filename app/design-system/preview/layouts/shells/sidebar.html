@@ -1,0 +1,360 @@
+<!-- Shell: sidebar | Source: Dashboard-sidebar transparent -->
+<nav class="shell-sidebar" style="
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 248px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-right: 1px solid var(--color-border);
+  padding: var(--spacing-4) var(--spacing-4);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow-y: auto;
+  z-index: 100;
+  box-shadow: var(--shadow-lg);
+">
+  <!-- Logo -->
+  <div style="
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    padding: var(--spacing-4) var(--spacing-2);
+    margin-bottom: var(--spacing-2);
+    border-bottom: 1px solid var(--color-border);
+  ">
+    <div style="
+      width: 32px;
+      height: 32px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    ">
+      <i data-lucide="zap" style="width: 16px; height: 16px; color: white;"></i>
+    </div>
+    <span style="
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-dark);
+      white-space: nowrap;
+    ">Soft UI Dashboard</span>
+  </div>
+
+  <!-- Navigation Items -->
+  <ul style="list-style: none; padding: 0; margin: 0; flex: 1; display: flex; flex-direction: column; gap: var(--spacing-1);">
+
+    <!-- Dashboard (active) -->
+    <li>
+      <a href="#" data-screen="Dashboard-sidebar transparent" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-dark);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-semibold);
+        background: transparent;
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--gradient-primary);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: 0 4px 6px rgba(203, 12, 159, 0.4);
+        ">
+          <i data-lucide="layout-dashboard" style="width: 14px; height: 14px; color: white;"></i>
+        </span>
+        Dashboard
+      </a>
+    </li>
+
+    <!-- Tables -->
+    <li>
+      <a href="#" data-screen="Tables" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="table" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Tables
+      </a>
+    </li>
+
+    <!-- Billing -->
+    <li>
+      <a href="#" data-screen="Billing" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="credit-card" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Billing
+      </a>
+    </li>
+
+    <!-- RTL -->
+    <li>
+      <a href="#" data-screen="RTL" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="settings" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        RTL
+      </a>
+    </li>
+
+    <!-- Section Divider: Account Pages -->
+    <li style="padding: var(--spacing-4) var(--spacing-3) var(--spacing-2);">
+      <span style="
+        font-family: var(--font-family-primary);
+        font-size: 0.625rem;
+        font-weight: var(--font-weight-bold);
+        color: var(--color-secondary);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      ">ACCOUNT PAGES</span>
+    </li>
+
+    <!-- Profile -->
+    <li>
+      <a href="#" data-screen="Profile" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="user" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Profile
+      </a>
+    </li>
+
+    <!-- Sign In -->
+    <li>
+      <a href="#" data-screen="Sign In" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="file-text" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Sign In
+      </a>
+    </li>
+
+    <!-- Sign Up -->
+    <li>
+      <a href="#" data-screen="Sign Up" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="rocket" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Sign Up
+      </a>
+    </li>
+  </ul>
+
+  <!-- Help Card (doc) -->
+  <div style="
+    margin: var(--spacing-4) var(--spacing-2) var(--spacing-2);
+    padding: var(--spacing-4);
+    background: var(--gradient-dark);
+    border-radius: var(--radius-xl);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  ">
+    <!-- Decorative circles -->
+    <div style="
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+    "></div>
+    <div style="
+      position: absolute;
+      bottom: -30px;
+      left: -10px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+    "></div>
+    <div style="
+      width: 40px;
+      height: 40px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--spacing-3);
+      position: relative;
+      z-index: 1;
+    ">
+      <i data-lucide="book-open" style="width: 18px; height: 18px; color: white;"></i>
+    </div>
+    <p style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: white;
+      margin: 0 0 var(--spacing-1);
+      position: relative;
+      z-index: 1;
+    ">Need help?</p>
+    <p style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: rgba(255,255,255,0.7);
+      margin: 0 0 var(--spacing-3);
+      position: relative;
+      z-index: 1;
+    ">Please check our docs</p>
+    <a href="#" style="
+      display: inline-block;
+      padding: var(--spacing-2) var(--spacing-4);
+      background: white;
+      color: var(--color-dark);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-bold);
+      text-decoration: none;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      position: relative;
+      z-index: 1;
+    ">DOCUMENTATION</a>
+  </div>
+</nav>

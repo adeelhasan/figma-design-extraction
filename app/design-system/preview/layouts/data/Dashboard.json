@@ -1,0 +1,151 @@
+{
+  "screen": "Dashboard",
+  "sections": {
+    "widget-1": {
+      "label": "Today's Money",
+      "value": "$53,000",
+      "change": "55%",
+      "changeDirection": "up",
+      "icon": "money-coins"
+    },
+    "widget-2": {
+      "label": "Today's Users",
+      "value": "2,300",
+      "change": "20%",
+      "changeDirection": "up",
+      "icon": "world"
+    },
+    "widget-3": {
+      "label": "New Clients",
+      "value": "+3,462",
+      "change": "- 2%",
+      "changeDirection": "down",
+      "icon": "document"
+    },
+    "widget-4": {
+      "label": "Sales",
+      "value": "$103,430",
+      "change": "5%",
+      "changeDirection": "up",
+      "icon": "cart"
+    },
+    "card-1": {
+      "eyebrow": "Built by developers",
+      "title": "Soft UI Dashboard",
+      "description": "From colors, cards, typography to complex elements, you will find the full documentation.",
+      "cta": "Read More"
+    },
+    "card-2": {
+      "title": "Work with the rockets ",
+      "description": "Wealth creation is an evolutionarily recent positive-sum game. It is all about who take the opportunity first.",
+      "cta": "Read More"
+    },
+    "chart-1": {
+      "title": "Active Users",
+      "subtitle": "(+23%)",
+      "subtitleLabel": "than last week",
+      "xLabels": ["01", "02", "03", "04", "05", "06", "07", "08", "09"],
+      "yLabels": ["0", "200", "400", "600", "800", "1000"],
+      "stats": [
+        { "label": "Users", "value": "3,6K" },
+        { "label": "Clicks", "value": "2m" },
+        { "label": "Sales", "value": "$772" },
+        { "label": "Items", "value": "82" }
+      ]
+    },
+    "chart-2": {
+      "title": "Sales Overview",
+      "subtitle": "4% more",
+      "subtitleLabel": "in 2021",
+      "xLabels": ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      "yLabels": ["0", "100", "200", "300", "400", "500"]
+    },
+    "table-1": {
+      "title": "Projects",
+      "tag": "done this month",
+      "tagValue": "40%",
+      "columns": ["COMPANIES", "MEMBERS", "BUDGET", "COMPLETION"],
+      "rows": [
+        {
+          "company": "Soft UI Shopify Version",
+          "budget": "$14,000",
+          "completion": "60%",
+          "members": ["face-1", "face-2", "face-3", "face-4"]
+        },
+        {
+          "company": "Progress Track",
+          "budget": "$3,000",
+          "completion": "10%",
+          "members": ["face-1", "face-2", "face-3"]
+        },
+        {
+          "company": "Fix Platform Errors",
+          "budget": "Not Set",
+          "completion": "100%",
+          "members": ["face-1", "face-4"]
+        },
+        {
+          "company": "Launch new Mobile App",
+          "budget": "$20,600",
+          "completion": "100%",
+          "members": ["face-1", "face-2", "face-4"]
+        },
+        {
+          "company": "Add the New Landing Page",
+          "budget": "$4,000",
+          "completion": "80%",
+          "members": ["face-1", "face-4", "face-2"]
+        },
+        {
+          "company": "Redesign Online Store",
+          "budget": "$2,000",
+          "completion": "cancel",
+          "members": ["face-1", "face-3", "face-2", "face-4"]
+        }
+      ]
+    },
+    "timeline-1": {
+      "title": "Orders History ",
+      "tag": "24%",
+      "tagLabel": "this month",
+      "items": [
+        {
+          "id": "1",
+          "text": "$2,400 - Redesign store",
+          "timestamp": "09 JUN 7:20 PM",
+          "iconGradient": "success"
+        },
+        {
+          "id": "2",
+          "text": "New order #3654323",
+          "timestamp": "08 JUN 12:20 PM",
+          "iconGradient": "error"
+        },
+        {
+          "id": "3",
+          "text": "Company server payments ",
+          "timestamp": "04 JUN 3:10 PM",
+          "iconGradient": "info"
+        },
+        {
+          "id": "4",
+          "text": "New card added for order #4826321",
+          "timestamp": "02 JUN 2:45 PM",
+          "iconGradient": "warning"
+        },
+        {
+          "id": "5",
+          "text": "Unlock folders for development",
+          "timestamp": "18 MAY 1:30 PM",
+          "iconGradient": "primary"
+        },
+        {
+          "id": "6",
+          "text": "New order #46282344",
+          "timestamp": "14 MAY 3:30 PM",
+          "iconGradient": "dark"
+        }
+      ]
+    }
+  }
+}

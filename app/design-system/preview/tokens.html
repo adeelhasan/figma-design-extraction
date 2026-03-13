@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Tokens - Design System</title>
+    <link rel="stylesheet" href="../tokens/colors.css">
+    <link rel="stylesheet" href="../tokens/typography.css">
+    <link rel="stylesheet" href="../tokens/spacing.css">
+    <link rel="stylesheet" href="../tokens/effects.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            background-color: var(--color-background);
+            color: var(--color-text-primary);
+            font-family: var(--font-family-primary);
+        }
+
+        body {
+            padding: var(--spacing-8);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: var(--spacing-12);
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: var(--spacing-6);
+        }
+
+        h1 {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-3);
+            color: var(--color-text-primary);
+        }
+
+        .breadcrumb {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        .breadcrumb a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .section {
+            margin-bottom: var(--spacing-12);
+        }
+
+        .section-title {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-6);
+            padding-bottom: var(--spacing-3);
+            border-bottom: 2px solid var(--color-border);
+            color: var(--color-text-primary);
+        }
+
+        /* Colors Section */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--spacing-4);
+        }
+
+        .color-swatch {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .color-value {
+            height: 100px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .color-info {
+            padding: var(--spacing-3);
+        }
+
+        .color-name {
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-1);
+            word-break: break-word;
+        }
+
+        .color-hex {
+            font-size: var(--font-size-2xs);
+            color: var(--color-text-secondary);
+            font-family: monospace;
+            user-select: all;
+        }
+
+        /* Typography Section */
+        .typography-grid {
+            display: grid;
+            gap: var(--spacing-6);
+        }
+
+        .type-sample {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-6);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .type-label {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-2);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .h1-sample {
+            font-size: var(--h1-font-size);
+            font-weight: var(--h1-font-weight);
+            line-height: var(--h1-line-height);
+            letter-spacing: var(--h1-letter-spacing);
+        }
+
+        .h2-sample {
+            font-size: var(--h2-font-size);
+            font-weight: var(--h2-font-weight);
+            line-height: var(--h2-line-height);
+        }
+
+        .h3-sample {
+            font-size: var(--h3-font-size);
+            font-weight: var(--h3-font-weight);
+            line-height: var(--h3-line-height);
+        }
+
+        .h4-sample {
+            font-size: var(--h4-font-size);
+            font-weight: var(--h4-font-weight);
+            line-height: var(--h4-line-height);
+        }
+
+        .body-lg-sample {
+            font-size: var(--body-lg-font-size);
+            font-weight: var(--body-lg-font-weight);
+            line-height: var(--body-lg-line-height);
+        }
+
+        .body-base-sample {
+            font-size: var(--body-base-font-size);
+            font-weight: var(--body-base-font-weight);
+            line-height: var(--body-base-line-height);
+        }
+
+        .body-sm-sample {
+            font-size: var(--body-sm-font-size);
+            font-weight: var(--body-sm-font-weight);
+            line-height: var(--body-sm-line-height);
+        }
+
+        .type-meta {
+            margin-top: var(--spacing-3);
+            padding-top: var(--spacing-3);
+            border-top: 1px solid var(--color-border);
+            font-size: var(--font-size-2xs);
+            color: var(--color-text-secondary);
+            font-family: monospace;
+        }
+
+        /* Spacing Section */
+        .spacing-grid {
+            display: grid;
+            gap: var(--spacing-4);
+        }
+
+        .spacing-item {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-4);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-4);
+        }
+
+        .spacing-visual {
+            flex-shrink: 0;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-sm);
+        }
+
+        .spacing-info {
+            flex: 1;
+        }
+
+        .spacing-name {
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-1);
+        }
+
+        .spacing-value {
+            font-size: var(--font-size-2xs);
+            color: var(--color-text-secondary);
+            font-family: monospace;
+        }
+
+        /* Effects Section */
+        .effects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-6);
+        }
+
+        .effect-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-6);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .effect-sample {
+            aspect-ratio: 16/9;
+            background: var(--color-background);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        .effect-sample.with-shadow-sm {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .effect-sample.with-shadow-md {
+            box-shadow: var(--shadow-md);
+        }
+
+        .effect-sample.with-shadow-lg {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .effect-sample.with-shadow-xl {
+            box-shadow: var(--shadow-xl);
+        }
+
+        .effect-name {
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .effect-value {
+            font-size: var(--font-size-2xs);
+            color: var(--color-text-secondary);
+            font-family: monospace;
+            word-break: break-word;
+        }
+
+        footer {
+            border-top: 1px solid var(--color-border);
+            padding-top: var(--spacing-6);
+            margin-top: var(--spacing-12);
+            text-align: center;
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        .nav-links {
+            margin-top: var(--spacing-4);
+            padding-top: var(--spacing-4);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .nav-links a {
+            color: var(--color-primary);
+            text-decoration: none;
+            margin-right: var(--spacing-4);
+            font-size: var(--font-size-sm);
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .table thead {
+            background: var(--color-background);
+            border-bottom: 2px solid var(--color-border);
+        }
+
+        .table th {
+            padding: var(--spacing-4);
+            text-align: left;
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-primary);
+        }
+
+        .table td {
+            padding: var(--spacing-4);
+            border-bottom: 1px solid var(--color-border);
+            font-size: var(--font-size-sm);
+            font-family: monospace;
+        }
+
+        .table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table tr:hover {
+            background-color: var(--color-background);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Design Tokens Reference</h1>
+            <p class="breadcrumb">
+                <a href="./index.html">Design System</a> / Tokens
+            </p>
+        </header>
+
+        <!-- Colors Section -->
+        <div class="section" id="colors">
+            <h2 class="section-title">Colors</h2>
+
+            <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-4); color: var(--color-text-primary);">Semantic Colors</h3>
+            <div class="color-grid" style="margin-bottom: var(--spacing-8);">
+                <div class="color-swatch">
+                    <div class="color-value" style="background-color: var(--color-primary);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Primary</div>
+                        <div class="color-hex">#cb0c9f</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-value" style="background-color: var(--color-secondary);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Secondary</div>
+                        <div class="color-hex">#8392ab</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-value" style="background-color: var(--color-success);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Success</div>
+                        <div class="color-hex">#82d616</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-value" style="background-color: var(--color-warning);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Warning</div>
+                        <div class="color-hex">#fbcf33</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-value" style="background-color: var(--color-error);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Error</div>
+                        <div class="color-hex">#ea0606</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-value" style="background-color: var(--color-info);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Info</div>
+                        <div class="color-hex">#17c1e8</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-4); color: var(--color-text-primary);">Text Colors</h3>
+            <table class="table" style="margin-bottom: var(--spacing-8);">
+                <thead>
+                    <tr>
+                        <th>Token</th>
+                        <th>Value</th>
+                        <th>Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>--color-text-primary</td>
+                        <td>#252f40</td>
+                        <td>Primary text, headings</td>
+                    </tr>
+                    <tr>
+                        <td>--color-text-secondary</td>
+                        <td>#8392ab</td>
+                        <td>Secondary text, descriptions</td>
+                    </tr>
+                    <tr>
+                        <td>--color-text-muted</td>
+                        <td>#67748e</td>
+                        <td>Muted text, metadata</td>
+                    </tr>
+                    <tr>
+                        <td>--color-text-disabled</td>
+                        <td>#adb5bd</td>
+                        <td>Disabled states</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-4); color: var(--color-text-primary);">Grayscale</h3>
+            <div class="color-grid" style="margin-bottom: var(--spacing-8);">
+                <div class="color-swatch">
+                    <div class="color-value" style="background-color: var(--gray-50);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Gray 50</div>
+                        <div class="color-hex">#fafafa</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-value" style="background-color: var(--gray-100);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Gray 100</div>
+                        <div class="color-hex">#f8f9fa</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-value" style="background-color: var(--gray-200);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Gray 200</div>
+                        <div class="color-hex">#f0f0f0</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-value" style="background-color: var(--gray-300);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Gray 300</div>
+                        <div class="color-hex">#e9ecef</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-value" style="background-color: var(--gray-400);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Gray 400</div>
+                        <div class="color-hex">#d2d6da</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-value" style="background-color: var(--gray-500);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Gray 500</div>
+                        <div class="color-hex">#adb5bd</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-value" style="background-color: var(--gray-600);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Gray 600</div>
+                        <div class="color-hex">#8392ab</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-value" style="background-color: var(--gray-700);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Gray 700</div>
+                        <div class="color-hex">#67748e</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-value" style="background-color: var(--gray-800);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Gray 800</div>
+                        <div class="color-hex">#344767</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-value" style="background-color: var(--gray-900);"></div>
+                    <div class="color-info">
+                        <div class="color-name">Gray 900</div>
+                        <div class="color-hex">#252f40</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Typography Section -->
+        <div class="section" id="typography">
+            <h2 class="section-title">Typography</h2>
+
+            <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-4); color: var(--color-text-primary);">Font Families</h3>
+            <table class="table" style="margin-bottom: var(--spacing-8);">
+                <thead>
+                    <tr>
+                        <th>Token</th>
+                        <th>Family</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>--font-family-primary</td>
+                        <td>Open Sans, sans-serif</td>
+                    </tr>
+                    <tr>
+                        <td>--font-family-secondary</td>
+                        <td>Montserrat, sans-serif</td>
+                    </tr>
+                    <tr>
+                        <td>--font-family-mono</td>
+                        <td>OpenSans, sans-serif</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-4); color: var(--color-text-primary);">Headings</h3>
+            <div class="typography-grid" style="margin-bottom: var(--spacing-8);">
+                <div class="type-sample">
+                    <div class="type-label">H1</div>
+                    <div class="h1-sample">Heading Level 1</div>
+                    <div class="type-meta">48px / 400 / Line height 1.17</div>
+                </div>
+                <div class="type-sample">
+                    <div class="type-label">H2</div>
+                    <div class="h2-sample">Heading Level 2</div>
+                    <div class="type-meta">36px / 400 / Line height 1.17</div>
+                </div>
+                <div class="type-sample">
+                    <div class="type-label">H3</div>
+                    <div class="h3-sample">Heading Level 3</div>
+                    <div class="type-meta">30px / 400 / Line height 1.17</div>
+                </div>
+                <div class="type-sample">
+                    <div class="type-label">H4</div>
+                    <div class="h4-sample">Heading Level 4</div>
+                    <div class="type-meta">24px / 400 / Line height 1.17</div>
+                </div>
+            </div>
+
+            <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-4); color: var(--color-text-primary);">Body Text</h3>
+            <div class="typography-grid">
+                <div class="type-sample">
+                    <div class="type-label">Body Large</div>
+                    <div class="body-lg-sample">The quick brown fox jumps over the lazy dog.</div>
+                    <div class="type-meta">16px / 400 / Line height 1.625</div>
+                </div>
+                <div class="type-sample">
+                    <div class="type-label">Body Base</div>
+                    <div class="body-base-sample">The quick brown fox jumps over the lazy dog.</div>
+                    <div class="type-meta">14px / 400 / Line height 1.36</div>
+                </div>
+                <div class="type-sample">
+                    <div class="type-label">Body Small</div>
+                    <div class="body-sm-sample">The quick brown fox jumps over the lazy dog.</div>
+                    <div class="type-meta">13px / 400 / Line height 1.17</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Spacing Section -->
+        <div class="section" id="spacing">
+            <h2 class="section-title">Spacing & Radius</h2>
+
+            <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-4); color: var(--color-text-primary);">Spacing Scale</h3>
+            <div class="spacing-grid" style="margin-bottom: var(--spacing-8);">
+                <div class="spacing-item">
+                    <div class="spacing-visual" style="width: 4px; height: 20px;"></div>
+                    <div class="spacing-info">
+                        <div class="spacing-name">--spacing-1</div>
+                        <div class="spacing-value">0.25rem / 4px</div>
+                    </div>
+                </div>
+                <div class="spacing-item">
+                    <div class="spacing-visual" style="width: 8px; height: 20px;"></div>
+                    <div class="spacing-info">
+                        <div class="spacing-name">--spacing-2</div>
+                        <div class="spacing-value">0.5rem / 8px</div>
+                    </div>
+                </div>
+                <div class="spacing-item">
+                    <div class="spacing-visual" style="width: 12px; height: 20px;"></div>
+                    <div class="spacing-info">
+                        <div class="spacing-name">--spacing-3</div>
+                        <div class="spacing-value">0.75rem / 12px</div>
+                    </div>
+                </div>
+                <div class="spacing-item">
+                    <div class="spacing-visual" style="width: 16px; height: 20px;"></div>
+                    <div class="spacing-info">
+                        <div class="spacing-name">--spacing-4</div>
+                        <div class="spacing-value">1rem / 16px</div>
+                    </div>
+                </div>
+                <div class="spacing-item">
+                    <div class="spacing-visual" style="width: 24px; height: 20px;"></div>
+                    <div class="spacing-info">
+                        <div class="spacing-name">--spacing-6</div>
+                        <div class="spacing-value">1.5rem / 24px</div>
+                    </div>
+                </div>
+                <div class="spacing-item">
+                    <div class="spacing-visual" style="width: 32px; height: 20px;"></div>
+                    <div class="spacing-info">
+                        <div class="spacing-name">--spacing-8</div>
+                        <div class="spacing-value">2rem / 32px</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-4); color: var(--color-text-primary);">Corner Radius</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Token</th>
+                        <th>Value</th>
+                        <th>Preview</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>--radius-xs</td>
+                        <td>0.09375rem / 1.5px</td>
+                        <td><div style="width: 40px; height: 40px; background: var(--gradient-primary); border-radius: var(--radius-xs);"></div></td>
+                    </tr>
+                    <tr>
+                        <td>--radius-sm</td>
+                        <td>0.25rem / 4px</td>
+                        <td><div style="width: 40px; height: 40px; background: var(--gradient-primary); border-radius: var(--radius-sm);"></div></td>
+                    </tr>
+                    <tr>
+                        <td>--radius-md</td>
+                        <td>0.5rem / 8px</td>
+                        <td><div style="width: 40px; height: 40px; background: var(--gradient-primary); border-radius: var(--radius-md);"></div></td>
+                    </tr>
+                    <tr>
+                        <td>--radius-lg</td>
+                        <td>1rem / 16px</td>
+                        <td><div style="width: 40px; height: 40px; background: var(--gradient-primary); border-radius: var(--radius-lg);"></div></td>
+                    </tr>
+                    <tr>
+                        <td>--radius-xl</td>
+                        <td>1.5rem / 24px</td>
+                        <td><div style="width: 40px; height: 40px; background: var(--gradient-primary); border-radius: var(--radius-xl);"></div></td>
+                    </tr>
+                    <tr>
+                        <td>--radius-full</td>
+                        <td>9999px</td>
+                        <td><div style="width: 40px; height: 40px; background: var(--gradient-primary); border-radius: var(--radius-full);"></div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Effects Section -->
+        <div class="section">
+            <h2 class="section-title">Effects</h2>
+
+            <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-4); color: var(--color-text-primary);">Shadows</h3>
+            <div class="effects-grid" style="margin-bottom: var(--spacing-8);">
+                <div class="effect-card">
+                    <div class="effect-sample with-shadow-sm"></div>
+                    <div class="effect-name">Shadow SM</div>
+                    <div class="effect-value">0 2px 4px -1px rgba(0, 0, 0, 0.07)</div>
+                </div>
+                <div class="effect-card">
+                    <div class="effect-sample with-shadow-md"></div>
+                    <div class="effect-name">Shadow MD</div>
+                    <div class="effect-value">0 4px 6px -1px rgba(0, 0, 0, 0.12)</div>
+                </div>
+                <div class="effect-card">
+                    <div class="effect-sample with-shadow-lg"></div>
+                    <div class="effect-name">Shadow LG</div>
+                    <div class="effect-value">0 20px 27px rgba(0, 0, 0, 0.05)</div>
+                </div>
+                <div class="effect-card">
+                    <div class="effect-sample with-shadow-xl"></div>
+                    <div class="effect-name">Shadow XL</div>
+                    <div class="effect-value">0 5px 10px rgba(0, 0, 0, 0.12)</div>
+                </div>
+            </div>
+
+            <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-4); color: var(--color-text-primary);">Gradients</h3>
+            <div class="effects-grid">
+                <div class="effect-card">
+                    <div class="effect-sample" style="background: var(--gradient-primary);"></div>
+                    <div class="effect-name">Primary Gradient</div>
+                    <div class="effect-value">135deg, #ff0080 → #7928ca</div>
+                </div>
+                <div class="effect-card">
+                    <div class="effect-sample" style="background: var(--gradient-success);"></div>
+                    <div class="effect-name">Success Gradient</div>
+                    <div class="effect-value">135deg, #98ec2d → #17ad37</div>
+                </div>
+                <div class="effect-card">
+                    <div class="effect-sample" style="background: var(--gradient-error);"></div>
+                    <div class="effect-name">Error Gradient</div>
+                    <div class="effect-value">135deg, #ff667c → #ea0606</div>
+                </div>
+                <div class="effect-card">
+                    <div class="effect-sample" style="background: var(--gradient-warning);"></div>
+                    <div class="effect-name">Warning Gradient</div>
+                    <div class="effect-value">135deg, #fbcf33 → #f53939</div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; Design System. All tokens extracted from Figma.</p>
+            <div class="nav-links">
+                <a href="./index.html">Back to Dashboard</a>
+                <a href="./layouts/index.html">Layout Gallery</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -18,6 +18,8 @@
       line-height: 1.5;
     }
     .container { max-width: 1400px; margin: 0 auto; padding: var(--spacing-8); }
+
+    /* Preview Header */
     header {
       background: var(--gradient-dark);
       color: white;
@@ -53,11 +55,15 @@
       border-radius: var(--radius-md);
       font-size: var(--font-size-sm);
     }
+
+    /* Main Content Grid */
     .content-grid {
       display: grid;
       grid-template-columns: 300px 1fr;
       gap: var(--spacing-6);
     }
+
+    /* Screenshot Section */
     .screenshot-panel {
       background: var(--color-surface);
       border-radius: var(--radius-xl);
@@ -70,13 +76,15 @@
       display: block;
     }
     .screenshot-panel .placeholder {
-      height: 400px;
+      height: 500px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: var(--color-gray-100);
       color: var(--color-text-muted);
     }
+
+    /* Spec Panel */
     .spec-panel {
       display: flex;
       flex-direction: column;
@@ -102,6 +110,8 @@
       color: var(--color-text-secondary);
       margin: var(--spacing-3) 0 var(--spacing-2);
     }
+
+    /* Structure Diagram */
     .structure-diagram {
       background: var(--color-gray-50);
       border-radius: var(--radius-md);
@@ -111,7 +121,10 @@
       overflow-x: auto;
       white-space: pre;
       line-height: 1.4;
+      color: var(--color-text-primary);
     }
+
+    /* Component List */
     .component-list {
       display: flex;
       flex-wrap: wrap;
@@ -134,6 +147,8 @@
       border-radius: var(--radius-sm);
       font-weight: var(--font-weight-bold);
     }
+
+    /* Token Table */
     .token-table {
       width: 100%;
       border-collapse: collapse;
@@ -155,6 +170,8 @@
       font-size: var(--font-size-xs);
       color: var(--color-primary);
     }
+
+    /* Section List */
     .section-list { list-style: none; }
     .section-list li {
       display: flex;
@@ -171,12 +188,23 @@
       padding: var(--spacing-0-5) var(--spacing-2);
       border-radius: var(--radius-sm);
     }
-    .stat-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-3); }
+
+    /* Stat Cards Demo */
+    .stat-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--spacing-3);
+    }
     .stat-card-demo {
       background: var(--color-surface);
       border: 1px solid var(--color-border-light);
       border-radius: var(--radius-lg);
       padding: var(--spacing-3);
+      transition: all 0.3s ease;
+    }
+    .stat-card-demo:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
     }
     .stat-card-demo .icon {
       width: 40px;
@@ -189,6 +217,9 @@
       color: white;
       margin-bottom: var(--spacing-2);
     }
+    .stat-card-demo:nth-child(2) .icon { background: var(--gradient-info); }
+    .stat-card-demo:nth-child(3) .icon { background: var(--gradient-warning); }
+    .stat-card-demo:nth-child(4) .icon { background: var(--gradient-success); }
     .stat-card-demo .value {
       font-size: var(--font-size-lg);
       font-weight: var(--font-weight-bold);
@@ -200,15 +231,229 @@
     .stat-card-demo .change {
       font-size: var(--font-size-xs);
       font-weight: var(--font-weight-semibold);
+      margin-top: var(--spacing-1);
     }
     .stat-card-demo .change.positive { color: var(--color-success); }
     .stat-card-demo .change.negative { color: var(--color-error); }
+
+    /* Live Dashboard Preview */
+    .dashboard-preview {
+      background: var(--color-background);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      margin-top: var(--spacing-6);
+    }
+    .dashboard-frame {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      grid-template-rows: 64px 1fr 48px;
+      min-height: 800px;
+    }
+
+    /* Sidebar in preview */
+    .dashboard-sidebar {
+      grid-row: 1 / 4;
+      background: linear-gradient(310deg, #141727 0%, #3a416f 100%);
+      color: white;
+      padding: var(--spacing-6);
+    }
+    .dashboard-sidebar h3 {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-bold);
+      margin-bottom: var(--spacing-3);
+      opacity: 0.8;
+    }
+    .dashboard-sidebar-nav {
+      list-style: none;
+      margin-bottom: var(--spacing-6);
+    }
+    .dashboard-sidebar-nav li {
+      padding: var(--spacing-2) var(--spacing-3);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      font-size: var(--font-size-sm);
+      transition: background 0.2s;
+    }
+    .dashboard-sidebar-nav li:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    .dashboard-sidebar-nav li.active {
+      background: linear-gradient(310deg, #7928ca 0%, #ff0080 100%);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    /* Navbar in preview */
+    .dashboard-navbar {
+      grid-column: 2;
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border-light);
+      padding: 0 var(--spacing-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .navbar-search {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      background: var(--color-gray-100);
+      padding: var(--spacing-2) var(--spacing-3);
+      border-radius: var(--radius-md);
+      flex: 0 0 200px;
+    }
+    .navbar-search input {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: var(--font-size-sm);
+      width: 100%;
+    }
+
+    /* Main content area */
+    .dashboard-content {
+      grid-column: 2;
+      grid-row: 2;
+      padding: var(--spacing-8);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-6);
+    }
+
+    /* Content sections */
+    .dashboard-section {
+      background: var(--color-surface);
+      border-radius: var(--radius-2xl);
+      padding: var(--spacing-5);
+      box-shadow: 0 2px 4px -1px rgba(0,0,0,0.07), 0 4px 6px -1px rgba(0,0,0,0.12);
+    }
+    .dashboard-section h4 {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--spacing-3);
+      color: var(--color-text-primary);
+    }
+
+    /* Stat cards row */
+    .stat-cards-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--spacing-3);
+    }
+
+    /* Small stat card for preview */
+    .mini-stat {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-3);
+      text-align: center;
+    }
+    .mini-stat-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      margin: 0 auto var(--spacing-2);
+      font-size: 16px;
+    }
+    .mini-stat-value {
+      font-size: var(--font-size-md);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-primary);
+    }
+    .mini-stat-label {
+      font-size: var(--font-size-xs);
+      color: var(--color-text-muted);
+      margin-top: var(--spacing-1);
+    }
+
+    /* Footer in preview */
+    .dashboard-footer {
+      grid-column: 1 / 3;
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-border-light);
+      padding: var(--spacing-3) var(--spacing-6);
+      text-align: center;
+      font-size: var(--font-size-xs);
+      color: var(--color-text-muted);
+    }
+
+    /* Chart placeholder */
+    .chart-placeholder {
+      height: 250px;
+      background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-gray-100) 100%);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-muted);
+      margin-bottom: var(--spacing-3);
+    }
+
+    /* Table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--font-size-sm);
+    }
+    .data-table th {
+      text-align: left;
+      padding: var(--spacing-2);
+      border-bottom: 2px solid var(--color-border-light);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-secondary);
+      font-size: var(--font-size-xs);
+      text-transform: uppercase;
+    }
+    .data-table td {
+      padding: var(--spacing-2);
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .data-table tbody tr:hover {
+      background: var(--color-gray-50);
+    }
+
+    /* Progress bar */
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--color-border-light);
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--color-success);
+      border-radius: var(--radius-pill);
+    }
+
+    /* Responsive */
     @media (max-width: 1024px) {
       .content-grid { grid-template-columns: 1fr; }
       .stat-cards { grid-template-columns: repeat(2, 1fr); }
+      .stat-cards-row { grid-template-columns: repeat(2, 1fr); }
+      .dashboard-frame { grid-template-columns: 240px 1fr; }
     }
     @media (max-width: 640px) {
       .stat-cards { grid-template-columns: 1fr; }
+      .stat-cards-row { grid-template-columns: 1fr; }
+      .dashboard-frame {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+      }
+      .dashboard-sidebar {
+        grid-row: auto;
+        grid-column: 1;
+        order: -1;
+      }
     }
   </style>
 </head>
@@ -222,65 +467,70 @@
         <span>/</span>
         <span>Dashboard</span>
       </nav>
-      <h1><i data-lucide="layout-dashboard"></i> Dashboard</h1>
-      <p>Main dashboard screen with stats, charts, and data tables</p>
+      <h1><i data-lucide="layout-dashboard"></i> Dashboard Layout</h1>
+      <p>Complete dashboard screen with sidebar, navigation, statistics, charts, tables, and timeline</p>
       <div class="meta-info">
-        <span class="meta-item">1440 x 1584</span>
-        <span class="meta-item">sidebar-content</span>
+        <span class="meta-item">1440 × 1584px</span>
+        <span class="meta-item">Sidebar + Content</span>
         <span class="meta-item">Node: 0:263</span>
+        <span class="meta-item">10 child sections</span>
       </div>
     </div>
   </header>
 
   <main class="container">
     <div class="content-grid">
+      <!-- Screenshot -->
       <div class="screenshot-panel">
         <img src="screenshots/Dashboard.png" alt="Dashboard screenshot" onerror="this.parentElement.innerHTML='<div class=placeholder><i data-lucide=layout-dashboard style=width:64px;height:64px></i><br>Screenshot not available</div>';lucide.createIcons()">
       </div>
 
+      <!-- Spec Panel -->
       <div class="spec-panel">
+        <!-- Layout Structure -->
         <section class="section">
-          <h2><i data-lucide="grid-3x3"></i> Layout Structure</h2>
-          <div class="structure-diagram">┌─────────────────────────────────────────────────────────────────┐
-│  Navbar (search, user profile, settings)                        │
-├──────────┬──────────────────────────────────────────────────────┤
-│          │  ┌──────────┐┌──────────┐┌──────────┐┌──────────┐   │
-│          │  │ Stat 1   ││ Stat 2   ││ Stat 3   ││ Stat 4   │   │
-│ Sidebar  │  │ $53,000  ││ 2,300    ││ +3,462   ││ $103,430 │   │
-│          │  └──────────┘└──────────┘└──────────┘└──────────┘   │
-│ • Dashboard │  ┌─────────────────────┐┌────────────────────┐   │
-│ • Tables   │  │ Built by developers  ││ Work with rockets  │   │
-│ • Billing  │  │ (Promo Card)         ││ (Feature Card)     │   │
-│ • VR       │  └─────────────────────┘└────────────────────┘   │
-│ • RTL      │  ┌─────────────────────┐┌────────────────────┐    │
-│ ACCOUNT  │  │ Bar Chart           ││ Line Chart         │    │
-│ • Profile│  │ Active Users: 3.6K  ││ Sales Overview     │    │
-│ • Sign In│  └─────────────────────┘└────────────────────┘    │
-│ • Sign Up│  ┌─────────────────────┐┌────────────────────┐    │
-│          │  │ Projects Table      ││ Orders History     │    │
-│          │  │ (6 rows)            ││ (5 items)          │    │
-│          │  └─────────────────────┘└────────────────────┘    │
-├──────────┴──────────────────────────────────────────────────────┤
-│  Footer (© Creative Tim | About Us | Blog)                      │
-└─────────────────────────────────────────────────────────────────┘</div>
+          <h2><i data-lucide="grid-3x3"></i> Layout Composition</h2>
+          <div class="structure-diagram">Dashboard Structure (1440 × 1584px)
+├─ Sidebar (280px fixed, dark gradient #141727→#3a416f)
+├─ Navbar (64px, white background)
+├─ Content Area (full width scrollable)
+│  ├─ Stat Cards Row (4 columns)
+│  │  ├─ Widget-1: Today's Money ($53,000)
+│  │  ├─ Widget-2: Today's Users (2,300)
+│  │  ├─ Widget-3: New Clients (+3,462)
+│  │  └─ Widget-4: Sales ($103,430)
+│  ├─ Promo Cards Row (2 columns)
+│  │  ├─ Card-1: Rocket (gradient-primary)
+│  │  └─ Card-2: Feature (gradient-dark)
+│  ├─ Charts Row (2 columns)
+│  │  ├─ Chart-2: Active Users (bar chart)
+│  │  └─ Chart-1: Sales Overview (line chart)
+│  ├─ Projects Table (full width, 6 rows)
+│  └─ Orders Timeline (full width, 6 items)
+└─ Footer (48px, white background)</div>
         </section>
 
+        <!-- Top-Level Sections -->
         <section class="section">
-          <h2><i data-lucide="layers"></i> Sections</h2>
+          <h2><i data-lucide="layers"></i> Top-Level Sections</h2>
           <ul class="section-list">
-            <li><span>sidebar</span><span class="section-type">navigation (248x1002)</span></li>
-            <li><span>navbar</span><span class="section-type">header (1085x45)</span></li>
-            <li><span>stat-cards-row</span><span class="section-type">card-row (4 cards)</span></li>
-            <li><span>welcome-card</span><span class="section-type">promo-card</span></li>
-            <li><span>rocket-card</span><span class="section-type">feature-card</span></li>
-            <li><span>chart-bar</span><span class="section-type">chart (bar)</span></li>
-            <li><span>chart-line</span><span class="section-type">chart (line)</span></li>
-            <li><span>projects-table</span><span class="section-type">table (6 rows)</span></li>
-            <li><span>orders-history</span><span class="section-type">list (5 items)</span></li>
-            <li><span>footer</span><span class="section-type">footer (1116x20)</span></li>
+            <li><span>sidebar</span><span class="section-type">FRAME (280×1584)</span></li>
+            <li><span>navbar</span><span class="section-type">FRAME (1440×64)</span></li>
+            <li><span>Widget-1</span><span class="section-type">stat-card</span></li>
+            <li><span>Widget-2</span><span class="section-type">stat-card</span></li>
+            <li><span>Widget-3</span><span class="section-type">stat-card</span></li>
+            <li><span>Widget-4</span><span class="section-type">stat-card</span></li>
+            <li><span>Chart-2</span><span class="section-type">bar-chart</span></li>
+            <li><span>Chart-1</span><span class="section-type">line-chart</span></li>
+            <li><span>Table-1</span><span class="section-type">data-table</span></li>
+            <li><span>Timeline</span><span class="section-type">timeline</span></li>
+            <li><span>Card-1</span><span class="section-type">promo-card</span></li>
+            <li><span>Card-2</span><span class="section-type">feature-card</span></li>
+            <li><span>footer</span><span class="section-type">FRAME (1440×48)</span></li>
           </ul>
         </section>
 
+        <!-- Stat Cards Preview -->
         <section class="section">
           <h2><i data-lucide="bar-chart-3"></i> Stat Cards</h2>
           <div class="stat-cards">
@@ -311,36 +561,188 @@
           </div>
         </section>
 
+        <!-- Components Used -->
         <section class="section">
           <h2><i data-lucide="component"></i> Components Used</h2>
           <div class="component-list">
             <span class="component-tag">Stat Card <span class="count">4</span></span>
-            <span class="component-tag">Info Card <span class="count">2</span></span>
+            <span class="component-tag">Promo Card <span class="count">2</span></span>
             <span class="component-tag">Chart Card <span class="count">2</span></span>
-            <span class="component-tag">Table <span class="count">1</span></span>
-            <span class="component-tag">List <span class="count">1</span></span>
-            <span class="component-tag">Nav Item <span class="count">10</span></span>
-            <span class="component-tag">Button <span class="count">2</span></span>
+            <span class="component-tag">Data Table <span class="count">1</span></span>
+            <span class="component-tag">Timeline <span class="count">1</span></span>
+            <span class="component-tag">Nav Item <span class="count">8</span></span>
+            <span class="component-tag">Button <span class="count">3</span></span>
+            <span class="component-tag">Input <span class="count">1</span></span>
           </div>
         </section>
 
+        <!-- Token Usage -->
         <section class="section">
-          <h2><i data-lucide="palette"></i> Token Usage</h2>
+          <h2><i data-lucide="palette"></i> Design Tokens</h2>
           <table class="token-table">
             <thead>
-              <tr><th>Element</th><th>Token</th></tr>
+              <tr><th>Element</th><th>Token</th><th>Value</th></tr>
             </thead>
             <tbody>
-              <tr><td>Page background</td><td class="token-name">--color-background</td></tr>
-              <tr><td>Sidebar/Card bg</td><td class="token-name">--color-surface</td></tr>
-              <tr><td>Stat icon bg</td><td class="token-name">--gradient-primary</td></tr>
-              <tr><td>Card shadow</td><td class="token-name">--shadow-card</td></tr>
-              <tr><td>Card radius</td><td class="token-name">--radius-xl</td></tr>
-              <tr><td>Section gap</td><td class="token-name">--spacing-6</td></tr>
-              <tr><td>Card padding</td><td class="token-name">--spacing-4</td></tr>
+              <tr><td>Page background</td><td class="token-name">--color-background</td><td>#f8f9fa</td></tr>
+              <tr><td>Card background</td><td class="token-name">--color-surface</td><td>#ffffff</td></tr>
+              <tr><td>Sidebar gradient</td><td class="token-name">--gradient-dark</td><td>#141727→#3a416f</td></tr>
+              <tr><td>Stat icon 1</td><td class="token-name">--gradient-primary</td><td>#7928ca→#ff0080</td></tr>
+              <tr><td>Stat icon 2</td><td class="token-name">--gradient-info</td><td>#21d4fd→#2152ff</td></tr>
+              <tr><td>Stat icon 3</td><td class="token-name">--gradient-warning</td><td>#fbcf33→#f53939</td></tr>
+              <tr><td>Stat icon 4</td><td class="token-name">--gradient-success</td><td>#98ec2d→#17ad37</td></tr>
+              <tr><td>Card shadow</td><td class="token-name">--shadow-md</td><td>0 20px 27px 0 rgba(0,0,0,0.05)</td></tr>
+              <tr><td>Card radius</td><td class="token-name">--radius-2xl</td><td>16px</td></tr>
+              <tr><td>Main padding</td><td class="token-name">--spacing-8</td><td>32px</td></tr>
+              <tr><td>Section gap</td><td class="token-name">--spacing-6</td><td>24px</td></tr>
             </tbody>
           </table>
         </section>
+      </div>
+    </div>
+
+    <!-- Live Dashboard Preview -->
+    <div class="dashboard-preview">
+      <div class="dashboard-frame">
+        <!-- Sidebar -->
+        <div class="dashboard-sidebar">
+          <h3>Dashboard</h3>
+          <ul class="dashboard-sidebar-nav">
+            <li class="active"><i data-lucide="layout-dashboard" style="width:16px;height:16px"></i> Dashboard</li>
+            <li><i data-lucide="table" style="width:16px;height:16px"></i> Tables</li>
+            <li><i data-lucide="credit-card" style="width:16px;height:16px"></i> Billing</li>
+            <li><i data-lucide="glasses" style="width:16px;height:16px"></i> VR</li>
+            <li><i data-lucide="type" style="width:16px;height:16px"></i> RTL</li>
+          </ul>
+          <h3>Account</h3>
+          <ul class="dashboard-sidebar-nav">
+            <li><i data-lucide="user" style="width:16px;height:16px"></i> Profile</li>
+            <li><i data-lucide="log-in" style="width:16px;height:16px"></i> Sign In</li>
+            <li><i data-lucide="user-plus" style="width:16px;height:16px"></i> Sign Up</li>
+          </ul>
+        </div>
+
+        <!-- Navbar -->
+        <div class="dashboard-navbar">
+          <div style="font-size: 14px; color: var(--color-text-secondary);">Dashboard</div>
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <div class="navbar-search">
+              <i data-lucide="search" style="width:16px;height:16px;color:var(--color-text-muted)"></i>
+              <input type="text" placeholder="Search...">
+            </div>
+            <i data-lucide="bell" style="width:20px;height:20px;cursor:pointer;color:var(--color-text-secondary)"></i>
+            <i data-lucide="user-circle" style="width:20px;height:20px;cursor:pointer;color:var(--color-text-secondary)"></i>
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="dashboard-content">
+          <!-- Stat Cards -->
+          <div class="dashboard-section" style="padding: var(--spacing-6);">
+            <div class="stat-cards-row">
+              <div class="mini-stat">
+                <div class="mini-stat-icon" style="background: linear-gradient(310deg, #7928ca 0%, #ff0080 100%);"><i data-lucide="wallet" style="width:16px;height:16px"></i></div>
+                <div class="mini-stat-value">$53,000</div>
+                <div class="mini-stat-label">Today's Money</div>
+              </div>
+              <div class="mini-stat">
+                <div class="mini-stat-icon" style="background: linear-gradient(310deg, #21d4fd 0%, #2152ff 100%);"><i data-lucide="globe" style="width:16px;height:16px"></i></div>
+                <div class="mini-stat-value">2,300</div>
+                <div class="mini-stat-label">Today's Users</div>
+              </div>
+              <div class="mini-stat">
+                <div class="mini-stat-icon" style="background: linear-gradient(310deg, #fbcf33 0%, #f53939 100%);"><i data-lucide="file-text" style="width:16px;height:16px"></i></div>
+                <div class="mini-stat-value">+3,462</div>
+                <div class="mini-stat-label">New Clients</div>
+              </div>
+              <div class="mini-stat">
+                <div class="mini-stat-icon" style="background: linear-gradient(310deg, #98ec2d 0%, #17ad37 100%);"><i data-lucide="shopping-cart" style="width:16px;height:16px"></i></div>
+                <div class="mini-stat-value">$103,430</div>
+                <div class="mini-stat-label">Sales</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-6);">
+            <div class="dashboard-section">
+              <h4>Active Users</h4>
+              <div class="chart-placeholder"><i data-lucide="bar-chart-3" style="width:32px;height:32px;opacity:0.3"></i></div>
+              <div style="font-size: 12px; color: var(--color-text-muted); display: flex; gap: 16px; justify-content: space-around;">
+                <div><strong>3.6K</strong><br>Active</div>
+                <div><strong>2m</strong><br>Clicks</div>
+                <div><strong>$772</strong><br>Sales</div>
+              </div>
+            </div>
+            <div class="dashboard-section">
+              <h4>Sales Overview</h4>
+              <div class="chart-placeholder"><i data-lucide="line-chart" style="width:32px;height:32px;opacity:0.3"></i></div>
+            </div>
+          </div>
+
+          <!-- Table -->
+          <div class="dashboard-section">
+            <h4>Projects</h4>
+            <table class="data-table">
+              <thead>
+                <tr><th>COMPANIES</th><th>MEMBERS</th><th>BUDGET</th><th>COMPLETION</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Soft UI Shopify Version</td>
+                  <td>4</td>
+                  <td>$14,000</td>
+                  <td><div class="progress-bar"><div class="progress-fill" style="width: 60%"></div></div><div style="font-size: 11px; color: var(--color-text-muted); margin-top: 4px;">60%</div></td>
+                </tr>
+                <tr>
+                  <td>Progress Track</td>
+                  <td>2</td>
+                  <td>$3,000</td>
+                  <td><div class="progress-bar"><div class="progress-fill" style="width: 10%; background: var(--color-warning)"></div></div><div style="font-size: 11px; color: var(--color-text-muted); margin-top: 4px;">10%</div></td>
+                </tr>
+                <tr>
+                  <td>Launch new Mobile App</td>
+                  <td>4</td>
+                  <td>$20,500</td>
+                  <td><div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div><div style="font-size: 11px; color: var(--color-text-muted); margin-top: 4px;">100%</div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Timeline -->
+          <div class="dashboard-section">
+            <h4>Orders History</h4>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div style="display: flex; gap: 12px; align-items: flex-start;">
+                <div style="width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(310deg, #7928ca 0%, #ff0080 100%); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white;"><i data-lucide="bell" style="width:16px;height:16px"></i></div>
+                <div style="flex: 1;">
+                  <div style="font-size: 14px; font-weight: 500;">$2,400 - Redesign store</div>
+                  <div style="font-size: 12px; color: var(--color-text-muted);">22 DEC 7:20 PM</div>
+                </div>
+              </div>
+              <div style="display: flex; gap: 12px; align-items: flex-start;">
+                <div style="width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(310deg, #21d4fd 0%, #2152ff 100%); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white;"><i data-lucide="code" style="width:16px;height:16px"></i></div>
+                <div style="flex: 1;">
+                  <div style="font-size: 14px; font-weight: 500;">New order #4845433</div>
+                  <div style="font-size: 12px; color: var(--color-text-muted);">21 DEC 11:21 PM</div>
+                </div>
+              </div>
+              <div style="display: flex; gap: 12px; align-items: flex-start;">
+                <div style="width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(310deg, #fbcf33 0%, #f53939 100%); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white;"><i data-lucide="shopping-cart" style="width:16px;height:16px"></i></div>
+                <div style="flex: 1;">
+                  <div style="font-size: 14px; font-weight: 500;">Company server payments</div>
+                  <div style="font-size: 12px; color: var(--color-text-muted);">21 DEC 9:28 PM</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="dashboard-footer">
+          © 2021 Creative Tim. Built by developers for developers. | <a href="#" style="color: var(--color-primary); text-decoration: none;">About</a> | <a href="#" style="color: var(--color-primary); text-decoration: none;">Blog</a>
+        </div>
       </div>
     </div>
   </main>

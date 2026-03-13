@@ -1,0 +1,51 @@
+{
+  "$schema": "semantic-layout-v1",
+  "screen": "SignIn",
+  "figmaFrameId": "0:2957",
+  "dimensions": { "width": 1440, "height": 1137, "viewport": "desktop" },
+  "shells": ["navbar-auth", "footer-auth"],
+  "contentArea": {
+    "bounds": { "x": 0, "y": 34, "width": 1440, "height": 970 },
+    "padding": { "left": 0, "right": 0, "top": 0, "bottom": 0 },
+    "effectiveWidth": 1440
+  },
+  "grid": { "columns": 2, "gap": 0, "margin": { "left": 0, "right": 0 } },
+  "rows": [
+    {
+      "id": "row-1",
+      "y": 34,
+      "height": 970,
+      "children": [
+        {
+          "id": "section-form-area",
+          "name": "form-area",
+          "gridColumn": "1 / 2",
+          "gridRow": "1 / 2",
+          "columnSpan": 1,
+          "rowSpan": 1,
+          "bounds": { "x": 0, "y": 34, "width": 720, "height": 970 }
+        },
+        {
+          "id": "section-image",
+          "name": "image",
+          "gridColumn": "2 / 3",
+          "gridRow": "1 / 2",
+          "columnSpan": 1,
+          "rowSpan": 1,
+          "bounds": { "x": 720, "y": 0, "width": 720, "height": 1137 }
+        }
+      ]
+    }
+  ],
+  "sections": {
+    "order": ["section-form-area", "section-image"]
+  },
+  "css": {
+    "gridTemplate": "display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh;",
+    "containerStyles": {
+      "width": "1440px",
+      "minHeight": "1137px",
+      "background": "var(--color-surface)"
+    }
+  }
+}

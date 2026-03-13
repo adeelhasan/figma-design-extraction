@@ -1,0 +1,117 @@
+<!-- Shell: navbar | Source: Dashboard-sidebar transparent -->
+<header class="shell-navbar" style="
+  position: sticky;
+  top: 0;
+  height: 45px;
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0 var(--spacing-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 50;
+">
+  <!-- Breadcrumb -->
+  <nav style="display: flex; align-items: center; gap: var(--spacing-1);">
+    <span style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-secondary);
+    ">Pages</span>
+    <span style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-secondary);
+    ">/</span>
+    <span style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-dark);
+    ">Dashboard</span>
+  </nav>
+
+  <!-- Right side controls -->
+  <div style="display: flex; align-items: center; gap: var(--spacing-3);">
+
+    <!-- Search -->
+    <div style="
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      padding: var(--spacing-1) var(--spacing-3);
+      width: 160px;
+    ">
+      <i data-lucide="search" style="width: 13px; height: 13px; color: var(--color-secondary); flex-shrink: 0;"></i>
+      <input type="text" placeholder="Type here…" style="
+        border: none;
+        background: transparent;
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-2xs);
+        color: var(--color-dark);
+        outline: none;
+        width: 100%;
+      ">
+    </div>
+
+    <!-- Sign In link -->
+    <a href="#" data-screen="Sign In" style="
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+      text-decoration: none;
+      color: var(--color-body);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-regular);
+    ">
+      <i data-lucide="user" style="width: 14px; height: 14px;"></i>
+      Sign In
+    </a>
+
+    <!-- Settings -->
+    <button style="
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: var(--spacing-1);
+      display: flex;
+      align-items: center;
+      color: var(--color-body);
+    ">
+      <i data-lucide="settings" style="width: 16px; height: 16px;"></i>
+    </button>
+
+    <!-- Bell with notification badge -->
+    <button style="
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: var(--spacing-1);
+      display: flex;
+      align-items: center;
+      color: var(--color-body);
+      position: relative;
+    ">
+      <i data-lucide="bell" style="width: 16px; height: 16px;"></i>
+      <span style="
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 8px;
+        height: 8px;
+        background: var(--color-error);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.4rem;
+        font-weight: bold;
+        color: white;
+      ">4</span>
+    </button>
+  </div>
+</header>

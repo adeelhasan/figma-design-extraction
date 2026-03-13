@@ -1,0 +1,25 @@
+{
+  "tokenType": "spacing",
+  "extractedAt": "2026-03-11T15:03:46Z",
+  "sourceFile": "design-system-20260311-150346/.cache/figma-file.json",
+  "tokens": {
+    "spacingScale": 8,
+    "spacingAliases": 5,
+    "radiusScale": 8,
+    "radiusAliases": 3,
+    "total": 24
+  },
+  "categories": {
+    "spacingScale": ["--spacing-1", "--spacing-2", "--spacing-3", "--spacing-4", "--spacing-6", "--spacing-8", "--spacing-12", "--spacing-16"],
+    "spacingAliases": ["--spacing-xs", "--spacing-sm", "--spacing-md", "--spacing-lg", "--spacing-xl"],
+    "radiusScale": ["--radius-xs", "--radius-sm", "--radius-md", "--radius-lg", "--radius-xl", "--radius-2xl", "--radius-pill", "--radius-full"],
+    "radiusAliases": ["--radius-DEFAULT", "--radius-button", "--radius-input", "--radius-card"]
+  },
+  "notes": {
+    "spacingSource": "Figma query returned empty auto-layout spacing. Used standard 4px-base scale (4, 8, 12, 16, 24, 32, 48, 64px) per design convention.",
+    "radiusSource": "Extracted 14 unique radius values from Figma: 1.5, 3, 4, 6, 8, 10, 10.5, 12, 16, 17, 18, 20, 24, 35px. Consolidated into 8-value scale with semantic aliases.",
+    "radiusMatching": "Matched extracted values to design-system-context.json: cardRadius=16px, buttonRadius=8px, inputRadius=8px, badgeRadius=6px, pillRadius=35px"
+  },
+  "warnings": [],
+  "tokenCount": 24
+}

@@ -1,0 +1,137 @@
+{
+  "screen": "Tables",
+  "sections": {
+    "table-1": {
+      "title": "Authors Table",
+      "columns": ["AUTHOR", "FUNCTION", "STATUS", "EMPLOYED"],
+      "rows": [
+        {
+          "name": "Michael John",
+          "jobTitle": "Manager",
+          "department": "Organization",
+          "email": "michael@mail.com",
+          "employed": "23/04/18",
+          "status": "ONLINE",
+          "statusVariant": "online"
+        },
+        {
+          "name": "Alexa Liras",
+          "jobTitle": "Programator",
+          "department": "Developer",
+          "email": "alexa@mail.com",
+          "employed": "23/12/20",
+          "status": "OFFLINE",
+          "statusVariant": "offline"
+        },
+        {
+          "name": "Laure Perrier",
+          "jobTitle": "Executive",
+          "department": "Projects",
+          "email": "laure@mail.com",
+          "employed": "13/04/19",
+          "status": "ONLINE",
+          "statusVariant": "online"
+        },
+        {
+          "name": "Miriam Eric",
+          "jobTitle": "Marketing",
+          "department": "Organization",
+          "email": "miriam@mail.com",
+          "employed": "03/04/21",
+          "status": "ONLINE",
+          "statusVariant": "online"
+        },
+        {
+          "name": "Richard Gran",
+          "jobTitle": "Manager",
+          "department": "Organization",
+          "email": "richard@mail.com",
+          "employed": "23/03/20",
+          "status": "OFFLINE",
+          "statusVariant": "offline"
+        },
+        {
+          "name": "John Levi",
+          "jobTitle": "Tester",
+          "department": "Developer",
+          "email": "john@mail.com",
+          "employed": "14/04/17",
+          "status": "OFFLINE",
+          "statusVariant": "offline"
+        }
+      ]
+    },
+    "table-2": {
+      "title": "Projects Table",
+      "columns": ["COMPANIES", "BUDGET", "STATUS", "COMPLETION"],
+      "rows": [
+        {
+          "company": "Spotify Version",
+          "logo": "logo-spotify",
+          "logoColor": "#2ebd59",
+          "budget": "$14,000",
+          "status": "working",
+          "statusVariant": "working",
+          "completion": 60,
+          "completionLabel": "60%",
+          "progressGradient": "var(--gradient-info)"
+        },
+        {
+          "company": "Progress Track",
+          "logo": "logo-atlassian",
+          "logoColor": "#2684ff",
+          "budget": "$3,000",
+          "status": "working",
+          "statusVariant": "working",
+          "completion": 10,
+          "completionLabel": "10%",
+          "progressGradient": "var(--gradient-info)"
+        },
+        {
+          "company": "Jira Platform Errors",
+          "logo": "logo-slack",
+          "logoColor": "#36c5f0",
+          "budget": "Not Set",
+          "status": "done",
+          "statusVariant": "done",
+          "completion": 100,
+          "completionLabel": "100%",
+          "progressGradient": "var(--gradient-success)"
+        },
+        {
+          "company": "Launch new Mobile App",
+          "logo": "logo-spotify",
+          "logoColor": "#2ebd59",
+          "budget": "$20,600",
+          "status": "canceled",
+          "statusVariant": "canceled",
+          "completion": 50,
+          "completionLabel": "50%",
+          "progressGradient": "var(--gradient-error)"
+        },
+        {
+          "company": "Web Dev",
+          "logo": "logo-webdev",
+          "logoColor": "#0d55ff",
+          "budget": "$4,000",
+          "status": "working",
+          "statusVariant": "working",
+          "completion": 80,
+          "completionLabel": "80%",
+          "progressGradient": "var(--gradient-info)"
+        },
+        {
+          "company": "Redesign Online Store",
+          "logo": "logo-invision",
+          "logoColor": "#dc395f",
+          "budget": "$2,000",
+          "status": "canceled",
+          "statusVariant": "canceled",
+          "completion": 0,
+          "completionLabel": "0%",
+          "progressGradient": "var(--gradient-error)"
+        }
+      ]
+    }
+  }
+}

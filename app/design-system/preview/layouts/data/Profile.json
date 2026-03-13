@@ -1,0 +1,133 @@
+{
+  "screen": "Profile",
+  "sections": {
+    "profile-header": {
+      "type": "banner",
+      "backgroundImage": "../../assets/images/backgrounds/curved0.png",
+      "gradientOverlay": "var(--gradient-primary)"
+    },
+    "profile-identity": {
+      "avatar": "../../assets/images/avatars/bruce-mars.png",
+      "name": "Alec Thompson",
+      "title": "CEO / Co-Founder",
+      "tabs": ["Overview", "Teams", "Projects"],
+      "activeTab": "Overview"
+    },
+    "platform-settings": {
+      "title": "Platform Settings",
+      "groups": [
+        {
+          "label": "ACCOUNT",
+          "items": [
+            { "text": "Email me when someone follows me", "enabled": true },
+            { "text": "Email me when someone answers me", "enabled": false },
+            { "text": "Email me when someone mentions me", "enabled": true }
+          ]
+        },
+        {
+          "label": "APPLICATION",
+          "items": [
+            { "text": "New launches and projects", "enabled": true },
+            { "text": "Monthly product updates", "enabled": false },
+            { "text": "Subscribe to newsletter", "enabled": true }
+          ]
+        }
+      ]
+    },
+    "profile-information": {
+      "title": "Profile Information",
+      "bio": "Hi, I'm Alec Thompson, Decisions: If you can't decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).",
+      "fields": [
+        { "label": "Full Name:", "value": "Sarah Emily Jacob" },
+        { "label": "Mobile:", "value": "(44) 123 1234 123" },
+        { "label": "Email:", "value": "sarahjacob@mail.com" },
+        { "label": "Location:", "value": "USA" }
+      ],
+      "social": {
+        "label": "Social:",
+        "icons": ["facebook", "twitter", "instagram"]
+      }
+    },
+    "conversations": {
+      "title": "Conversations",
+      "items": [
+        {
+          "name": "Sophie B.",
+          "message": "Hi! I need more information…",
+          "avatar": "../../assets/images/avatars/face-3.png"
+        },
+        {
+          "name": "Anne Marie",
+          "message": "Awesome work, can you…",
+          "avatar": "../../assets/images/avatars/face-4.png"
+        },
+        {
+          "name": "Ivan",
+          "message": "About files I can…",
+          "avatar": "../../assets/images/avatars/face-5.png"
+        },
+        {
+          "name": "Peterson",
+          "message": "Have a great afternoon…",
+          "avatar": "../../assets/images/avatars/face-6.png"
+        },
+        {
+          "name": "Nick Daniel",
+          "message": "Hi! I need more information…",
+          "avatar": "../../assets/images/avatars/face-2.png"
+        }
+      ]
+    },
+    "projects": {
+      "title": "Projects",
+      "subtitle": "Architects design houses",
+      "cards": [
+        {
+          "id": "card-1",
+          "label": "Project #1",
+          "title": "Modern",
+          "description": "As Uber works through a huge amount of internal management turmoil.",
+          "image": "../../assets/images/misc/home-decor-1.png",
+          "members": [
+            "../../assets/images/misc/face-1.png",
+            "../../assets/images/misc/face-4.png",
+            "../../assets/images/misc/face-2.png",
+            "../../assets/images/misc/face-3.png"
+          ],
+          "buttonText": "VIEW PROJECT"
+        },
+        {
+          "id": "card-2",
+          "label": "Project #2",
+          "title": "Scandinavian",
+          "description": "Music is something that every person has his or her own specific opinion about.",
+          "image": "../../assets/images/photos/home-decor-2.png",
+          "members": [
+            "../../assets/images/misc/face-1.png",
+            "../../assets/images/misc/face-4.png",
+            "../../assets/images/misc/face-2.png",
+            "../../assets/images/misc/face-3.png"
+          ],
+          "buttonText": "VIEW PROJECT"
+        },
+        {
+          "id": "card-3",
+          "label": "Project #3",
+          "title": "Minimalist",
+          "description": "Different people have different taste, and various types of music, Zimbali Coastal Resort",
+          "image": "../../assets/images/photos/home-decor-3.png",
+          "members": [
+            "../../assets/images/misc/face-1.png",
+            "../../assets/images/misc/face-4.png",
+            "../../assets/images/misc/face-2.png",
+            "../../assets/images/misc/face-3.png"
+          ],
+          "buttonText": "VIEW PROJECT"
+        }
+      ],
+      "upload": {
+        "text": "Upload New Project"
+      }
+    }
+  }
+}

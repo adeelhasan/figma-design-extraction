@@ -1,0 +1,179 @@
+:root {
+  /* Font Families */
+  --font-family-primary: 'Open Sans', sans-serif;
+  --font-family-secondary: 'Montserrat', sans-serif;
+  --font-family-mono: 'OpenSans', sans-serif;
+
+  /* Font Sizes */
+  --font-size-5xl: 3.125rem;   /* 50px */
+  --font-size-4xl: 2.8125rem;  /* 45px */
+  --font-size-3xl: 2.25rem;    /* 36px */
+  --font-size-2xl: 1.875rem;   /* 30px */
+  --font-size-xl: 1.5rem;      /* 24px */
+  --font-size-lg: 1.25rem;     /* 20px */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-xs: 0.8125rem;   /* 13px */
+  --font-size-2xs: 0.75rem;    /* 12px */
+  --font-size-3xs: 0.5625rem;  /* 9px */
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line Heights */
+  --line-height-tight: 1.17;    /* H1-H4 compact headings */
+  --line-height-heading: 1.27;  /* H3-H5 headings */
+  --line-height-subheading: 1.36; /* H6 and smaller headings */
+  --line-height-normal: 1.5;    /* Body text standard */
+  --line-height-relaxed: 1.625; /* Long-form body copy */
+
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.033em;  /* -0.55px at 16px base */
+  --letter-spacing-normal: 0;
+
+  /* Typography Presets - Headings */
+  --h1-font-family: 'OpenSans', sans-serif;
+  --h1-font-size: 3rem;     /* 48px */
+  --h1-font-weight: 400;
+  --h1-line-height: 1.17;   /* 56.2px */
+  --h1-letter-spacing: -0.083em; /* -1.33px at 16px base */
+
+  --h1-semibold-font-weight: 600;
+  --h1-bold-font-weight: 700;
+
+  --h2-font-family: 'OpenSans', sans-serif;
+  --h2-font-size: 2.25rem;  /* 36px */
+  --h2-font-weight: 400;
+  --h2-line-height: 1.17;   /* 42.2px */
+  --h2-letter-spacing: -0.056em; /* -1.0px at 16px base */
+
+  --h2-semibold-font-weight: 600;
+  --h2-bold-font-weight: 700;
+
+  --h3-font-family: 'OpenSans', sans-serif;
+  --h3-font-size: 1.875rem; /* 30px */
+  --h3-font-weight: 400;
+  --h3-line-height: 1.17;   /* 35.2px */
+  --h3-letter-spacing: -0.047em; /* -0.83px at 16px base */
+
+  --h3-semibold-font-weight: 600;
+  --h3-bold-font-weight: 700;
+
+  --h4-font-family: 'OpenSans', sans-serif;
+  --h4-font-size: 1.5rem;   /* 24px */
+  --h4-font-weight: 400;
+  --h4-line-height: 1.17;   /* 28.1px */
+  --h4-letter-spacing: -0.038em; /* -0.66px at 16px base */
+
+  --h4-semibold-font-weight: 600;
+  --h4-bold-font-weight: 700;
+
+  --h5-font-family: 'OpenSans', sans-serif;
+  --h5-font-size: 1.25rem;  /* 20px */
+  --h5-font-weight: 400;
+  --h5-line-height: 1.17;   /* 23.4px */
+  --h5-letter-spacing: -0.031em; /* -0.55px at 16px base */
+
+  --h5-semibold-font-weight: 600;
+  --h5-bold-font-weight: 700;
+
+  --h6-font-family: 'OpenSans', sans-serif;
+  --h6-font-size: 1rem;     /* 16px */
+  --h6-font-weight: 400;
+  --h6-line-height: 1.175;  /* 18.8px */
+  --h6-letter-spacing: -0.025em; /* -0.44px at 16px base */
+
+  --h6-semibold-font-weight: 600;
+  --h6-bold-font-weight: 700;
+
+  /* Body Text Presets */
+  --body-lg-font-family: 'Open Sans', sans-serif;
+  --body-lg-font-size: 1rem;     /* 16px */
+  --body-lg-font-weight: 400;
+  --body-lg-line-height: 1.625;  /* 26px */
+  --body-lg-letter-spacing: -0.025em; /* -0.44px at 16px base */
+
+  --body-lg-semibold-font-weight: 600;
+  --body-lg-bold-font-weight: 700;
+
+  --body-base-font-family: 'Open Sans', sans-serif;
+  --body-base-font-size: 0.875rem; /* 14px */
+  --body-base-font-weight: 400;
+  --body-base-line-height: 1.36;   /* 19.1px */
+  --body-base-letter-spacing: -0.028em; /* -0.39px at 14px base */
+
+  --body-base-semibold-font-weight: 600;
+  --body-base-bold-font-weight: 700;
+
+  --body-sm-font-family: 'OpenSans', sans-serif;
+  --body-sm-font-size: 0.8125rem; /* 13px */
+  --body-sm-font-weight: 400;
+  --body-sm-line-height: 1.17;    /* 15.2px */
+  --body-sm-letter-spacing: -0.028em; /* -0.36px at 13px base */
+
+  --body-sm-semibold-font-weight: 600;
+  --body-sm-bold-font-weight: 700;
+
+  --body-xs-font-family: 'OpenSans', sans-serif;
+  --body-xs-font-size: 0.75rem;   /* 12px */
+  --body-xs-font-weight: 400;
+  --body-xs-line-height: 1.17;    /* 14.1px */
+  --body-xs-letter-spacing: -0.028em; /* -0.33px at 12px base */
+
+  --body-xs-semibold-font-weight: 600;
+  --body-xs-bold-font-weight: 700;
+
+  /* Small / Caption Text */
+  --caption-font-family: 'OpenSans', sans-serif;
+  --caption-font-size: 0.5625rem; /* 9px */
+  --caption-font-weight: 600;
+  --caption-line-height: 1.167;   /* 10.5px */
+  --caption-letter-spacing: -0.028em; /* -0.25px at 9px base */
+
+  /* Stats / Numbers (Dashboard KPI style) */
+  --stats-font-family: 'Open Sans', sans-serif;
+  --stats-font-size: 1.5rem;  /* 24px */
+  --stats-font-weight: 700;
+  --stats-line-height: 1.36;  /* 32.7px */
+  --stats-letter-spacing: -0.038em; /* -0.66px at 16px base */
+
+  --stats-lg-font-size: 1.25rem;  /* 20px */
+  --stats-lg-font-weight: 700;
+  --stats-lg-line-height: 1.36;   /* 27.2px */
+  --stats-lg-letter-spacing: -0.031em; /* -0.55px at 20px base */
+
+  /* Label / Tag Text (uppercase small) */
+  --label-font-family: 'OpenSans', sans-serif;
+  --label-font-size: 0.8125rem; /* 13px */
+  --label-font-weight: 700;
+  --label-line-height: 1.17;    /* 15.2px */
+  --label-letter-spacing: -0.028em; /* -0.36px at 13px base */
+
+  --label-sm-font-size: 0.75rem;   /* 12px */
+  --label-sm-font-weight: 700;
+  --label-sm-line-height: 1.17;    /* 14.1px */
+  --label-sm-letter-spacing: -0.028em; /* -0.33px at 12px base */
+
+  /* Form & Input Text */
+  --form-input-font-family: 'Open Sans', sans-serif;
+  --form-input-font-size: 0.875rem; /* 14px */
+  --form-input-font-weight: 400;
+  --form-input-line-height: 1.36;   /* 19.1px */
+  --form-input-letter-spacing: -0.028em; /* -0.39px at 14px base */
+
+  /* Hero / Landing Text (larger, Open Sans) */
+  --hero-font-family: 'Open Sans', sans-serif;
+  --hero-font-size: 2.8125rem; /* 45px */
+  --hero-font-weight: 400;
+  --hero-line-height: 1.36;    /* 61.3px */
+  --hero-letter-spacing: 0;
+
+  /* Long-form Text (book-like) */
+  --longform-font-family: 'Montserrat', sans-serif;
+  --longform-font-size: 1.25rem; /* 20px */
+  --longform-font-weight: 400;
+  --longform-line-height: 1.5;   /* 30px */
+  --longform-letter-spacing: 0;
+}

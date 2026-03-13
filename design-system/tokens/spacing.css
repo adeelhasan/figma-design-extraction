@@ -1,97 +1,124 @@
 /* =================================================================
    Spacing Tokens
    Extracted from: Soft UI Dashboard Free (Community)
-   Generated: 2026-01-18
+   Generated: 2026-02-06
 
    Base unit: 4px
-   Grid: 4px (with some 8px variants)
+   Scale: 4px increments with 8px, 12px, and 16px variants
    ================================================================= */
 
 :root {
   /* ---------------------------------------------------------------
-     Spacing Scale
+     Spacing Scale (Base unit: 4px)
      --------------------------------------------------------------- */
   --spacing-px: 1px;
   --spacing-0: 0;
-  --spacing-0-5: 2px;   /* 0.125rem */
-  --spacing-1: 4px;     /* 0.25rem */
-  --spacing-1-5: 6px;   /* 0.375rem */
-  --spacing-2: 8px;     /* 0.5rem */
-  --spacing-2-5: 10px;  /* 0.625rem */
-  --spacing-3: 12px;    /* 0.75rem */
-  --spacing-4: 16px;    /* 1rem */
-  --spacing-5: 20px;    /* 1.25rem */
-  --spacing-6: 24px;    /* 1.5rem */
-  --spacing-7: 28px;    /* 1.75rem */
-  --spacing-8: 32px;    /* 2rem */
-  --spacing-9: 36px;    /* 2.25rem */
-  --spacing-10: 40px;   /* 2.5rem */
-  --spacing-12: 48px;   /* 3rem */
-  --spacing-14: 56px;   /* 3.5rem */
-  --spacing-16: 64px;   /* 4rem */
-  --spacing-20: 80px;   /* 5rem */
-  --spacing-24: 96px;   /* 6rem */
-  --spacing-32: 128px;  /* 8rem */
+  --spacing-0-5: 0.125rem;    /* 2px */
+  --spacing-1: 0.25rem;       /* 4px */
+  --spacing-1-5: 0.375rem;    /* 6px */
+  --spacing-2: 0.5rem;        /* 8px */
+  --spacing-2-5: 0.625rem;    /* 10px */
+  --spacing-3: 0.75rem;       /* 12px */
+  --spacing-4: 1rem;          /* 16px */
+  --spacing-5: 1.25rem;       /* 20px */
+  --spacing-6: 1.5rem;        /* 24px */
+  --spacing-7: 1.75rem;       /* 28px */
+  --spacing-8: 2rem;          /* 32px */
+  --spacing-9: 2.25rem;       /* 36px */
+  --spacing-10: 2.5rem;       /* 40px */
+  --spacing-12: 3rem;         /* 48px */
+  --spacing-14: 3.5rem;       /* 56px */
+  --spacing-16: 4rem;         /* 64px */
+  --spacing-20: 5rem;         /* 80px */
+  --spacing-24: 6rem;         /* 96px */
+  --spacing-32: 8rem;         /* 128px */
 
   /* ---------------------------------------------------------------
-     Semantic Spacing (aliases)
+     Component-level Spacing (Internal padding/gaps)
      --------------------------------------------------------------- */
-  /* Component internal spacing */
-  --spacing-component-xs: var(--spacing-1);    /* 4px - tight spacing */
-  --spacing-component-sm: var(--spacing-2);    /* 8px - small gaps */
-  --spacing-component-md: var(--spacing-3);    /* 12px - default */
-  --spacing-component-lg: var(--spacing-4);    /* 16px - relaxed */
-  --spacing-component-xl: var(--spacing-6);    /* 24px - loose */
+  --spacing-component-xs: var(--spacing-1);    /* 4px - tight */
+  --spacing-component-sm: var(--spacing-2);    /* 8px - small */
+  --spacing-component-md: var(--spacing-3);    /* 12px - medium */
+  --spacing-component-lg: var(--spacing-4);    /* 16px - large */
+  --spacing-component-xl: var(--spacing-6);    /* 24px - extra large */
 
-  /* Card/Section padding */
+  /* ---------------------------------------------------------------
+     Card/Container Spacing (Padding)
+     --------------------------------------------------------------- */
   --spacing-card-sm: var(--spacing-3);         /* 12px */
   --spacing-card-md: var(--spacing-4);         /* 16px */
   --spacing-card-lg: var(--spacing-6);         /* 24px */
+  --spacing-card-xl: var(--spacing-8);         /* 32px */
 
-  /* Section spacing */
+  /* ---------------------------------------------------------------
+     Section Spacing (Layout divisions)
+     --------------------------------------------------------------- */
   --spacing-section-sm: var(--spacing-4);      /* 16px */
   --spacing-section-md: var(--spacing-6);      /* 24px */
   --spacing-section-lg: var(--spacing-8);      /* 32px */
   --spacing-section-xl: var(--spacing-12);     /* 48px */
 
-  /* Page-level spacing */
+  /* ---------------------------------------------------------------
+     Page-level Spacing (Margins and gutters)
+     --------------------------------------------------------------- */
   --spacing-page-gutter: var(--spacing-4);     /* 16px - sidebar gutter */
   --spacing-page-margin: var(--spacing-6);     /* 24px - page margins */
-  --spacing-page-padding: var(--spacing-8);    /* 32px - main content padding */
+  --spacing-page-padding: var(--spacing-8);    /* 32px - main content */
 
-  /* Form spacing */
+  /* ---------------------------------------------------------------
+     Form Spacing (Inputs and form controls)
+     --------------------------------------------------------------- */
   --spacing-input-x: var(--spacing-3);         /* 12px - horizontal padding */
   --spacing-input-y: var(--spacing-2);         /* 8px - vertical padding */
-  --spacing-form-gap: var(--spacing-4);        /* 16px - between form fields */
+  --spacing-form-gap: var(--spacing-4);        /* 16px - between fields */
 
-  /* Stack spacing (vertical lists) */
-  --spacing-stack-xs: var(--spacing-1);        /* 4px */
-  --spacing-stack-sm: var(--spacing-2);        /* 8px */
-  --spacing-stack-md: var(--spacing-4);        /* 16px */
-  --spacing-stack-lg: var(--spacing-6);        /* 24px */
+  /* ---------------------------------------------------------------
+     List Spacing (Vertical stacks)
+     --------------------------------------------------------------- */
+  --spacing-list-gap-sm: var(--spacing-1);     /* 4px - compact lists */
+  --spacing-list-gap-md: var(--spacing-2);     /* 8px - normal lists */
+  --spacing-list-gap-lg: var(--spacing-4);     /* 16px - spaced lists */
 
-  /* Inline spacing (horizontal) */
-  --spacing-inline-xs: var(--spacing-1);       /* 4px */
-  --spacing-inline-sm: var(--spacing-2);       /* 8px */
-  --spacing-inline-md: var(--spacing-3);       /* 12px */
-  --spacing-inline-lg: var(--spacing-4);       /* 16px */
+  /* ---------------------------------------------------------------
+     Inline Spacing (Horizontal elements)
+     --------------------------------------------------------------- */
+  --spacing-inline-xs: var(--spacing-1);       /* 4px - tight */
+  --spacing-inline-sm: var(--spacing-2);       /* 8px - small gap */
+  --spacing-inline-md: var(--spacing-3);       /* 12px - medium gap */
+  --spacing-inline-lg: var(--spacing-4);       /* 16px - large gap */
 }
 
 /*
-Spacing Scale Reference
-=======================
---spacing-1:  4px   (component gaps, icon spacing)
---spacing-2:  8px   (button padding, list gaps)
---spacing-3:  12px  (card padding, input padding)
---spacing-4:  16px  (section gaps, card gaps)
---spacing-6:  24px  (major sections, page margins)
---spacing-8:  32px  (page padding, large gaps)
---spacing-12: 48px  (major layout divisions)
---spacing-16: 64px  (hero sections)
+Spacing Reference
+=================
 
-Most common values detected:
-- 8px  (253 uses) - primary gap/padding
-- 10px (113 uses) - common padding variant
-- 12px (55 uses)  - card padding
-- 16px (35 uses)  - section spacing
+ATOMIC SCALE (4px base):
+- --spacing-1:  4px   (icon spacing, micro gaps)
+- --spacing-2:  8px   (button padding, small gaps)
+- --spacing-3:  12px  (input padding, card padding)
+- --spacing-4:  16px  (section spacing, standard padding)
+- --spacing-6:  24px  (major sections, page margins)
+- --spacing-8:  32px  (page padding, large gaps)
+- --spacing-12: 48px  (major layout divisions)
+
+USAGE FREQUENCY (from Figma analysis):
+- 8px  (52 uses)  - primary gap/padding value
+- 4px  (65 uses)  - secondary common value
+- 12px (34 uses)  - card/input padding
+- 16px (24 uses)  - section gaps
+- 20px (104 uses) - common variant
+- 24px (116 uses) - major spacing
+
+KEY VALUES DETECTED:
+- Buttons: 2-8px padding (input-y), 12-16px horizontal (input-x)
+- Cards: 12-24px padding (card-sm to card-lg)
+- Sections: 16-48px gaps (section-sm to section-xl)
+- Page: 16px gutter, 24px margin, 32px padding
+
+DESIGN PRINCIPLES:
+1. Use --spacing-2 (8px) for tight component spacing
+2. Use --spacing-3 (12px) for form inputs and small containers
+3. Use --spacing-4 (16px) as default section spacing
+4. Use --spacing-6 (24px) for visual hierarchy and breathing room
+5. Use --spacing-8 (32px) or more for major layout sections
 */

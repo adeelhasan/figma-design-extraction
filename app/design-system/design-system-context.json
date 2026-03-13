@@ -1,0 +1,155 @@
+{
+  "$schema": "design-system-context-v1",
+  "figmaFile": "Soft UI Dashboard Free (Community)",
+  "designSystemType": "soft-ui",
+  "confidence": 0.95,
+
+  "semanticColors": {
+    "primary": {
+      "hex": "#cb0c9f",
+      "role": "Brand primary, used in CTAs, toggles, active nav, and accent text",
+      "source": "Gradient button end stop, active sidebar items, heading accents (42 occurrences)"
+    },
+    "secondary": {
+      "hex": "#8392ab",
+      "role": "Secondary text, muted labels, table headers, borders",
+      "source": "Table column headers (COMPANIES, MEMBERS), rectangles (116 occurrences)"
+    },
+    "success": {
+      "hex": "#82d616",
+      "role": "Success states, positive percentage indicators, completion badges",
+      "source": "Progress bars, percentage text like '55%' (23 occurrences)"
+    },
+    "warning": {
+      "hex": "#fbcf33",
+      "role": "Warning states, caution indicators",
+      "source": "Warning gradient start stop, alert elements"
+    },
+    "error": {
+      "hex": "#ea0606",
+      "role": "Error states, destructive actions, negative indicators",
+      "source": "DELETE text, negative percentage '- 2%' (8 occurrences)"
+    },
+    "info": {
+      "hex": "#17c1e8",
+      "role": "Info states, informational badges, secondary accents",
+      "source": "Info indicators, percentage text '40%' (3 occurrences)"
+    },
+    "dark": {
+      "hex": "#252f40",
+      "role": "Dark text, headings, high-emphasis content",
+      "source": "H6 headings, primary text (190 occurrences)"
+    },
+    "body": {
+      "hex": "#67748e",
+      "role": "Body text, descriptions, secondary content",
+      "source": "Sidebar nav items, body copy (247 occurrences)"
+    }
+  },
+
+  "gradientRules": {
+    "primaryAngle": "135deg",
+    "semanticMapping": {
+      "gradient-primary": {
+        "angle": "135deg",
+        "stops": ["#ff0080", "#7928ca"],
+        "usage": "Primary buttons, accent elements, active indicators"
+      },
+      "gradient-dark": {
+        "angle": "135deg",
+        "stops": ["#3a416f", "#141727"],
+        "usage": "Dark backgrounds, sidebar, dark cards"
+      },
+      "gradient-info": {
+        "angle": "135deg",
+        "stops": ["#21d4fd", "#2152ff"],
+        "usage": "Info cards, stat boxes, informational elements"
+      },
+      "gradient-success": {
+        "angle": "135deg",
+        "stops": ["#98ec2d", "#17ad37"],
+        "usage": "Success indicators, positive stat cards"
+      },
+      "gradient-warning": {
+        "angle": "135deg",
+        "stops": ["#fbcf33", "#f53939"],
+        "usage": "Warning indicators, caution elements"
+      },
+      "gradient-error": {
+        "angle": "135deg",
+        "stops": ["#ff667c", "#ea0606"],
+        "usage": "Error indicators, destructive elements"
+      },
+      "gradient-secondary": {
+        "angle": "135deg",
+        "stops": ["#a8b8d8", "#627594"],
+        "usage": "Secondary buttons, muted elements"
+      },
+      "gradient-light": {
+        "angle": "135deg",
+        "stops": ["#ebeff4", "#ced4da"],
+        "usage": "Light backgrounds, disabled states"
+      }
+    }
+  },
+
+  "grayScaleConvention": "light-to-dark",
+  "grayScaleMapping": {
+    "gray-50": "#fafafa",
+    "gray-100": "#f8f9fa",
+    "gray-200": "#f0f0f0",
+    "gray-300": "#e9ecef",
+    "gray-400": "#d2d6da",
+    "gray-500": "#adb5bd",
+    "gray-600": "#8392ab",
+    "gray-700": "#67748e",
+    "gray-800": "#344767",
+    "gray-900": "#252f40"
+  },
+
+  "shadowStyle": {
+    "mode": "multi-layer",
+    "signature": "0 8px 26px -4px rgba(20,23,39,0.15), 0 8px 9px -5px rgba(20,23,39,0.06)",
+    "softVariant": "0 20px 27px 0 rgba(0,0,0,0.05)",
+    "cardShadow": "0 2px 6px rgba(0,0,0,0.05)",
+    "notes": "Soft UI uses subtle, diffused shadows for floating card appearance. Two-layer shadows create depth without harsh edges."
+  },
+
+  "extractionHints": {
+    "colorMatching": { "tolerance": 5 },
+    "gradientMatching": {
+      "angleTolerance": 10,
+      "notes": "All semantic gradients use 135deg consistently. Non-135 gradients are logo/icon-specific, not part of the design system."
+    },
+    "surfaces": {
+      "glassmorphicElements": ["sidebar"],
+      "backdropBlur": "10px",
+      "notes": "Sidebar uses semi-transparent white with backdrop blur. Cards are solid white with soft shadows."
+    },
+    "radius": {
+      "cardRadius": "16px",
+      "buttonRadius": "8px",
+      "inputRadius": "8px",
+      "badgeRadius": "6px",
+      "pillRadius": "35px",
+      "notes": "Unique radii from Figma: 1.5, 3, 4, 6, 8, 10, 12, 16, 17, 18, 20, 24, 35"
+    },
+    "typography": {
+      "notes": "Uses clean sans-serif typography. Dark headings (#252f40 or #141414), body text (#67748e), muted labels (#8392ab). Primary color (#cb0c9f) used for accent text."
+    }
+  },
+
+  "metadata": {
+    "createdAt": "2026-03-11T15:05:00Z",
+    "screenshotsAnalyzed": 4,
+    "indicators": [
+      "Multi-layer soft shadows on all cards (floating appearance)",
+      "135deg gradient angle on all semantic gradient buttons",
+      "Magenta primary (#cb0c9f) used in toggles, accents, and active states",
+      "Floating sidebar with backdrop blur (glassmorphic)",
+      "Light gray (#f8f9fa) page background with white card surfaces",
+      "Dark gradient sidebar (#3a416f → #141727)",
+      "Consistent gradient system: primary, info, success, warning, error, dark, secondary, light"
+    ]
+  }
+}

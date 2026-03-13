@@ -1,0 +1,72 @@
+{
+  "tokenType": "typography",
+  "extractedAt": "2026-03-11T15:08:00Z",
+  "sourceFile": "Soft UI Dashboard Free (Community)",
+  "totalUnique": 53,
+  "categories": {
+    "fontFamilies": 3,
+    "fontSizes": 11,
+    "fontWeights": 3,
+    "lineHeights": 5,
+    "letterSpacing": 2,
+    "headingPresets": 6,
+    "bodyTextPresets": 4,
+    "specializedPresets": 5
+  },
+  "fontFamilies": [
+    {
+      "name": "Open Sans",
+      "role": "Primary sans-serif, body text and larger headings",
+      "weights": [400, 600, 700],
+      "usage": 15
+    },
+    {
+      "name": "OpenSans",
+      "role": "System sans-serif, all heading levels H1-H6",
+      "weights": [400, 600, 700],
+      "usage": 31
+    },
+    {
+      "name": "Montserrat",
+      "role": "Secondary/Display, hero text and long-form copy",
+      "weights": [400],
+      "usage": 2
+    }
+  ],
+  "fontSizes": [
+    { "token": "--font-size-5xl", "value": "3.125rem", "px": "50px", "usage": 1, "example": "Page titles" },
+    { "token": "--font-size-4xl", "value": "2.8125rem", "px": "45px", "usage": 1, "example": "Hero/Landing" },
+    { "token": "--font-size-3xl", "value": "2.25rem", "px": "36px", "usage": 3, "example": "H2 headings" },
+    { "token": "--font-size-2xl", "value": "1.875rem", "px": "30px", "usage": 3, "example": "H3 headings" },
+    { "token": "--font-size-xl", "value": "1.5rem", "px": "24px", "usage": 5, "example": "H4 headings, stats" },
+    { "token": "--font-size-lg", "value": "1.25rem", "px": "20px", "usage": 5, "example": "H5 headings, long-form" },
+    { "token": "--font-size-base", "value": "1rem", "px": "16px", "usage": 9, "example": "H6, body text" },
+    { "token": "--font-size-sm", "value": "0.875rem", "px": "14px", "usage": 7, "example": "Body text, inputs" },
+    { "token": "--font-size-xs", "value": "0.8125rem", "px": "13px", "usage": 4, "example": "Labels, small text" },
+    { "token": "--font-size-2xs", "value": "0.75rem", "px": "12px", "usage": 4, "example": "Captions, fine print" },
+    { "token": "--font-size-3xs", "value": "0.5625rem", "px": "9px", "usage": 2, "example": "Badge counts" }
+  ],
+  "lineHeightRatios": [
+    { "token": "--line-height-tight", "value": 1.17, "usage": "H1-H4 compact headings (48px base)" },
+    { "token": "--line-height-heading", "value": 1.27, "usage": "H3-H5 headings" },
+    { "token": "--line-height-subheading", "value": 1.36, "usage": "H6 and smaller headings, body-base" },
+    { "token": "--line-height-normal", "value": 1.5, "usage": "Body text standard" },
+    { "token": "--line-height-relaxed", "value": 1.625, "usage": "Long-form body copy (16px body-lg)" }
+  ],
+  "observations": {
+    "fontFamilyMixture": "Primary sans-serif (Open Sans/OpenSans) for all text. Montserrat secondary for display/hero.",
+    "fontSizeScale": "Power-of-1.25 base scale from 9px to 50px. Consistent gaps support visual hierarchy.",
+    "negativeTuning": "Letter-spacing: negative values range from -0.25px to -1.33px, creating tight, modern look",
+    "lineHeightPattern": "Headings cluster around 1.17 ratio; body text uses 1.36-1.625 for comfortable reading",
+    "designPattern": "Soft UI Dashboard uses clean sans-serif typography with tight tracking for sophisticated feel",
+    "iconFonts": "FontAwesome5FreeRegular and FontAwesome5BrandsRegular at 14px, 18px, 20px sizes (not semantic tokens)"
+  },
+  "warnings": [
+    "FontAwesome icon fonts (FontAwesome5FreeRegular, FontAwesome5BrandsRegular) present in Figma but not exported as tokens (icon usage should reference image assets)",
+    "Two variants of OpenSans: 'Open Sans' and 'OpenSans' (spacing difference) — both mapped to --font-family-primary/mono"
+  ],
+  "duplicateHandling": {
+    "handledDuplicates": 12,
+    "example": "Multiple OpenSans H1/H2/H3/H4/H5/H6 weight variants (400, 600, 700) deduplicated into weight presets"
+  }
+}

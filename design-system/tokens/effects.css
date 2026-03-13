@@ -1,7 +1,7 @@
 /* =================================================================
    Effect Tokens
    Extracted from: Soft UI Dashboard Free (Community)
-   Generated: 2026-01-18
+   Generated: 2026-02-06
    ================================================================= */
 
 :root {
@@ -10,78 +10,80 @@
      --------------------------------------------------------------- */
   --shadow-none: none;
 
-  /* Extra small - subtle depth */
+  /* Extra small - subtle depth (first layer of signature shadow) */
   --shadow-xs: 0 2px 4px -1px rgba(0, 0, 0, 0.07);
 
-  /* Small - cards, inputs */
-  --shadow-sm: 0 2px 4px -1px rgba(0, 0, 0, 0.12);
+  /* Small - signature multi-layer shadow (primary shadow used on cards) */
+  --shadow-sm: 0 2px 4px -1px rgba(0, 0, 0, 0.07), 0 4px 6px -1px rgba(0, 0, 0, 0.12);
 
-  /* Medium - elevated cards, dropdowns */
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.12);
+  /* Medium - elevated cards, dropdowns (soft variant) */
+  --shadow-md: 0 20px 27px rgba(0, 0, 0, 0.05);
 
-  /* Large - modals, popovers */
-  --shadow-lg: 0 10px 16px 0 rgba(0, 0, 0, 0.1);
+  /* Large - modals, popovers (soft variant) */
+  --shadow-lg: 0 20px 27px rgba(0, 0, 0, 0.05);
 
   /* Extra large - floating elements */
-  --shadow-xl: 0 20px 27px 0 rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 27px rgba(0, 0, 0, 0.05);
 
   /* 2XL - hero images, prominent elements */
-  --shadow-2xl: 0 10px 40px 0 rgba(0, 0, 0, 0.3);
+  --shadow-2xl: 0 20px 27px rgba(0, 0, 0, 0.05);
 
   /* ---------------------------------------------------------------
      Soft UI Specific Shadows
      --------------------------------------------------------------- */
   /* Neumorphic inset shadow for soft pressed effect */
-  --shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  --shadow-inset: 0 0 0 2px rgba(0, 0, 0, 0.5);
 
-  /* Card shadow - the signature soft shadow */
-  --shadow-card: 0 20px 27px 0 rgba(0, 0, 0, 0.05);
+  /* Card shadow - the signature soft shadow (primary used 56 times) */
+  --shadow-card: 0 20px 27px rgba(0, 0, 0, 0.05);
 
-  /* Button shadow */
-  --shadow-button: 0 4px 7px -1px rgba(0, 0, 0, 0.11);
-  --shadow-button-hover: 0 4px 6px -1px rgba(0, 0, 0, 0.12);
+  /* Button shadow - uses signature multi-layer */
+  --shadow-button: 0 2px 4px -1px rgba(0, 0, 0, 0.07), 0 4px 6px -1px rgba(0, 0, 0, 0.12);
+  --shadow-button-hover: 0 20px 27px rgba(0, 0, 0, 0.05);
 
-  /* Input focus shadow (pink glow) */
+  /* Input focus shadow (pink glow from primary color) */
   --shadow-input-focus: 0 0 0 2px rgba(203, 12, 159, 0.25);
 
   /* Sidebar shadow */
-  --shadow-sidebar: 0 20px 27px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sidebar: 0 20px 27px rgba(0, 0, 0, 0.05);
 
   /* ---------------------------------------------------------------
      Border Radius
      --------------------------------------------------------------- */
   --radius-none: 0;
-  --radius-sm: 4px;       /* Small elements, badges */
-  --radius-DEFAULT: 6px;  /* Buttons, inputs (default) */
-  --radius-md: 8px;       /* Cards, dropdowns */
-  --radius-lg: 10px;      /* Larger cards */
-  --radius-xl: 12px;      /* Modal corners */
-  --radius-2xl: 16px;     /* Large cards, images */
+  --radius-xs: 1.5px;     /* Minimal rounding (78 uses) */
+  --radius-sm: 4px;       /* Small elements, badges (28 uses) */
+  --radius-DEFAULT: 6px;  /* Buttons, inputs (default) (23 uses) */
+  --radius-md: 8px;       /* Cards, dropdowns (137 uses - most common) */
+  --radius-lg: 10px;      /* Larger cards (96 uses) */
+  --radius-xl: 12px;      /* Modal corners (55 uses) */
+  --radius-2xl: 16px;     /* Large cards, images (35 uses) */
   --radius-3xl: 24px;     /* Extra rounded elements */
   --radius-full: 9999px;  /* Pills, avatars, circles */
 
   /* ---------------------------------------------------------------
      Semantic Radius Aliases
      --------------------------------------------------------------- */
-  --radius-button: var(--radius-DEFAULT);  /* 6px */
-  --radius-input: var(--radius-md);        /* 8px */
-  --radius-card: var(--radius-xl);         /* 12px - Soft UI uses rounded cards */
-  --radius-modal: var(--radius-xl);        /* 12px */
+  --radius-button: 8px;                    /* 8px - most common button radius */
+  --radius-input: 8px;                     /* 8px - from design context */
+  --radius-card: 16px;                     /* 16px - from design context */
+  --radius-modal: var(--radius-2xl);       /* 16px */
   --radius-avatar: var(--radius-full);     /* Circular */
   --radius-badge: var(--radius-sm);        /* 4px */
+  --radius-pill: 100px;                    /* Pill shape from design context */
   --radius-tag: var(--radius-DEFAULT);     /* 6px */
 
   /* ---------------------------------------------------------------
      Blur Effects
      --------------------------------------------------------------- */
-  --blur-none: blur(0);
-  --blur-sm: blur(4px);
-  --blur-md: blur(8px);
-  --blur-lg: blur(16px);
-  --blur-xl: blur(24px);
+  --blur-none: 0;
+  --blur-sm: 4px;    /* Small blur */
+  --blur-md: 10px;   /* Medium blur (backdrop blur) */
+  --blur-lg: 27px;   /* Large blur (from soft shadow variant) */
+  --blur-xl: 30px;   /* Extra large blur */
 
-  /* Backdrop blur for glass effect */
-  --backdrop-blur: blur(10px);
+  /* Backdrop blur for glass effect (found in design) */
+  --backdrop-blur: 10px;
 
   /* ---------------------------------------------------------------
      Transitions
@@ -103,24 +105,41 @@
 /*
 Shadow Reference
 ================
---shadow-xs:   Subtle depth (blur: 4px, offset-y: 2px, alpha: 0.07)
---shadow-sm:   Small elevation (blur: 4px, offset-y: 2px, alpha: 0.12)
---shadow-md:   Medium elevation (blur: 6px, offset-y: 4px, alpha: 0.12)
---shadow-lg:   Large elevation (blur: 16px, offset-y: 10px, alpha: 0.1)
---shadow-xl:   Extra large (blur: 27px, offset-y: 20px, alpha: 0.05)
---shadow-2xl:  Maximum elevation (blur: 40px, offset-y: 10px, alpha: 0.3)
---shadow-card: Soft UI signature (blur: 27px, offset-y: 20px, alpha: 0.05)
+--shadow-xs:   Layer 1 of signature (offset-y: 2px, blur: 4px, alpha: 0.07) — 125 uses
+--shadow-sm:   SIGNATURE multi-layer (2px 4px -1px + 4px 6px -1px) — 125+120 = 245 uses
+--shadow-md:   Soft variant (offset-y: 20px, blur: 27px, alpha: 0.05) — 56 uses
+--shadow-lg:   Alias for soft variant
+--shadow-xl:   Alias for soft variant
+--shadow-2xl:  Alias for soft variant
+--shadow-card: Soft variant (blur: 27px, offset-y: 20px, alpha: 0.05)
+--shadow-button: Uses signature multi-layer shadow
+--shadow-button-hover: Uses soft variant
 
 Radius Reference
 ================
---radius-sm:   4px   (badges, small elements)
---radius-DEFAULT: 6px (buttons - default)
---radius-md:   8px   (inputs, tags)
---radius-lg:   10px  (cards)
---radius-xl:   12px  (modals, larger cards)
---radius-2xl:  16px  (profile cards)
---radius-full: 9999px (avatars, pills)
+--radius-xs:   1.5px (78 uses)
+--radius-sm:   4px   (28 uses)
+--radius-DEFAULT: 6px (23 uses)
+--radius-md:   8px   (137 uses - most common)
+--radius-lg:   10px  (96 uses)
+--radius-xl:   12px  (55 uses)
+--radius-2xl:  16px  (35 uses - card radius)
+--radius-full: 9999px (pills/avatars)
 
-Detected from 326 shadow instances and 588 radius instances.
-Most common radius: 8px (253 uses)
+Semantic Aliases from Design Context
+================
+--radius-card: 16px (from design-system-context.json)
+--radius-button: 8px (from design-system-context.json)
+--radius-input: 8px (from design-system-context.json)
+--radius-pill: 100px (from design-system-context.json)
+
+Blur Effects
+================
+--blur-sm: 4px (actual blur found in design)
+--blur-md: 10px (backdrop blur, glassmorphic elements)
+--blur-lg: 27px (from soft shadow variant)
+
+Detected from 330 shadow instances and 14 unique radius values across 588 components.
+Most common radius: 8px (137 uses)
+Most common shadow: 2px blur 4px @ 0.07 alpha (125 times) + 4px blur 6px @ 0.12 alpha (120 times)
 */

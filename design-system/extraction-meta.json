@@ -3,28 +3,22 @@
     "fileKey": "YA7YmI2VAeQKM556gvGupf",
     "fileName": "Soft UI Dashboard Free (Community)",
     "url": "https://www.figma.com/design/YA7YmI2VAeQKM556gvGupf/Soft-UI-Dashboard-Free--Community-",
-    "lastModified": "2026-01-11T22:23:04Z"
+    "lastModified": "2026-01-11T22:23:05Z"
   },
   "extraction": {
-    "startedAt": "2026-01-18T00:00:00Z",
+    "startedAt": "2026-02-06T08:34:00Z",
     "version": "1.0.0",
-    "tool": "figma-extraction-skill",
-    "mode": "thorough"
+    "tool": "figma-extraction-skill"
   },
-  "structure": {
-    "pages": 6,
-    "componentSets": 22,
-    "screens": 14
+  "screens": {
+    "Dashboard": { "nodeId": "0:263", "dimensions": "1440x1584" },
+    "Dashboard-alt": { "nodeId": "1:88", "dimensions": "1440x1584" },
+    "Tables": { "nodeId": "0:1777", "dimensions": "1440x1262" },
+    "Billing": { "nodeId": "0:2136", "dimensions": "1440x1204" },
+    "Profile": { "nodeId": "0:2505", "dimensions": "1440x1409" },
+    "SignUp": { "nodeId": "0:2877", "dimensions": "1440x1252" },
+    "SignIn": { "nodeId": "0:2957", "dimensions": "1440x1137" }
   },
-  "screens": [
-    {"id": "0:263", "name": "Dashboard-sidebar transparent", "page": "🚀 Dashboard"},
-    {"id": "1:88", "name": "Dashboard-sidebar transparent", "page": "🚀 Dashboard"},
-    {"id": "0:1777", "name": "Tables", "page": "🚀 Dashboard"},
-    {"id": "0:2136", "name": "Billing", "page": "🚀 Dashboard"},
-    {"id": "0:2505", "name": "Profile", "page": "🚀 Dashboard"},
-    {"id": "0:2877", "name": "Sign Up", "page": "🚀 Dashboard"},
-    {"id": "0:2957", "name": "Sign In", "page": "🚀 Dashboard"}
-  ],
   "tokens": {},
   "components": {}
 }

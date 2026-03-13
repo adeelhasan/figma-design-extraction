@@ -1,0 +1,213 @@
+{
+  "file": {
+    "name": "Soft UI Dashboard Free (Community)",
+    "lastModified": "2026-01-11T22:23:05Z",
+    "version": "2314851226919869374"
+  },
+  "pages": [
+    {
+      "name": "\u2764\ufe0f Thumbnail",
+      "frames": [
+        "Frame 1"
+      ],
+      "screens": []
+    },
+    {
+      "name": "\ud83d\udc8e Components",
+      "frames": [
+        "Typography",
+        "Neutral Colors Palette",
+        "Colors",
+        "Gradients",
+        "Buttons"
+      ],
+      "screens": []
+    },
+    {
+      "name": "\ud83d\ude80 Dashboard",
+      "frames": [],
+      "screens": [
+        {
+          "name": "Dashboard-sidebar transparent",
+          "id": "0:263",
+          "width": 1440.0,
+          "height": 1584.0,
+          "sections": [
+            "Background",
+            "sidebar",
+            "navbar",
+            "content",
+            "footer",
+            "button configurator"
+          ]
+        },
+        {
+          "name": "Dashboard-sidebar transparent",
+          "id": "1:88",
+          "width": 1440.0,
+          "height": 1584.0,
+          "sections": [
+            "Background",
+            "navbar",
+            "content",
+            "footer",
+            "button configurator",
+            "sidebar"
+          ]
+        },
+        {
+          "name": "Tables",
+          "id": "0:1777",
+          "width": 1440.0,
+          "height": 1262.0,
+          "sections": [
+            "Background",
+            "table-1",
+            "table-2",
+            "sidebar",
+            "navbar",
+            "footer"
+          ]
+        },
+        {
+          "name": "Billing",
+          "id": "0:2136",
+          "width": 1440.0,
+          "height": 1204.0,
+          "sections": [
+            "Background",
+            "credit card",
+            "card-1",
+            "card-2",
+            "payment-metod",
+            "invoices",
+            "billing info",
+            "your transaction",
+            "sidebar",
+            "footer",
+            "navbar"
+          ]
+        },
+        {
+          "name": "Profile",
+          "id": "0:2505",
+          "width": 1440.0,
+          "height": 1409.0,
+          "sections": [
+            "Background",
+            "footer",
+            "image",
+            "Background",
+            "CEO / Co-Founder",
+            "avatar",
+            "Rectangle",
+            "Teams",
+            "document",
+            "ungroup",
+            "Projects",
+            "settings",
+            "Overview",
+            "Alec Thompson",
+            "platform settings",
+            "profile information",
+            "conversations",
+            "projects",
+            "sidebar",
+            "navbar"
+          ]
+        },
+        {
+          "name": "Sign Up",
+          "id": "0:2877",
+          "width": 1440.0,
+          "height": 1252.0,
+          "sections": [
+            "Background",
+            "image",
+            "navbar",
+            "Use these awesome fo",
+            "Sign Up",
+            "form",
+            "footer"
+          ]
+        },
+        {
+          "name": "Sign In",
+          "id": "0:2957",
+          "width": 1440.0,
+          "height": 1137.0,
+          "sections": [
+            "image",
+            "navbar",
+            "Enter your email and",
+            "Sign In",
+            "form",
+            "footer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "\u2705 Symbols",
+      "frames": [
+        "input/active",
+        "input/default",
+        "checkbox/active",
+        "input/active",
+        "button/size/large/hover",
+        "button/size/large/active",
+        "button/size/large/default",
+        "button/size/small/active",
+        "button/size/small/hover",
+        "button/size/small/default",
+        "button/size/medium/active",
+        "button/size/medium/hover",
+        "button/with icon/hover",
+        "button/with icon/hover",
+        "button/just icon/hover",
+        "button/just icon/active",
+        "button/just icon/default",
+        "button/with icon/default",
+        "button/outline/hover",
+        "button/outline/active",
+        "button/outline/default",
+        "button/size/medium/default"
+      ],
+      "screens": []
+    },
+    {
+      "name": "\ud83d\udd16 License",
+      "frames": [
+        "License"
+      ],
+      "screens": []
+    }
+  ],
+  "designSummary": {
+    "uniqueColors": 47,
+    "uniqueTextStyles": 53,
+    "uniqueGradients": 13,
+    "effectTypes": [
+      "BACKGROUND_BLUR",
+      "DROP_SHADOW"
+    ],
+    "uniqueRadii": [
+      1.5,
+      3.0,
+      4.0,
+      6.0,
+      8.0,
+      10.0,
+      10.5,
+      12.0,
+      16.0,
+      17.0,
+      18.0,
+      20.0,
+      24.0,
+      35.0
+    ],
+    "publishedStyles": 0,
+    "components": 22
+  }
+}

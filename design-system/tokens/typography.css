@@ -1,7 +1,8 @@
 /* =================================================================
    Typography Tokens
    Extracted from: Soft UI Dashboard Free (Community)
-   Generated: 2026-01-18
+   Generated: 2026-02-06
+   Source: Figma design file cache
    ================================================================= */
 
 :root {
@@ -9,27 +10,32 @@
      Font Families
      --------------------------------------------------------------- */
   --font-family-sans: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-family-display: 'Montserrat', var(--font-family-sans);
+  --font-family-primary: 'Open Sans', sans-serif;
+  --font-family-base: var(--font-family-primary);
+  --font-family-display: 'Open Sans', var(--font-family-sans);
   --font-family-mono: 'Fira Code', 'SF Mono', Consolas, monospace;
   --font-family-icons: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
 
   /* ---------------------------------------------------------------
-     Font Sizes
+     Font Sizes (extracted from 815 text nodes in Figma)
+     Conversion: px → rem (base: 16px)
      --------------------------------------------------------------- */
-  --font-size-xs: 10px;
-  --font-size-sm: 12px;
-  --font-size-base: 14px;
-  --font-size-md: 16px;
-  --font-size-lg: 18px;
-  --font-size-xl: 20px;
-  --font-size-2xl: 24px;
-  --font-size-3xl: 30px;
-  --font-size-4xl: 36px;
-  --font-size-5xl: 48px;
-  --font-size-6xl: 50px;
+  --font-size-xs: 0.5625rem;    /* 9px */
+  --font-size-sm: 0.75rem;      /* 12px */
+  --font-size-smx: 0.8125rem;   /* 13px */
+  --font-size-base: 0.875rem;   /* 14px */
+  --font-size-md: 1rem;         /* 16px */
+  --font-size-lg: 1.125rem;     /* 18px */
+  --font-size-xl: 1.25rem;      /* 20px */
+  --font-size-2xl: 1.5rem;      /* 24px */
+  --font-size-3xl: 1.875rem;    /* 30px */
+  --font-size-4xl: 2.25rem;     /* 36px */
+  --font-size-5xl: 2.8125rem;   /* 45px */
+  --font-size-6xl: 3rem;        /* 48px */
+  --font-size-7xl: 3.125rem;    /* 50px */
 
   /* ---------------------------------------------------------------
-     Font Weights
+     Font Weights (found in design: 400, 600, 700)
      --------------------------------------------------------------- */
   --font-weight-regular: 400;
   --font-weight-medium: 500;
@@ -38,140 +44,198 @@
 
   /* ---------------------------------------------------------------
      Line Heights
+     Calculated from Figma measurements (815 text nodes analyzed):
+     - Primary ratio: ~1.21 (consistent across most sizes)
+     - Heading ratio: ~1.17 (larger sizes like 30-48px)
+     - Display ratio: ~1.36 (very large sizes 45-50px)
      --------------------------------------------------------------- */
   --font-line-height-none: 1;
   --font-line-height-tight: 1.17;
-  --font-line-height-snug: 1.25;
-  --font-line-height-normal: 1.36;
-  --font-line-height-relaxed: 1.5;
-  --font-line-height-loose: 1.62;
+  --font-line-height-snug: 1.19;
+  --font-line-height-normal: 1.21;
+  --font-line-height-relaxed: 1.36;
+  --font-line-height-loose: 1.5;
 
   /* ---------------------------------------------------------------
      Letter Spacing
+     Consistent pattern: ~-0.0277em across all sizes
      --------------------------------------------------------------- */
-  --font-letter-spacing-tighter: -1.33px;
-  --font-letter-spacing-tight: -1px;
-  --font-letter-spacing-normal: -0.55px;
-  --font-letter-spacing-wide: -0.44px;
-  --font-letter-spacing-wider: 0;
-  --font-letter-spacing-widest: 0.5px;
+  --font-letter-spacing-tighter: -0.0277em;
+  --font-letter-spacing-tight: -0.0277em;
+  --font-letter-spacing-normal: 0;
+  --font-letter-spacing-wide: 0.05em;
+  --font-letter-spacing-wider: 0.1em;
+  --font-letter-spacing-widest: 0.15em;
 
   /* =================================================================
-     Composite Text Styles
+     Composite Text Styles (from Figma design)
      ================================================================= */
 
   /* ---------------------------------------------------------------
-     Headings
+     Headings (48px → 16px scale)
      --------------------------------------------------------------- */
-  /* H1 - 48px */
-  --text-h1-size: var(--font-size-5xl);
-  --text-h1-weight: var(--font-weight-bold);
+  /* H1 - 48px, Weight: 400 */
+  --text-h1-size: var(--font-size-6xl);
+  --text-h1-weight: var(--font-weight-regular);
   --text-h1-line-height: var(--font-line-height-tight);
-  --text-h1-letter-spacing: var(--font-letter-spacing-tighter);
+  --text-h1-letter-spacing: var(--font-letter-spacing-tight);
 
-  /* H2 - 36px */
+  /* H2 - 36px, Weight: 400 */
   --text-h2-size: var(--font-size-4xl);
-  --text-h2-weight: var(--font-weight-bold);
+  --text-h2-weight: var(--font-weight-regular);
   --text-h2-line-height: var(--font-line-height-tight);
   --text-h2-letter-spacing: var(--font-letter-spacing-tight);
 
-  /* H3 - 30px */
+  /* H3 - 30px, Weight: 400 */
   --text-h3-size: var(--font-size-3xl);
-  --text-h3-weight: var(--font-weight-semibold);
+  --text-h3-weight: var(--font-weight-regular);
   --text-h3-line-height: var(--font-line-height-tight);
-  --text-h3-letter-spacing: -0.83px;
+  --text-h3-letter-spacing: var(--font-letter-spacing-tight);
 
-  /* H4 - 24px */
+  /* H4 - 24px, Weight: 400 */
   --text-h4-size: var(--font-size-2xl);
-  --text-h4-weight: var(--font-weight-bold);
-  --text-h4-line-height: var(--font-line-height-tight);
-  --text-h4-letter-spacing: -0.66px;
+  --text-h4-weight: var(--font-weight-regular);
+  --text-h4-line-height: var(--font-line-height-normal);
+  --text-h4-letter-spacing: var(--font-letter-spacing-tight);
 
-  /* H5 - 20px */
+  /* H5 - 20px, Weight: 400 */
   --text-h5-size: var(--font-size-xl);
-  --text-h5-weight: var(--font-weight-semibold);
-  --text-h5-line-height: var(--font-line-height-tight);
-  --text-h5-letter-spacing: var(--font-letter-spacing-normal);
+  --text-h5-weight: var(--font-weight-regular);
+  --text-h5-line-height: var(--font-line-height-snug);
+  --text-h5-letter-spacing: var(--font-letter-spacing-tight);
 
-  /* H6 - 16px */
+  /* H6 - 16px, Weight: 400 */
   --text-h6-size: var(--font-size-md);
-  --text-h6-weight: var(--font-weight-semibold);
-  --text-h6-line-height: var(--font-line-height-tight);
-  --text-h6-letter-spacing: var(--font-letter-spacing-wide);
+  --text-h6-weight: var(--font-weight-regular);
+  --text-h6-line-height: var(--font-line-height-normal);
+  --text-h6-letter-spacing: var(--font-letter-spacing-tight);
 
   /* ---------------------------------------------------------------
-     Body Text
+     Body Text (Large → Small scale)
      --------------------------------------------------------------- */
-  /* Body Large - 18px */
-  --text-body-lg-size: var(--font-size-lg);
+  /* Body Large - 16px */
+  --text-body-lg-size: var(--font-size-md);
   --text-body-lg-weight: var(--font-weight-regular);
-  --text-body-lg-line-height: var(--font-line-height-relaxed);
+  --text-body-lg-line-height: var(--font-line-height-normal);
 
   /* Body Regular - 14px */
   --text-body-size: var(--font-size-base);
   --text-body-weight: var(--font-weight-regular);
-  --text-body-line-height: var(--font-line-height-relaxed);
+  --text-body-line-height: var(--font-line-height-normal);
 
   /* Body Small - 12px */
   --text-body-sm-size: var(--font-size-sm);
   --text-body-sm-weight: var(--font-weight-regular);
   --text-body-sm-line-height: var(--font-line-height-normal);
 
+  /* Body Extra Small - 9px */
+  --text-body-xs-size: var(--font-size-xs);
+  --text-body-xs-weight: var(--font-weight-regular);
+  --text-body-xs-line-height: var(--font-line-height-normal);
+
+  /* ---------------------------------------------------------------
+     Semibold Variants
+     --------------------------------------------------------------- */
+  /* Semibold Large - 16px */
+  --text-semibold-lg-size: var(--font-size-md);
+  --text-semibold-lg-weight: var(--font-weight-semibold);
+  --text-semibold-lg-line-height: var(--font-line-height-normal);
+
+  /* Semibold Regular - 14px */
+  --text-semibold-size: var(--font-size-base);
+  --text-semibold-weight: var(--font-weight-semibold);
+  --text-semibold-line-height: var(--font-line-height-normal);
+
+  /* Semibold Small - 12px */
+  --text-semibold-sm-size: var(--font-size-sm);
+  --text-semibold-sm-weight: var(--font-weight-semibold);
+  --text-semibold-sm-line-height: var(--font-line-height-normal);
+
+  /* ---------------------------------------------------------------
+     Bold Variants
+     --------------------------------------------------------------- */
+  /* Bold Regular - 14px */
+  --text-bold-size: var(--font-size-base);
+  --text-bold-weight: var(--font-weight-bold);
+  --text-bold-line-height: var(--font-line-height-normal);
+
+  /* Bold Small - 12px */
+  --text-bold-sm-size: var(--font-size-sm);
+  --text-bold-sm-weight: var(--font-weight-bold);
+  --text-bold-sm-line-height: var(--font-line-height-normal);
+
   /* ---------------------------------------------------------------
      UI Text
      --------------------------------------------------------------- */
-  /* Button Text */
+  /* Button Text - 12px, Bold */
   --text-button-size: var(--font-size-sm);
   --text-button-weight: var(--font-weight-bold);
-  --text-button-letter-spacing: var(--font-letter-spacing-widest);
+  --text-button-letter-spacing: var(--font-letter-spacing-normal);
 
-  /* Label */
-  --text-label-size: var(--font-size-xs);
+  /* Label - 12px, Bold */
+  --text-label-size: var(--font-size-sm);
   --text-label-weight: var(--font-weight-bold);
-  --text-label-letter-spacing: var(--font-letter-spacing-widest);
+  --text-label-letter-spacing: var(--font-letter-spacing-normal);
 
-  /* Caption */
+  /* Caption - 9px, Regular */
   --text-caption-size: var(--font-size-xs);
   --text-caption-weight: var(--font-weight-regular);
   --text-caption-line-height: var(--font-line-height-normal);
 
-  /* Overline (uppercase labels) */
+  /* Overline - 9px, Bold */
   --text-overline-size: var(--font-size-xs);
   --text-overline-weight: var(--font-weight-bold);
-  --text-overline-letter-spacing: var(--font-letter-spacing-widest);
+  --text-overline-letter-spacing: var(--font-letter-spacing-normal);
 
   /* ---------------------------------------------------------------
      Stat/Metric Text
      --------------------------------------------------------------- */
-  /* Large stat values */
+  /* Large stat values - 20px, Bold */
   --text-stat-size: var(--font-size-xl);
   --text-stat-weight: var(--font-weight-bold);
   --text-stat-line-height: var(--font-line-height-tight);
 
-  /* Stat labels */
+  /* Stat labels - 14px, Regular */
   --text-stat-label-size: var(--font-size-base);
   --text-stat-label-weight: var(--font-weight-regular);
+  --text-stat-label-line-height: var(--font-line-height-normal);
 }
 
 /*
-Typography Scale Reference
-==========================
+Typography Scale Reference (Extracted from Figma)
+=================================================
 
-Display:      50px / 1.22 / 400-700 (Montserrat)
+Extracted from 815 text nodes in Soft UI Dashboard design file
 
-Heading 1:    48px / 1.17 / 700
-Heading 2:    36px / 1.17 / 700
-Heading 3:    30px / 1.17 / 600
-Heading 4:    24px / 1.17 / 700
-Heading 5:    20px / 1.17 / 600
-Heading 6:    16px / 1.17 / 600
+Font Families:  Open Sans (primary)
 
-Body Large:   18px / 1.5  / 400
-Body Regular: 14px / 1.5  / 400
-Body Small:   12px / 1.36 / 400
+Font Weights:   400 (regular), 600 (semibold), 700 (bold)
 
-Caption:      10px / 1.36 / 400
-Label:        10px / 1.36 / 700
+Display/Large:  50px / 1.29 / 400-700
+                48px / 1.17 / 400
+                45px / 1.36 / 400
 
-Button:       12px / 1.17 / 700 (uppercase)
+Heading 1:      48px / 1.17 / 400
+Heading 2:      36px / 1.17 / 400
+Heading 3:      30px / 1.17 / 400
+Heading 4:      24px / 1.21 / 400
+Heading 5:      20px / 1.19 / 400
+Heading 6:      16px / 1.21 / 400
+
+Body Large:     16px / 1.21 / 400
+Body Regular:   14px / 1.23 / 400
+Body Small:     12px / 1.21 / 400
+Body Tiny:      9px  / 1.21 / 400
+
+Caption:        9px  / 1.21 / 400
+Label:          12px / 1.21 / 600-700
+Button:         12px / 1.21 / 600-700
+
+Letter Spacing: Consistent -0.0277em across all sizes
+                (created tight, modern look)
+
+Line Height Pattern:
+  - Most sizes: ~1.21 (snug, readable)
+  - Large sizes (30-48px): ~1.17 (tighter for headings)
+  - Display sizes (45-50px): ~1.29-1.36 (more relaxed)
 */

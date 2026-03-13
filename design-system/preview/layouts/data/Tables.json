@@ -1,0 +1,383 @@
+{
+  "screenName": "Tables",
+  "frameId": "0:1777",
+  "screenshotPath": "screenshots/Tables.png",
+  "extractedAt": "2026-02-06T00:00:00Z",
+  "dimensions": {
+    "width": 1440,
+    "height": 1262
+  },
+  "layout": {
+    "type": "sidebar-content",
+    "pattern": "dashboard-with-sidebar"
+  },
+  "sections": [
+    {
+      "id": "sidebar",
+      "name": "sidebar",
+      "type": "navigation",
+      "location": "left",
+      "dimensions": {
+        "width": 267,
+        "height": 1022
+      },
+      "styling": {
+        "gradient": "gradient-dark",
+        "angle": "310deg",
+        "colors": ["#141727", "#3a416f"]
+      },
+      "children": [
+        {
+          "id": "logo",
+          "type": "text",
+          "content": "Soft UI Dashboard"
+        },
+        {
+          "id": "nav-items",
+          "type": "list",
+          "items": [
+            { "name": "Dashboard", "active": false },
+            { "name": "Tables", "active": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "navbar",
+      "name": "navbar",
+      "type": "navigation",
+      "subtype": "top-bar",
+      "location": "top",
+      "dimensions": {
+        "width": 1085,
+        "height": 45
+      },
+      "content": {
+        "breadcrumb": ["Pages", "Tables"],
+        "userArea": {
+          "signIn": "Sign In",
+          "notifications": 4
+        }
+      }
+    },
+    {
+      "id": "authors-table",
+      "name": "Authors Table",
+      "type": "table",
+      "subtype": "data-table",
+      "location": "center-top",
+      "dimensions": {
+        "width": 1173,
+        "height": 583
+      },
+      "styling": {
+        "background": "surface",
+        "borderRadius": "radius-2xl",
+        "boxShadow": "shadow-md"
+      },
+      "table": {
+        "headerTitle": "Authors",
+        "columns": [
+          {
+            "id": "col-author",
+            "name": "AUTHOR",
+            "width": 280,
+            "type": "avatar-text"
+          },
+          {
+            "id": "col-function",
+            "name": "FUNCTION",
+            "width": 200,
+            "type": "text"
+          },
+          {
+            "id": "col-status",
+            "name": "STATUS",
+            "width": 120,
+            "type": "badge"
+          },
+          {
+            "id": "col-employed",
+            "name": "EMPLOYED",
+            "width": 120,
+            "type": "date"
+          },
+          {
+            "id": "col-action",
+            "name": "ACTION",
+            "width": 80,
+            "type": "link"
+          }
+        ],
+        "rows": [
+          {
+            "id": "row-1",
+            "author": {
+              "initials": "MJ",
+              "name": "Michael John",
+              "email": "michael@mail.com"
+            },
+            "function": "Manager / Organization",
+            "status": {
+              "label": "ONLINE",
+              "badge": "online",
+              "color": "color-success"
+            },
+            "employed": "23/04/18",
+            "action": "Edit"
+          },
+          {
+            "id": "row-2",
+            "author": {
+              "initials": "AL",
+              "name": "Alexa Liras",
+              "email": "alexa@mail.com"
+            },
+            "function": "Programator / Developer",
+            "status": {
+              "label": "OFFLINE",
+              "badge": "offline",
+              "color": "color-secondary"
+            },
+            "employed": "23/12/20",
+            "action": "Edit"
+          },
+          {
+            "id": "row-3",
+            "author": {
+              "initials": "LP",
+              "name": "Laure Perrier",
+              "email": "laure@mail.com"
+            },
+            "function": "Executive / Projects",
+            "status": {
+              "label": "ONLINE",
+              "badge": "online",
+              "color": "color-success"
+            },
+            "employed": "13/04/19",
+            "action": "Edit"
+          },
+          {
+            "id": "row-4",
+            "author": {
+              "initials": "ME",
+              "name": "Miriam Eric",
+              "email": "miriam@mail.com"
+            },
+            "function": "Marketing / Organization",
+            "status": {
+              "label": "ONLINE",
+              "badge": "online",
+              "color": "color-success"
+            },
+            "employed": "03/04/21",
+            "action": "Edit"
+          },
+          {
+            "id": "row-5",
+            "author": {
+              "initials": "JM",
+              "name": "John Murphy",
+              "email": "john@mail.com"
+            },
+            "function": "Sales",
+            "status": {
+              "label": "OFFLINE",
+              "badge": "offline",
+              "color": "color-secondary"
+            },
+            "employed": "10/02/22",
+            "action": "Edit"
+          }
+        ]
+      }
+    },
+    {
+      "id": "projects-table",
+      "name": "Projects Table",
+      "type": "table",
+      "subtype": "data-table",
+      "location": "center-bottom",
+      "dimensions": {
+        "width": 1157,
+        "height": 546
+      },
+      "styling": {
+        "background": "surface",
+        "borderRadius": "radius-2xl",
+        "boxShadow": "shadow-md"
+      },
+      "table": {
+        "headerTitle": "Projects",
+        "columns": [
+          {
+            "id": "col-companies",
+            "name": "COMPANIES",
+            "width": 280,
+            "type": "text"
+          },
+          {
+            "id": "col-budget",
+            "name": "BUDGET",
+            "width": 120,
+            "type": "text"
+          },
+          {
+            "id": "col-status",
+            "name": "STATUS",
+            "width": 120,
+            "type": "badge"
+          },
+          {
+            "id": "col-completion",
+            "name": "COMPLETION",
+            "width": 200,
+            "type": "progress-bar"
+          },
+          {
+            "id": "col-action",
+            "name": "ACTION",
+            "width": 80,
+            "type": "menu"
+          }
+        ],
+        "rows": [
+          {
+            "id": "row-1",
+            "company": "Spotify Version",
+            "budget": "$14,000",
+            "status": {
+              "label": "working",
+              "badge": "working",
+              "color": "color-info"
+            },
+            "completion": {
+              "percentage": 60,
+              "color": "color-info"
+            },
+            "action": "menu"
+          },
+          {
+            "id": "row-2",
+            "company": "Progress Track",
+            "budget": "$3,000",
+            "status": {
+              "label": "working",
+              "badge": "working",
+              "color": "color-info"
+            },
+            "completion": {
+              "percentage": 10,
+              "color": "color-info"
+            },
+            "action": "menu"
+          },
+          {
+            "id": "row-3",
+            "company": "Jira Platform Errors",
+            "budget": "Not Set",
+            "status": {
+              "label": "done",
+              "badge": "done",
+              "color": "color-success"
+            },
+            "completion": {
+              "percentage": 100,
+              "color": "color-success"
+            },
+            "action": "menu"
+          },
+          {
+            "id": "row-4",
+            "company": "Launch new Mobile App",
+            "budget": "$20,600",
+            "status": {
+              "label": "canceled",
+              "badge": "canceled",
+              "color": "color-error"
+            },
+            "completion": {
+              "percentage": 50,
+              "color": "color-error"
+            },
+            "action": "menu"
+          },
+          {
+            "id": "row-5",
+            "company": "Web Dev",
+            "budget": "$4,000",
+            "status": {
+              "label": "working",
+              "badge": "working",
+              "color": "color-info"
+            },
+            "completion": {
+              "percentage": 80,
+              "color": "color-info"
+            },
+            "action": "menu"
+          },
+          {
+            "id": "row-6",
+            "company": "Redesign Online Store",
+            "budget": "$2,000",
+            "status": {
+              "label": "canceled",
+              "badge": "canceled",
+              "color": "color-error"
+            },
+            "completion": {
+              "percentage": 0,
+              "color": "color-error"
+            },
+            "action": "menu"
+          }
+        ]
+      }
+    },
+    {
+      "id": "footer",
+      "name": "footer",
+      "type": "footer",
+      "location": "bottom",
+      "content": {
+        "text": "© 2021, made with by for a better web"
+      }
+    }
+  ],
+  "tokenUsage": {
+    "colors": {
+      "background": "color-background",
+      "surface": "color-surface",
+      "text": "color-text",
+      "textSecondary": "color-secondary",
+      "success": "color-success",
+      "error": "color-error",
+      "info": "color-info"
+    },
+    "gradients": {
+      "sidebar": "gradient-dark"
+    },
+    "effects": {
+      "cardRadius": "radius-2xl",
+      "cardShadow": "shadow-md"
+    }
+  },
+  "statistics": {
+    "totalSections": 5,
+    "totalRows": 11,
+    "authorsCount": 5,
+    "projectsCount": 6,
+    "statusTypes": ["ONLINE", "OFFLINE", "working", "done", "canceled"],
+    "avatars": 5,
+    "statusBadges": 11,
+    "progressBars": 6
+  },
+  "metadata": {
+    "frameId": "0:1777",
+    "designSystem": "Soft UI Dashboard",
+    "pattern": "dashboard-with-sidebar",
+    "description": "Data tables screen with user information and project tracking"
+  }
+}

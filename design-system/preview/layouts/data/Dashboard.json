@@ -1,75 +1,456 @@
 {
   "screenName": "Dashboard",
-  "extractedAt": "2026-01-18T00:00:00Z",
+  "figmaNodeId": "0:263",
+  "figmaFrameName": "Dashboard-sidebar transparent",
+  "extractedAt": "2026-02-06T00:00:00Z",
+  "dimensions": {
+    "width": 1440,
+    "height": 1584
+  },
+
+  "layout": {
+    "type": "sidebar-content",
+    "sidebar": {
+      "width": 280,
+      "background": "gradient-dark",
+      "position": "fixed-left"
+    },
+    "navbar": {
+      "height": 64,
+      "background": "surface"
+    },
+    "content": {
+      "background": "background",
+      "padding": "var(--spacing-8)",
+      "gap": "var(--spacing-6)"
+    },
+    "footer": {
+      "height": 48,
+      "background": "surface"
+    }
+  },
+
   "sections": {
     "statCards": [
-      { "icon": "wallet", "value": "$53,000", "label": "Today's Money", "change": "+55%", "changeType": "positive" },
-      { "icon": "globe", "value": "2,300", "label": "Today's Users", "change": "+3%", "changeType": "positive" },
-      { "icon": "file-text", "value": "+3,462", "label": "New Clients", "change": "-2%", "changeType": "negative" },
-      { "icon": "shopping-cart", "value": "$103,430", "label": "Sales", "change": "+5%", "changeType": "positive" }
+      {
+        "id": "Widget-1",
+        "type": "stat-card",
+        "icon": "wallet",
+        "iconGradient": "gradient-primary",
+        "value": "$53,000",
+        "label": "Today's Money",
+        "change": "+55%",
+        "changeType": "positive"
+      },
+      {
+        "id": "Widget-2",
+        "type": "stat-card",
+        "icon": "globe",
+        "iconGradient": "gradient-info",
+        "value": "2,300",
+        "label": "Today's Users",
+        "change": "+3%",
+        "changeType": "positive"
+      },
+      {
+        "id": "Widget-3",
+        "type": "stat-card",
+        "icon": "file-text",
+        "iconGradient": "gradient-warning",
+        "value": "+3,462",
+        "label": "New Clients",
+        "change": "-2%",
+        "changeType": "negative"
+      },
+      {
+        "id": "Widget-4",
+        "type": "stat-card",
+        "icon": "shopping-cart",
+        "iconGradient": "gradient-success",
+        "value": "$103,430",
+        "label": "Sales",
+        "change": "+5%",
+        "changeType": "positive"
+      }
     ],
-    "welcomeCard": {
-      "eyebrow": "Built by developers",
-      "title": "Soft UI Dashboard",
-      "description": "From colors, cards, typography to complex elements, you will find the full documentation.",
-      "action": { "label": "Read More", "href": "#" }
-    },
-    "rocketCard": {
-      "title": "Work with the rockets",
-      "description": "Wealth creation is an evolutionarily recent positive-sum game. It is all about who take the opportunity first.",
-      "action": { "label": "Read More", "href": "#" }
-    },
-    "activeUsersChart": {
-      "type": "bar",
-      "stats": [
-        { "label": "Active Users", "value": "3.6K", "change": "(+5) more" },
-        { "value": "2m", "label": "Clicks" },
-        { "value": "$772", "label": "Sales" }
-      ]
-    },
-    "salesChart": {
-      "type": "line",
-      "title": "Sales Overview",
-      "subtitle": "(+5) more in 2021"
-    },
+
+    "promoCards": [
+      {
+        "id": "Card-1",
+        "type": "promo-card",
+        "name": "Rocket Card",
+        "background": "gradient-primary",
+        "textColor": "white",
+        "icon": "rocket",
+        "title": "Soft UI Dashboard",
+        "description": "From colors, cards, typography to complex elements, you will find the full documentation.",
+        "action": {
+          "label": "Read More",
+          "href": "#"
+        }
+      },
+      {
+        "id": "Card-2",
+        "type": "feature-card",
+        "name": "Feature Card",
+        "background": "gradient-dark",
+        "textColor": "white",
+        "icon": "spotlight",
+        "title": "Work with the rockets",
+        "description": "Wealth creation is an evolutionarily recent positive-sum game. It is all about who take the opportunity first.",
+        "action": {
+          "label": "Read More",
+          "href": "#"
+        }
+      }
+    ],
+
+    "charts": [
+      {
+        "id": "Chart-2",
+        "type": "bar-chart",
+        "name": "Active Users",
+        "title": "Active Users",
+        "subtitle": "(+5) more in 2021",
+        "dataPoints": 12,
+        "stats": [
+          {
+            "label": "Active Users",
+            "value": "3.6K",
+            "change": "(+5) more"
+          },
+          {
+            "label": "Clicks",
+            "value": "2m"
+          },
+          {
+            "label": "Sales",
+            "value": "$772"
+          }
+        ]
+      },
+      {
+        "id": "Chart-1",
+        "type": "line-chart",
+        "name": "Sales Overview",
+        "title": "Sales Overview",
+        "subtitle": "(+5) more in 2021",
+        "series": 2,
+        "hasLegend": true,
+        "hasGrid": true
+      }
+    ],
+
     "projectsTable": {
+      "id": "Table-1",
+      "type": "data-table",
+      "name": "Projects",
       "title": "Projects",
       "subtitle": "Done this month",
-      "columns": ["COMPANIES", "MEMBERS", "BUDGET", "COMPLETION"],
+      "columns": [
+        {
+          "id": "companies",
+          "label": "COMPANIES",
+          "width": "40%"
+        },
+        {
+          "id": "members",
+          "label": "MEMBERS",
+          "width": "20%"
+        },
+        {
+          "id": "budget",
+          "label": "BUDGET",
+          "width": "20%"
+        },
+        {
+          "id": "completion",
+          "label": "COMPLETION",
+          "width": "20%"
+        }
+      ],
       "rows": [
-        { "company": "Soft UI Shopify Version", "members": 4, "budget": "$14,000", "completion": 60 },
-        { "company": "Progress Track", "members": 2, "budget": "$3,000", "completion": 10 },
-        { "company": "Fix Platform Errors", "members": 2, "budget": "Not Set", "completion": 100 },
-        { "company": "Launch new Mobile App", "members": 4, "budget": "$20,500", "completion": 100 },
-        { "company": "Add the New Landing Page", "members": 2, "budget": "$500", "completion": 25 },
-        { "company": "Redesign Online Store", "members": 6, "budget": "$2,000", "completion": 40 }
+        {
+          "company": "Soft UI Shopify Version",
+          "members": 4,
+          "budget": "$14,000",
+          "completion": 60,
+          "completionColor": "primary"
+        },
+        {
+          "company": "Progress Track",
+          "members": 2,
+          "budget": "$3,000",
+          "completion": 10,
+          "completionColor": "warning"
+        },
+        {
+          "company": "Fix Platform Errors",
+          "members": 2,
+          "budget": "Not Set",
+          "completion": 100,
+          "completionColor": "success"
+        },
+        {
+          "company": "Launch new Mobile App",
+          "members": 4,
+          "budget": "$20,500",
+          "completion": 100,
+          "completionColor": "success"
+        },
+        {
+          "company": "Add the New Landing Page",
+          "members": 2,
+          "budget": "$500",
+          "completion": 25,
+          "completionColor": "warning"
+        },
+        {
+          "company": "Redesign Online Store",
+          "members": 6,
+          "budget": "$2,000",
+          "completion": 40,
+          "completionColor": "primary"
+        }
       ]
     },
-    "ordersHistory": {
+
+    "ordersTimeline": {
+      "id": "Timeline",
+      "type": "timeline",
+      "name": "Orders History",
       "title": "Orders History",
       "subtitle": "23% this month",
+      "action": {
+        "label": "VIEW ALL",
+        "href": "#"
+      },
       "items": [
-        { "icon": "bell", "description": "$2,400 - Redesign store", "date": "22 DEC 7:20 PM" },
-        { "icon": "code", "description": "New order #4845433", "date": "21 DEC 11:21 PM" },
-        { "icon": "cart", "description": "Company server payments", "date": "21 DEC 9:28 PM" },
-        { "icon": "credit-card", "description": "New card added #4845433", "date": "20 DEC 3:52 PM" },
-        { "icon": "unlock", "description": "Unlock folders for development", "date": "19 DEC 11:35 AM" },
-        { "icon": "credit-card", "description": "New order #48453", "date": "18 DEC 4:41 PM" }
+        {
+          "icon": "bell",
+          "iconGradient": "gradient-primary",
+          "description": "$2,400 - Redesign store",
+          "date": "22 DEC",
+          "time": "7:20 PM",
+          "status": "completed"
+        },
+        {
+          "icon": "code",
+          "iconGradient": "gradient-info",
+          "description": "New order #4845433",
+          "date": "21 DEC",
+          "time": "11:21 PM",
+          "status": "pending"
+        },
+        {
+          "icon": "shopping-cart",
+          "iconGradient": "gradient-warning",
+          "description": "Company server payments",
+          "date": "21 DEC",
+          "time": "9:28 PM",
+          "status": "completed"
+        },
+        {
+          "icon": "credit-card",
+          "iconGradient": "gradient-primary",
+          "description": "New card added #4845433",
+          "date": "20 DEC",
+          "time": "3:52 PM",
+          "status": "pending"
+        },
+        {
+          "icon": "unlock",
+          "iconGradient": "gradient-info",
+          "description": "Unlock folders for development",
+          "date": "19 DEC",
+          "time": "11:35 AM",
+          "status": "completed"
+        },
+        {
+          "icon": "credit-card",
+          "iconGradient": "gradient-success",
+          "description": "New order #48453",
+          "date": "18 DEC",
+          "time": "4:41 PM",
+          "status": "completed"
+        }
       ]
     }
   },
+
   "navigation": {
+    "mainSection": "Navigation",
     "mainItems": [
-      { "icon": "layout-dashboard", "label": "Dashboard", "active": true },
-      { "icon": "table", "label": "Tables" },
-      { "icon": "credit-card", "label": "Billing" },
-      { "icon": "glasses", "label": "Virtual Reality" },
-      { "icon": "type", "label": "RTL" }
+      {
+        "icon": "layout-dashboard",
+        "label": "Dashboard",
+        "active": true
+      },
+      {
+        "icon": "table",
+        "label": "Tables"
+      },
+      {
+        "icon": "credit-card",
+        "label": "Billing"
+      },
+      {
+        "icon": "glasses",
+        "label": "Virtual Reality"
+      },
+      {
+        "icon": "type",
+        "label": "RTL"
+      }
     ],
+    "accountSection": "Account",
     "accountItems": [
-      { "icon": "user", "label": "Profile" },
-      { "icon": "log-in", "label": "Sign In" },
-      { "icon": "user-plus", "label": "Sign Up" }
+      {
+        "icon": "user",
+        "label": "Profile"
+      },
+      {
+        "icon": "log-in",
+        "label": "Sign In"
+      },
+      {
+        "icon": "user-plus",
+        "label": "Sign Up"
+      }
     ]
+  },
+
+  "navbar": {
+    "breadcrumb": "Dashboard",
+    "search": {
+      "icon": "search",
+      "placeholder": "Search..."
+    },
+    "actions": [
+      {
+        "icon": "bell",
+        "type": "notification",
+        "badge": 0
+      },
+      {
+        "icon": "user-circle",
+        "type": "user-menu"
+      }
+    ]
+  },
+
+  "footer": {
+    "copyright": "© 2021 Creative Tim. Built by developers for developers.",
+    "links": [
+      {
+        "label": "About",
+        "href": "#"
+      },
+      {
+        "label": "Blog",
+        "href": "#"
+      },
+      {
+        "label": "License",
+        "href": "#"
+      }
+    ]
+  },
+
+  "designTokens": {
+    "colors": {
+      "primary": "#cb0c9f",
+      "secondary": "#8392ab",
+      "success": "#82d616",
+      "warning": "#fbcf33",
+      "error": "#ea0606",
+      "info": "#17c1e8",
+      "background": "#f8f9fa",
+      "surface": "#ffffff",
+      "gray100": "#f8f9fa",
+      "gray200": "#e9ecef",
+      "gray600": "#8392ab",
+      "gray900": "#141727"
+    },
+    "gradients": {
+      "primary": {
+        "angle": "310deg",
+        "stops": ["#7928ca", "#ff0080"]
+      },
+      "info": {
+        "angle": "310deg",
+        "stops": ["#21d4fd", "#2152ff"]
+      },
+      "success": {
+        "angle": "310deg",
+        "stops": ["#98ec2d", "#17ad37"]
+      },
+      "warning": {
+        "angle": "310deg",
+        "stops": ["#fbcf33", "#f53939"]
+      },
+      "dark": {
+        "angle": "310deg",
+        "stops": ["#141727", "#3a416f"]
+      }
+    },
+    "spacing": {
+      "spacing1": "4px",
+      "spacing2": "8px",
+      "spacing3": "12px",
+      "spacing4": "16px",
+      "spacing5": "20px",
+      "spacing6": "24px",
+      "spacing8": "32px"
+    },
+    "radius": {
+      "sm": "4px",
+      "md": "8px",
+      "lg": "12px",
+      "xl": "14px",
+      "2xl": "16px",
+      "pill": "100px"
+    },
+    "shadows": {
+      "sm": "0 2px 4px -1px rgba(0,0,0,0.07)",
+      "md": "0 20px 27px 0 rgba(0,0,0,0.05)",
+      "lg": "0 20px 40px 0 rgba(0,0,0,0.12)"
+    }
+  },
+
+  "componentInventory": {
+    "statCard": 4,
+    "promoCard": 2,
+    "chartCard": 2,
+    "dataTable": 1,
+    "timeline": 1,
+    "navigationItem": 8,
+    "button": 3,
+    "input": 1,
+    "badge": 1
+  },
+
+  "responsiveConfig": {
+    "breakpoints": {
+      "desktop": {
+        "minWidth": 1440,
+        "sidebarWidth": 280,
+        "statCardsColumns": 4,
+        "chartsColumns": 2
+      },
+      "tablet": {
+        "minWidth": 1024,
+        "sidebarWidth": 240,
+        "statCardsColumns": 2,
+        "chartsColumns": 1
+      },
+      "mobile": {
+        "minWidth": 480,
+        "sidebarWidth": 0,
+        "sidebarDrawer": true,
+        "statCardsColumns": 1,
+        "chartsColumns": 1
+      }
+    }
   }
 }

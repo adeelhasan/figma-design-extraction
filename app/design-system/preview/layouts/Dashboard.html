@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1440">
+  <title>Dashboard - Layout Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    @import '../../tokens/colors.css';
+    @import '../../tokens/typography.css';
+    @import '../../tokens/spacing.css';
+    @import '../../tokens/effects.css';
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-family-primary);
+      background: var(--color-background);
+      color: var(--color-text-primary);
+      width: 1440px;
+      min-height: 1584px;
+    }
+
+    /* ── Layout Shell ── */
+    .page-wrapper {
+      margin-left: 248px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .main-content {
+      flex: 1;
+      min-height: calc(100vh - 20px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .content-area {
+      flex: 1;
+      padding: var(--spacing-6);
+    }
+
+    /* ── Content Grid ── */
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto auto auto auto;
+      gap: var(--spacing-6);
+    }
+
+    /* Section grid positions */
+    #widget-1   { grid-column: 1 / 4;   grid-row: 1 / 2; }
+    #widget-2   { grid-column: 4 / 7;   grid-row: 1 / 2; }
+    #widget-3   { grid-column: 7 / 10;  grid-row: 1 / 2; }
+    #widget-4   { grid-column: 10 / 13; grid-row: 1 / 2; }
+    #card-1     { grid-column: 1 / 8;   grid-row: 2 / 3; }
+    #card-2     { grid-column: 8 / 13;  grid-row: 2 / 3; }
+    #chart-1    { grid-column: 1 / 6;   grid-row: 3 / 4; }
+    #chart-2    { grid-column: 6 / 13;  grid-row: 3 / 4; }
+    #table-1    { grid-column: 1 / 9;   grid-row: 4 / 5; }
+    #timeline-1 { grid-column: 9 / 13;  grid-row: 4 / 5; }
+
+    /* ── Stat Widgets ── */
+    .stat-widget {
+      background: var(--color-surface);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-lg);
+      padding: var(--spacing-4);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 100px;
+    }
+    .stat-widget-content {
+      flex: 1;
+    }
+    .stat-widget-label {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--spacing-1);
+    }
+    .stat-widget-value {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--spacing-1);
+    }
+    .stat-widget-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-success);
+    }
+    .stat-widget-tag.down {
+      color: var(--color-error);
+    }
+    .stat-widget-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm), var(--shadow-md);
+      margin-left: var(--spacing-3);
+    }
+    .stat-widget-icon.info   { background: var(--gradient-info); }
+    .stat-widget-icon.warning { background: var(--gradient-warning); }
+    .stat-widget-icon.error  { background: var(--gradient-error); }
+
+    /* ── Promo Cards ── */
+    .promo-card {
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: stretch;
+      height: 100%;
+      min-height: 277px;
+    }
+    .promo-card-1 {
+      background: var(--color-surface);
+    }
+    .promo-card-1-content {
+      flex: 1;
+      padding: var(--spacing-6);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .promo-card-1-eyebrow {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--spacing-2);
+    }
+    .promo-card-1-title {
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--spacing-3);
+    }
+    .promo-card-1-desc {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      color: var(--color-body);
+      line-height: var(--line-height-normal);
+      margin-bottom: var(--spacing-4);
+      flex: 1;
+    }
+    .promo-card-1-image {
+      width: 220px;
+      flex-shrink: 0;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-card);
+      margin: var(--spacing-4);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .promo-card-1-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .promo-card-2 {
+      background: var(--color-surface);
+    }
+    .promo-card-2-image {
+      width: 45%;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-card);
+      margin: var(--spacing-4) 0 var(--spacing-4) var(--spacing-4);
+      overflow: hidden;
+      flex-shrink: 0;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .promo-card-2-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .promo-card-2-content {
+      flex: 1;
+      padding: var(--spacing-6);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .promo-card-2-title {
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--spacing-3);
+    }
+    .promo-card-2-desc {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      color: var(--color-body);
+      line-height: var(--line-height-normal);
+      margin-bottom: var(--spacing-4);
+    }
+    .card-cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-primary);
+      text-decoration: none;
+    }
+    .card-cta-link:hover { text-decoration: underline; }
+
+    /* ── Chart Cards ── */
+    .chart-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-lg);
+      padding: var(--spacing-6);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .chart-card-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: var(--spacing-4);
+    }
+    .chart-title {
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+    .chart-subtitle-badge {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      color: var(--color-success);
+      font-weight: var(--font-weight-bold);
+    }
+    .chart-subtitle-label {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      color: var(--color-body);
+    }
+    .chart-area {
+      flex: 1;
+      background: var(--gradient-dark);
+      border-radius: var(--radius-card);
+      position: relative;
+      overflow: hidden;
+      min-height: 200px;
+      display: flex;
+      align-items: flex-end;
+      padding: var(--spacing-4);
+    }
+    .chart-area-line {
+      background: transparent;
+      border-radius: var(--radius-card);
+      position: relative;
+      overflow: hidden;
+      min-height: 200px;
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .chart-bars {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      width: 100%;
+      height: 180px;
+      gap: var(--spacing-2);
+    }
+    .chart-bar {
+      flex: 1;
+      background: rgba(255,255,255,0.3);
+      border-radius: 4px 4px 0 0;
+      min-width: 8px;
+    }
+    .chart-bar.active {
+      background: rgba(255,255,255,0.9);
+    }
+    .chart-x-labels {
+      display: flex;
+      justify-content: space-around;
+      margin-top: var(--spacing-2);
+    }
+    .chart-x-label {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-text-secondary);
+      text-align: center;
+      flex: 1;
+    }
+    .chart-stats-row {
+      display: flex;
+      gap: var(--spacing-4);
+      margin-top: var(--spacing-4);
+      flex-wrap: wrap;
+    }
+    .chart-stat-item {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+    }
+    .chart-stat-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .chart-stat-label {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-text-secondary);
+    }
+    .chart-stat-value {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-primary);
+    }
+    /* Line chart placeholder */
+    .line-chart-svg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    /* ── Table Card ── */
+    .table-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-lg);
+      padding: var(--spacing-6);
+      height: 100%;
+      overflow: hidden;
+    }
+    .table-card-header {
+      display: flex;
+      align-items: baseline;
+      gap: var(--spacing-3);
+      margin-bottom: var(--spacing-4);
+    }
+    .table-card-title {
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+    .table-card-badge {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-success);
+      font-weight: var(--font-weight-semibold);
+    }
+    .projects-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .projects-table th {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      text-align: left;
+      padding: var(--spacing-2) var(--spacing-3);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .projects-table td {
+      padding: var(--spacing-3);
+      border-bottom: 1px solid var(--color-border);
+      vertical-align: middle;
+    }
+    .projects-table tr:last-child td {
+      border-bottom: none;
+    }
+    .company-cell {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+    }
+    .company-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-md);
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .company-name {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+    .member-avatars {
+      display: flex;
+    }
+    .member-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid var(--color-surface);
+      margin-left: -6px;
+      overflow: hidden;
+      background: var(--color-background);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .member-avatar:first-child { margin-left: 0; }
+    .member-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .budget-cell {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+    .completion-cell {
+      min-width: 100px;
+    }
+    .completion-label {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--spacing-1);
+    }
+    .completion-label.cancel {
+      color: var(--color-error);
+    }
+    .progress-bar-bg {
+      height: 6px;
+      background: var(--color-border);
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--gradient-info);
+      border-radius: var(--radius-pill);
+    }
+
+    /* ── Timeline Card ── */
+    .timeline-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-lg);
+      padding: var(--spacing-6);
+      height: 100%;
+    }
+    .timeline-card-header {
+      display: flex;
+      align-items: baseline;
+      gap: var(--spacing-2);
+      margin-bottom: var(--spacing-4);
+    }
+    .timeline-card-title {
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+    .timeline-badge {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      color: var(--color-success);
+      font-weight: var(--font-weight-bold);
+    }
+    .timeline-badge-label {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      color: var(--color-body);
+    }
+    .timeline-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .timeline-item {
+      display: flex;
+      gap: var(--spacing-3);
+      padding: var(--spacing-3) 0;
+      position: relative;
+    }
+    .timeline-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 14px;
+      top: 44px;
+      bottom: -4px;
+      width: 2px;
+      background: var(--color-border);
+    }
+    .timeline-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-icon.success  { background: var(--gradient-success); }
+    .timeline-icon.error    { background: var(--gradient-error); }
+    .timeline-icon.info     { background: var(--gradient-info); }
+    .timeline-icon.warning  { background: var(--gradient-warning); }
+    .timeline-icon.primary  { background: var(--gradient-primary); }
+    .timeline-icon.dark     { background: var(--gradient-dark); }
+    .timeline-content {}
+    .timeline-text {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+    .timeline-time {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-text-secondary);
+      margin-top: 2px;
+    }
+
+    /* Divider line in timeline card */
+    .timeline-divider {
+      width: 100%;
+      height: 2px;
+      background: var(--color-border);
+      border-radius: var(--radius-sm);
+      margin-bottom: var(--spacing-4);
+    }
+  </style>
+</head>
+<body>
+  <!-- Shell: sidebar | Source: Dashboard-sidebar transparent -->
+<nav class="shell-sidebar" style="
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 248px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-right: 1px solid var(--color-border);
+  padding: var(--spacing-4) var(--spacing-4);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow-y: auto;
+  z-index: 100;
+  box-shadow: var(--shadow-lg);
+">
+  <!-- Logo -->
+  <div style="
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    padding: var(--spacing-4) var(--spacing-2);
+    margin-bottom: var(--spacing-2);
+    border-bottom: 1px solid var(--color-border);
+  ">
+    <div style="
+      width: 32px;
+      height: 32px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    ">
+      <i data-lucide="zap" style="width: 16px; height: 16px; color: white;"></i>
+    </div>
+    <span style="
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-dark);
+      white-space: nowrap;
+    ">Soft UI Dashboard</span>
+  </div>
+
+  <!-- Navigation Items -->
+  <ul style="list-style: none; padding: 0; margin: 0; flex: 1; display: flex; flex-direction: column; gap: var(--spacing-1);">
+
+    <!-- Dashboard (active) -->
+    <li>
+      <a href="#" data-screen="Dashboard" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-dark);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-semibold);
+        background: transparent;
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--gradient-primary);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: 0 4px 6px rgba(203, 12, 159, 0.4);
+        ">
+          <i data-lucide="layout-dashboard" style="width: 14px; height: 14px; color: white;"></i>
+        </span>
+        Dashboard
+      </a>
+    </li>
+
+    <!-- Tables -->
+    <li>
+      <a href="#" data-screen="Tables" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="table" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Tables
+      </a>
+    </li>
+
+    <!-- Billing -->
+    <li>
+      <a href="#" data-screen="Billing" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="credit-card" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Billing
+      </a>
+    </li>
+
+    <!-- RTL -->
+    <li>
+      <a href="#" data-screen="RTL" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="settings" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        RTL
+      </a>
+    </li>
+
+    <!-- Section Divider: Account Pages -->
+    <li style="padding: var(--spacing-4) var(--spacing-3) var(--spacing-2);">
+      <span style="
+        font-family: var(--font-family-primary);
+        font-size: 0.625rem;
+        font-weight: var(--font-weight-bold);
+        color: var(--color-secondary);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      ">ACCOUNT PAGES</span>
+    </li>
+
+    <!-- Profile -->
+    <li>
+      <a href="#" data-screen="Profile" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="user" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Profile
+      </a>
+    </li>
+
+    <!-- Sign In -->
+    <li>
+      <a href="#" data-screen="Sign In" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="file-text" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Sign In
+      </a>
+    </li>
+
+    <!-- Sign Up -->
+    <li>
+      <a href="#" data-screen="Sign Up" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="rocket" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Sign Up
+      </a>
+    </li>
+  </ul>
+
+  <!-- Help Card (doc) -->
+  <div style="
+    margin: var(--spacing-4) var(--spacing-2) var(--spacing-2);
+    padding: var(--spacing-4);
+    background: var(--gradient-dark);
+    border-radius: var(--radius-xl);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  ">
+    <div style="
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+    "></div>
+    <div style="
+      position: absolute;
+      bottom: -30px;
+      left: -10px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+    "></div>
+    <div style="
+      width: 40px;
+      height: 40px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--spacing-3);
+      position: relative;
+      z-index: 1;
+    ">
+      <i data-lucide="book-open" style="width: 18px; height: 18px; color: white;"></i>
+    </div>
+    <p style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: white;
+      margin: 0 0 var(--spacing-1);
+      position: relative;
+      z-index: 1;
+    ">Need help?</p>
+    <p style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: rgba(255,255,255,0.7);
+      margin: 0 0 var(--spacing-3);
+      position: relative;
+      z-index: 1;
+    ">Please check our docs</p>
+    <a href="#" style="
+      display: inline-block;
+      padding: var(--spacing-2) var(--spacing-4);
+      background: white;
+      color: var(--color-dark);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-bold);
+      text-decoration: none;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      position: relative;
+      z-index: 1;
+    ">DOCUMENTATION</a>
+  </div>
+</nav>
+
+<div class="page-wrapper">
+  <!-- Shell: navbar | Source: Dashboard-sidebar transparent -->
+<header class="shell-navbar" style="
+  height: 45px;
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0 var(--spacing-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 50;
+">
+  <!-- Breadcrumb -->
+  <nav style="display: flex; align-items: center; gap: var(--spacing-1);">
+    <span style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-secondary);
+    ">Pages</span>
+    <span style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      color: var(--color-secondary);
+    ">/</span>
+    <span style="
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-dark);
+    ">Dashboard</span>
+  </nav>
+
+  <!-- Page title + right controls -->
+  <div style="display: flex; align-items: center; gap: var(--spacing-3);">
+    <!-- Search -->
+    <div style="
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      padding: var(--spacing-1) var(--spacing-3);
+      width: 160px;
+    ">
+      <i data-lucide="search" style="width: 13px; height: 13px; color: var(--color-secondary); flex-shrink: 0;"></i>
+      <input type="text" placeholder="Type here…" style="
+        border: none;
+        background: transparent;
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-2xs);
+        color: var(--color-dark);
+        outline: none;
+        width: 100%;
+      ">
+    </div>
+    <!-- Sign In link -->
+    <a href="#" style="
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+      text-decoration: none;
+      color: var(--color-body);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-regular);
+    ">
+      <i data-lucide="user" style="width: 14px; height: 14px;"></i>
+      Sign In
+    </a>
+    <!-- Settings -->
+    <button style="background: none; border: none; cursor: pointer; padding: var(--spacing-1); display: flex; align-items: center; color: var(--color-body);">
+      <i data-lucide="settings" style="width: 16px; height: 16px;"></i>
+    </button>
+    <!-- Bell -->
+    <button style="background: none; border: none; cursor: pointer; padding: var(--spacing-1); display: flex; align-items: center; color: var(--color-body); position: relative;">
+      <i data-lucide="bell" style="width: 16px; height: 16px;"></i>
+      <span style="
+        position: absolute; top: 0; right: 0;
+        width: 8px; height: 8px;
+        background: var(--color-error);
+        border-radius: 50%;
+        font-size: 0.4rem; font-weight: bold; color: white;
+        display: flex; align-items: center; justify-content: center;
+      ">4</span>
+    </button>
+  </div>
+</header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="content-area">
+      <!-- Page heading -->
+      <div style="margin-bottom: var(--spacing-6);">
+        <h1 style="
+          font-family: var(--font-family-secondary);
+          font-size: var(--font-size-xl);
+          font-weight: var(--font-weight-bold);
+          color: var(--color-text-primary);
+        ">Dashboard</h1>
+      </div>
+
+      <div class="content-grid">
+
+        <!-- ── Row 1: Stat Widgets ── -->
+
+        <!-- Widget-1: Today's Money -->
+        <div id="widget-1" class="stat-widget">
+          <div class="stat-widget-content">
+            <div class="stat-widget-label">Today's Money</div>
+            <div class="stat-widget-value">$53,000</div>
+            <div class="stat-widget-tag">
+              <i data-lucide="plus" style="width: 10px; height: 10px;"></i>
+              55%
+            </div>
+          </div>
+          <div class="stat-widget-icon">
+            <i data-lucide="coins" style="width: 20px; height: 20px; color: white;"></i>
+          </div>
+        </div>
+
+        <!-- Widget-2: Today's Users -->
+        <div id="widget-2" class="stat-widget">
+          <div class="stat-widget-content">
+            <div class="stat-widget-label">Today's Users</div>
+            <div class="stat-widget-value">2,300</div>
+            <div class="stat-widget-tag">
+              <i data-lucide="plus" style="width: 10px; height: 10px;"></i>
+              20%
+            </div>
+          </div>
+          <div class="stat-widget-icon info">
+            <i data-lucide="globe" style="width: 20px; height: 20px; color: white;"></i>
+          </div>
+        </div>
+
+        <!-- Widget-3: New Clients -->
+        <div id="widget-3" class="stat-widget">
+          <div class="stat-widget-content">
+            <div class="stat-widget-label">New Clients</div>
+            <div class="stat-widget-value">+3,462</div>
+            <div class="stat-widget-tag down">
+              <i data-lucide="minus" style="width: 10px; height: 10px;"></i>
+              - 2%
+            </div>
+          </div>
+          <div class="stat-widget-icon warning">
+            <i data-lucide="file-text" style="width: 20px; height: 20px; color: white;"></i>
+          </div>
+        </div>
+
+        <!-- Widget-4: Sales -->
+        <div id="widget-4" class="stat-widget">
+          <div class="stat-widget-content">
+            <div class="stat-widget-label">Sales</div>
+            <div class="stat-widget-value">$103,430</div>
+            <div class="stat-widget-tag">
+              <i data-lucide="plus" style="width: 10px; height: 10px;"></i>
+              5%
+            </div>
+          </div>
+          <div class="stat-widget-icon error">
+            <i data-lucide="shopping-cart" style="width: 20px; height: 20px; color: white;"></i>
+          </div>
+        </div>
+
+        <!-- ── Row 2: Promo Cards ── -->
+
+        <!-- Card-1: Built by developers -->
+        <div id="card-1" class="promo-card promo-card-1">
+          <div class="promo-card-1-content">
+            <div>
+              <div class="promo-card-1-eyebrow">Built by developers</div>
+              <div class="promo-card-1-title">Soft UI Dashboard</div>
+              <p class="promo-card-1-desc">From colors, cards, typography to complex elements, you will find the full documentation.</p>
+            </div>
+            <div>
+              <a href="#" class="card-cta-link">
+                Read More
+                <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+              </a>
+            </div>
+          </div>
+          <div class="promo-card-1-image">
+            <img src="../../assets/images/photos/ivancik.png" alt="Soft UI Dashboard" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+        </div>
+
+        <!-- Card-2: Work with the rockets -->
+        <div id="card-2" class="promo-card promo-card-2">
+          <div class="promo-card-2-image">
+            <img src="../../assets/images/photos/rocket-white.png" alt="Rocket" style="width: 80%; height: auto; object-fit: contain; position: relative; z-index: 1;">
+          </div>
+          <div class="promo-card-2-content">
+            <div class="promo-card-2-title">Work with the rockets </div>
+            <p class="promo-card-2-desc">Wealth creation is an evolutionarily recent positive-sum game. It is all about who take the opportunity first.</p>
+            <a href="#" class="card-cta-link">
+              Read More
+              <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- ── Row 3: Charts ── -->
+
+        <!-- Chart-1: Active Users -->
+        <div id="chart-1" class="chart-card">
+          <div class="chart-card-header">
+            <div>
+              <div class="chart-title">Active Users</div>
+              <div style="display: flex; align-items: center; gap: var(--spacing-2); margin-top: var(--spacing-1);">
+                <span class="chart-subtitle-badge">
+                  <i data-lucide="trending-up" style="width: 12px; height: 12px;"></i>
+                  (+23%)
+                </span>
+                <span class="chart-subtitle-label">than last week</span>
+              </div>
+            </div>
+          </div>
+          <div class="chart-area" style="flex: 1; min-height: 220px;">
+            <!-- Bar chart visualization -->
+            <div class="chart-bars">
+              <div class="chart-bar" style="height: 35%;"></div>
+              <div class="chart-bar" style="height: 55%;"></div>
+              <div class="chart-bar" style="height: 40%;"></div>
+              <div class="chart-bar" style="height: 70%;"></div>
+              <div class="chart-bar" style="height: 60%;"></div>
+              <div class="chart-bar active" style="height: 85%;"></div>
+              <div class="chart-bar" style="height: 65%;"></div>
+              <div class="chart-bar" style="height: 75%;"></div>
+              <div class="chart-bar" style="height: 50%;"></div>
+            </div>
+          </div>
+          <div class="chart-x-labels" style="margin-top: var(--spacing-2);">
+            <div class="chart-x-label">01</div>
+            <div class="chart-x-label">02</div>
+            <div class="chart-x-label">03</div>
+            <div class="chart-x-label">04</div>
+            <div class="chart-x-label">05</div>
+            <div class="chart-x-label">06</div>
+            <div class="chart-x-label">07</div>
+            <div class="chart-x-label">08</div>
+            <div class="chart-x-label">09</div>
+          </div>
+          <!-- Stats row -->
+          <div class="chart-stats-row">
+            <div class="chart-stat-item">
+              <div class="chart-stat-icon" style="background: var(--gradient-primary); box-shadow: var(--shadow-sm);">
+                <i data-lucide="users" style="width: 12px; height: 12px; color: white;"></i>
+              </div>
+              <div>
+                <div class="chart-stat-label">Users</div>
+                <div class="chart-stat-value">3,6K</div>
+              </div>
+            </div>
+            <div class="chart-stat-item">
+              <div class="chart-stat-icon" style="background: var(--gradient-info); box-shadow: var(--shadow-sm);">
+                <i data-lucide="mouse-pointer" style="width: 12px; height: 12px; color: white;"></i>
+              </div>
+              <div>
+                <div class="chart-stat-label">Clicks</div>
+                <div class="chart-stat-value">2m</div>
+              </div>
+            </div>
+            <div class="chart-stat-item">
+              <div class="chart-stat-icon" style="background: var(--gradient-warning); box-shadow: var(--shadow-sm);">
+                <i data-lucide="shopping-bag" style="width: 12px; height: 12px; color: white;"></i>
+              </div>
+              <div>
+                <div class="chart-stat-label">Sales</div>
+                <div class="chart-stat-value">$772</div>
+              </div>
+            </div>
+            <div class="chart-stat-item">
+              <div class="chart-stat-icon" style="background: var(--gradient-error); box-shadow: var(--shadow-sm);">
+                <i data-lucide="package" style="width: 12px; height: 12px; color: white;"></i>
+              </div>
+              <div>
+                <div class="chart-stat-label">Items</div>
+                <div class="chart-stat-value">82</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart-2: Sales Overview -->
+        <div id="chart-2" class="chart-card">
+          <div class="chart-card-header">
+            <div>
+              <div class="chart-title">Sales Overview</div>
+              <div style="display: flex; align-items: center; gap: var(--spacing-2); margin-top: var(--spacing-1);">
+                <span class="chart-subtitle-badge">
+                  <i data-lucide="trending-up" style="width: 12px; height: 12px;"></i>
+                  4% more
+                </span>
+                <span class="chart-subtitle-label">in 2021</span>
+              </div>
+            </div>
+          </div>
+          <!-- Line chart area -->
+          <div class="chart-area-line" style="flex: 1; min-height: 280px; position: relative; overflow: hidden; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+            <svg viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+              <!-- Grid lines -->
+              <line x1="0" y1="52" x2="640" y2="52" stroke="#e9ecef" stroke-width="1"/>
+              <line x1="0" y1="104" x2="640" y2="104" stroke="#e9ecef" stroke-width="1"/>
+              <line x1="0" y1="156" x2="640" y2="156" stroke="#e9ecef" stroke-width="1"/>
+              <line x1="0" y1="208" x2="640" y2="208" stroke="#e9ecef" stroke-width="1"/>
+              <!-- Gradient fill primary line -->
+              <defs>
+                <linearGradient id="lineGrad1" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#cb0c9f" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#cb0c9f" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="lineGrad2" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#252f40" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#252f40" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <!-- Area fill primary -->
+              <path d="M40,200 L110,160 L180,180 L260,120 L340,100 L420,80 L500,60 L580,40 L620,50 L620,260 L40,260 Z" fill="url(#lineGrad1)"/>
+              <!-- Line primary -->
+              <polyline points="40,200 110,160 180,180 260,120 340,100 420,80 500,60 580,40 620,50" fill="none" stroke="#cb0c9f" stroke-width="2.5"/>
+              <!-- Area fill secondary -->
+              <path d="M40,180 L110,190 L180,160 L260,150 L340,130 L420,110 L500,90 L580,70 L620,80 L620,260 L40,260 Z" fill="url(#lineGrad2)"/>
+              <!-- Line secondary -->
+              <polyline points="40,180 110,190 180,160 260,150 340,130 420,110 500,90 580,70 620,80" fill="none" stroke="#252f40" stroke-width="2"/>
+            </svg>
+          </div>
+          <!-- X-axis labels -->
+          <div class="chart-x-labels" style="margin-top: var(--spacing-2);">
+            <div class="chart-x-label">Apr</div>
+            <div class="chart-x-label">May</div>
+            <div class="chart-x-label">Jun</div>
+            <div class="chart-x-label">Jul</div>
+            <div class="chart-x-label">Aug</div>
+            <div class="chart-x-label">Sep</div>
+            <div class="chart-x-label">Oct</div>
+            <div class="chart-x-label">Nov</div>
+            <div class="chart-x-label">Dec</div>
+          </div>
+        </div>
+
+        <!-- ── Row 4: Table + Timeline ── -->
+
+        <!-- Table-1: Projects -->
+        <div id="table-1" class="table-card">
+          <div class="table-card-header">
+            <span class="table-card-title">Projects</span>
+            <span class="table-card-badge">
+              <i data-lucide="arrow-up" style="width: 12px; height: 12px; display: inline;"></i>
+              40% done this month
+            </span>
+          </div>
+          <table class="projects-table">
+            <thead>
+              <tr>
+                <th>COMPANIES</th>
+                <th>MEMBERS</th>
+                <th>BUDGET</th>
+                <th>COMPLETION</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Row 1 -->
+              <tr>
+                <td>
+                  <div class="company-cell">
+                    <div class="company-logo" style="background: var(--gradient-dark);">
+                      <i data-lucide="shopping-bag" style="width: 14px; height: 14px; color: white;"></i>
+                    </div>
+                    <span class="company-name">Soft UI Shopify Version</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="member-avatars">
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-1.png" alt="member"></div>
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-4.png" alt="member"></div>
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-2.png" alt="member"></div>
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-3.png" alt="member"></div>
+                  </div>
+                </td>
+                <td><span class="budget-cell">$14,000</span></td>
+                <td class="completion-cell">
+                  <div class="completion-label">60%</div>
+                  <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 60%;"></div></div>
+                </td>
+              </tr>
+              <!-- Row 2 -->
+              <tr>
+                <td>
+                  <div class="company-cell">
+                    <div class="company-logo" style="background: linear-gradient(216.2deg, #0052cc 0%, #2684ff 92%);">
+                      <i data-lucide="trending-up" style="width: 14px; height: 14px; color: white;"></i>
+                    </div>
+                    <span class="company-name">Progress Track</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="member-avatars">
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-4.png" alt="member"></div>
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-3.png" alt="member"></div>
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-1.png" alt="member"></div>
+                  </div>
+                </td>
+                <td><span class="budget-cell">$3,000</span></td>
+                <td class="completion-cell">
+                  <div class="completion-label">10%</div>
+                  <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 10%;"></div></div>
+                </td>
+              </tr>
+              <!-- Row 3 -->
+              <tr>
+                <td>
+                  <div class="company-cell">
+                    <div class="company-logo" style="background: var(--gradient-info);">
+                      <i data-lucide="tool" style="width: 14px; height: 14px; color: white;"></i>
+                    </div>
+                    <span class="company-name">Fix Platform Errors</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="member-avatars">
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-2.png" alt="member"></div>
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-3.png" alt="member"></div>
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-1.png" alt="member"></div>
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-4.png" alt="member"></div>
+                  </div>
+                </td>
+                <td><span class="budget-cell">Not Set</span></td>
+                <td class="completion-cell">
+                  <div class="completion-label">100%</div>
+                  <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 100%; background: var(--gradient-success);"></div></div>
+                </td>
+              </tr>
+              <!-- Row 4 -->
+              <tr>
+                <td>
+                  <div class="company-cell">
+                    <div class="company-logo" style="background: var(--gradient-warning);">
+                      <i data-lucide="smartphone" style="width: 14px; height: 14px; color: white;"></i>
+                    </div>
+                    <span class="company-name">Launch new Mobile App</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="member-avatars">
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-1.png" alt="member"></div>
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-2.png" alt="member"></div>
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-4.png" alt="member"></div>
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-3.png" alt="member"></div>
+                  </div>
+                </td>
+                <td><span class="budget-cell">$20,600</span></td>
+                <td class="completion-cell">
+                  <div class="completion-label">100%</div>
+                  <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 100%; background: var(--gradient-success);"></div></div>
+                </td>
+              </tr>
+              <!-- Row 5 -->
+              <tr>
+                <td>
+                  <div class="company-cell">
+                    <div class="company-logo" style="background: linear-gradient(237.0deg, #0052cc 18%, #2684ff 100%);">
+                      <i data-lucide="layout" style="width: 14px; height: 14px; color: white;"></i>
+                    </div>
+                    <span class="company-name">Add the New Landing Page</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="member-avatars">
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-3.png" alt="member"></div>
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-1.png" alt="member"></div>
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-4.png" alt="member"></div>
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-2.png" alt="member"></div>
+                  </div>
+                </td>
+                <td><span class="budget-cell">$4,000</span></td>
+                <td class="completion-cell">
+                  <div class="completion-label">80%</div>
+                  <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 80%;"></div></div>
+                </td>
+              </tr>
+              <!-- Row 6 -->
+              <tr>
+                <td>
+                  <div class="company-cell">
+                    <div class="company-logo" style="background: var(--gradient-primary);">
+                      <i data-lucide="shopping-cart" style="width: 14px; height: 14px; color: white;"></i>
+                    </div>
+                    <span class="company-name">Redesign Online Store</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="member-avatars">
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-1.png" alt="member"></div>
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-3.png" alt="member"></div>
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-2.png" alt="member"></div>
+                    <div class="member-avatar"><img src="../../assets/images/misc/face-4.png" alt="member"></div>
+                  </div>
+                </td>
+                <td><span class="budget-cell">$2,000</span></td>
+                <td class="completion-cell">
+                  <div class="completion-label cancel">cancel</div>
+                  <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 0%; background: var(--color-error);"></div></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Timeline-1: Orders History -->
+        <div id="timeline-1" class="timeline-card">
+          <div class="timeline-card-header">
+            <span class="timeline-card-title">Orders History </span>
+          </div>
+          <div style="display: flex; align-items: center; gap: var(--spacing-2); margin-bottom: var(--spacing-4);">
+            <span class="timeline-badge">
+              <i data-lucide="arrow-up" style="width: 12px; height: 12px;"></i>
+              24%
+            </span>
+            <span class="timeline-badge-label">this month</span>
+          </div>
+          <div class="timeline-divider"></div>
+          <ul class="timeline-list">
+            <li class="timeline-item">
+              <div class="timeline-icon success">
+                <i data-lucide="bell" style="width: 12px; height: 12px; color: white;"></i>
+              </div>
+              <div class="timeline-content">
+                <div class="timeline-text">$2,400 - Redesign store</div>
+                <div class="timeline-time">09 JUN 7:20 PM</div>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-icon error">
+                <i data-lucide="code" style="width: 12px; height: 12px; color: white;"></i>
+              </div>
+              <div class="timeline-content">
+                <div class="timeline-text">New order #3654323</div>
+                <div class="timeline-time">08 JUN 12:20 PM</div>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-icon info">
+                <i data-lucide="shopping-cart" style="width: 12px; height: 12px; color: white;"></i>
+              </div>
+              <div class="timeline-content">
+                <div class="timeline-text">Company server payments </div>
+                <div class="timeline-time">04 JUN 3:10 PM</div>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-icon warning">
+                <i data-lucide="credit-card" style="width: 12px; height: 12px; color: white;"></i>
+              </div>
+              <div class="timeline-content">
+                <div class="timeline-text">New card added for order #4826321</div>
+                <div class="timeline-time">02 JUN 2:45 PM</div>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-icon primary">
+                <i data-lucide="key" style="width: 12px; height: 12px; color: white;"></i>
+              </div>
+              <div class="timeline-content">
+                <div class="timeline-text">Unlock folders for development</div>
+                <div class="timeline-time">18 MAY 1:30 PM</div>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-icon dark">
+                <i data-lucide="coins" style="width: 12px; height: 12px; color: white;"></i>
+              </div>
+              <div class="timeline-content">
+                <div class="timeline-text">New order #46282344</div>
+                <div class="timeline-time">14 MAY 3:30 PM</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div><!-- /content-grid -->
+    </div><!-- /content-area -->
+
+  </main>
+
+  <!-- Shell: footer -->
+  <footer class="shell-footer" style="
+    width: 100%;
+    height: 20px;
+    background: transparent;
+    padding: 0 var(--spacing-6);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--color-border);
+    margin-top: var(--spacing-6);
+  ">
+    <span style="font-family: var(--font-family-primary); font-size: var(--font-size-2xs); color: var(--color-body);">
+      © 2021, made with <span style="color: var(--color-error);">&#9829;</span> by
+      <a href="#" style="color: var(--color-dark); font-weight: var(--font-weight-semibold); text-decoration: none;">Creative Tim</a>
+      for a better web.
+    </span>
+    <nav style="display: flex; align-items: center; gap: var(--spacing-4);">
+      <a href="#" style="font-family: var(--font-family-primary); font-size: var(--font-size-2xs); color: var(--color-body); text-decoration: none;">Creative Tim</a>
+      <a href="#" style="font-family: var(--font-family-primary); font-size: var(--font-size-2xs); color: var(--color-body); text-decoration: none;">About Us</a>
+      <a href="#" style="font-family: var(--font-family-primary); font-size: var(--font-size-2xs); color: var(--color-body); text-decoration: none;">Blog</a>
+      <a href="#" style="font-family: var(--font-family-primary); font-size: var(--font-size-2xs); color: var(--color-body); text-decoration: none;">License</a>
+    </nav>
+  </footer>
+</div><!-- /page-wrapper -->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    });
+  </script>
+</body>
+</html>

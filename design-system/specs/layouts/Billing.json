@@ -1,0 +1,451 @@
+{
+  "screenName": "Billing",
+  "frameId": "0:2136",
+  "dimensions": {
+    "width": 1440,
+    "height": 1204
+  },
+  "layout": {
+    "type": "sidebar-content",
+    "pattern": "dashboard-grid",
+    "hasSidebar": true,
+    "hasNavbar": true,
+    "hasFooter": true,
+    "sidebarWidth": 280
+  },
+  "sections": [
+    {
+      "id": "sidebar",
+      "name": "sidebar",
+      "type": "navigation",
+      "subtype": "vertical",
+      "location": "left",
+      "dimensions": {
+        "width": 280,
+        "height": 1204
+      },
+      "styling": {
+        "background": "var(--gradient-dark)",
+        "hasLogo": true,
+        "logoText": "Soft UI Dashboard"
+      },
+      "children": {
+        "navigation": [
+          { "text": "Dashboard", "icon": "shop", "href": "/dashboard" },
+          { "text": "Tables", "icon": "office", "href": "/tables" },
+          { "text": "Billing", "icon": "credit-card", "href": "/billing", "active": true },
+          { "text": "RTL", "icon": "settings", "href": "/rtl" }
+        ],
+        "accountPages": [
+          { "text": "Profile", "icon": "customer-support", "href": "/profile" },
+          { "text": "Sign In", "icon": "document", "href": "/signin" },
+          { "text": "Sign Up", "icon": "spaceship", "href": "/signup" }
+        ],
+        "helpCard": {
+          "title": "Need help?",
+          "subtitle": "Please check our documentation",
+          "type": "info-card",
+          "action": "DOCUMENTATION"
+        }
+      }
+    },
+    {
+      "id": "navbar",
+      "name": "navbar",
+      "type": "navigation",
+      "subtype": "top-bar",
+      "location": "top",
+      "dimensions": {
+        "height": 60,
+        "width": 1160
+      },
+      "elements": {
+        "breadcrumb": [
+          { "text": "Pages", "href": "#" },
+          { "text": "Billing", "href": "/billing" }
+        ],
+        "search": {
+          "type": "input",
+          "placeholder": "Type here..."
+        },
+        "userControls": {
+          "icons": ["user", "settings", "bell"],
+          "notificationBadge": 4
+        }
+      }
+    },
+    {
+      "id": "top-row-cards",
+      "name": "Top Row Cards",
+      "type": "grid",
+      "location": "content-top",
+      "dimensions": {
+        "height": 280
+      },
+      "gridConfig": {
+        "columns": 4,
+        "gap": 24
+      },
+      "children": [
+        {
+          "id": "credit-card",
+          "name": "credit card",
+          "type": "card",
+          "subtype": "credit-card-display",
+          "gridSpan": 2,
+          "dimensions": {
+            "width": 360,
+            "height": 245
+          },
+          "styling": {
+            "background": "var(--gradient-dark)",
+            "borderRadius": "var(--radius-2xl)",
+            "aspectRatio": "1.6"
+          },
+          "content": {
+            "cardNumber": "4562 1122 4594 7852",
+            "cardHolder": "Jack Peterson",
+            "expiry": "11/22",
+            "cardType": "mastercard",
+            "icons": ["wifi", "chip"]
+          }
+        },
+        {
+          "id": "salary-card",
+          "name": "card-1 (Salary)",
+          "type": "card",
+          "subtype": "stat-card",
+          "gridSpan": 1,
+          "dimensions": {
+            "width": 180,
+            "height": 245
+          },
+          "styling": {
+            "background": "var(--color-surface)",
+            "borderRadius": "var(--radius-lg)",
+            "border": "1px solid var(--color-border-light)"
+          },
+          "content": {
+            "icon": "bank",
+            "iconBackground": "var(--gradient-info)",
+            "value": "+$2,000",
+            "label": "Salary",
+            "sublabel": "Belong Interactive"
+          }
+        },
+        {
+          "id": "paypal-card",
+          "name": "card-2 (Paypal)",
+          "type": "card",
+          "subtype": "stat-card",
+          "gridSpan": 1,
+          "dimensions": {
+            "width": 180,
+            "height": 245
+          },
+          "styling": {
+            "background": "var(--color-surface)",
+            "borderRadius": "var(--radius-lg)",
+            "border": "1px solid var(--color-border-light)"
+          },
+          "content": {
+            "icon": "paypal",
+            "iconBackground": "var(--gradient-success)",
+            "value": "$49,000",
+            "label": "Paypal",
+            "sublabel": "Freelance Payment"
+          }
+        },
+        {
+          "id": "invoices",
+          "name": "invoices",
+          "type": "card",
+          "subtype": "list",
+          "gridSpan": 2,
+          "rowSpan": 2,
+          "dimensions": {
+            "width": 400,
+            "height": 433
+          },
+          "styling": {
+            "background": "var(--color-surface)",
+            "borderRadius": "var(--radius-2xl)",
+            "boxShadow": "var(--shadow-card)"
+          },
+          "content": {
+            "title": "Invoices",
+            "items": [
+              {
+                "date": "March 01, 2021",
+                "invoiceId": "#MS-415646",
+                "amount": "$180",
+                "type": "PDF"
+              },
+              {
+                "date": "February 12, 2021",
+                "invoiceId": "#RV-126749",
+                "amount": "$250",
+                "type": "PDF"
+              },
+              {
+                "date": "April 05, 2020",
+                "invoiceId": "#FB-212562",
+                "amount": "$550",
+                "type": "PDF"
+              },
+              {
+                "date": "June 25, 2019",
+                "invoiceId": "#QW-103578",
+                "amount": "$400",
+                "type": "PDF"
+              },
+              {
+                "date": "March 03, 2019",
+                "invoiceId": "#AR-803481",
+                "amount": "$700",
+                "type": "PDF"
+              }
+            ],
+            "action": "VIEW ALL"
+          }
+        }
+      ]
+    },
+    {
+      "id": "payment-method",
+      "name": "payment-method",
+      "type": "card",
+      "subtype": "payment-cards",
+      "location": "content",
+      "dimensions": {
+        "height": 205,
+        "width": 800
+      },
+      "styling": {
+        "background": "var(--color-surface)",
+        "borderRadius": "var(--radius-2xl)",
+        "boxShadow": "var(--shadow-card)"
+      },
+      "content": {
+        "title": "Payment Method",
+        "cards": [
+          {
+            "type": "mastercard",
+            "number": "****7852",
+            "expiry": "11/22",
+            "editable": true
+          },
+          {
+            "type": "visa",
+            "number": "****3288",
+            "expiry": "06/24",
+            "editable": true
+          }
+        ],
+        "action": {
+          "text": "ADD NEW CARD",
+          "type": "button",
+          "style": "primary"
+        }
+      }
+    },
+    {
+      "id": "bottom-section",
+      "name": "Bottom Section",
+      "type": "grid",
+      "location": "content-bottom",
+      "gridConfig": {
+        "columns": 2,
+        "gap": 24
+      },
+      "children": [
+        {
+          "id": "billing-info",
+          "name": "billing info",
+          "type": "card",
+          "subtype": "info-cards",
+          "dimensions": {
+            "height": 615
+          },
+          "styling": {
+            "background": "var(--color-surface)",
+            "borderRadius": "var(--radius-2xl)",
+            "boxShadow": "var(--shadow-card)"
+          },
+          "content": {
+            "title": "Billing Information",
+            "items": [
+              {
+                "id": "card-1",
+                "name": "Oliver Liam",
+                "company": "Viking Burrito",
+                "email": "oliver@burrito.com",
+                "vat": "FRB1235476",
+                "actions": ["edit", "delete"]
+              },
+              {
+                "id": "card-2",
+                "name": "Lucas Harper",
+                "company": "Stone Tech Zone",
+                "email": "lucas@syone-tech.com",
+                "vat": "FRB1235476",
+                "actions": ["edit", "delete"]
+              },
+              {
+                "id": "card-3",
+                "name": "Ethan James",
+                "company": "Fiber Notion",
+                "email": "ethan@fiber.com",
+                "vat": "FRB1235476",
+                "actions": ["edit", "delete"]
+              }
+            ]
+          }
+        },
+        {
+          "id": "your-transaction",
+          "name": "your transaction",
+          "type": "card",
+          "subtype": "transaction-list",
+          "dimensions": {
+            "height": 615
+          },
+          "styling": {
+            "background": "var(--color-surface)",
+            "borderRadius": "var(--radius-2xl)",
+            "boxShadow": "var(--shadow-card)"
+          },
+          "content": {
+            "title": "Your Transactions",
+            "dateFilter": "23 - 30 March 2021",
+            "groups": [
+              {
+                "label": "NEWEST",
+                "date": "27 March 2021",
+                "items": [
+                  {
+                    "description": "Netflix",
+                    "time": "12:00",
+                    "amount": "-$2,500",
+                    "icon": "minus",
+                    "type": "expense"
+                  },
+                  {
+                    "description": "Apple",
+                    "time": "04:00",
+                    "amount": "+$2,000",
+                    "icon": "plus",
+                    "type": "income"
+                  }
+                ]
+              },
+              {
+                "label": "YESTERDAY",
+                "date": "26 March 2021",
+                "items": [
+                  {
+                    "description": "Stripe",
+                    "time": "12:00",
+                    "amount": "+$750",
+                    "icon": "plus",
+                    "type": "income"
+                  },
+                  {
+                    "description": "HubSpot",
+                    "time": "11:00",
+                    "amount": "+$1,050",
+                    "icon": "plus",
+                    "type": "income"
+                  },
+                  {
+                    "description": "Creative Tim",
+                    "time": "07:00",
+                    "amount": "+$2,400",
+                    "icon": "plus",
+                    "type": "income"
+                  },
+                  {
+                    "description": "Webflow",
+                    "time": "04:00",
+                    "amount": "Pending",
+                    "icon": "alert",
+                    "type": "pending"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "footer",
+      "name": "footer",
+      "type": "footer",
+      "location": "bottom",
+      "dimensions": {
+        "height": 40,
+        "width": 1440
+      },
+      "content": {
+        "copyright": "© 2021, made with ❤️ by Creative Tim for a better web.",
+        "links": [
+          { "text": "Creative Tim", "href": "#" },
+          { "text": "About Us", "href": "#" },
+          { "text": "Blog", "href": "#" },
+          { "text": "License", "href": "#" }
+        ]
+      }
+    }
+  ],
+  "tokenUsage": {
+    "colors": {
+      "background": "var(--color-background)",
+      "surface": "var(--color-surface)",
+      "textPrimary": "var(--color-text-primary)",
+      "textSecondary": "var(--color-secondary)",
+      "success": "var(--color-success)",
+      "error": "var(--color-error)",
+      "warning": "var(--color-warning)"
+    },
+    "gradients": {
+      "sidebarBg": "var(--gradient-dark)",
+      "creditCardBg": "var(--gradient-dark)",
+      "salaryIcon": "var(--gradient-info)",
+      "paypalIcon": "var(--gradient-success)"
+    },
+    "effects": {
+      "cardShadow": "var(--shadow-card)",
+      "cardRadius": "var(--radius-2xl)",
+      "cardRadiusLg": "var(--radius-lg)",
+      "buttonRadius": "var(--radius-DEFAULT)",
+      "inputRadius": "var(--radius-md)"
+    },
+    "spacing": {
+      "containerPadding": "var(--spacing-6)",
+      "cardGap": "var(--spacing-6)",
+      "elementGap": "var(--spacing-3)",
+      "cardPadding": "var(--spacing-4)"
+    }
+  },
+  "componentInstances": {
+    "creditCard": 1,
+    "statCards": 2,
+    "infoCards": 3,
+    "listItems": 11,
+    "buttons": 4,
+    "pdfButtons": 5,
+    "editIcons": 3,
+    "deleteIcons": 3,
+    "navIcons": 7
+  },
+  "metadata": {
+    "extractedAt": "2026-02-06T08:40:00Z",
+    "description": "Billing screen with sidebar navigation, credit card display, payment methods, invoices list, billing information cards, and transactions history",
+    "pattern": "dashboard-sidebar-content",
+    "hasSidebar": true,
+    "sidebarPosition": "left",
+    "gridLayoutsCount": 3,
+    "interactiveElements": 11
+  }
+}

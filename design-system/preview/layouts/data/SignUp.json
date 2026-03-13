@@ -1,0 +1,135 @@
+{
+  "screenName": "SignUp",
+  "extractedAt": "2026-02-06T00:00:00Z",
+  "dimensions": {
+    "width": 1440,
+    "height": 1252
+  },
+  "navbar": {
+    "logo": "Soft UI Dashboard",
+    "links": [
+      {
+        "text": "Dashboard",
+        "href": "/dashboard"
+      },
+      {
+        "text": "Profile",
+        "href": "/profile"
+      },
+      {
+        "text": "Sign Up",
+        "href": "/signup",
+        "active": true
+      },
+      {
+        "text": "Sign In",
+        "href": "/signin"
+      }
+    ],
+    "cta": {
+      "text": "FREE DOWNLOAD",
+      "style": "secondary",
+      "href": "#download"
+    }
+  },
+  "hero": {
+    "background": "gradient-dark",
+    "hasImage": true,
+    "imageType": "gradient-wave-with-curves",
+    "heading": {
+      "title": "Sign Up",
+      "subtitle": "Use these awesome forms to login or create new account in your project for free."
+    }
+  },
+  "form": {
+    "title": "Register with",
+    "social": [
+      {
+        "provider": "facebook",
+        "icon": "facebook",
+        "label": "Facebook"
+      },
+      {
+        "provider": "apple",
+        "icon": "apple",
+        "label": "Apple"
+      },
+      {
+        "provider": "google",
+        "icon": "google",
+        "label": "Google"
+      }
+    ],
+    "divider": "or",
+    "fields": [
+      {
+        "id": "name",
+        "type": "text",
+        "label": "Name",
+        "placeholder": "Name",
+        "required": true,
+        "validation": {
+          "minLength": 2,
+          "maxLength": 50
+        }
+      },
+      {
+        "id": "email",
+        "type": "email",
+        "label": "Email",
+        "placeholder": "Email",
+        "required": true,
+        "validation": {
+          "pattern": "email"
+        }
+      },
+      {
+        "id": "password",
+        "type": "password",
+        "label": "Password",
+        "placeholder": "Password",
+        "required": true,
+        "validation": {
+          "minLength": 8
+        }
+      }
+    ],
+    "agreement": {
+      "id": "terms",
+      "type": "checkbox",
+      "label": "I agree the Terms and Conditions",
+      "required": true,
+      "checked": true
+    },
+    "submit": {
+      "text": "SIGN UP",
+      "type": "button",
+      "style": "primary",
+      "href": "/dashboard"
+    },
+    "footer": {
+      "text": "Already have an account?",
+      "link": {
+        "text": "Sign In",
+        "href": "/signin"
+      }
+    }
+  },
+  "footer": {
+    "sections": [
+      {
+        "title": "Company",
+        "links": [
+          { "text": "Company", "href": "#" },
+          { "text": "About Us", "href": "#" },
+          { "text": "Team", "href": "#" },
+          { "text": "Products", "href": "#" },
+          { "text": "Blog", "href": "#" },
+          { "text": "Pricing", "href": "#" }
+        ]
+      }
+    ],
+    "copyright": "Copyright © 2021 Soft by Creative Tim.",
+    "social": []
+  }
+}

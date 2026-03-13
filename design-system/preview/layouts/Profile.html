@@ -55,7 +55,7 @@
     }
     .content-grid {
       display: grid;
-      grid-template-columns: 300px 1fr;
+      grid-template-columns: 400px 1fr;
       gap: var(--spacing-6);
     }
     .screenshot-panel {
@@ -63,6 +63,9 @@
       border-radius: var(--radius-xl);
       box-shadow: var(--shadow-card);
       overflow: hidden;
+      height: fit-content;
+      position: sticky;
+      top: var(--spacing-8);
     }
     .screenshot-panel img {
       width: 100%;
@@ -70,7 +73,7 @@
       display: block;
     }
     .screenshot-panel .placeholder {
-      height: 400px;
+      height: 600px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -91,13 +94,21 @@
       padding: var(--spacing-4);
     }
     .section h2 {
-      font-size: var(--font-size-md);
+      font-size: var(--font-size-lg);
       font-weight: var(--font-weight-semibold);
       margin-bottom: var(--spacing-3);
       display: flex;
       align-items: center;
       gap: var(--spacing-2);
+      color: var(--color-text-primary);
     }
+    .section h3 {
+      font-size: var(--font-size-md);
+      font-weight: var(--font-weight-semibold);
+      margin-top: var(--spacing-3);
+      margin-bottom: var(--spacing-2);
+    }
+    .section h3:first-child { margin-top: 0; }
     .structure-diagram {
       background: var(--color-gray-50);
       border-radius: var(--radius-md);
@@ -107,11 +118,39 @@
       overflow-x: auto;
       white-space: pre;
       line-height: 1.4;
+      color: var(--color-text-secondary);
+    }
+    .layout-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-3);
+      margin-bottom: var(--spacing-3);
+    }
+    .layout-grid.full { grid-template-columns: 1fr; }
+    .layout-item {
+      background: var(--color-gray-50);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-3);
+      border-left: 3px solid var(--color-primary);
+    }
+    .layout-item strong {
+      color: var(--color-text-primary);
+      display: block;
+      margin-bottom: var(--spacing-1);
+    }
+    .layout-item span {
+      color: var(--color-text-secondary);
+      font-size: var(--font-size-sm);
     }
     .component-list {
       display: flex;
       flex-wrap: wrap;
       gap: var(--spacing-2);
+      margin-bottom: var(--spacing-3);
+    }
+    .component-list.sections {
+      flex-direction: column;
+      gap: var(--spacing-3);
     }
     .component-tag {
       background: var(--color-gray-100);
@@ -119,9 +158,16 @@
       padding: var(--spacing-1) var(--spacing-2);
       border-radius: var(--radius-sm);
       font-size: var(--font-size-xs);
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: var(--spacing-1);
+    }
+    .component-tag.section {
+      background: linear-gradient(135deg, var(--color-primary), #ff0080);
+      color: white;
+      padding: var(--spacing-2) var(--spacing-3);
+      width: 100%;
+      justify-content: space-between;
     }
     .component-tag .count {
       background: var(--color-primary);
@@ -129,6 +175,10 @@
       padding: 0 var(--spacing-1);
       border-radius: var(--radius-sm);
       font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-xs);
+    }
+    .component-tag.section .count {
+      background: rgba(0,0,0,0.2);
     }
     .token-table {
       width: 100%;
@@ -145,11 +195,13 @@
       color: var(--color-text-muted);
       font-size: var(--font-size-xs);
       text-transform: uppercase;
+      background: var(--color-gray-50);
     }
     .token-name {
       font-family: var(--font-family-mono);
       font-size: var(--font-size-xs);
       color: var(--color-primary);
+      font-weight: var(--font-weight-semibold);
     }
     .profile-banner {
       background: var(--gradient-primary);
@@ -159,23 +211,27 @@
       display: flex;
       align-items: center;
       gap: var(--spacing-4);
+      margin-bottom: var(--spacing-3);
     }
     .profile-banner .avatar {
       width: 74px;
       height: 74px;
-      border-radius: var(--radius-full);
+      min-width: 74px;
+      border-radius: 100%;
       background: var(--color-gray-300);
       border: 3px solid white;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-weight: bold;
+      color: white;
     }
     .profile-banner .info h3 {
       font-size: var(--font-size-xl);
       font-weight: var(--font-weight-bold);
     }
     .profile-banner .info p {
-      opacity: 0.8;
+      opacity: 0.9;
       font-size: var(--font-size-sm);
     }
     .toggle-list { list-style: none; }
@@ -183,57 +239,145 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: var(--spacing-2) 0;
+      padding: var(--spacing-3) 0;
       border-bottom: 1px solid var(--color-border-light);
+      font-size: var(--font-size-sm);
     }
     .toggle-list li:last-child { border-bottom: none; }
+    .toggle-list span {
+      flex: 1;
+      color: var(--color-text-primary);
+    }
     .toggle {
-      width: 40px;
-      height: 22px;
-      border-radius: var(--radius-full);
+      width: 44px;
+      height: 24px;
+      border-radius: 100px;
       background: var(--color-gray-300);
       position: relative;
       cursor: pointer;
+      display: inline-block;
+      flex-shrink: 0;
     }
     .toggle.active { background: var(--gradient-primary); }
     .toggle::after {
       content: '';
       position: absolute;
-      width: 18px;
-      height: 18px;
-      border-radius: var(--radius-full);
+      width: 20px;
+      height: 20px;
+      border-radius: 100%;
       background: white;
       top: 2px;
       left: 2px;
-      transition: transform 0.2s;
+      transition: transform 0.2s ease;
     }
-    .toggle.active::after { transform: translateX(18px); }
+    .toggle.active::after { transform: translateX(20px); }
+    .profile-info-list {
+      list-style: none;
+      margin-bottom: var(--spacing-3);
+    }
+    .profile-info-list li {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: var(--spacing-2);
+      padding: var(--spacing-2) 0;
+      border-bottom: 1px solid var(--color-border-light);
+      font-size: var(--font-size-sm);
+    }
+    .profile-info-list li:last-child { border-bottom: none; }
+    .profile-info-list strong {
+      color: var(--color-text-secondary);
+      font-weight: var(--font-weight-semibold);
+    }
+    .profile-info-list span {
+      color: var(--color-text-primary);
+    }
     .conversation-list { list-style: none; }
     .conversation-list li {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: var(--spacing-3);
-      padding: var(--spacing-2) 0;
+      padding: var(--spacing-3) 0;
       border-bottom: 1px solid var(--color-border-light);
     }
     .conversation-list li:last-child { border-bottom: none; }
     .conversation-list .avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: var(--radius-full);
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: 100%;
       background: var(--color-gray-200);
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: var(--font-size-xs);
+      font-weight: bold;
+      color: var(--color-text-secondary);
+    }
+    .conversation-list .content {
+      flex: 1;
+      min-width: 0;
+    }
+    .conversation-list .name {
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      font-size: var(--font-size-sm);
+      margin-bottom: var(--spacing-1);
     }
     .conversation-list .preview {
-      flex: 1;
       font-size: var(--font-size-sm);
-      color: var(--color-text-muted);
+      color: var(--color-text-secondary);
+      line-height: 1.4;
     }
-    .conversation-list .name { font-weight: var(--font-weight-semibold); color: var(--color-text-primary); }
-    @media (max-width: 1024px) {
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-3);
+      margin-top: var(--spacing-3);
+    }
+    .project-card {
+      background: var(--color-gray-50);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      padding: var(--spacing-3);
+    }
+    .project-card.placeholder {
+      border: 2px dashed var(--color-border-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 120px;
+      color: var(--color-text-secondary);
+    }
+    .project-card strong {
+      display: block;
+      font-size: var(--font-size-sm);
+      color: var(--color-text-primary);
+      margin-bottom: var(--spacing-1);
+    }
+    .project-card span {
+      font-size: var(--font-size-xs);
+      color: var(--color-text-secondary);
+      display: block;
+      margin-bottom: var(--spacing-1);
+      line-height: 1.3;
+    }
+    .project-card .status {
+      display: inline-block;
+      background: var(--color-primary);
+      color: white;
+      padding: var(--spacing-1) var(--spacing-2);
+      border-radius: var(--radius-sm);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      margin-top: var(--spacing-2);
+    }
+    @media (max-width: 1200px) {
       .content-grid { grid-template-columns: 1fr; }
+      .screenshot-panel { position: static; }
+    }
+    @media (max-width: 768px) {
+      .layout-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -248,11 +392,12 @@
         <span>Profile</span>
       </nav>
       <h1><i data-lucide="user"></i> Profile</h1>
-      <p>User profile with settings, info, and projects</p>
+      <p>User profile with sidebar, settings, conversations, and project portfolio</p>
       <div class="meta-info">
-        <span class="meta-item">1440 x 1409</span>
-        <span class="meta-item">sidebar-content</span>
+        <span class="meta-item">1440 x 1409 px</span>
+        <span class="meta-item">sidebar-content layout</span>
         <span class="meta-item">Node: 0:2505</span>
+        <span class="meta-item">8 major sections</span>
       </div>
     </div>
   </header>
@@ -260,55 +405,101 @@
   <main class="container">
     <div class="content-grid">
       <div class="screenshot-panel">
-        <img src="screenshots/Profile.png" alt="Profile screenshot" onerror="this.parentElement.innerHTML='<div class=placeholder><i data-lucide=user style=width:64px;height:64px></i><span>Screenshot not available</span></div>';lucide.createIcons()">
+        <img src="screenshots/Profile.png" alt="Profile screenshot" onerror="this.parentElement.innerHTML='<div class=placeholder><i data-lucide=image style=width:64px;height:64px></i><p>Screenshot not available</p><span style=font-size:12px;color:var(--color-text-secondary)>Check screenshots/ folder</span></div>';lucide.createIcons()">
       </div>
 
       <div class="spec-panel">
+        <!-- Layout Structure Section -->
         <section class="section">
           <h2><i data-lucide="grid-3x3"></i> Layout Structure</h2>
-          <div class="structure-diagram">┌─────────────────────────────────────────────────────────────────┐
-│  ┌─────────────────────────────────────────────────────────┐   │
-│  │           Profile Banner (gradient wave image)           │   │
-│  │  ┌──────┐                                                │   │
-│  │  │Avatar│ Alec Thompson                                  │   │
-│  │  └──────┘ CEO / Co-Founder                              │   │
-│  │                              [Overview] [Teams] [Projects]│   │
-│  └─────────────────────────────────────────────────────────┘   │
-├──────────┬──────────────────────────────────────────────────────┤
-│          │                                                      │
-│ Sidebar  │  ┌───────────┐┌──────────────┐┌──────────────────┐  │
-│          │  │ Platform  ││ Profile      ││ Conversations    │  │
-│ • Dashboard │ │ Settings  ││ Information  ││ (5 items)        │  │
-│ • Tables  │  │ (toggles) ││ (bio + info) ││                  │  │
-│ • Billing │  └───────────┘└──────────────┘└──────────────────┘  │
-│ • VR      │                                                     │
-│ • RTL     │  ┌────────────────────────────────────────────────┐│
-│          │  │ Projects                   [Upload New Project]││
-│ ACCOUNT  │  │ ┌────────┐ ┌────────┐ ┌────────┐ ┌──────────┐ ││
-│ • Profile◄│  │ │ Modern │ │Scandina│ │Minimali│ │ + Upload │ ││
-│ • Sign In│  │ │        │ │  vian  │ │   st   │ │          │ ││
-│ • Sign Up│  │ └────────┘ └────────┘ └────────┘ └──────────┘ ││
-│          │  └────────────────────────────────────────────────┘│
-├──────────┴──────────────────────────────────────────────────────┤
-│  Footer                                                         │
-└─────────────────────────────────────────────────────────────────┘</div>
+          <div class="structure-diagram">┌───────────────────────────────────────────────────────────┐
+│                    NAVBAR (45px)                       │
+├─────────┬───────────────────────────────────────────────┤
+│ SIDEBAR │  PROFILE BANNER (gradient wave, 308px)       │
+│ (273px) │  ┌─────┐ Alec Thompson                        │
+│         │  │ AT  │ CEO / Co-Founder                     │
+│ Main:   │  └─────┘ [Overview] [Teams] [Projects]       │
+│ • Dash  │                                               │
+│ • Table │  SETTINGS | INFO | CONVERSATIONS (430px row) │
+│ • Bills │  ┌──────┐ ┌────────┐ ┌──────────────────────┐│
+│ • VR    │  │Toggles│ │Bio+Info│ │Messages (5 items)  ││
+│ • RTL   │  └──────┘ └────────┘ └──────────────────────┘│
+│         │                                               │
+│ Account:│  PROJECTS GRID (3 columns, 486px row)        │
+│ • Prof  │  ┌────────┐ ┌────────┐ ┌────────┐ [Upload]  │
+│ • Sign  │  │Modern  │ │Scandi  │ │Minim   │           │
+│ • SignUp│  └────────┘ └────────┘ └────────┘           │
+│         │                                               │
+└─────────┴───────────────────────────────────────────────┘
+│  FOOTER (20px)                                         │
+└─────────────────────────────────────────────────────────┘</div>
         </section>
 
+        <!-- Components Section -->
         <section class="section">
-          <h2><i data-lucide="image"></i> Profile Banner</h2>
-          <div class="profile-banner">
-            <div class="avatar">
-              <i data-lucide="user" style="width:32px;height:32px;color:var(--color-text-muted)"></i>
+          <h2><i data-lucide="layers"></i> Section Components</h2>
+          <div class="component-list sections">
+            <div class="component-tag section">
+              <span>Navbar (Navigation)</span>
+              <span class="count">45px H</span>
             </div>
+            <div class="component-tag section">
+              <span>Sidebar (Navigation)</span>
+              <span class="count">273px W</span>
+            </div>
+            <div class="component-tag section">
+              <span>Profile Banner (Hero)</span>
+              <span class="count">308px H</span>
+            </div>
+            <div class="component-tag section">
+              <span>Profile Header (Info)</span>
+              <span class="count">114px H</span>
+            </div>
+            <div class="component-tag section">
+              <span>Settings Card</span>
+              <span class="count">6 toggles</span>
+            </div>
+            <div class="component-tag section">
+              <span>Profile Info Card</span>
+              <span class="count">4 fields</span>
+            </div>
+            <div class="component-tag section">
+              <span>Conversations Card</span>
+              <span class="count">5 messages</span>
+            </div>
+            <div class="component-tag section">
+              <span>Projects Grid</span>
+              <span class="count">3 cards</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Profile Section Preview -->
+        <section class="section">
+          <h2><i data-lucide="image"></i> Profile Banner Preview</h2>
+          <div class="profile-banner">
+            <div class="avatar">AT</div>
             <div class="info">
               <h3>Alec Thompson</h3>
               <p>CEO / Co-Founder</p>
             </div>
           </div>
+          <div class="layout-grid">
+            <div class="layout-item">
+              <strong>Avatar</strong>
+              <span>74×81px, white border, circular</span>
+            </div>
+            <div class="layout-item">
+              <strong>Stats Buttons</strong>
+              <span>Overview, Teams, Projects</span>
+            </div>
+          </div>
         </section>
 
+        <!-- Platform Settings Section -->
         <section class="section">
           <h2><i data-lucide="settings"></i> Platform Settings</h2>
+          <h3>Account Section</h3>
           <ul class="toggle-list">
             <li>
               <span>Email me when someone follows me</span>
@@ -322,6 +513,9 @@
               <span>Email me when someone mentions me</span>
               <div class="toggle active"></div>
             </li>
+          </ul>
+          <h3>Application Section</h3>
+          <ul class="toggle-list">
             <li>
               <span>New launches and projects</span>
               <div class="toggle"></div>
@@ -330,59 +524,244 @@
               <span>Monthly product updates</span>
               <div class="toggle active"></div>
             </li>
+            <li>
+              <span>Subscribe to newsletter</span>
+              <div class="toggle active"></div>
+            </li>
           </ul>
         </section>
 
+        <!-- Profile Information Section -->
+        <section class="section">
+          <h2><i data-lucide="user-circle"></i> Profile Information</h2>
+          <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm); margin-bottom: var(--spacing-3);">
+            Hi, I'm Alec Thompson. Decisions: If you can't decide, the answer is no. If you have a better way - I'd love to hear it.
+          </p>
+          <ul class="profile-info-list">
+            <li>
+              <strong>Full Name</strong>
+              <span>Sarah Emily Jacob</span>
+            </li>
+            <li>
+              <strong>Mobile</strong>
+              <span>+40 (770) 888 888</span>
+            </li>
+            <li>
+              <strong>Email</strong>
+              <span>sarahemily@mail.com</span>
+            </li>
+            <li>
+              <strong>Location</strong>
+              <span>USA</span>
+            </li>
+          </ul>
+          <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary);">
+            <i data-lucide="edit-2" style="width:14px;height:14px;display:inline;margin-right:4px;vertical-align:middle"></i>
+            Pencil icon in header for editing
+          </p>
+        </section>
+
+        <!-- Conversations Section -->
         <section class="section">
           <h2><i data-lucide="message-circle"></i> Conversations</h2>
           <ul class="conversation-list">
             <li>
-              <div class="avatar"><i data-lucide="user" style="width:16px;height:16px;color:var(--color-text-muted)"></i></div>
-              <div class="preview"><span class="name">Sophie B</span> - "Hi! I need more information..."</div>
+              <div class="avatar">SB</div>
+              <div class="content">
+                <div class="name">Sophie B</div>
+                <div class="preview">Hi! I need more information about the project...</div>
+              </div>
             </li>
             <li>
-              <div class="avatar"><i data-lucide="user" style="width:16px;height:16px;color:var(--color-text-muted)"></i></div>
-              <div class="preview"><span class="name">Anne Marie</span> - "Awesome work, can you..."</div>
+              <div class="avatar">AM</div>
+              <div class="content">
+                <div class="name">Anne Marie</div>
+                <div class="preview">Awesome work, can you help me with the design?</div>
+              </div>
             </li>
             <li>
-              <div class="avatar"><i data-lucide="user" style="width:16px;height:16px;color:var(--color-text-muted)"></i></div>
-              <div class="preview"><span class="name">Ivanna</span> - "About files I can..."</div>
+              <div class="avatar">IV</div>
+              <div class="content">
+                <div class="name">Ivanna</div>
+                <div class="preview">About files I can upload directly to the system.</div>
+              </div>
             </li>
             <li>
-              <div class="avatar"><i data-lucide="user" style="width:16px;height:16px;color:var(--color-text-muted)"></i></div>
-              <div class="preview"><span class="name">Peterson</span> - "Have a great afternoon..."</div>
+              <div class="avatar">PT</div>
+              <div class="content">
+                <div class="name">Peterson</div>
+                <div class="preview">Have a great afternoon and let's sync next week!</div>
+              </div>
+            </li>
+            <li>
+              <div class="avatar">ND</div>
+              <div class="content">
+                <div class="name">Nick Daniel</div>
+                <div class="preview">Hi! I need more information about the updates.</div>
+              </div>
             </li>
           </ul>
+          <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: var(--spacing-3);">
+            Each message has a "REPLY" action button
+          </p>
         </section>
 
+        <!-- Projects Section -->
         <section class="section">
-          <h2><i data-lucide="component"></i> Components Used</h2>
-          <div class="component-list">
-            <span class="component-tag">Profile Banner <span class="count">1</span></span>
-            <span class="component-tag">Avatar <span class="count">6</span></span>
-            <span class="component-tag">Toggle Switch <span class="count">6</span></span>
-            <span class="component-tag">Info Card <span class="count">1</span></span>
-            <span class="component-tag">Conversation Item <span class="count">5</span></span>
-            <span class="component-tag">Project Card <span class="count">4</span></span>
-            <span class="component-tag">Button (reply) <span class="count">5</span></span>
+          <h2><i data-lucide="briefcase"></i> Projects Grid</h2>
+          <div class="project-grid">
+            <div class="project-card">
+              <strong>Modern</strong>
+              <span>As Uber works through a huge number of internally management problems.</span>
+              <span class="status">IN PROGRESS</span>
+            </div>
+            <div class="project-card">
+              <strong>Scandinavian</strong>
+              <span>Music is something that every person has his own specific opinion about.</span>
+              <span class="status">IN PROGRESS</span>
+            </div>
+            <div class="project-card">
+              <strong>Minimalist</strong>
+              <span>Different people have different taste, and various types of music.</span>
+              <span class="status">IN PROGRESS</span>
+            </div>
+            <div class="project-card placeholder">
+              <i data-lucide="plus" style="width:24px;height:24px;margin-bottom:8px"></i>
+              <span style="font-size: var(--font-size-sm);">Upload New Project</span>
+            </div>
           </div>
         </section>
 
+        <!-- Token Usage Section -->
         <section class="section">
-          <h2><i data-lucide="palette"></i> Token Usage</h2>
+          <h2><i data-lucide="palette"></i> Design Tokens</h2>
           <table class="token-table">
             <thead>
-              <tr><th>Element</th><th>Token</th></tr>
+              <tr>
+                <th>Element</th>
+                <th>Token</th>
+                <th>Value</th>
+              </tr>
             </thead>
             <tbody>
-              <tr><td>Banner gradient</td><td class="token-name">--gradient-hero</td></tr>
-              <tr><td>Card background</td><td class="token-name">--color-surface</td></tr>
-              <tr><td>Toggle active</td><td class="token-name">--gradient-primary</td></tr>
-              <tr><td>Toggle inactive</td><td class="token-name">--color-gray-300</td></tr>
-              <tr><td>Avatar border</td><td class="token-name">--color-surface</td></tr>
-              <tr><td>Social icon color</td><td class="token-name">--color-text-muted</td></tr>
+              <tr>
+                <td>Banner Gradient</td>
+                <td class="token-name">--gradient-primary</td>
+                <td style="font-size:11px">310°: #7928ca → #ff0080</td>
+              </tr>
+              <tr>
+                <td>Sidebar Gradient</td>
+                <td class="token-name">--gradient-dark</td>
+                <td style="font-size:11px">310°: #141727 → #3a416f</td>
+              </tr>
+              <tr>
+                <td>Card Background</td>
+                <td class="token-name">--color-surface</td>
+                <td>#ffffff</td>
+              </tr>
+              <tr>
+                <td>Toggle Active</td>
+                <td class="token-name">--gradient-primary</td>
+                <td>Gradient fill</td>
+              </tr>
+              <tr>
+                <td>Toggle Inactive</td>
+                <td class="token-name">--color-gray-300</td>
+                <td>#dee2e6</td>
+              </tr>
+              <tr>
+                <td>Card Shadow</td>
+                <td class="token-name">--shadow-card</td>
+                <td>0 20px 27px rgba(0,0,0,0.05)</td>
+              </tr>
+              <tr>
+                <td>Card Radius</td>
+                <td class="token-name">--radius-xl</td>
+                <td>16px</td>
+              </tr>
+              <tr>
+                <td>Primary Color</td>
+                <td class="token-name">--color-primary</td>
+                <td>#cb0c9f</td>
+              </tr>
             </tbody>
           </table>
+        </section>
+
+        <!-- Spacing & Layout -->
+        <section class="section">
+          <h2><i data-lucide="square"></i> Spacing & Layout</h2>
+          <h3>Component Dimensions</h3>
+          <div class="layout-grid full">
+            <div class="layout-item">
+              <strong>Navbar</strong>
+              <span>Width: 1440px | Height: 45px</span>
+            </div>
+            <div class="layout-item">
+              <strong>Sidebar</strong>
+              <span>Width: 273px | Height: 1007px</span>
+            </div>
+            <div class="layout-item">
+              <strong>Profile Banner</strong>
+              <span>Height: 308px | Gradient wave background</span>
+            </div>
+            <div class="layout-item">
+              <strong>Profile Header</strong>
+              <span>Height: 114px | Avatar 74×81px</span>
+            </div>
+            <div class="layout-item">
+              <strong>Three-Column Grid</strong>
+              <span>Height: 430px | Columns: 358px, 356px, 357px</span>
+            </div>
+            <div class="layout-item">
+              <strong>Projects Grid</strong>
+              <span>Height: 486px | 3-column layout with gaps</span>
+            </div>
+          </div>
+          <h3 style="margin-top: var(--spacing-4)">Spacing Tokens Used</h3>
+          <div class="layout-grid full">
+            <div class="layout-item">
+              <strong>Gap Between Cards</strong>
+              <span class="token-name">--spacing-4</span> (16px)
+            </div>
+            <div class="layout-item">
+              <strong>Section Margin</strong>
+              <span class="token-name">--spacing-6</span> (24px)
+            </div>
+            <div class="layout-item">
+              <strong>Card Padding</strong>
+              <span class="token-name">--spacing-6</span> (24px internal)
+            </div>
+            <div class="layout-item">
+              <strong>List Item Padding</strong>
+              <span class="token-name">--spacing-3</span> (12px vertical)
+            </div>
+          </div>
+        </section>
+
+        <!-- Implementation Notes -->
+        <section class="section">
+          <h2><i data-lucide="info"></i> Implementation Notes</h2>
+          <ul style="list-style: none; padding-left: 0;">
+            <li style="padding: var(--spacing-2) 0; border-bottom: 1px solid var(--color-border-light);">
+              <strong style="color: var(--color-primary);">Sidebar</strong> - Dark gradient with glassmorphic effect (10px backdrop blur)
+            </li>
+            <li style="padding: var(--spacing-2) 0; border-bottom: 1px solid var(--color-border-light);">
+              <strong style="color: var(--color-primary);">Banner</strong> - Full-width gradient banner with wave SVG overlay
+            </li>
+            <li style="padding: var(--spacing-2) 0; border-bottom: 1px solid var(--color-border-light);">
+              <strong style="color: var(--color-primary);">Cards</strong> - Three-column grid layout with consistent 24px gaps
+            </li>
+            <li style="padding: var(--spacing-2) 0; border-bottom: 1px solid var(--color-border-light);">
+              <strong style="color: var(--color-primary);">Toggles</strong> - Smooth 200ms transitions, gradient fill when active
+            </li>
+            <li style="padding: var(--spacing-2) 0; border-bottom: 1px solid var(--color-border-light);">
+              <strong style="color: var(--color-primary);">Avatars</strong> - White 3px borders, circular (100px radius)
+            </li>
+            <li style="padding: var(--spacing-2) 0;">
+              <strong style="color: var(--color-primary);">Projects</strong> - 3-column grid with 4:3 aspect ratio images
+            </li>
+          </ul>
         </section>
       </div>
     </div>

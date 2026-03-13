@@ -1,0 +1,128 @@
+{
+  "$schema": "layout-shells-v1",
+  "shells": {
+    "sidebar": {
+      "sourceScreen": "Dashboard-sidebar transparent",
+      "sectionName": "sidebar",
+      "position": "fixed-left",
+      "bounds": {
+        "width": 248,
+        "height": 1002
+      },
+      "htmlFragment": "preview/layouts/shells/sidebar.html",
+      "screens": [
+        "Dashboard-sidebar transparent",
+        "Tables",
+        "Billing",
+        "Profile"
+      ],
+      "cssClass": "shell-sidebar",
+      "mainContentOffset": {
+        "marginLeft": "248px"
+      },
+      "visionConfidence": 0.9
+    },
+    "navbar": {
+      "sourceScreen": "Dashboard-sidebar transparent",
+      "sectionName": "navbar",
+      "position": "sticky-top",
+      "bounds": {
+        "width": 1085,
+        "height": 45
+      },
+      "htmlFragment": "preview/layouts/shells/navbar.html",
+      "screens": [
+        "Dashboard-sidebar transparent",
+        "Tables",
+        "Billing",
+        "Profile"
+      ],
+      "cssClass": "shell-navbar",
+      "mainContentOffset": {},
+      "visionConfidence": 0.9
+    },
+    "footer": {
+      "sourceScreen": "Dashboard-sidebar transparent",
+      "sectionName": "footer",
+      "position": "fixed-bottom",
+      "bounds": {
+        "width": 1116,
+        "height": 20
+      },
+      "htmlFragment": "preview/layouts/shells/footer.html",
+      "screens": [
+        "Dashboard-sidebar transparent",
+        "Tables",
+        "Billing",
+        "Profile"
+      ],
+      "cssClass": "shell-footer",
+      "mainContentOffset": {},
+      "visionConfidence": 0.9
+    },
+    "navbar-auth": {
+      "sourceScreen": "Sign Up",
+      "sectionName": "navbar",
+      "position": "sticky-top",
+      "bounds": {
+        "width": 1269,
+        "height": 34
+      },
+      "htmlFragment": "preview/layouts/shells/navbar-auth.html",
+      "screens": [
+        "Sign Up",
+        "Sign In"
+      ],
+      "cssClass": "shell-navbar-auth",
+      "mainContentOffset": {},
+      "visionConfidence": 0.9
+    },
+    "footer-auth": {
+      "sourceScreen": "Sign Up",
+      "sectionName": "footer",
+      "position": "fixed-bottom",
+      "bounds": {
+        "width": 583,
+        "height": 132
+      },
+      "htmlFragment": "preview/layouts/shells/footer-auth.html",
+      "screens": [
+        "Sign Up",
+        "Sign In"
+      ],
+      "cssClass": "shell-footer-auth",
+      "mainContentOffset": {},
+      "visionConfidence": 0.9
+    }
+  },
+  "screenShellMap": {
+    "Dashboard-sidebar transparent": [
+      "sidebar",
+      "navbar",
+      "footer"
+    ],
+    "Tables": [
+      "sidebar",
+      "navbar",
+      "footer"
+    ],
+    "Billing": [
+      "sidebar",
+      "navbar",
+      "footer"
+    ],
+    "Profile": [
+      "sidebar",
+      "navbar",
+      "footer"
+    ],
+    "Sign Up": [
+      "navbar-auth",
+      "footer-auth"
+    ],
+    "Sign In": [
+      "navbar-auth",
+      "footer-auth"
+    ]
+  }
+}

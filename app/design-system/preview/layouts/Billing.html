@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1440">
+  <title>Billing - Layout Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    @import '../../tokens/colors.css';
+    @import '../../tokens/typography.css';
+    @import '../../tokens/spacing.css';
+    @import '../../tokens/effects.css';
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-family-primary);
+      background: var(--color-background);
+      color: var(--color-text-primary);
+      width: 1440px;
+      min-height: 1204px;
+    }
+
+    /* ── Main content layout ── */
+    .main-content {
+      flex: 1;
+      padding: var(--spacing-6);
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: 245px 205px auto;
+      gap: var(--spacing-6);
+    }
+
+    .section-billing-info, .section-transactions {
+      display: flex;
+      flex-direction: column;
+    }
+    .section-billing-info > .billing-info-card,
+    .section-transactions > .transactions-card {
+      flex: 1;
+    }
+
+    /* ── Section grid placements ── */
+    .section-credit-card   { grid-column: 1 / 8;  grid-row: 1 / 2; display: flex; gap: var(--spacing-4); }
+    .section-invoices      { grid-column: 8 / 13; grid-row: 1 / 3; }
+    .section-payment       { grid-column: 1 / 8;  grid-row: 2 / 3; }
+    .section-billing-info  { grid-column: 1 / 9;  grid-row: 3 / 4; }
+    .section-transactions  { grid-column: 9 / 13; grid-row: 3 / 4; }
+
+    /* ── Base card ── */
+    .card {
+      background: var(--color-surface);
+      border-radius: 12px;
+      box-shadow: 0 20px 27px rgba(0, 0, 0, 0.05);
+      padding: var(--spacing-6);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .card-title {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    /* ── Credit Card (dark gradient) ── */
+    .credit-card-main {
+      flex: 0 0 calc(50% - var(--spacing-2));
+      background: var(--gradient-dark);
+      border-radius: 12px;
+      padding: var(--spacing-4) var(--spacing-6);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 221px;
+    }
+
+    .credit-card-main::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .credit-card-main::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      left: -20px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .cc-wifi {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .cc-wifi i {
+      color: white;
+      opacity: 0.9;
+    }
+
+    .cc-number {
+      display: flex;
+      gap: var(--spacing-4);
+      margin-bottom: var(--spacing-6);
+    }
+
+    .cc-number span {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      color: white;
+      letter-spacing: 0.05em;
+    }
+
+    .cc-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cc-label {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-regular);
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: var(--spacing-1);
+    }
+
+    .cc-value {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      color: white;
+    }
+
+    .cc-logo {
+      width: 42px;
+      opacity: 0.9;
+      align-self: flex-end;
+    }
+
+    /* ── Mini stat cards (Salary + Paypal) ── */
+    .mini-stat-cards {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-3);
+    }
+
+    .mini-stat-card {
+      flex: 1;
+      background: var(--color-surface);
+      border-radius: 12px;
+      box-shadow: 0 20px 27px rgba(0, 0, 0, 0.05);
+      padding: var(--spacing-3) var(--spacing-4);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      position: relative;
+    }
+
+    .mini-stat-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: var(--spacing-4);
+      right: var(--spacing-4);
+      height: 1px;
+      background: var(--gray-light-alt);
+    }
+
+    .mini-stat-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-md);
+      box-shadow: 0 2px 4px -1px rgba(0,0,0,0.07), 0 4px 6px -1px rgba(0,0,0,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .mini-stat-icon i {
+      color: white;
+      width: 20px;
+      height: 20px;
+    }
+
+    .mini-stat-content {
+      flex: 1;
+    }
+
+    .mini-stat-title {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: 2px;
+    }
+
+    .mini-stat-subtitle {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-body);
+    }
+
+    .mini-stat-amount {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    /* ── Invoices panel ── */
+    .invoices-card {
+      background: var(--color-surface);
+      border-radius: 12px;
+      box-shadow: 0 20px 27px rgba(0, 0, 0, 0.05);
+      padding: var(--spacing-6);
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .btn-view-all {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-primary);
+      background: var(--color-surface);
+      border: 1px solid var(--color-primary);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-2) var(--spacing-4);
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      box-shadow: 0 2px 4px -0.5px rgba(0,0,0,0.07), 0 4px 6px -0.5px rgba(0,0,0,0.12);
+    }
+
+    .invoice-row {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      padding: var(--spacing-3) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .invoice-row:last-child {
+      border-bottom: none;
+    }
+
+    .invoice-icon {
+      color: var(--color-error);
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .invoice-details {
+      flex: 1;
+    }
+
+    .invoice-date {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: 2px;
+    }
+
+    .invoice-id {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-body);
+    }
+
+    .invoice-amount {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    .invoice-pdf {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-body);
+      text-decoration: none;
+      padding: var(--spacing-1) var(--spacing-2);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+    }
+
+    /* ── Payment Method ── */
+    .payment-card {
+      background: var(--color-surface);
+      border-radius: 12px;
+      box-shadow: 0 20px 27px rgba(0, 0, 0, 0.05);
+      padding: var(--spacing-4) var(--spacing-6) var(--spacing-6);
+      height: 100%;
+    }
+
+    .payment-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .btn-add-card {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-bold);
+      color: white;
+      background: var(--gradient-dark);
+      border: none;
+      border-radius: 6px;
+      padding: var(--spacing-2) var(--spacing-4);
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      box-shadow: 0 2px 4px -1px rgba(0,0,0,0.12), 0 4px 6px -1px rgba(0,0,0,0.12);
+      white-space: nowrap;
+    }
+
+    .payment-cards-list {
+      display: flex;
+      gap: var(--spacing-4);
+    }
+
+    .saved-card {
+      flex: 1;
+      background: var(--color-surface);
+      border: 1px solid var(--gray-light-alt);
+      border-radius: 12px;
+      padding: var(--spacing-4);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+    }
+
+    .saved-card-logo {
+      height: 25px;
+      width: auto;
+      flex-shrink: 0;
+    }
+
+    .saved-card-number {
+      flex: 1;
+      display: flex;
+      gap: var(--spacing-2);
+      align-items: center;
+    }
+
+    .saved-card-number span {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      letter-spacing: 0.05em;
+    }
+
+    .saved-card-edit {
+      color: var(--color-text-primary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: var(--spacing-1);
+    }
+
+    /* ── Billing Info ── */
+    .billing-info-card {
+      background: var(--color-surface);
+      border-radius: 12px;
+      box-shadow: 0 20px 27px rgba(0, 0, 0, 0.05);
+      padding: var(--spacing-6);
+    }
+
+    .billing-contact-card {
+      background: var(--color-background);
+      border-radius: 12px;
+      padding: var(--spacing-4);
+      margin-bottom: var(--spacing-4);
+    }
+
+    .billing-contact-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .billing-contact-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--spacing-3);
+    }
+
+    .billing-contact-name {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    .billing-contact-actions {
+      display: flex;
+      gap: var(--spacing-3);
+    }
+
+    .btn-edit {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-text-primary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+    }
+
+    .btn-delete {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-error);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+    }
+
+    .billing-contact-fields {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-2) var(--spacing-4);
+    }
+
+    .billing-field {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .billing-field-label {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-regular);
+      color: var(--color-body);
+    }
+
+    .billing-field-value {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    /* ── Transactions ── */
+    .transactions-card {
+      background: var(--color-surface);
+      border-radius: 12px;
+      box-shadow: 0 20px 27px rgba(0, 0, 0, 0.05);
+      padding: var(--spacing-6);
+    }
+
+    .transactions-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .transactions-date-filter {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-regular);
+      color: var(--color-body);
+    }
+
+    .transactions-date-filter i {
+      width: 14px;
+      height: 14px;
+      color: var(--color-body);
+    }
+
+    .tx-group-label {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-body);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: var(--spacing-3) 0 var(--spacing-2);
+    }
+
+    .tx-row {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      padding: var(--spacing-2) 0;
+    }
+
+    .tx-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .tx-icon--debit {
+      border: 1px solid var(--color-error);
+    }
+
+    .tx-icon--debit i {
+      color: var(--color-error);
+      width: 12px;
+      height: 12px;
+    }
+
+    .tx-icon--credit {
+      border: 1px solid var(--color-success);
+    }
+
+    .tx-icon--credit i {
+      color: var(--color-success);
+      width: 12px;
+      height: 12px;
+    }
+
+    .tx-icon--pending {
+      border: 1px solid var(--color-text-primary);
+    }
+
+    .tx-icon--pending i {
+      color: var(--color-text-primary);
+      width: 12px;
+      height: 12px;
+    }
+
+    .tx-info {
+      flex: 1;
+    }
+
+    .tx-name {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: 2px;
+    }
+
+    .tx-date {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-body);
+    }
+
+    .tx-amount {
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-bold);
+      text-align: right;
+    }
+
+    .tx-amount--debit  { color: var(--color-error); }
+    .tx-amount--credit { color: var(--color-success); }
+    .tx-amount--pending {
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-body);
+    }
+
+    /* Sidebar active state for Billing */
+    [data-screen="Billing"] {
+      background: rgba(203, 12, 159, 0.08) !important;
+      color: var(--color-text-primary) !important;
+      font-weight: var(--font-weight-semibold) !important;
+    }
+
+    [data-screen="Billing"] span {
+      background: var(--gradient-primary) !important;
+      box-shadow: 0 4px 6px rgba(203, 12, 159, 0.4) !important;
+    }
+
+    [data-screen="Billing"] span i {
+      color: white !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Shell: sidebar -->
+  <!-- Shell: sidebar | Source: Dashboard-sidebar transparent -->
+<nav class="shell-sidebar" style="
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 248px;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-right: 1px solid var(--color-border);
+  padding: var(--spacing-4) var(--spacing-4);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow-y: auto;
+  z-index: 100;
+  box-shadow: var(--shadow-lg);
+">
+  <!-- Logo -->
+  <div style="
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    padding: var(--spacing-4) var(--spacing-2);
+    margin-bottom: var(--spacing-2);
+    border-bottom: 1px solid var(--color-border);
+  ">
+    <div style="
+      width: 32px;
+      height: 32px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    ">
+      <i data-lucide="zap" style="width: 16px; height: 16px; color: white;"></i>
+    </div>
+    <span style="
+      font-family: var(--font-family-secondary);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-dark);
+      white-space: nowrap;
+    ">Soft UI Dashboard</span>
+  </div>
+
+  <!-- Navigation Items -->
+  <ul style="list-style: none; padding: 0; margin: 0; flex: 1; display: flex; flex-direction: column; gap: var(--spacing-1);">
+
+    <!-- Dashboard -->
+    <li>
+      <a href="#" data-screen="Dashboard-sidebar transparent" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="layout-dashboard" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Dashboard
+      </a>
+    </li>
+
+    <!-- Tables -->
+    <li>
+      <a href="#" data-screen="Tables" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="table" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Tables
+      </a>
+    </li>
+
+    <!-- Billing (active) -->
+    <li>
+      <a href="#" data-screen="Billing" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-dark);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-semibold);
+        background: rgba(203, 12, 159, 0.08);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--gradient-primary);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: 0 4px 6px rgba(203, 12, 159, 0.4);
+        ">
+          <i data-lucide="credit-card" style="width: 14px; height: 14px; color: white;"></i>
+        </span>
+        Billing
+      </a>
+    </li>
+
+    <!-- RTL -->
+    <li>
+      <a href="#" data-screen="RTL" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="settings" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        RTL
+      </a>
+    </li>
+
+    <!-- Section Divider: Account Pages -->
+    <li style="padding: var(--spacing-4) var(--spacing-3) var(--spacing-2);">
+      <span style="
+        font-family: var(--font-family-primary);
+        font-size: 0.625rem;
+        font-weight: var(--font-weight-bold);
+        color: var(--color-secondary);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      ">ACCOUNT PAGES</span>
+    </li>
+
+    <!-- Profile -->
+    <li>
+      <a href="#" data-screen="Profile" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="user" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Profile
+      </a>
+    </li>
+
+    <!-- Sign In -->
+    <li>
+      <a href="#" data-screen="Sign In" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="file-text" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Sign In
+      </a>
+    </li>
+
+    <!-- Sign Up -->
+    <li>
+      <a href="#" data-screen="Sign Up" style="
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-3);
+        padding: var(--spacing-2) var(--spacing-3);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        color: var(--color-body);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-regular);
+      ">
+        <span style="
+          width: 32px;
+          height: 32px;
+          background: var(--color-surface);
+          border-radius: var(--radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: var(--shadow-sm);
+        ">
+          <i data-lucide="rocket" style="width: 14px; height: 14px; color: var(--color-dark);"></i>
+        </span>
+        Sign Up
+      </a>
+    </li>
+  </ul>
+
+  <!-- Help Card (doc) -->
+  <div style="
+    margin: var(--spacing-4) var(--spacing-2) var(--spacing-2);
+    padding: var(--spacing-4);
+    background: var(--gradient-dark);
+    border-radius: var(--radius-xl);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  ">
+    <div style="position: absolute; top: -20px; right: -20px; width: 80px; height: 80px; border-radius: 50%; background: rgba(255,255,255,0.1);"></div>
+    <div style="position: absolute; bottom: -30px; left: -10px; width: 60px; height: 60px; border-radius: 50%; background: rgba(255,255,255,0.07);"></div>
+    <div style="
+      width: 40px;
+      height: 40px;
+      background: var(--gradient-primary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--spacing-3);
+      position: relative;
+      z-index: 1;
+    ">
+      <i data-lucide="book-open" style="width: 18px; height: 18px; color: white;"></i>
+    </div>
+    <p style="font-family: var(--font-family-primary); font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); color: white; margin: 0 0 var(--spacing-1); position: relative; z-index: 1;">Need help?</p>
+    <p style="font-family: var(--font-family-primary); font-size: var(--font-size-2xs); color: rgba(255,255,255,0.7); margin: 0 0 var(--spacing-3); position: relative; z-index: 1;">Please check our docs</p>
+    <a href="#" style="display: inline-block; padding: var(--spacing-2) var(--spacing-4); background: white; color: var(--color-dark); font-family: var(--font-family-primary); font-size: var(--font-size-2xs); font-weight: var(--font-weight-bold); text-decoration: none; border-radius: var(--radius-full); text-transform: uppercase; letter-spacing: 0.06em; position: relative; z-index: 1;">DOCUMENTATION</a>
+  </div>
+</nav>
+
+  <div class="page-wrapper" style="margin-left: 248px; display: flex; flex-direction: column; min-height: 100vh;">
+
+  <!-- Shell: navbar -->
+  <!-- Shell: navbar | Source: Dashboard-sidebar transparent -->
+<header class="shell-navbar" style="
+  height: 45px;
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0 var(--spacing-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 50;
+">
+  <!-- Breadcrumb -->
+  <nav style="display: flex; align-items: center; gap: var(--spacing-1);">
+    <span style="font-family: var(--font-family-primary); font-size: var(--font-size-2xs); color: var(--color-secondary);">Pages</span>
+    <span style="font-family: var(--font-family-primary); font-size: var(--font-size-2xs); color: var(--color-secondary);">/</span>
+    <span style="font-family: var(--font-family-primary); font-size: var(--font-size-2xs); font-weight: var(--font-weight-semibold); color: var(--color-dark);">Billing</span>
+  </nav>
+
+  <!-- Right side controls -->
+  <div style="display: flex; align-items: center; gap: var(--spacing-3);">
+    <!-- Search -->
+    <div style="
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      padding: var(--spacing-1) var(--spacing-3);
+      width: 197px;
+    ">
+      <i data-lucide="search" style="width: 13px; height: 13px; color: var(--color-secondary); flex-shrink: 0;"></i>
+      <input type="text" placeholder="Type here…" style="border: none; background: transparent; font-family: var(--font-family-primary); font-size: var(--font-size-2xs); color: var(--color-dark); outline: none; width: 100%;">
+    </div>
+
+    <!-- Sign In link -->
+    <a href="#" data-screen="Sign In" style="
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-1);
+      text-decoration: none;
+      color: var(--color-body);
+      font-family: var(--font-family-primary);
+      font-size: var(--font-size-2xs);
+      font-weight: var(--font-weight-regular);
+    ">
+      <i data-lucide="user" style="width: 14px; height: 14px;"></i>
+      Sign In
+    </a>
+
+    <!-- Settings -->
+    <button style="background: none; border: none; cursor: pointer; padding: var(--spacing-1); display: flex; align-items: center; color: var(--color-body);">
+      <i data-lucide="settings" style="width: 16px; height: 16px;"></i>
+    </button>
+
+    <!-- Bell with notification badge -->
+    <button style="background: none; border: none; cursor: pointer; padding: var(--spacing-1); display: flex; align-items: center; color: var(--color-body); position: relative;">
+      <i data-lucide="bell" style="width: 16px; height: 16px;"></i>
+      <span style="
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 8px;
+        height: 8px;
+        background: var(--color-error);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.4rem;
+        font-weight: bold;
+        color: white;
+      ">4</span>
+    </button>
+  </div>
+</header>
+
+  <!-- Main content grid -->
+  <main class="main-content">
+
+    <!-- Row 1+2: Credit card group (cols 1-7, row 1) -->
+    <section class="section-credit-card">
+      <!-- Dark gradient credit card -->
+      <div class="credit-card-main">
+        <!-- wifi icon top-left -->
+        <div class="cc-wifi">
+          <i data-lucide="wifi" style="width: 22px; height: 22px; color: white;"></i>
+        </div>
+        <!-- Card number -->
+        <div class="cc-number">
+          <span>4562</span>
+          <span>1122</span>
+          <span>4594</span>
+          <span>7852</span>
+        </div>
+        <!-- Bottom: holder + expiry + logo -->
+        <div class="cc-bottom">
+          <div>
+            <div class="cc-label">Card Holder</div>
+            <div class="cc-value">Jack Peterson</div>
+          </div>
+          <div>
+            <div class="cc-label">Expires</div>
+            <div class="cc-value">11/22</div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <div style="width: 22px; height: 22px; border-radius: 50%; background: #eb001b; opacity: 0.9;"></div>
+            <div style="width: 22px; height: 22px; border-radius: 50%; background: #f79e1b; opacity: 0.9; margin-left: -10px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mini stat cards -->
+      <div class="mini-stat-cards">
+        <!-- Salary card -->
+        <div class="mini-stat-card">
+          <div class="mini-stat-icon">
+            <i data-lucide="landmark" style="width: 20px; height: 20px; color: white;"></i>
+          </div>
+          <div class="mini-stat-content">
+            <div class="mini-stat-title">Salary</div>
+            <div class="mini-stat-subtitle">Belong Interactive</div>
+          </div>
+          <div class="mini-stat-amount">+$2,000</div>
+        </div>
+
+        <!-- Paypal card -->
+        <div class="mini-stat-card">
+          <div class="mini-stat-icon">
+            <i data-lucide="paypal" style="width: 20px; height: 20px; color: white;"></i>
+          </div>
+          <div class="mini-stat-content">
+            <div class="mini-stat-title">Paypal</div>
+            <div class="mini-stat-subtitle">Freelance Payment</div>
+          </div>
+          <div class="mini-stat-amount">$49,000</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Row 1+2: Invoices panel (cols 8-12, rows 1-2) -->
+    <section class="section-invoices">
+      <div class="invoices-card">
+        <div class="card-header">
+          <span class="card-title">Invoices</span>
+          <button class="btn-view-all">VIEW ALL</button>
+        </div>
+
+        <!-- Invoice rows -->
+        <div class="invoice-row">
+          <i data-lucide="file-text" class="invoice-icon"></i>
+          <div class="invoice-details">
+            <div class="invoice-date">March, 01, 2021</div>
+            <div class="invoice-id">#MS-415646</div>
+          </div>
+          <div class="invoice-amount">$180</div>
+          <a href="#" class="invoice-pdf">PDF</a>
+        </div>
+
+        <div class="invoice-row">
+          <i data-lucide="file-text" class="invoice-icon"></i>
+          <div class="invoice-details">
+            <div class="invoice-date">February, 12, 2021</div>
+            <div class="invoice-id">#RV-126749</div>
+          </div>
+          <div class="invoice-amount">$250</div>
+          <a href="#" class="invoice-pdf">PDF</a>
+        </div>
+
+        <div class="invoice-row">
+          <i data-lucide="file-text" class="invoice-icon"></i>
+          <div class="invoice-details">
+            <div class="invoice-date">April, 05, 2020</div>
+            <div class="invoice-id">#FB-212562</div>
+          </div>
+          <div class="invoice-amount">$550</div>
+          <a href="#" class="invoice-pdf">PDF</a>
+        </div>
+
+        <div class="invoice-row">
+          <i data-lucide="file-text" class="invoice-icon"></i>
+          <div class="invoice-details">
+            <div class="invoice-date">June, 25, 2019</div>
+            <div class="invoice-id">#QW-103578</div>
+          </div>
+          <div class="invoice-amount">$400</div>
+          <a href="#" class="invoice-pdf">PDF</a>
+        </div>
+
+        <div class="invoice-row">
+          <i data-lucide="file-text" class="invoice-icon"></i>
+          <div class="invoice-details">
+            <div class="invoice-date">March, 03, 2019</div>
+            <div class="invoice-id">#AR-803481</div>
+          </div>
+          <div class="invoice-amount">$700</div>
+          <a href="#" class="invoice-pdf">PDF</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Row 2: Payment Method (cols 1-7) -->
+    <section class="section-payment">
+      <div class="payment-card">
+        <div class="payment-card-header">
+          <span class="card-title">Payment Method</span>
+          <button class="btn-add-card">ADD NEW CARD</button>
+        </div>
+        <div class="payment-cards-list">
+          <!-- Mastercard -->
+          <div class="saved-card">
+            <!-- Mastercard circles -->
+            <div style="display: flex; align-items: center; flex-shrink: 0;">
+              <div style="width: 22px; height: 22px; border-radius: 50%; background: #eb001b;"></div>
+              <div style="width: 22px; height: 22px; border-radius: 50%; background: #f79e1b; margin-left: -8px;"></div>
+            </div>
+            <div class="saved-card-number">
+              <span>****</span>
+              <span>****</span>
+              <span>****</span>
+              <span>7362</span>
+            </div>
+            <button class="saved-card-edit">
+              <i data-lucide="pencil" style="width: 14px; height: 14px;"></i>
+            </button>
+          </div>
+
+          <!-- Visa -->
+          <div class="saved-card">
+            <!-- Visa logo text -->
+            <div style="
+              flex-shrink: 0;
+              font-family: serif;
+              font-size: 18px;
+              font-weight: bold;
+              font-style: italic;
+              color: #1a1f71;
+              letter-spacing: -1px;
+              width: 44px;
+            ">VISA</div>
+            <div class="saved-card-number">
+              <span>****</span>
+              <span>****</span>
+              <span>****</span>
+              <span>3288</span>
+            </div>
+            <button class="saved-card-edit">
+              <i data-lucide="pencil" style="width: 14px; height: 14px;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Row 3: Billing Information (cols 1-8) -->
+    <section class="section-billing-info">
+      <div class="billing-info-card">
+        <div class="card-header">
+          <span class="card-title">Billing Information</span>
+        </div>
+
+        <!-- Card 1: Oliver Liam -->
+        <div class="billing-contact-card">
+          <div class="billing-contact-header">
+            <span class="billing-contact-name">Oliver Liam</span>
+            <div class="billing-contact-actions">
+              <button class="btn-delete">
+                <i data-lucide="trash-2" style="width: 12px; height: 12px;"></i>
+                DELETE
+              </button>
+              <button class="btn-edit">
+                <i data-lucide="pencil" style="width: 12px; height: 12px;"></i>
+                EDIT
+              </button>
+            </div>
+          </div>
+          <div class="billing-contact-fields">
+            <div class="billing-field">
+              <span class="billing-field-label">Company Name:</span>
+              <span class="billing-field-value">Viking Burrito</span>
+            </div>
+            <div class="billing-field">
+              <span class="billing-field-label">Email Address: </span>
+              <span class="billing-field-value">oliver@burrito.com</span>
+            </div>
+            <div class="billing-field">
+              <span class="billing-field-label">VAT Number:</span>
+              <span class="billing-field-value">FRB1235476</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Lucas Harper -->
+        <div class="billing-contact-card">
+          <div class="billing-contact-header">
+            <span class="billing-contact-name">Lucas Harper</span>
+            <div class="billing-contact-actions">
+              <button class="btn-delete">
+                <i data-lucide="trash-2" style="width: 12px; height: 12px;"></i>
+                DELETE
+              </button>
+              <button class="btn-edit">
+                <i data-lucide="pencil" style="width: 12px; height: 12px;"></i>
+                EDIT
+              </button>
+            </div>
+          </div>
+          <div class="billing-contact-fields">
+            <div class="billing-field">
+              <span class="billing-field-label">Company Name:</span>
+              <span class="billing-field-value">Stone Tech Zone</span>
+            </div>
+            <div class="billing-field">
+              <span class="billing-field-label">Email Address: </span>
+              <span class="billing-field-value">lucas@syone-tech.com</span>
+            </div>
+            <div class="billing-field">
+              <span class="billing-field-label">VAT Number:</span>
+              <span class="billing-field-value">FRB1235476</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Ethan James -->
+        <div class="billing-contact-card">
+          <div class="billing-contact-header">
+            <span class="billing-contact-name">Ethan James</span>
+            <div class="billing-contact-actions">
+              <button class="btn-delete">
+                <i data-lucide="trash-2" style="width: 12px; height: 12px;"></i>
+                DELETE
+              </button>
+              <button class="btn-edit">
+                <i data-lucide="pencil" style="width: 12px; height: 12px;"></i>
+                EDIT
+              </button>
+            </div>
+          </div>
+          <div class="billing-contact-fields">
+            <div class="billing-field">
+              <span class="billing-field-label">Company Name:</span>
+              <span class="billing-field-value">Fiber Notion</span>
+            </div>
+            <div class="billing-field">
+              <span class="billing-field-label">Email Address: </span>
+              <span class="billing-field-value">ethan@fiber.com</span>
+            </div>
+            <div class="billing-field">
+              <span class="billing-field-label">VAT Number:</span>
+              <span class="billing-field-value">FRB1235476</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Row 3: Your Transactions (cols 9-12) -->
+    <section class="section-transactions">
+      <div class="transactions-card">
+        <div class="transactions-header">
+          <span class="card-title">Your Transactions</span>
+          <div class="transactions-date-filter">
+            <i data-lucide="calendar"></i>
+            <span>23 - 30 March 2021</span>
+          </div>
+        </div>
+
+        <!-- NEWEST group -->
+        <div class="tx-group-label">NEWEST</div>
+
+        <div class="tx-row">
+          <div class="tx-icon tx-icon--debit">
+            <i data-lucide="minus"></i>
+          </div>
+          <div class="tx-info">
+            <div class="tx-name">Netflix</div>
+            <div class="tx-date">27 March 2021, at 12:30 PM</div>
+          </div>
+          <div class="tx-amount tx-amount--debit">- $2,500</div>
+        </div>
+
+        <div class="tx-row">
+          <div class="tx-icon tx-icon--credit">
+            <i data-lucide="plus"></i>
+          </div>
+          <div class="tx-info">
+            <div class="tx-name">Apple</div>
+            <div class="tx-date">27 March 2021, at 04:30 AM</div>
+          </div>
+          <div class="tx-amount tx-amount--credit">+ $2,000</div>
+        </div>
+
+        <!-- YESTERDAY group -->
+        <div class="tx-group-label">YESTERDAY</div>
+
+        <div class="tx-row">
+          <div class="tx-icon tx-icon--credit">
+            <i data-lucide="plus"></i>
+          </div>
+          <div class="tx-info">
+            <div class="tx-name">Stripe</div>
+            <div class="tx-date">26 March 2021, at 12:30 AM</div>
+          </div>
+          <div class="tx-amount tx-amount--credit">+ $750</div>
+        </div>
+
+        <div class="tx-row">
+          <div class="tx-icon tx-icon--credit">
+            <i data-lucide="plus"></i>
+          </div>
+          <div class="tx-info">
+            <div class="tx-name">HubSpot</div>
+            <div class="tx-date">26 March 2021, at 11:30 AM</div>
+          </div>
+          <div class="tx-amount tx-amount--credit">+ $1,050</div>
+        </div>
+
+        <div class="tx-row">
+          <div class="tx-icon tx-icon--credit">
+            <i data-lucide="plus"></i>
+          </div>
+          <div class="tx-info">
+            <div class="tx-name">Creative Tim</div>
+            <div class="tx-date">26 March 2021, at 07:30 AM</div>
+          </div>
+          <div class="tx-amount tx-amount--credit">+ $2,400</div>
+        </div>
+
+        <div class="tx-row">
+          <div class="tx-icon tx-icon--pending">
+            <i data-lucide="alert-circle"></i>
+          </div>
+          <div class="tx-info">
+            <div class="tx-name">Webflow</div>
+            <div class="tx-date">26 March 2021, at 04:00 AM</div>
+          </div>
+          <div class="tx-amount tx-amount--pending">Pending</div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Shell: footer -->
+  <!-- Shell: footer | Source: Dashboard-sidebar transparent -->
+<footer class="shell-footer" style="
+  height: 20px;
+  background: transparent;
+  padding: 0 var(--spacing-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--color-border);
+">
+  <!-- Copyright -->
+  <span style="font-family: var(--font-family-primary); font-size: var(--font-size-2xs); color: var(--color-body);">
+    © 2021, made with
+    <span style="color: var(--color-error);">&#9829;</span>
+    by
+    <a href="#" style="color: var(--color-dark); font-weight: var(--font-weight-semibold); text-decoration: none;">Creative Tim</a>
+    for a better web.
+  </span>
+
+  <!-- Footer Links -->
+  <nav style="display: flex; align-items: center; gap: var(--spacing-4);">
+    <a href="#" style="font-family: var(--font-family-primary); font-size: var(--font-size-2xs); color: var(--color-body); text-decoration: none;">Creative Tim</a>
+    <a href="#" style="font-family: var(--font-family-primary); font-size: var(--font-size-2xs); color: var(--color-body); text-decoration: none;">About Us</a>
+    <a href="#" style="font-family: var(--font-family-primary); font-size: var(--font-size-2xs); color: var(--color-body); text-decoration: none;">Blog</a>
+    <a href="#" style="font-family: var(--font-family-primary); font-size: var(--font-size-2xs); color: var(--color-body); text-decoration: none;">License</a>
+  </nav>
+</footer>
+
+  </div><!-- .page-wrapper -->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+{
+  "screenName": "Profile",
+  "extractedAt": "2026-02-06T00:00:00Z",
+  "sections": {
+    "profileHeader": {
+      "banner": {
+        "type": "gradient-wave",
+        "gradient": "linear-gradient(310deg, #7928ca, #ff0080)"
+      },
+      "avatar": {
+        "initials": "AT",
+        "backgroundColor": "#e9ecef"
+      },
+      "name": "Alec Thompson",
+      "role": "CEO / Co-Founder",
+      "stats": [
+        { "label": "Overview", "count": null },
+        { "label": "Teams", "count": null },
+        { "label": "Projects", "count": null }
+      ]
+    },
+    "platformSettings": {
+      "title": "Platform Settings",
+      "sections": [
+        {
+          "label": "ACCOUNT",
+          "items": [
+            {
+              "id": "toggle-follow",
+              "text": "Email me when someone follows me",
+              "enabled": true
+            },
+            {
+              "id": "toggle-answers",
+              "text": "Email me when someone answers me",
+              "enabled": false
+            },
+            {
+              "id": "toggle-mentions",
+              "text": "Email me when someone mentions me",
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "label": "APPLICATION",
+          "items": [
+            {
+              "id": "toggle-launches",
+              "text": "New launches and projects",
+              "enabled": false
+            },
+            {
+              "id": "toggle-updates",
+              "text": "Monthly product updates",
+              "enabled": true
+            },
+            {
+              "id": "toggle-newsletter",
+              "text": "Subscribe to newsletter",
+              "enabled": true
+            }
+          ]
+        }
+      ]
+    },
+    "profileInformation": {
+      "title": "Profile Information",
+      "bio": "Hi, I'm Alec Thompson, Decisions: If you can't decide, the answer is no. If you have a better way - I'd love to hear it.",
+      "fields": [
+        {
+          "label": "Full Name",
+          "value": "Sarah Emily Jacob"
+        },
+        {
+          "label": "Mobile",
+          "value": "+40 (770) 888 888"
+        },
+        {
+          "label": "Email",
+          "value": "sarahemily@mail.com"
+        },
+        {
+          "label": "Location",
+          "value": "USA"
+        }
+      ],
+      "socialLinks": [
+        {
+          "platform": "facebook",
+          "icon": "facebook",
+          "url": "https://facebook.com"
+        },
+        {
+          "platform": "twitter",
+          "icon": "twitter",
+          "url": "https://twitter.com"
+        },
+        {
+          "platform": "instagram",
+          "icon": "instagram",
+          "url": "https://instagram.com"
+        }
+      ]
+    },
+    "conversations": {
+      "title": "Conversations",
+      "items": [
+        {
+          "id": "conv-1",
+          "name": "Sophie B",
+          "avatar": "SB",
+          "message": "Hi! I need more information about the project...",
+          "timestamp": "2 hours ago",
+          "unread": false
+        },
+        {
+          "id": "conv-2",
+          "name": "Anne Marie",
+          "avatar": "AM",
+          "message": "Awesome work, can you help me with the design?",
+          "timestamp": "5 hours ago",
+          "unread": false
+        },
+        {
+          "id": "conv-3",
+          "name": "Ivanna",
+          "avatar": "IV",
+          "message": "About files I can upload directly to the system.",
+          "timestamp": "1 day ago",
+          "unread": false
+        },
+        {
+          "id": "conv-4",
+          "name": "Peterson",
+          "avatar": "PT",
+          "message": "Have a great afternoon and let's sync next week!",
+          "timestamp": "2 days ago",
+          "unread": false
+        },
+        {
+          "id": "conv-5",
+          "name": "Nick Daniel",
+          "avatar": "ND",
+          "message": "Hi! I need more information about the new updates.",
+          "timestamp": "3 days ago",
+          "unread": false
+        }
+      ]
+    },
+    "projects": {
+      "title": "Projects",
+      "subtitle": "Architects Design Houses",
+      "items": [
+        {
+          "id": "project-1",
+          "title": "Modern",
+          "description": "As Uber works through a huge number of internally management problems.",
+          "image": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500&h=375&fit=crop",
+          "budget": "$14,000",
+          "status": "IN PROGRESS",
+          "statusColor": "#cb0c9f"
+        },
+        {
+          "id": "project-2",
+          "title": "Scandinavian",
+          "description": "Music is something that every person has his own specific opinion about.",
+          "image": "https://images.unsplash.com/photo-1524634126288-86f3f1d2d7b0?w=500&h=375&fit=crop",
+          "budget": "$12,500",
+          "status": "IN PROGRESS",
+          "statusColor": "#cb0c9f"
+        },
+        {
+          "id": "project-3",
+          "title": "Minimalist",
+          "description": "Different people have different taste, and various types of music.",
+          "image": "https://images.unsplash.com/photo-1523217582562-430f63602d4e?w=500&h=375&fit=crop",
+          "budget": "$18,200",
+          "status": "IN PROGRESS",
+          "statusColor": "#cb0c9f"
+        }
+      ]
+    },
+    "footer": {
+      "copyright": "© 2021, made with ❤ by Creative Tim",
+      "links": [
+        {
+          "text": "Creative Tim",
+          "url": "#"
+        },
+        {
+          "text": "About Us",
+          "url": "#"
+        },
+        {
+          "text": "Blog",
+          "url": "#"
+        },
+        {
+          "text": "Licenses",
+          "url": "#"
+        }
+      ]
+    }
+  },
+  "navigation": {
+    "mainItems": [
+      {
+        "icon": "layout-dashboard",
+        "label": "Dashboard",
+        "href": "/dashboard",
+        "active": false
+      },
+      {
+        "icon": "table",
+        "label": "Tables",
+        "href": "/tables",
+        "active": false
+      },
+      {
+        "icon": "credit-card",
+        "label": "Billing",
+        "href": "/billing",
+        "active": false
+      },
+      {
+        "icon": "glasses",
+        "label": "Virtual Reality",
+        "href": "/vr",
+        "active": false
+      },
+      {
+        "icon": "type",
+        "label": "RTL",
+        "href": "/rtl",
+        "active": false
+      }
+    ],
+    "accountItems": [
+      {
+        "icon": "user",
+        "label": "Profile",
+        "href": "/profile",
+        "active": true
+      },
+      {
+        "icon": "log-in",
+        "label": "Sign In",
+        "href": "/signin",
+        "active": false
+      },
+      {
+        "icon": "user-plus",
+        "label": "Sign Up",
+        "href": "/signup",
+        "active": false
+      }
+    ]
+  }
+}

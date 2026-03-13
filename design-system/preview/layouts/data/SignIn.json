@@ -1,0 +1,342 @@
+{
+  "screenName": "SignIn",
+  "figmaFrameId": "0:2957",
+  "extractedAt": "2026-02-06T00:00:00Z",
+  "extraction": {
+    "status": "complete",
+    "confidence": 0.98,
+    "timestamp": "2026-02-06T00:00:00Z"
+  },
+  "dimensions": {
+    "width": 1440,
+    "height": 1137
+  },
+  "navbar": {
+    "height": 70,
+    "background": "#ffffff",
+    "logo": "Soft UI Dashboard",
+    "links": [
+      {
+        "text": "Dashboard",
+        "href": "/dashboard"
+      },
+      {
+        "text": "Profile",
+        "href": "/profile"
+      },
+      {
+        "text": "Sign Up",
+        "href": "/signup"
+      },
+      {
+        "text": "Sign In",
+        "href": "/signin",
+        "active": true
+      }
+    ],
+    "cta": {
+      "text": "FREE DOWNLOAD",
+      "style": "gradient-primary",
+      "gradient": {
+        "angle": 310,
+        "stops": ["#7928ca", "#ff0080"]
+      },
+      "textColor": "#ffffff"
+    }
+  },
+  "form": {
+    "title": "Sign In",
+    "subtitle": "Enter your email and password to sign in",
+    "fields": [
+      {
+        "id": "email",
+        "type": "email",
+        "label": "Email",
+        "placeholder": "Email",
+        "required": true,
+        "dimensions": {
+          "width": 361,
+          "height": 40
+        },
+        "styling": {
+          "border": "1px solid #d2d6da",
+          "borderRadius": "8px",
+          "padding": "12px 16px"
+        },
+        "focusState": {
+          "borderColor": "#cb0c9f",
+          "boxShadow": "0 0 0 3px rgba(203, 12, 159, 0.1)"
+        }
+      },
+      {
+        "id": "password",
+        "type": "password",
+        "label": "Password",
+        "placeholder": "Password",
+        "required": true,
+        "dimensions": {
+          "width": 361,
+          "height": 40
+        },
+        "styling": {
+          "border": "1px solid #d2d6da",
+          "borderRadius": "8px",
+          "padding": "12px 16px"
+        },
+        "focusState": {
+          "borderColor": "#cb0c9f",
+          "boxShadow": "0 0 0 3px rgba(203, 12, 159, 0.1)"
+        }
+      }
+    ],
+    "rememberMe": {
+      "id": "rememberMe",
+      "type": "toggle",
+      "label": "Remember me",
+      "checked": true,
+      "toggle": {
+        "width": 42,
+        "height": 20,
+        "borderRadius": "10px",
+        "onColor": "#3a414f",
+        "offColor": "#dee2e6",
+        "indicator": {
+          "width": 16,
+          "height": 16,
+          "color": "#ffffff"
+        }
+      }
+    },
+    "submit": {
+      "id": "signInButton",
+      "text": "SIGN IN",
+      "type": "button",
+      "style": "gradient-primary",
+      "gradient": {
+        "angle": 310,
+        "stops": ["#7928ca", "#ff0080"]
+      },
+      "textColor": "#ffffff",
+      "dimensions": {
+        "width": 361,
+        "height": 40
+      },
+      "styling": {
+        "borderRadius": "8px",
+        "fontWeight": 700
+      }
+    },
+    "footer": {
+      "text": "Don't have an account?",
+      "link": {
+        "text": "Sign Up",
+        "href": "/signup",
+        "gradient": {
+          "angle": 310,
+          "stops": ["#7928ca", "#ff0080"]
+        }
+      }
+    }
+  },
+  "image": {
+    "type": "gradient-wave",
+    "description": "Colorful gradient wave pattern",
+    "dimensions": {
+      "width": 753.5,
+      "height": 876
+    },
+    "gradient": {
+      "angle": 135,
+      "stops": ["#ff1493", "#00ffff", "#ffff00", "#00ff00", "#ff1493"]
+    },
+    "colors": ["#ff1493", "#00ffff", "#ffff00", "#00ff00"],
+    "animated": true,
+    "animation": {
+      "name": "wave",
+      "duration": "8s",
+      "timing": "ease-in-out"
+    }
+  },
+  "footer": {
+    "height": 132,
+    "background": "#ffffff",
+    "borderTop": "1px solid #e9ecef",
+    "sections": [
+      {
+        "id": "copyright",
+        "type": "text",
+        "content": "Copyright © 2021 Soft by Creative Tim.",
+        "color": "#8392ab"
+      },
+      {
+        "id": "social",
+        "type": "icon-list",
+        "icons": [
+          {
+            "name": "facebook",
+            "symbol": "f",
+            "color": "#8392ab",
+            "href": "#facebook"
+          },
+          {
+            "name": "twitter",
+            "symbol": "𝕏",
+            "color": "#8392ab",
+            "href": "#twitter"
+          },
+          {
+            "name": "linkedin",
+            "symbol": "in",
+            "color": "#8392ab",
+            "href": "#linkedin"
+          },
+          {
+            "name": "pinterest",
+            "symbol": "P",
+            "color": "#8392ab",
+            "href": "#pinterest"
+          },
+          {
+            "name": "github",
+            "symbol": "⭘",
+            "color": "#8392ab",
+            "href": "#github"
+          }
+        ]
+      },
+      {
+        "id": "links",
+        "type": "link-group",
+        "groups": [
+          {
+            "title": "Company",
+            "links": [
+              { "text": "About Us", "href": "#about" },
+              { "text": "Team", "href": "#team" },
+              { "text": "Products", "href": "#products" }
+            ]
+          },
+          {
+            "title": "Resources",
+            "links": [
+              { "text": "Blog", "href": "#blog" },
+              { "text": "Pricing", "href": "#pricing" }
+            ]
+          }
+        ],
+        "color": "#8392ab"
+      }
+    ]
+  },
+  "semanticTokens": {
+    "colors": {
+      "primary": "#cb0c9f",
+      "secondary": "#8392ab",
+      "background": "#ffffff",
+      "textDark": "#252525",
+      "inputBorder": "#d2d6da",
+      "toggleOnBg": "#3a414f"
+    },
+    "gradients": {
+      "primary": {
+        "angle": 310,
+        "stops": ["#7928ca", "#ff0080"],
+        "usage": "Buttons, heading text, accent elements"
+      }
+    },
+    "radius": {
+      "input": "8px",
+      "button": "8px",
+      "card": "16px"
+    },
+    "shadows": {
+      "card": "0 2px 4px -1px rgba(0,0,0,0.07), 0 4px 6px -1px rgba(0,0,0,0.12)",
+      "inputFocus": "0 0 0 3px rgba(203, 12, 159, 0.1)"
+    }
+  },
+  "components": [
+    {
+      "name": "Navbar",
+      "type": "header",
+      "figmaId": "3:7",
+      "instances": 1
+    },
+    {
+      "name": "EmailInput",
+      "type": "input-field",
+      "figmaId": "3:4",
+      "instances": 1
+    },
+    {
+      "name": "PasswordInput",
+      "type": "input-field",
+      "figmaId": "3:5",
+      "instances": 1
+    },
+    {
+      "name": "RememberMeToggle",
+      "type": "toggle",
+      "figmaId": "0:2995",
+      "instances": 1
+    },
+    {
+      "name": "SignInButton",
+      "type": "button",
+      "figmaId": "0:3007",
+      "instances": 1
+    },
+    {
+      "name": "DecorationImage",
+      "type": "image",
+      "figmaId": "0:2958",
+      "instances": 1
+    }
+  ],
+  "metadata": {
+    "screenType": "authentication",
+    "pattern": "split-form-with-hero",
+    "authPage": true,
+    "hasSidebar": false,
+    "hasNavbar": true,
+    "hasFooter": true,
+    "layoutType": "split-column",
+    "deviceProfile": "desktop",
+    "extractedFields": [
+      "email",
+      "password",
+      "rememberMe"
+    ],
+    "interactiveElements": [
+      {
+        "type": "input",
+        "count": 2
+      },
+      {
+        "type": "toggle",
+        "count": 1
+      },
+      {
+        "type": "button",
+        "count": 2
+      },
+      {
+        "type": "link",
+        "count": 7
+      }
+    ],
+    "ctaButtons": [
+      "Sign In",
+      "Free Download"
+    ],
+    "externalLinks": [
+      "Sign Up",
+      "Dashboard",
+      "Profile",
+      "About Us",
+      "Team",
+      "Products",
+      "Blog",
+      "Pricing"
+    ]
+  }
+}

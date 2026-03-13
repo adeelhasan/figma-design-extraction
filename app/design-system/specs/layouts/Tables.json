@@ -1,0 +1,58 @@
+{
+  "$schema": "semantic-layout-v1",
+  "screen": "Tables",
+  "figmaFrameId": "0:1777",
+  "dimensions": { "width": 1440, "height": 1262, "viewport": "desktop" },
+  "shells": ["sidebar", "navbar", "footer"],
+  "contentArea": {
+    "bounds": { "x": 248, "y": 45, "width": 1192, "height": 1197 },
+    "padding": { "left": 24, "right": 24, "top": 24, "bottom": 24 },
+    "effectiveWidth": 1144
+  },
+  "grid": { "columns": 12, "gap": 24, "margin": { "left": 24, "right": 24 } },
+  "rows": [
+    {
+      "id": "row-1",
+      "y": 45,
+      "height": 583,
+      "children": [
+        {
+          "id": "table-1",
+          "name": "Authors Table",
+          "gridColumn": "1 / 13",
+          "gridRow": "1 / 2",
+          "columnSpan": 12,
+          "rowSpan": 1,
+          "bounds": { "x": 248, "y": 45, "width": 1144, "height": 583 }
+        }
+      ]
+    },
+    {
+      "id": "row-2",
+      "y": 652,
+      "height": 546,
+      "children": [
+        {
+          "id": "table-2",
+          "name": "Projects Table",
+          "gridColumn": "1 / 13",
+          "gridRow": "2 / 3",
+          "columnSpan": 12,
+          "rowSpan": 1,
+          "bounds": { "x": 248, "y": 652, "width": 1144, "height": 546 }
+        }
+      ]
+    }
+  ],
+  "sections": {
+    "order": ["table-1", "table-2"]
+  },
+  "css": {
+    "gridTemplate": "grid-template-columns: repeat(12, 1fr); grid-template-rows: auto auto;",
+    "containerStyles": {
+      "display": "grid",
+      "gap": "24px",
+      "padding": "24px"
+    }
+  }
+}

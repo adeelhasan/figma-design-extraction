@@ -1,0 +1,212 @@
+{
+  "screenName": "SignUp",
+  "frameId": "0:2877",
+  "dimensions": {
+    "width": 1440,
+    "height": 1252
+  },
+  "layout": {
+    "type": "stacked",
+    "pattern": "auth-full-header",
+    "hasNavbar": true,
+    "hasSidebar": false,
+    "hasMobileMenu": false
+  },
+  "sections": [
+    {
+      "id": "navbar",
+      "name": "navbar",
+      "type": "navigation",
+      "subtype": "top-bar",
+      "location": "top",
+      "dimensions": {
+        "height": 70,
+        "width": 1440
+      },
+      "elements": {
+        "logo": {
+          "text": "Soft UI Dashboard",
+          "type": "text"
+        },
+        "links": [
+          { "text": "Dashboard", "href": "/dashboard" },
+          { "text": "Profile", "href": "/profile" },
+          { "text": "Sign Up", "href": "/signup", "active": true },
+          { "text": "Sign In", "href": "/signin" }
+        ],
+        "cta": {
+          "text": "FREE DOWNLOAD",
+          "type": "button",
+          "style": "secondary"
+        }
+      }
+    },
+    {
+      "id": "hero-background",
+      "name": "image",
+      "type": "decoration",
+      "location": "top",
+      "dimensions": {
+        "height": 549,
+        "width": 1440
+      },
+      "styling": {
+        "background": "gradient-dark",
+        "angle": "310deg",
+        "colors": ["#141727", "#3a416f"],
+        "hasImage": true,
+        "imageType": "gradient-wave-with-curved-elements"
+      }
+    },
+    {
+      "id": "sign-up-header",
+      "name": "Sign Up header",
+      "type": "header",
+      "location": "top-center",
+      "positioning": "absolute",
+      "zIndex": 10,
+      "content": {
+        "title": {
+          "text": "Sign Up",
+          "tag": "h2",
+          "size": "50px",
+          "weight": "bold",
+          "color": "white"
+        },
+        "subtitle": {
+          "text": "Use these awesome forms to login or create new account in your project for free.",
+          "tag": "p",
+          "size": "14px",
+          "color": "rgba(255,255,255,0.8)"
+        }
+      }
+    },
+    {
+      "id": "sign-up-form",
+      "name": "form",
+      "type": "card",
+      "subtype": "form-card",
+      "location": "center",
+      "positioning": "absolute",
+      "overlap": -100,
+      "dimensions": {
+        "width": 409,
+        "maxHeight": 549
+      },
+      "styling": {
+        "background": "var(--color-surface)",
+        "borderRadius": "var(--radius-xl)",
+        "boxShadow": "var(--shadow-card)",
+        "padding": "var(--spacing-6)"
+      },
+      "children": {
+        "registerHeader": {
+          "text": "Register with",
+          "type": "text",
+          "weight": "semibold"
+        },
+        "socialButtons": [
+          { "icon": "facebook", "type": "icon-button" },
+          { "icon": "apple", "type": "icon-button" },
+          { "icon": "google", "type": "icon-button" }
+        ],
+        "divider": "or",
+        "formFields": [
+          {
+            "id": "input-name",
+            "type": "text-input",
+            "label": "Name",
+            "placeholder": "Name"
+          },
+          {
+            "id": "input-email",
+            "type": "email-input",
+            "label": "Email",
+            "placeholder": "Email"
+          },
+          {
+            "id": "input-password",
+            "type": "password-input",
+            "label": "Password",
+            "placeholder": "Password"
+          }
+        ],
+        "checkbox": {
+          "id": "agree-terms",
+          "type": "checkbox",
+          "label": "I agree the Terms and Conditions"
+        },
+        "submitButton": {
+          "text": "SIGN UP",
+          "type": "button",
+          "style": "primary",
+          "fullWidth": true
+        },
+        "footer": {
+          "text": "Already have an account?",
+          "link": {
+            "text": "Sign In",
+            "href": "/signin"
+          }
+        }
+      }
+    },
+    {
+      "id": "footer",
+      "name": "footer",
+      "type": "footer",
+      "location": "bottom",
+      "dimensions": {
+        "height": 132,
+        "width": 1440
+      },
+      "content": {
+        "links": [
+          { "text": "Company", "href": "#" },
+          { "text": "About Us", "href": "#" },
+          { "text": "Team", "href": "#" },
+          { "text": "Products", "href": "#" },
+          { "text": "Blog", "href": "#" },
+          { "text": "Pricing", "href": "#" }
+        ],
+        "copyright": "Copyright © 2021 Soft by Creative Tim."
+      }
+    }
+  ],
+  "tokenUsage": {
+    "colors": {
+      "background": "var(--color-background)",
+      "surface": "var(--color-surface)",
+      "textPrimary": "var(--color-text-primary)",
+      "textMuted": "var(--color-text-muted)"
+    },
+    "gradients": {
+      "heroBg": "var(--gradient-dark)",
+      "button": "var(--gradient-primary)"
+    },
+    "effects": {
+      "cardShadow": "var(--shadow-card)",
+      "cardRadius": "var(--radius-xl)",
+      "buttonRadius": "var(--radius-DEFAULT)",
+      "inputRadius": "var(--radius-md)"
+    },
+    "spacing": {
+      "padding": "var(--spacing-6)",
+      "gap": "var(--spacing-3)"
+    }
+  },
+  "componentInstances": {
+    "inputs": 3,
+    "buttons": 2,
+    "socialButtons": 3,
+    "checkbox": 1,
+    "textLinks": 7
+  },
+  "metadata": {
+    "extractedAt": "2026-02-06T00:00:00Z",
+    "description": "Sign Up screen with full-width gradient hero header, centered form card overlay, and footer",
+    "authPattern": true,
+    "hasSideImage": false,
+    "formCardOverlap": true
+  }
+}

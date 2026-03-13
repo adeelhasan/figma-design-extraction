@@ -1,0 +1,2147 @@
+{
+  "version": "1.0",
+  "extractedAt": "2026-03-11T19:08:22.107061+00:00",
+  "library": "lucide",
+  "cdnUrl": "https://unpkg.com/lucide@latest",
+  "summary": {
+    "total": 48,
+    "mapped": 19,
+    "unmapped": 29,
+    "exactMatches": 14,
+    "fuzzyMatches": 5,
+    "inferredMatches": 0
+  },
+  "icons": {
+    "mapped": [
+      {
+        "figmaName": "credit-card",
+        "libraryIcon": "credit-card",
+        "confidence": "exact",
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "sm"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "sm"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "sm"
+          }
+        ]
+      },
+      {
+        "figmaName": "shop",
+        "libraryIcon": "shopping-cart",
+        "confidence": "fuzzy",
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "xs"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "xs"
+          }
+        ]
+      },
+      {
+        "figmaName": "settings",
+        "libraryIcon": "settings",
+        "confidence": "exact",
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "sm"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "sm"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "xs"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "sm"
+          }
+        ]
+      },
+      {
+        "figmaName": "document",
+        "libraryIcon": "file-text",
+        "confidence": "exact",
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "sm"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "sm"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "sm"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "sm"
+          }
+        ]
+      },
+      {
+        "figmaName": "user-circle",
+        "libraryIcon": "user",
+        "confidence": "fuzzy",
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "xs"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "xs"
+          },
+          {
+            "screenName": "Sign Up",
+            "sectionName": "Sign Up",
+            "size": "xs"
+          },
+          {
+            "screenName": "Sign In",
+            "sectionName": "Sign In",
+            "size": "xs"
+          }
+        ]
+      },
+      {
+        "figmaName": "bell",
+        "libraryIcon": "bell",
+        "confidence": "exact",
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "xs"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "xs"
+          }
+        ]
+      },
+      {
+        "figmaName": "search",
+        "libraryIcon": "search",
+        "confidence": "exact",
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "sm"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "sm"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "sm"
+          }
+        ]
+      },
+      {
+        "figmaName": "plus",
+        "libraryIcon": "plus",
+        "confidence": "exact",
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          }
+        ]
+      },
+      {
+        "figmaName": "money-coins",
+        "libraryIcon": "dollar-sign",
+        "confidence": "fuzzy",
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "md"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "md"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          }
+        ]
+      },
+      {
+        "figmaName": "world",
+        "libraryIcon": "globe",
+        "confidence": "exact",
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "md"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "md"
+          }
+        ]
+      },
+      {
+        "figmaName": "cart",
+        "libraryIcon": "shopping-cart",
+        "confidence": "exact",
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "md"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "md"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          }
+        ]
+      },
+      {
+        "figmaName": "arrow-right",
+        "libraryIcon": "arrow-right",
+        "confidence": "exact",
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          }
+        ]
+      },
+      {
+        "figmaName": "access-key",
+        "libraryIcon": "key",
+        "confidence": "fuzzy",
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          }
+        ]
+      },
+      {
+        "figmaName": "wifi",
+        "libraryIcon": "wifi",
+        "confidence": "exact",
+        "usedIn": [
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "md"
+          }
+        ]
+      },
+      {
+        "figmaName": "trash",
+        "libraryIcon": "trash-2",
+        "confidence": "exact",
+        "usedIn": [
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          }
+        ]
+      },
+      {
+        "figmaName": "calendar",
+        "libraryIcon": "calendar",
+        "confidence": "exact",
+        "usedIn": [
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "sm"
+          },
+          {
+            "screenName": "Sign Up",
+            "sectionName": "Sign Up",
+            "size": "xs"
+          },
+          {
+            "screenName": "Sign In",
+            "sectionName": "Sign In",
+            "size": "xs"
+          }
+        ]
+      },
+      {
+        "figmaName": "upload",
+        "libraryIcon": "upload",
+        "confidence": "exact",
+        "usedIn": [
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "sm"
+          }
+        ]
+      },
+      {
+        "figmaName": "checkbox/active",
+        "libraryIcon": "check",
+        "confidence": "fuzzy",
+        "usedIn": [
+          {
+            "screenName": "Sign Up",
+            "sectionName": "Sign Up",
+            "size": "md"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "unknown",
+            "size": "md"
+          }
+        ]
+      },
+      {
+        "figmaName": "check",
+        "libraryIcon": "check",
+        "confidence": "exact",
+        "usedIn": [
+          {
+            "screenName": "Sign Up",
+            "sectionName": "Sign Up",
+            "size": "xs"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "checkbox/active",
+            "size": "xs"
+          }
+        ]
+      }
+    ],
+    "unmapped": [
+      {
+        "figmaName": "button/with icon/default",
+        "nodeId": "0:239",
+        "dimensions": {
+          "width": 127.0,
+          "height": 40.0
+        },
+        "usedIn": [
+          {
+            "screenName": "unknown",
+            "sectionName": "Buttons",
+            "size": "xl"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "unknown",
+            "size": "xl"
+          }
+        ],
+        "suggestedAction": "manual-map"
+      },
+      {
+        "figmaName": "spaceship",
+        "nodeId": "I0:239;0:3115",
+        "dimensions": {
+          "width": 14.0,
+          "height": 14.000404357910156
+        },
+        "usedIn": [
+          {
+            "screenName": "unknown",
+            "sectionName": "Buttons",
+            "size": "sm"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "Buttons",
+            "size": "sm"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "Buttons",
+            "size": "sm"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "Buttons",
+            "size": "sm"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "Buttons",
+            "size": "sm"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "Buttons",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "sm"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "sm"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "sm"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "button/with icon/hover",
+            "size": "sm"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "button/with icon/hover",
+            "size": "sm"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "button/just icon/hover",
+            "size": "sm"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "button/just icon/active",
+            "size": "sm"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "button/just icon/default",
+            "size": "sm"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "button/with icon/default",
+            "size": "sm"
+          }
+        ],
+        "suggestedAction": "manual-map"
+      },
+      {
+        "figmaName": "Shape",
+        "nodeId": "I0:239;0:3118",
+        "dimensions": {
+          "width": 11.955113410949707,
+          "height": 11.955530166625977
+        },
+        "usedIn": [
+          {
+            "screenName": "unknown",
+            "sectionName": "Buttons",
+            "size": "xs"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "Buttons",
+            "size": "xs"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "Buttons",
+            "size": "xs"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "Buttons",
+            "size": "xs"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "Buttons",
+            "size": "xs"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "Buttons",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "md"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "lg"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "lg"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "lg"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "md"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "lg"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "lg"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "lg"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "lg"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "xs"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "xs"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "xs"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "xs"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "lg"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "sm"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "xs"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "xs"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "sm"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "xs"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "xs"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "sm"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "sm"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "sm"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "sm"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "xs"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "sm"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "xs"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "xs"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "sm"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "xs"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "xs"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "sm"
+          },
+          {
+            "screenName": "Sign Up",
+            "sectionName": "Sign Up",
+            "size": "xs"
+          },
+          {
+            "screenName": "Sign Up",
+            "sectionName": "Sign Up",
+            "size": "xs"
+          },
+          {
+            "screenName": "Sign In",
+            "sectionName": "Sign In",
+            "size": "xs"
+          },
+          {
+            "screenName": "Sign In",
+            "sectionName": "Sign In",
+            "size": "xs"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "button/with icon/hover",
+            "size": "xs"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "button/with icon/hover",
+            "size": "xs"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "button/just icon/hover",
+            "size": "xs"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "button/just icon/active",
+            "size": "xs"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "button/just icon/default",
+            "size": "xs"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "button/with icon/default",
+            "size": "xs"
+          }
+        ],
+        "suggestedAction": "manual-map"
+      },
+      {
+        "figmaName": "button/just icon/default",
+        "nodeId": "0:240",
+        "dimensions": {
+          "width": 40.0,
+          "height": 40.0
+        },
+        "usedIn": [
+          {
+            "screenName": "unknown",
+            "sectionName": "Buttons",
+            "size": "xl"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "unknown",
+            "size": "xl"
+          }
+        ],
+        "suggestedAction": "manual-map"
+      },
+      {
+        "figmaName": "button/just icon/active",
+        "nodeId": "0:241",
+        "dimensions": {
+          "width": 40.0,
+          "height": 40.0
+        },
+        "usedIn": [
+          {
+            "screenName": "unknown",
+            "sectionName": "Buttons",
+            "size": "xl"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "unknown",
+            "size": "xl"
+          }
+        ],
+        "suggestedAction": "manual-map"
+      },
+      {
+        "figmaName": "button/just icon/hover",
+        "nodeId": "0:242",
+        "dimensions": {
+          "width": 44.0,
+          "height": 44.0
+        },
+        "usedIn": [
+          {
+            "screenName": "unknown",
+            "sectionName": "Buttons",
+            "size": "xl"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "unknown",
+            "size": "xl"
+          }
+        ],
+        "suggestedAction": "manual-map"
+      },
+      {
+        "figmaName": "button/with icon/hover",
+        "nodeId": "0:243",
+        "dimensions": {
+          "width": 127.0,
+          "height": 40.0
+        },
+        "usedIn": [
+          {
+            "screenName": "unknown",
+            "sectionName": "Buttons",
+            "size": "xl"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "Buttons",
+            "size": "xl"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "unknown",
+            "size": "xl"
+          },
+          {
+            "screenName": "unknown",
+            "sectionName": "unknown",
+            "size": "xl"
+          }
+        ],
+        "suggestedAction": "manual-map"
+      },
+      {
+        "figmaName": "With Icon",
+        "nodeId": "0:256",
+        "dimensions": {
+          "width": 70.0,
+          "height": 22.0
+        },
+        "usedIn": [
+          {
+            "screenName": "unknown",
+            "sectionName": "Buttons",
+            "size": "xl"
+          }
+        ],
+        "suggestedAction": "use-placeholder"
+      },
+      {
+        "figmaName": "Just Icon",
+        "nodeId": "0:257",
+        "dimensions": {
+          "width": 63.0,
+          "height": 22.0
+        },
+        "usedIn": [
+          {
+            "screenName": "unknown",
+            "sectionName": "Buttons",
+            "size": "xl"
+          }
+        ],
+        "suggestedAction": "use-placeholder"
+      },
+      {
+        "figmaName": "icon",
+        "nodeId": "0:275",
+        "dimensions": {
+          "width": 32.0,
+          "height": 32.0
+        },
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "md"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "md"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "md"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "md"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "md"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "md"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "md"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "md"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xl"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "xl"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "xl"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "xl"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "xl"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "xl"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "xl"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "xl"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "xl"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xl"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xl"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "lg"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "lg"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "lg"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "lg"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "lg"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "lg"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xl"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xl"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xl"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xl"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xl"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xl"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xl"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xl"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "xl"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "xl"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "xl"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "xl"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "xl"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "xl"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "xl"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "xl"
+          }
+        ],
+        "suggestedAction": "manual-map"
+      },
+      {
+        "figmaName": "office",
+        "nodeId": "0:281",
+        "dimensions": {
+          "width": 14.0,
+          "height": 14.0
+        },
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "xs"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "xs"
+          }
+        ],
+        "suggestedAction": "manual-map"
+      },
+      {
+        "figmaName": "customer-support",
+        "nodeId": "0:316",
+        "dimensions": {
+          "width": 18.0,
+          "height": 16.0
+        },
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "sm"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "sm"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "sm"
+          }
+        ],
+        "suggestedAction": "manual-map"
+      },
+      {
+        "figmaName": "collection",
+        "nodeId": "0:354",
+        "dimensions": {
+          "width": 16.0,
+          "height": 14.0
+        },
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "sm"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "sm"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "sm"
+          }
+        ],
+        "suggestedAction": "manual-map"
+      },
+      {
+        "figmaName": "diamond",
+        "nodeId": "0:358",
+        "dimensions": {
+          "width": 15.000109672546387,
+          "height": 14.375040054321289
+        },
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "sm"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "sm"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "sm"
+          }
+        ],
+        "suggestedAction": "manual-map"
+      },
+      {
+        "figmaName": "cog",
+        "nodeId": "0:373",
+        "dimensions": {
+          "width": 13.99999713897705,
+          "height": 13.99999713897705
+        },
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "xs"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "xs"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "xs"
+          }
+        ],
+        "suggestedAction": "manual-map"
+      },
+      {
+        "figmaName": "paper-diploma",
+        "nodeId": "0:435",
+        "dimensions": {
+          "width": 17.0,
+          "height": 18.133333206176758
+        },
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "md"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "md"
+          }
+        ],
+        "suggestedAction": "manual-map"
+      },
+      {
+        "figmaName": "logo-shopify",
+        "nodeId": "0:591",
+        "dimensions": {
+          "width": 22.0,
+          "height": 24.869565963745117
+        },
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "lg"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "lg"
+          }
+        ],
+        "suggestedAction": "extract-svg"
+      },
+      {
+        "figmaName": "logo-atlassian",
+        "nodeId": "0:624",
+        "dimensions": {
+          "width": 24.0,
+          "height": 24.0
+        },
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "lg"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "lg"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "lg"
+          }
+        ],
+        "suggestedAction": "extract-svg"
+      },
+      {
+        "figmaName": "logo-slack",
+        "nodeId": "0:644",
+        "dimensions": {
+          "width": 24.0,
+          "height": 24.0
+        },
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "lg"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "lg"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "lg"
+          }
+        ],
+        "suggestedAction": "extract-svg"
+      },
+      {
+        "figmaName": "logo-spotify",
+        "nodeId": "0:678",
+        "dimensions": {
+          "width": 23.0,
+          "height": 23.0
+        },
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "lg"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "lg"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "lg"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "lg"
+          }
+        ],
+        "suggestedAction": "extract-svg"
+      },
+      {
+        "figmaName": "logo-jira",
+        "nodeId": "0:701",
+        "dimensions": {
+          "width": 22.0,
+          "height": 22.616823196411133
+        },
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "lg"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "lg"
+          }
+        ],
+        "suggestedAction": "extract-svg"
+      },
+      {
+        "figmaName": "logo-invision",
+        "nodeId": "0:732",
+        "dimensions": {
+          "width": 21.0,
+          "height": 21.0
+        },
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "md"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "md"
+          },
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "md"
+          }
+        ],
+        "suggestedAction": "extract-svg"
+      },
+      {
+        "figmaName": "html5",
+        "nodeId": "0:772",
+        "dimensions": {
+          "width": 14.0,
+          "height": 15.166666984558105
+        },
+        "usedIn": [
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          },
+          {
+            "screenName": "Dashboard-sidebar transparent",
+            "sectionName": "Dashboard-sidebar transparent",
+            "size": "sm"
+          }
+        ],
+        "suggestedAction": "manual-map"
+      },
+      {
+        "figmaName": "logo-webdev",
+        "nodeId": "0:1964",
+        "dimensions": {
+          "width": 24.0,
+          "height": 20.452173233032227
+        },
+        "usedIn": [
+          {
+            "screenName": "Tables",
+            "sectionName": "Tables",
+            "size": "lg"
+          }
+        ],
+        "suggestedAction": "extract-svg"
+      },
+      {
+        "figmaName": "bank",
+        "nodeId": "0:2164",
+        "dimensions": {
+          "width": 20.5,
+          "height": 21.20689582824707
+        },
+        "usedIn": [
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "md"
+          }
+        ],
+        "suggestedAction": "use-placeholder"
+      },
+      {
+        "figmaName": "pencil",
+        "nodeId": "0:2197",
+        "dimensions": {
+          "width": 14.000024795532227,
+          "height": 13.99999713897705
+        },
+        "usedIn": [
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "sm"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "sm"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          },
+          {
+            "screenName": "Billing",
+            "sectionName": "Billing",
+            "size": "xs"
+          },
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "sm"
+          }
+        ],
+        "suggestedAction": "manual-map"
+      },
+      {
+        "figmaName": "ungroup",
+        "nodeId": "0:2541",
+        "dimensions": {
+          "width": 16.0,
+          "height": 16.0
+        },
+        "usedIn": [
+          {
+            "screenName": "Profile",
+            "sectionName": "Profile",
+            "size": "sm"
+          }
+        ],
+        "suggestedAction": "use-placeholder"
+      },
+      {
+        "figmaName": "template",
+        "nodeId": "0:2893",
+        "dimensions": {
+          "width": 14.0,
+          "height": 14.0
+        },
+        "usedIn": [
+          {
+            "screenName": "Sign Up",
+            "sectionName": "Sign Up",
+            "size": "xs"
+          },
+          {
+            "screenName": "Sign In",
+            "sectionName": "Sign In",
+            "size": "sm"
+          }
+        ],
+        "suggestedAction": "manual-map"
+      },
+      {
+        "figmaName": "duplicate",
+        "nodeId": "0:2906",
+        "dimensions": {
+          "width": 14.0,
+          "height": 14.0
+        },
+        "usedIn": [
+          {
+            "screenName": "Sign Up",
+            "sectionName": "Sign Up",
+            "size": "xs"
+          },
+          {
+            "screenName": "Sign In",
+            "sectionName": "Sign In",
+            "size": "xs"
+          }
+        ],
+        "suggestedAction": "manual-map"
+      }
+    ]
+  }
+}

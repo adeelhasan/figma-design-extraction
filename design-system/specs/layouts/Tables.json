@@ -1,0 +1,409 @@
+{
+  "screenName": "Tables",
+  "frameId": "0:1777",
+  "dimensions": {
+    "width": 1440,
+    "height": 1262
+  },
+  "layout": {
+    "type": "sidebar-content",
+    "pattern": "dashboard-with-sidebar",
+    "hasNavbar": true,
+    "hasSidebar": true,
+    "hasMobileMenu": false
+  },
+  "sections": [
+    {
+      "id": "background",
+      "name": "page-background",
+      "type": "decoration",
+      "location": "full",
+      "dimensions": {
+        "width": 1440,
+        "height": 1262
+      },
+      "styling": {
+        "background": "var(--color-background)",
+        "color": "#f8f9fa"
+      }
+    },
+    {
+      "id": "sidebar",
+      "name": "sidebar",
+      "type": "navigation",
+      "subtype": "vertical-sidebar",
+      "location": "left",
+      "dimensions": {
+        "width": 267,
+        "height": 1022
+      },
+      "styling": {
+        "background": "var(--gradient-dark)",
+        "gradient": {
+          "angle": "310deg",
+          "colors": ["#141727", "#3a416f"]
+        },
+        "boxShadow": "var(--shadow-md)"
+      },
+      "elements": {
+        "logo": {
+          "text": "Soft UI Dashboard",
+          "type": "text",
+          "size": "18px",
+          "weight": "bold",
+          "color": "white"
+        },
+        "navItems": [
+          {
+            "text": "Dashboard",
+            "icon": "dashboard",
+            "href": "/dashboard"
+          },
+          {
+            "text": "Tables",
+            "icon": "table",
+            "href": "/tables",
+            "active": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "navbar",
+      "name": "navbar",
+      "type": "navigation",
+      "subtype": "top-bar",
+      "location": "top-right",
+      "dimensions": {
+        "width": 1085,
+        "height": 45
+      },
+      "styling": {
+        "background": "var(--color-surface)",
+        "color": "#ffffff",
+        "boxShadow": "var(--shadow-sm)"
+      },
+      "elements": {
+        "breadcrumb": {
+          "items": ["Pages", "Tables"],
+          "type": "text"
+        },
+        "links": [
+          { "text": "Sign In", "href": "/signin" }
+        ],
+        "notificationBadge": {
+          "value": "4",
+          "type": "badge",
+          "color": "var(--color-error)"
+        }
+      }
+    },
+    {
+      "id": "table-1",
+      "name": "Authors Table",
+      "type": "card",
+      "subtype": "data-table",
+      "location": "center-top",
+      "dimensions": {
+        "width": 1173,
+        "height": 583
+      },
+      "styling": {
+        "background": "var(--color-surface)",
+        "color": "#ffffff",
+        "borderRadius": "var(--radius-2xl)",
+        "boxShadow": "var(--shadow-md)",
+        "padding": "var(--spacing-4)"
+      },
+      "table": {
+        "title": "Authors",
+        "columns": [
+          {
+            "name": "AUTHOR",
+            "width": "280px",
+            "type": "avatar-text"
+          },
+          {
+            "name": "FUNCTION",
+            "width": "200px",
+            "type": "text"
+          },
+          {
+            "name": "STATUS",
+            "width": "120px",
+            "type": "badge"
+          },
+          {
+            "name": "EMPLOYED",
+            "width": "120px",
+            "type": "date"
+          },
+          {
+            "name": "ACTION",
+            "width": "80px",
+            "type": "link"
+          }
+        ],
+        "rows": [
+          {
+            "author": {
+              "avatar": "MJ",
+              "name": "Michael John",
+              "email": "michael@mail.com"
+            },
+            "function": "Manager / Organization",
+            "status": {
+              "label": "ONLINE",
+              "color": "var(--color-success)"
+            },
+            "employed": "23/04/18",
+            "action": "Edit"
+          },
+          {
+            "author": {
+              "avatar": "AL",
+              "name": "Alexa Liras",
+              "email": "alexa@mail.com"
+            },
+            "function": "Programator / Developer",
+            "status": {
+              "label": "OFFLINE",
+              "color": "var(--color-secondary)"
+            },
+            "employed": "23/12/20",
+            "action": "Edit"
+          },
+          {
+            "author": {
+              "avatar": "LP",
+              "name": "Laure Perrier",
+              "email": "laure@mail.com"
+            },
+            "function": "Executive / Projects",
+            "status": {
+              "label": "ONLINE",
+              "color": "var(--color-success)"
+            },
+            "employed": "13/04/19",
+            "action": "Edit"
+          },
+          {
+            "author": {
+              "avatar": "ME",
+              "name": "Miriam Eric",
+              "email": "miriam@mail.com"
+            },
+            "function": "Marketing / Organization",
+            "status": {
+              "label": "ONLINE",
+              "color": "var(--color-success)"
+            },
+            "employed": "03/04/21",
+            "action": "Edit"
+          },
+          {
+            "author": {
+              "avatar": "JM",
+              "name": "John Murphy",
+              "email": "john@mail.com"
+            },
+            "function": "Sales",
+            "status": {
+              "label": "OFFLINE",
+              "color": "var(--color-secondary)"
+            },
+            "employed": "10/02/22",
+            "action": "Edit"
+          }
+        ]
+      }
+    },
+    {
+      "id": "table-2",
+      "name": "Projects Table",
+      "type": "card",
+      "subtype": "data-table",
+      "location": "center-bottom",
+      "dimensions": {
+        "width": 1157,
+        "height": 546
+      },
+      "styling": {
+        "background": "var(--color-surface)",
+        "color": "#ffffff",
+        "borderRadius": "var(--radius-2xl)",
+        "boxShadow": "var(--shadow-md)",
+        "padding": "var(--spacing-4)"
+      },
+      "table": {
+        "title": "Projects",
+        "columns": [
+          {
+            "name": "COMPANIES",
+            "width": "280px",
+            "type": "logo-text"
+          },
+          {
+            "name": "BUDGET",
+            "width": "120px",
+            "type": "text"
+          },
+          {
+            "name": "STATUS",
+            "width": "120px",
+            "type": "badge"
+          },
+          {
+            "name": "COMPLETION",
+            "width": "200px",
+            "type": "progress-bar"
+          },
+          {
+            "name": "ACTION",
+            "width": "80px",
+            "type": "menu"
+          }
+        ],
+        "rows": [
+          {
+            "company": "Spotify Version",
+            "budget": "$14,000",
+            "status": {
+              "label": "working",
+              "color": "var(--color-info)"
+            },
+            "completion": {
+              "percentage": 60,
+              "color": "var(--color-info)"
+            },
+            "action": "menu"
+          },
+          {
+            "company": "Progress Track",
+            "budget": "$3,000",
+            "status": {
+              "label": "working",
+              "color": "var(--color-info)"
+            },
+            "completion": {
+              "percentage": 10,
+              "color": "var(--color-info)"
+            },
+            "action": "menu"
+          },
+          {
+            "company": "Jira Platform Errors",
+            "budget": "Not Set",
+            "status": {
+              "label": "done",
+              "color": "var(--color-success)"
+            },
+            "completion": {
+              "percentage": 100,
+              "color": "var(--color-success)"
+            },
+            "action": "menu"
+          },
+          {
+            "company": "Launch new Mobile App",
+            "budget": "$20,600",
+            "status": {
+              "label": "canceled",
+              "color": "var(--color-error)"
+            },
+            "completion": {
+              "percentage": 50,
+              "color": "var(--color-error)"
+            },
+            "action": "menu"
+          },
+          {
+            "company": "Web Dev",
+            "budget": "$4,000",
+            "status": {
+              "label": "working",
+              "color": "var(--color-info)"
+            },
+            "completion": {
+              "percentage": 80,
+              "color": "var(--color-info)"
+            },
+            "action": "menu"
+          },
+          {
+            "company": "Redesign Online Store",
+            "budget": "$2,000",
+            "status": {
+              "label": "canceled",
+              "color": "var(--color-error)"
+            },
+            "completion": {
+              "percentage": 0,
+              "color": "var(--color-error)"
+            },
+            "action": "menu"
+          }
+        ]
+      }
+    },
+    {
+      "id": "footer",
+      "name": "footer",
+      "type": "footer",
+      "location": "bottom",
+      "dimensions": {
+        "width": 1116,
+        "height": 20
+      },
+      "styling": {
+        "color": "var(--color-secondary)",
+        "fontSize": "12px"
+      },
+      "content": {
+        "text": "© 2021, made with by for a better web"
+      }
+    }
+  ],
+  "tokenUsage": {
+    "colors": {
+      "background": "var(--color-background)",
+      "surface": "var(--color-surface)",
+      "textPrimary": "var(--color-text)",
+      "textSecondary": "var(--color-secondary)",
+      "statusOnline": "var(--color-success)",
+      "statusOffline": "var(--color-secondary)",
+      "statusWorking": "var(--color-info)",
+      "statusDone": "var(--color-success)",
+      "statusCanceled": "var(--color-error)"
+    },
+    "gradients": {
+      "sidebar": "var(--gradient-dark)"
+    },
+    "effects": {
+      "cardShadow": "var(--shadow-md)",
+      "cardRadius": "var(--radius-2xl)",
+      "badgeRadius": "var(--radius-DEFAULT)"
+    },
+    "spacing": {
+      "cardPadding": "var(--spacing-4)",
+      "rowPadding": "var(--spacing-3)",
+      "colPadding": "var(--spacing-4)"
+    }
+  },
+  "componentInstances": {
+    "tables": 2,
+    "avatars": 5,
+    "statusBadges": 11,
+    "progressBars": 6,
+    "actionLinks": 11,
+    "navItems": 2
+  },
+  "metadata": {
+    "extractedAt": "2026-02-06T00:00:00Z",
+    "description": "Tables screen displaying user data and project tracking with sidebar navigation",
+    "dashboardPattern": true,
+    "hasSidebar": true,
+    "tableCount": 2,
+    "rowCount": 11
+  }
+}

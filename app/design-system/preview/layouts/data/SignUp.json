@@ -1,0 +1,36 @@
+{
+  "screen": "SignUp",
+  "sections": {
+    "hero": {
+      "title": "Sign Up",
+      "subtitle": "Use these awesome forms to login or create new account in your project for free.",
+      "backgroundImage": "../../assets/images/photos/bg-signup.png"
+    },
+    "form": {
+      "heading": "Register with",
+      "socialButtons": [
+        { "name": "facebook", "icon": "facebook" },
+        { "name": "apple", "icon": "apple" },
+        { "name": "google", "icon": "google" }
+      ],
+      "separator": "or",
+      "inputs": [
+        { "placeholder": "Name", "type": "text", "state": "active" },
+        { "placeholder": "Email", "type": "email", "state": "default" },
+        { "placeholder": "Password", "type": "password", "state": "default" }
+      ],
+      "checkbox": {
+        "checked": true,
+        "label": "I agree the Terms and Conditions"
+      },
+      "submitButton": {
+        "label": "SIGN UP"
+      },
+      "footerText": "Already have an account?",
+      "footerLink": {
+        "label": "Sign In",
+        "href": "#"
+      }
+    }
+  }
+}

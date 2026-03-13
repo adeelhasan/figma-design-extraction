@@ -1,0 +1,428 @@
+{
+  "screenName": "Dashboard",
+  "figmaNodeId": "0:263",
+  "figmaFrameName": "Dashboard-sidebar transparent",
+  "dimensions": {
+    "width": 1440,
+    "height": 1584
+  },
+  "pattern": "sidebar-content",
+  "extractedAt": "2026-02-06T00:00:00Z",
+
+  "topLevelStructure": {
+    "sidebar": {
+      "type": "FRAME",
+      "width": 280,
+      "height": 1584,
+      "background": "gradient-dark",
+      "position": "fixed-left",
+      "children": [
+        {
+          "id": "sidebar-logo",
+          "type": "group",
+          "content": "branding-logo"
+        },
+        {
+          "id": "sidebar-nav-main",
+          "type": "list",
+          "items": [
+            { "icon": "layout-dashboard", "label": "Dashboard", "active": true },
+            { "icon": "table", "label": "Tables" },
+            { "icon": "credit-card", "label": "Billing" },
+            { "icon": "glasses", "label": "Virtual Reality" },
+            { "icon": "type", "label": "RTL" }
+          ]
+        },
+        {
+          "id": "sidebar-nav-account",
+          "type": "list",
+          "section": "ACCOUNT",
+          "items": [
+            { "icon": "user", "label": "Profile" },
+            { "icon": "log-in", "label": "Sign In" },
+            { "icon": "user-plus", "label": "Sign Up" }
+          ]
+        }
+      ]
+    },
+
+    "navbar": {
+      "type": "FRAME",
+      "width": 1440,
+      "height": 64,
+      "background": "surface",
+      "borderBottom": "1px solid #e9ecef",
+      "children": [
+        {
+          "id": "breadcrumb",
+          "type": "text",
+          "content": "Dashboard",
+          "fontSize": 14,
+          "color": "text-secondary"
+        },
+        {
+          "id": "navbar-search",
+          "type": "input",
+          "placeholder": "Search...",
+          "icon": "search"
+        },
+        {
+          "id": "navbar-notifications",
+          "type": "button",
+          "icon": "bell",
+          "badge": "count"
+        },
+        {
+          "id": "navbar-user-menu",
+          "type": "dropdown",
+          "icon": "user-circle"
+        }
+      ]
+    },
+
+    "content": {
+      "type": "GROUP",
+      "width": 1160,
+      "height": 1400,
+      "background": "background",
+      "padding": "32px",
+      "gap": "24px",
+      "children": [
+        {
+          "id": "stat-cards-row",
+          "type": "row",
+          "gridColumns": 4,
+          "children": [
+            {
+              "id": "Widget-1",
+              "type": "FRAME",
+              "name": "Today's Money",
+              "pattern": "stat-card",
+              "icon": "wallet",
+              "iconColor": "gradient-primary",
+              "value": "$53,000",
+              "label": "Today's Money",
+              "change": "+55%",
+              "changeType": "positive"
+            },
+            {
+              "id": "Widget-2",
+              "type": "FRAME",
+              "name": "Today's Users",
+              "pattern": "stat-card",
+              "icon": "globe",
+              "iconColor": "gradient-info",
+              "value": "2,300",
+              "label": "Today's Users",
+              "change": "+3%",
+              "changeType": "positive"
+            },
+            {
+              "id": "Widget-3",
+              "type": "FRAME",
+              "name": "New Clients",
+              "pattern": "stat-card",
+              "icon": "file-text",
+              "iconColor": "gradient-warning",
+              "value": "+3,462",
+              "label": "New Clients",
+              "change": "-2%",
+              "changeType": "negative"
+            },
+            {
+              "id": "Widget-4",
+              "type": "FRAME",
+              "name": "Sales",
+              "pattern": "stat-card",
+              "icon": "shopping-cart",
+              "iconColor": "gradient-success",
+              "value": "$103,430",
+              "label": "Sales",
+              "change": "+5%",
+              "changeType": "positive"
+            }
+          ]
+        },
+        {
+          "id": "promo-cards-row",
+          "type": "row",
+          "gridColumns": 2,
+          "children": [
+            {
+              "id": "Card-1",
+              "type": "FRAME",
+              "name": "Rocket Card",
+              "pattern": "promo-card",
+              "background": "gradient-primary",
+              "icon": "rocket",
+              "iconSize": 60,
+              "textColor": "white",
+              "title": "Soft UI Dashboard",
+              "description": "From colors, cards, typography to complex elements, you will find the full documentation.",
+              "ctaLabel": "Read More",
+              "ctaHref": "#"
+            },
+            {
+              "id": "Card-2",
+              "type": "FRAME",
+              "name": "Feature Card",
+              "pattern": "feature-card",
+              "background": "gradient-dark",
+              "icon": "spotlight",
+              "textColor": "white",
+              "title": "Work with the rockets",
+              "description": "Wealth creation is an evolutionarily recent positive-sum game. It is all about who take the opportunity first.",
+              "ctaLabel": "Read More",
+              "ctaHref": "#"
+            }
+          ]
+        },
+        {
+          "id": "charts-row",
+          "type": "row",
+          "gridColumns": 2,
+          "children": [
+            {
+              "id": "Chart-2",
+              "type": "FRAME",
+              "name": "Active Users",
+              "pattern": "chart-card",
+              "chartType": "bar",
+              "title": "Active Users",
+              "subtitle": "(+5) more in 2021",
+              "height": 400,
+              "dataPoints": 12,
+              "stats": [
+                { "label": "Active Users", "value": "3.6K", "change": "(+5) more" },
+                { "label": "Clicks", "value": "2m" },
+                { "label": "Sales", "value": "$772" }
+              ]
+            },
+            {
+              "id": "Chart-1",
+              "type": "FRAME",
+              "name": "Sales Overview",
+              "pattern": "chart-card",
+              "chartType": "line",
+              "title": "Sales Overview",
+              "subtitle": "(+5) more in 2021",
+              "height": 400,
+              "series": 2,
+              "hasLegend": true,
+              "hasGrid": true
+            }
+          ]
+        },
+        {
+          "id": "projects-table-section",
+          "type": "FRAME",
+          "width": "100%",
+          "name": "Projects",
+          "pattern": "data-table",
+          "title": "Projects",
+          "subtitle": "Done this month",
+          "columns": [
+            { "id": "companies", "label": "COMPANIES", "width": "40%" },
+            { "id": "members", "label": "MEMBERS", "width": "20%" },
+            { "id": "budget", "label": "BUDGET", "width": "20%" },
+            { "id": "completion", "label": "COMPLETION", "width": "20%" }
+          ],
+          "rows": [
+            {
+              "company": "Soft UI Shopify Version",
+              "members": 4,
+              "budget": "$14,000",
+              "completion": 60
+            },
+            {
+              "company": "Progress Track",
+              "members": 2,
+              "budget": "$3,000",
+              "completion": 10
+            },
+            {
+              "company": "Fix Platform Errors",
+              "members": 2,
+              "budget": "Not Set",
+              "completion": 100
+            },
+            {
+              "company": "Launch new Mobile App",
+              "members": 4,
+              "budget": "$20,500",
+              "completion": 100
+            },
+            {
+              "company": "Add the New Landing Page",
+              "members": 2,
+              "budget": "$500",
+              "completion": 25
+            },
+            {
+              "company": "Redesign Online Store",
+              "members": 6,
+              "budget": "$2,000",
+              "completion": 40
+            }
+          ],
+          "rowHeight": 48
+        },
+        {
+          "id": "orders-timeline-section",
+          "type": "FRAME",
+          "width": "100%",
+          "name": "Orders History",
+          "pattern": "timeline",
+          "title": "Orders History",
+          "subtitle": "23% this month",
+          "ctaLabel": "VIEW ALL",
+          "items": [
+            {
+              "icon": "bell",
+              "description": "$2,400 - Redesign store",
+              "date": "22 DEC 7:20 PM",
+              "status": "completed"
+            },
+            {
+              "icon": "code",
+              "description": "New order #4845433",
+              "date": "21 DEC 11:21 PM",
+              "status": "pending"
+            },
+            {
+              "icon": "shopping-cart",
+              "description": "Company server payments",
+              "date": "21 DEC 9:28 PM",
+              "status": "completed"
+            },
+            {
+              "icon": "credit-card",
+              "description": "New card added #4845433",
+              "date": "20 DEC 3:52 PM",
+              "status": "pending"
+            },
+            {
+              "icon": "unlock",
+              "description": "Unlock folders for development",
+              "date": "19 DEC 11:35 AM",
+              "status": "completed"
+            },
+            {
+              "icon": "credit-card",
+              "description": "New order #48453",
+              "date": "18 DEC 4:41 PM",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+
+    "footer": {
+      "type": "FRAME",
+      "width": 1440,
+      "height": 48,
+      "background": "surface",
+      "borderTop": "1px solid #e9ecef",
+      "content": "© 2021 Creative Tim. Built by developers for developers.",
+      "links": [
+        { "label": "About Us", "href": "#" },
+        { "label": "Blog", "href": "#" },
+        { "label": "License", "href": "#" }
+      ]
+    }
+  },
+
+  "designTokens": {
+    "colors": {
+      "primary": "var(--color-primary)",
+      "secondary": "var(--color-secondary)",
+      "success": "var(--color-success)",
+      "warning": "var(--color-warning)",
+      "error": "var(--color-error)",
+      "info": "var(--color-info)",
+      "background": "var(--color-background)",
+      "surface": "var(--color-surface)",
+      "textPrimary": "var(--color-text-primary)",
+      "textSecondary": "var(--color-text-secondary)"
+    },
+    "spacing": {
+      "mainPadding": "var(--spacing-8)",
+      "sectionGap": "var(--spacing-6)",
+      "cardPadding": "var(--spacing-5)",
+      "itemSpacing": "var(--spacing-3)"
+    },
+    "radius": {
+      "card": "var(--radius-2xl)",
+      "button": "var(--radius-DEFAULT)",
+      "input": "var(--radius-md)",
+      "pill": "var(--radius-pill)"
+    },
+    "shadows": {
+      "card": "var(--shadow-md)",
+      "hover": "var(--shadow-lg)"
+    },
+    "gradients": {
+      "primary": "var(--gradient-primary)",
+      "info": "var(--gradient-info)",
+      "success": "var(--gradient-success)",
+      "warning": "var(--gradient-warning)",
+      "dark": "var(--gradient-dark)"
+    }
+  },
+
+  "componentUsage": {
+    "statCard": 4,
+    "infoCard": 2,
+    "chartCard": 2,
+    "dataTable": 1,
+    "timelineList": 1,
+    "navigationItem": 8,
+    "button": 3,
+    "input": 1,
+    "badge": 1
+  },
+
+  "responsiveBreakpoints": {
+    "desktop": {
+      "width": 1440,
+      "sidebarWidth": 280,
+      "statCardsColumns": 4,
+      "chartsColumns": 2
+    },
+    "tablet": {
+      "width": 1024,
+      "sidebarWidth": 240,
+      "statCardsColumns": 2,
+      "chartsColumns": 1,
+      "note": "Sidebar may be collapsible"
+    },
+    "mobile": {
+      "width": 480,
+      "sidebarWidth": 0,
+      "sidebarType": "drawer",
+      "statCardsColumns": 1,
+      "chartsColumns": 1,
+      "note": "Full width layout with hamburger menu"
+    }
+  },
+
+  "interactionStates": {
+    "hover": {
+      "cardShadow": "increased",
+      "backgroundColor": "subtle-change"
+    },
+    "active": {
+      "navItem": "highlighted-with-primary",
+      "tab": "underline-primary"
+    },
+    "focus": {
+      "input": "border-primary",
+      "button": "outline-primary"
+    },
+    "disabled": {
+      "opacity": 0.5,
+      "cursor": "not-allowed"
+    }
+  }
+}

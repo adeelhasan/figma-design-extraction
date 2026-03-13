@@ -1,0 +1,164 @@
+{
+  "$schema": "semantic-layout-v1",
+  "screen": "Dashboard",
+  "figmaFrameId": "0:263",
+  "dimensions": { "width": 1440, "height": 1584, "viewport": "desktop" },
+  "shells": ["sidebar", "navbar", "footer"],
+  "contentArea": {
+    "bounds": { "x": 248, "y": 45, "width": 1192, "height": 1519 },
+    "padding": { "left": 24, "right": 24, "top": 24, "bottom": 24 },
+    "effectiveWidth": 1144
+  },
+  "grid": { "columns": 12, "gap": 24, "columnWidth": 77, "margin": { "left": 24, "right": 24 } },
+  "rows": [
+    {
+      "id": "row-1",
+      "label": "Stats Widgets",
+      "y": 0,
+      "height": 117,
+      "children": [
+        {
+          "id": "widget-1",
+          "name": "Widget-1",
+          "label": "Today's Money",
+          "gridColumn": "1 / 4",
+          "gridRow": "1 / 2",
+          "columnSpan": 3,
+          "rowSpan": 1,
+          "bounds": { "x": 25, "y": 0, "width": 296, "height": 117 }
+        },
+        {
+          "id": "widget-2",
+          "name": "Widget-2",
+          "label": "Today's Users",
+          "gridColumn": "4 / 7",
+          "gridRow": "1 / 2",
+          "columnSpan": 3,
+          "rowSpan": 1,
+          "bounds": { "x": 313, "y": 11, "width": 305, "height": 106 }
+        },
+        {
+          "id": "widget-3",
+          "name": "Widget-3",
+          "label": "New Clients",
+          "gridColumn": "7 / 10",
+          "gridRow": "1 / 2",
+          "columnSpan": 3,
+          "rowSpan": 1,
+          "bounds": { "x": 594, "y": 11, "width": 310, "height": 106 }
+        },
+        {
+          "id": "widget-4",
+          "name": "Widget-4",
+          "label": "Sales",
+          "gridColumn": "10 / 13",
+          "gridRow": "1 / 2",
+          "columnSpan": 3,
+          "rowSpan": 1,
+          "bounds": { "x": 880, "y": 11, "width": 308, "height": 106 }
+        }
+      ]
+    },
+    {
+      "id": "row-2",
+      "label": "Info Cards",
+      "y": 117,
+      "height": 277,
+      "children": [
+        {
+          "id": "card-1",
+          "name": "Card-1",
+          "label": "Built by Developers",
+          "gridColumn": "1 / 8",
+          "gridRow": "2 / 3",
+          "columnSpan": 7,
+          "rowSpan": 1,
+          "bounds": { "x": 0, "y": 117, "width": 710, "height": 277 }
+        },
+        {
+          "id": "card-2",
+          "name": "Card-2",
+          "label": "Work with the Rockets",
+          "gridColumn": "8 / 13",
+          "gridRow": "2 / 3",
+          "columnSpan": 5,
+          "rowSpan": 1,
+          "bounds": { "x": 690, "y": 117, "width": 498, "height": 277 }
+        }
+      ]
+    },
+    {
+      "id": "row-3",
+      "label": "Charts",
+      "y": 394,
+      "height": 469,
+      "children": [
+        {
+          "id": "chart-1",
+          "name": "Chart-1",
+          "label": "Active Users",
+          "gridColumn": "1 / 6",
+          "gridRow": "3 / 4",
+          "columnSpan": 5,
+          "rowSpan": 1,
+          "bounds": { "x": 12, "y": 394, "width": 518, "height": 469 }
+        },
+        {
+          "id": "chart-2",
+          "name": "Chart-2",
+          "label": "Sales Overview",
+          "gridColumn": "6 / 13",
+          "gridRow": "3 / 4",
+          "columnSpan": 7,
+          "rowSpan": 1,
+          "bounds": { "x": 497, "y": 394, "width": 691, "height": 469 }
+        }
+      ]
+    },
+    {
+      "id": "row-4",
+      "label": "Table and Timeline",
+      "y": 863,
+      "height": 580,
+      "children": [
+        {
+          "id": "table-1",
+          "name": "Table-1",
+          "label": "Projects Table",
+          "gridColumn": "1 / 9",
+          "gridRow": "4 / 5",
+          "columnSpan": 8,
+          "rowSpan": 1,
+          "bounds": { "x": 23, "y": 863, "width": 796, "height": 580 }
+        },
+        {
+          "id": "timeline-1",
+          "name": "Timeline",
+          "label": "Orders History",
+          "gridColumn": "9 / 13",
+          "gridRow": "4 / 5",
+          "columnSpan": 4,
+          "rowSpan": 1,
+          "bounds": { "x": 784, "y": 863, "width": 404, "height": 580 }
+        }
+      ]
+    }
+  ],
+  "sections": {
+    "order": [
+      "widget-1", "widget-2", "widget-3", "widget-4",
+      "card-1", "card-2",
+      "chart-1", "chart-2",
+      "table-1", "timeline-1"
+    ]
+  },
+  "css": {
+    "gridTemplate": "grid-template-columns: repeat(12, 1fr); grid-template-rows: auto auto auto auto; gap: 24px;",
+    "containerStyles": {
+      "marginLeft": "248px",
+      "padding": "24px",
+      "background": "var(--color-background)",
+      "minHeight": "100vh"
+    }
+  }
+}

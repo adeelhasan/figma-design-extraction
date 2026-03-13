@@ -1,0 +1,55 @@
+{
+  "figma": {
+    "fileKey": "YA7YmI2VAeQKM556gvGupf",
+    "fileName": "Soft UI Dashboard Free (Community)",
+    "url": "https://www.figma.com/design/YA7YmI2VAeQKM556gvGupf/Soft-UI-Dashboard-Free--Community-",
+    "lastModified": "2026-01-11T22:23:05Z"
+  },
+  "extraction": {
+    "startedAt": "2026-03-11T15:03:46Z",
+    "version": "1.0.0",
+    "tool": "figma-extraction-skill"
+  },
+  "screens": {
+    "Dashboard": { "nodeId": "0:263", "dimensions": "1440x1584" },
+    "Dashboard-alt": { "nodeId": "1:88", "dimensions": "1440x1584" },
+    "Tables": { "nodeId": "0:1777", "dimensions": "1440x1262" },
+    "Billing": { "nodeId": "0:2136", "dimensions": "1440x1204" },
+    "Profile": { "nodeId": "0:2505", "dimensions": "1440x1409" },
+    "SignUp": { "nodeId": "0:2877", "dimensions": "1440x1252" },
+    "SignIn": { "nodeId": "0:2957", "dimensions": "1440x1137" }
+  },
+  "tokens": {},
+  "components": {},
+  "costs": {
+    "phases": [
+      { "phase": "1-connect", "model": "haiku", "tokens": 27514, "toolUses": 8, "durationMs": 86948 },
+      { "phase": "2-fingerprint", "model": "opus", "tokens": 27844, "toolUses": 12, "durationMs": 73131 },
+      { "phase": "3-tokens-colors", "model": "haiku", "tokens": 30591, "toolUses": 5, "durationMs": 16634 },
+      { "phase": "3-tokens-typography", "model": "haiku", "tokens": 39851, "toolUses": 6, "durationMs": 73360 },
+      { "phase": "3-tokens-spacing", "model": "haiku", "tokens": 27061, "toolUses": 6, "durationMs": 17776 },
+      { "phase": "3-tokens-effects", "model": "haiku", "tokens": 28881, "toolUses": 6, "durationMs": 19861 },
+      { "phase": "4a-components", "model": "sonnet", "tokens": 37654, "toolUses": 10, "durationMs": 335865 },
+      { "phase": "4b-assets", "model": "haiku", "tokens": 27618, "toolUses": 6, "durationMs": 49640 },
+      { "phase": "5a-shells", "model": "sonnet", "tokens": 52804, "toolUses": 22, "durationMs": 271037 },
+      { "phase": "5b-dashboard", "model": "sonnet", "tokens": 77260, "toolUses": 27, "durationMs": 567554 },
+      { "phase": "5b-tables", "model": "sonnet", "tokens": 75652, "toolUses": 20, "durationMs": 404361 },
+      { "phase": "5b-billing", "model": "sonnet", "tokens": 101701, "toolUses": 19, "durationMs": 338102 },
+      { "phase": "5b-profile", "model": "sonnet", "tokens": 91856, "toolUses": 25, "durationMs": 464513 },
+      { "phase": "5b-signup", "model": "sonnet", "tokens": 97068, "toolUses": 20, "durationMs": 248960 },
+      { "phase": "5b-signin", "model": "sonnet", "tokens": 80284, "toolUses": 18, "durationMs": 187326 },
+      { "phase": "6-index", "model": "haiku", "tokens": 40622, "toolUses": 8, "durationMs": 74618 },
+      { "phase": "6b-reference", "model": "haiku", "tokens": 36628, "toolUses": 8, "durationMs": 32727 }
+    ],
+    "totals": {
+      "totalTokens": 898889,
+      "byModel": {
+        "haiku": { "tokens": 258766, "agents": 8 },
+        "sonnet": { "tokens": 614279, "agents": 8 },
+        "opus": { "tokens": 27844, "agents": 1 }
+      },
+      "totalDurationMs": 3362413,
+      "agentCount": 17
+    }
+  }
+}

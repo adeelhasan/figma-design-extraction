@@ -1,0 +1,162 @@
+{
+  "screen": "Billing",
+  "sections": {
+    "credit-card": {
+      "cardNumber": ["4562", "1122", "4594", "7852"],
+      "cardHolder": "Jack Peterson",
+      "expires": "11/22",
+      "cardHolderLabel": "Card Holder",
+      "expiresLabel": "Expires"
+    },
+    "card-1": {
+      "title": "Salary",
+      "subtitle": "Belong Interactive",
+      "amount": "+$2,000"
+    },
+    "card-2": {
+      "title": "Paypal",
+      "subtitle": "Freelance Payment",
+      "amount": "$49,000"
+    },
+    "payment-method": {
+      "title": "Payment Method",
+      "buttonLabel": "ADD NEW CARD",
+      "cards": [
+        {
+          "type": "mastercard",
+          "digits": ["****", "****", "****", "7362"]
+        },
+        {
+          "type": "visa",
+          "digits": ["****", "****", "****", "3288"]
+        }
+      ]
+    },
+    "invoices": {
+      "title": "Invoices",
+      "viewAllLabel": "VIEW ALL",
+      "items": [
+        {
+          "id": "#MS-415646",
+          "date": "March, 01, 2021",
+          "amount": "$180",
+          "type": "PDF"
+        },
+        {
+          "id": "#RV-126749",
+          "date": "February, 12, 2021",
+          "amount": "$250",
+          "type": "PDF"
+        },
+        {
+          "id": "#FB-212562",
+          "date": "April, 05, 2020",
+          "amount": "$550",
+          "type": "PDF"
+        },
+        {
+          "id": "#QW-103578",
+          "date": "June, 25, 2019",
+          "amount": "$400",
+          "type": "PDF"
+        },
+        {
+          "id": "#AR-803481",
+          "date": "March, 03, 2019",
+          "amount": "$700",
+          "type": "PDF"
+        }
+      ]
+    },
+    "billing-info": {
+      "title": "Billing Information",
+      "cards": [
+        {
+          "name": "Oliver Liam",
+          "companyLabel": "Company Name:",
+          "company": "Viking Burrito",
+          "emailLabel": "Email Address: ",
+          "email": "oliver@burrito.com",
+          "vatLabel": "VAT Number:",
+          "vat": "FRB1235476",
+          "editLabel": "EDIT",
+          "deleteLabel": "DELETE"
+        },
+        {
+          "name": "Lucas Harper",
+          "companyLabel": "Company Name:",
+          "company": "Stone Tech Zone",
+          "emailLabel": "Email Address: ",
+          "email": "lucas@syone-tech.com",
+          "vatLabel": "VAT Number:",
+          "vat": "FRB1235476",
+          "editLabel": "EDIT",
+          "deleteLabel": "DELETE"
+        },
+        {
+          "name": "Ethan James",
+          "companyLabel": "Company Name:",
+          "company": "Fiber Notion",
+          "emailLabel": "Email Address: ",
+          "email": "ethan@fiber.com",
+          "vatLabel": "VAT Number:",
+          "vat": "FRB1235476",
+          "editLabel": "EDIT",
+          "deleteLabel": "DELETE"
+        }
+      ]
+    },
+    "your-transactions": {
+      "title": "Your Transactions",
+      "dateRange": "23 - 30 March 2021",
+      "groups": [
+        {
+          "label": "NEWEST",
+          "transactions": [
+            {
+              "name": "Netflix",
+              "date": "27 March 2021, at 12:30 PM",
+              "amount": "- $2,500",
+              "type": "debit"
+            },
+            {
+              "name": "Apple",
+              "date": "27 March 2021, at 04:30 AM",
+              "amount": "+ $2,000",
+              "type": "credit"
+            }
+          ]
+        },
+        {
+          "label": "YESTERDAY",
+          "transactions": [
+            {
+              "name": "Stripe",
+              "date": "26 March 2021, at 12:30 AM",
+              "amount": "+ $750",
+              "type": "credit"
+            },
+            {
+              "name": "HubSpot",
+              "date": "26 March 2021, at 11:30 AM",
+              "amount": "+ $1,050",
+              "type": "credit"
+            },
+            {
+              "name": "Creative Tim",
+              "date": "26 March 2021, at 07:30 AM",
+              "amount": "+ $2,400",
+              "type": "credit"
+            },
+            {
+              "name": "Webflow",
+              "date": "26 March 2021, at 04:00 AM",
+              "amount": "Pending",
+              "type": "pending"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
