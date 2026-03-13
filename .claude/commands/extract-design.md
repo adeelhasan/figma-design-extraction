@@ -135,7 +135,7 @@ Launch 4 parallel Task subagents (use `model: "haiku"`):
 For each of: `Colors`, `Typography`, `Spacing`, `Effects`:
 
 ```
-Read the prompt file: .claude/skills/figma-extraction/prompts/token-extraction-agent.md
+Read the prompt file: .claude/skills/figma-extraction/prompts/extract-tokens.md
 
 You are extracting {tokenType} tokens.
 - cacheFilePath: ${OUTPUT_DIR}/.cache/figma-file.json

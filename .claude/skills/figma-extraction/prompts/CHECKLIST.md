@@ -91,7 +91,7 @@ OUTPUT: design-system-context.json
 ### Phase 3: Tokens (4 Parallel Tasks, haiku model)
 ```
 AGENT: 4 parallel Task subagents
-READ: prompts/token-extraction-agent.md (with tokenType = colors|typography|spacing|effects)
+READ: prompts/extract-tokens.md (with tokenType = colors|typography|spacing|effects)
 DATA: $QUERY colors/gradients/text-styles/effects/radii/spacing (per type)
 OUTPUT: tokens/colors.css, tokens/typography.css, tokens/spacing.css, tokens/effects.css
 ```

@@ -12,11 +12,10 @@ Use the Figma REST API directly via Python/curl.
 ```
 prompts/connect.md               ← Phase 1: Connect & screenshot
 prompts/design-system-fingerprint.md  ← Phase 2: Fingerprint
-prompts/token-extraction-agent.md     ← Phase 3: Tokens (4 parallel Tasks)
+prompts/extract-tokens.md             ← Phase 3: Tokens (4 parallel Tasks)
 prompts/extract-components.md         ← Phase 4: Components
 prompts/extract-screen.md             ← Phase 5: Screens (N parallel Tasks)
-prompts/extract-icons.md              ← Phase 6a: Icons
-prompts/extract-assets.md             ← Phase 6b: Assets
+prompts/extract-assets.md             ← Phase 4b: Assets
 ```
 
 ## Purpose
