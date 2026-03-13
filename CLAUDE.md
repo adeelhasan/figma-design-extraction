@@ -1,30 +1,19 @@
 # Design System Project
 
-A three-phase workflow for extracting design tokens from Figma and generating production-ready React components.
+Extract design tokens from Figma → Generate React components → Build your app.
 
-## Workflow Overview
+## Workflow
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│  Phase 1: EXTRACT                                                           │
-│  Extract tokens and specs from Figma → design-system/                       │
-│  Commands: /extract-design, /sync, /preview-tokens                          │
-└─────────────────────────────────────────────────────────────────────────────┘
-                                    │
-                                    ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│  Phase 2: GENERATE                                                          │
-│  Generate React components from specs → app/src/components/ui/              │
-│  Commands: /gen-component, /build-screen                                    │
-└─────────────────────────────────────────────────────────────────────────────┘
-                                    │
-                                    ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│  Phase 3: BUILD                                                             │
-│  Build your app using tokens and generated components                       │
-│  Location: app/                                                             │
-└─────────────────────────────────────────────────────────────────────────────┘
+EXTRACT ──→ GENERATE ──→ BUILD
+Figma      Components    App
 ```
+
+| Phase | Command | Output |
+|-------|---------|--------|
+| Extract | `/extract-design <figma-url>` | `design-system/` |
+| Generate | `/gen-component <name>` | `app/src/components/ui/` |
+| Build | `/build-screen <name>` | `app/src/app/` |
 
 ## Project Structure
 
@@ -107,6 +96,15 @@ cd app && npm run dev
 3. **NEVER hardcode effects** — Use `var(--shadow-*)`, `var(--radius-*)` tokens
 4. **ALWAYS check specs** — Read `design-system/specs/` before building
 5. **ALWAYS use components** — Import from `src/components/ui/`
+
+## Figma Source File Requirements
+
+The extraction pipeline requires **editable Figma source files** with real component nodes, text layers, and structured frames. It does not work well with:
+
+- **"Preview" files** — These often contain pages rendered as flattened image fills (RECTANGLE nodes with IMAGE fills) rather than structured component trees. The pipeline will still extract tokens and any structured frames correctly, but flattened pages will only yield screenshot images, not extractable layouts.
+- **Presentation canvases** — A single wide frame (e.g., 7560px) containing multiple pages arranged side-by-side is treated as one screen. The individual pages inside it cannot be extracted as separate layouts if they are image fills.
+
+**What to do:** If extraction produces image-only screens, ask the designer for the editable source file (not the preview/handoff version). Tokens, colors, and typography will still extract correctly from any file — it's only the screen layouts that require real nodes.
 
 ## Quick Token Reference
 

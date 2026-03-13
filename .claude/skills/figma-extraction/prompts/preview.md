@@ -865,10 +865,7 @@ Create HTML mockups showing layout structure using extracted tokens:
 
 #### 5.1 Discover Screens
 
-List all screens from `specs/layouts/`:
-```bash
-ls design-system/specs/layouts/*.md | xargs -n1 basename | sed 's/.md$//'
-```
+List all screens from the essentials file (`figma-essentials.json`) or use the Glob tool to find `specs/layouts/*.md` files.
 
 #### 5.2 Generate HTML for Each Screen
 
@@ -894,16 +891,16 @@ Create `preview/layouts/index.html` with:
 
 #### 5.4 Verification
 
-**MUST VERIFY before proceeding:**
+**MUST VERIFY before proceeding** using the file-ops script:
 ```bash
-SCREEN_COUNT=$(ls design-system/specs/layouts/*.md 2>/dev/null | wc -l)
-PREVIEW_COUNT=$(ls design-system/preview/layouts/*.html 2>/dev/null | grep -v index.html | wc -l)
-
-if [ "$SCREEN_COUNT" != "$PREVIEW_COUNT" ]; then
-  echo "ERROR: Missing preview files. Expected $SCREEN_COUNT, found $PREVIEW_COUNT"
-  # Go back and create missing files
-fi
+python3 ${SCRIPTS}/file-ops.py compare \
+  --pattern-a "specs/layouts/*.md" \
+  --pattern-b "preview/layouts/*.html" \
+  --exclude-b "index.html" \
+  --dir "${OUTPUT_DIR}"
 ```
+
+If `match` is false, go back and create missing preview files.
 
 ### Step 6: Report
 

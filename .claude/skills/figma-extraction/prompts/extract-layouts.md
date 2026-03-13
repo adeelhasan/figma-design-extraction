@@ -1,13 +1,11 @@
-# 07 - Extract Layout Specifications
+# Layout Extraction Reference
+
+> **Note**: In the current pipeline, per-screen agents (`extract-screen.md`) handle layout extraction.
+> This file is a **technical reference** for grid inference, pattern detection, and traversal logic
+> that screen agents use. It is NOT executed as a standalone phase.
 
 ## Purpose
 Document page/screen layouts, grid systems, and section patterns from Figma frames.
-
-## Prerequisites
-
-This phase requires:
-- Pattern registry from `pattern-discovery.md` (if available)
-- Visual inventory from `visual-analysis.md` (for --thorough mode)
 
 ## Sources in Figma
 
@@ -86,7 +84,7 @@ function extractGrid(grids: LayoutGrid[]): GridSpec {
 }
 ```
 
-### Step 3: Analyze Section Structure (with Recursive Traversal)
+### Step 3: Analyze Section Structure (Recursive Traversal)
 
 Map the frame hierarchy to sections using recursive traversal to capture ALL nested content.
 
@@ -289,7 +287,7 @@ grid-template-areas:
 
 ```typescript
 interface TraversalConfig {
-  maxDepth: number;              // Default: 3 (standard), 10 (--thorough/dashboard)
+  maxDepth: number;              // Default: 10 (deep traversal always)
   minSectionSize: number;        // Minimum width/height to consider as section
   gapThreshold: number;          // Pixel gap that indicates section boundary
   expandHorizontalSiblings: boolean;  // Extract siblings in horizontal rows separately
@@ -297,16 +295,8 @@ interface TraversalConfig {
   extractActionsInline: boolean; // Capture action buttons within sections
 }
 
-const STANDARD_CONFIG: TraversalConfig = {
-  maxDepth: 3,
-  minSectionSize: 100,
-  gapThreshold: 16,
-  expandHorizontalSiblings: false,
-  patternMatchFirst: false,
-  extractActionsInline: false
-};
-
-const THOROUGH_CONFIG: TraversalConfig = {
+// Default config: always uses deep traversal with all improvements enabled
+const DEFAULT_CONFIG: TraversalConfig = {
   maxDepth: 10,
   minSectionSize: 50,
   gapThreshold: 8,
@@ -315,35 +305,12 @@ const THOROUGH_CONFIG: TraversalConfig = {
   extractActionsInline: true
 };
 
-// Dashboard-specific config (auto-detected)
-const DASHBOARD_CONFIG: TraversalConfig = {
-  maxDepth: 10,
-  minSectionSize: 50,
-  gapThreshold: 8,
-  expandHorizontalSiblings: true,  // Critical for card rows
-  patternMatchFirst: true,         // Detect stat-cards before filtering
-  extractActionsInline: true       // Capture VIEW ALL, ADD NEW buttons
-};
-
 /**
- * Auto-detect the appropriate config based on frame content
+ * Select config based on frame content (always deep, auto-adjusted)
  */
-function selectConfig(frame: FigmaNode, thorough: boolean = false): TraversalConfig {
-  if (thorough) return THOROUGH_CONFIG;
-
-  const pattern = detectLayoutPattern(frame);
-
-  // Dashboard layouts need deep traversal to catch nested cards
-  if (pattern === 'dashboard-grid' || pattern === 'card-layout') {
-    return DASHBOARD_CONFIG;
-  }
-
-  // Sidebar layouts often have nested sections
-  if (pattern === 'sidebar-content') {
-    return { ...STANDARD_CONFIG, maxDepth: 6, expandHorizontalSiblings: true };
-  }
-
-  return STANDARD_CONFIG;
+function selectConfig(frame: FigmaNode): TraversalConfig {
+  // One mode, always does the right thing
+  return DEFAULT_CONFIG;
 }
 
 /**
@@ -782,16 +749,11 @@ function isSectionCandidate(node: FigmaNode, config: TraversalConfig): boolean {
  */
 function analyzeSections(
   frame: FigmaNode,
-  thorough: boolean = false,
   patternRegistry?: PatternRegistry
 ): { sections: Section[]; gridLayouts: Map<string, GridLayout> } {
-  // IMPROVEMENT 1: Auto-select config based on layout type
-  const config = selectConfig(frame, thorough);
+  const config = selectConfig(frame);
 
-  console.log(`Using ${config.maxDepth}-depth traversal (${
-    config === DASHBOARD_CONFIG ? 'dashboard' :
-    config === THOROUGH_CONFIG ? 'thorough' : 'standard'
-  } mode)`);
+  console.log(`Using ${config.maxDepth}-depth traversal`);
 
   // Pre-identify layout rows for logging
   const rows = identifyLayoutRows(frame);
@@ -1195,46 +1157,6 @@ function findTextNodes(node: FigmaNode): FigmaNode[] {
 }
 ```
 
-### Step 3c: Inventory Validation (--thorough mode)
-
-When using `--thorough` mode, validate extracted sections against the visual inventory:
-
-```typescript
-function validateAgainstInventory(
-  extractedSections: Section[],
-  inventoryPath: string
-): ValidationResult {
-  const inventory = loadInventory(inventoryPath);
-
-  const result: ValidationResult = {
-    expected: inventory.totalSections,
-    found: extractedSections.length,
-    coverage: 0,
-    missing: [],
-    extra: []
-  };
-
-  // Compare section IDs
-  const inventoryIds = new Set(inventory.sections.map(s => s.id));
-  const extractedIds = new Set(extractedSections.map(s => s.id));
-
-  for (const id of inventoryIds) {
-    if (!extractedIds.has(id)) {
-      result.missing.push(id);
-    }
-  }
-
-  for (const id of extractedIds) {
-    if (!inventoryIds.has(id)) {
-      result.extra.push(id);
-    }
-  }
-
-  result.coverage = (result.found - result.missing.length) / result.expected * 100;
-
-  return result;
-}
-```
 ```
 
 ### Step 4: Detect Responsive Variants
@@ -1533,13 +1455,9 @@ Handle common variations gracefully:
 
 The goal is to document all screen layouts found, adapting to how the file is organized.
 
-## Image Extraction (--thorough mode)
+## Image Extraction (Optional)
 
-When using `--thorough` mode, automatically extract image assets from each screen:
-
-### Step 8b: Extract Screen Images
-
-In thorough mode, export images from Figma for each screen being processed:
+Export image assets from Figma for each screen:
 
 ```typescript
 interface ImageExportOptions {
@@ -1556,7 +1474,7 @@ const THOROUGH_IMAGE_OPTIONS: ImageExportOptions = {
 
 /**
  * Extract and export images for a screen layout
- * Called automatically in --thorough mode
+ * Called during screen extraction
  */
 async function extractScreenImages(
   screenFrame: FigmaNode,
@@ -1731,27 +1649,6 @@ function updateAssetManifestWithExports(
 }
 ```
 
-### Thorough Mode Report Addition
-
-When `--thorough` mode is used, add image export to the report:
-
-```
-✓ Layouts extracted (thorough mode)
-
-Image Assets Exported:
-├── Backgrounds: {count} images
-├── Avatars: {count} images
-├── Content: {count} images
-└── Total: {totalExported} of {totalDetected} images
-
-Output:
-├── layouts.md (index)
-├── layouts/{screenName}.md (one per screen)
-└── assets/images/{category}/*.png (exported images)
-```
-
 ## Next Step
 
-⚠️ **DO NOT SKIP TO VALIDATION YET** - Asset extraction is required first!
-
-Proceed to: `extract-icons.md` (extract icons before validation)
+Proceed to: `extract-icons.md`

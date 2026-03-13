@@ -2,22 +2,33 @@
 
 ## Purpose
 
-Detect layout shells (sidebar, navbar, footer) shared across multiple screens and extract them once. This prevents N screen agents from redundantly extracting the same shell elements, ensuring visual consistency and reducing token usage.
+Generate shell HTML fragments and layout-shells.json from pre-packaged shell detection data. The heavy lifting (vision detection, Figma section mapping, section subtree extraction) is already done by `prepare-shells.py`.
 
 **One agent, runs sequentially before Phase 5b screen agents.**
 
-## Inputs (read these yourself)
+## Input
 
-- Essentials file: `${OUTPUT_DIR}/figma-essentials.json`
-- Design context: `${OUTPUT_DIR}/design-system-context.json`
-- Token CSS files: `${OUTPUT_DIR}/tokens/*.css`
-- Screenshots: `${OUTPUT_DIR}/preview/layouts/screenshots/*.png`
-
-### Figma Query Tool
-
-```bash
-QUERY="python3 .claude/skills/figma-extraction/scripts/figma-query.py --cache ${OUTPUT_DIR}/.cache/figma-file.json"
+Read the pre-packaged shell data:
 ```
+${OUTPUT_DIR}/.cache/shells-package.json
+```
+
+This single file contains:
+- `visionDetection` — whether vision succeeded, shell count
+- `designContext` — design system fingerprint (colors, naming)
+- `tokenCSS` — all token CSS files (colors.css, typography.css, etc.)
+- `iconManifest` — icon mappings for Lucide icons
+- `shellMappings[]` — each detected shell with:
+  - `shellKey`, `position`, `bounds`, `screens`, `confidence`
+  - `representativeScreen`, `figmaSectionName`
+  - `figmaSubtree` — the full slim Figma subtree for this shell
+- `screenShellMap` — which shells apply to each screen
+- `screenshotPaths` — paths to screenshots for visual reference
+
+Also read screenshots for visual reference:
+- `${OUTPUT_DIR}/preview/layouts/screenshots/{RepresentativeScreen}.png`
+
+**No Figma queries needed.** All data is pre-packaged.
 
 ## Outputs
 
@@ -26,57 +37,28 @@ QUERY="python3 .claude/skills/figma-extraction/scripts/figma-query.py --cache ${
 
 ## Process
 
-### Step 1: Collect Screen Layouts
+### Step 1: Read Package + Screenshots
 
-Read `figma-essentials.json` to get the list of all screens. For each screen, query the top-level layout:
+Read `${OUTPUT_DIR}/.cache/shells-package.json`.
 
-```bash
-$QUERY screen-layout "{ScreenName}"
-```
+For each shell mapping, read the screenshot of the representative screen to understand the visual layout. This helps generate accurate HTML.
 
-Collect the top-level section names, types, bounds, and layout properties for every screen.
+### Step 2: Generate Shell HTML
 
-### Step 2: Identify Shared Sections
-
-Compare top-level sections across all screens using **name matching**:
-
-1. For each screen, list top-level section names (lowercased, trimmed).
-2. Group sections that appear in 2+ screens by matching names. Common shell names include:
-   - Sidebar variants: `sidebar`, `side-bar`, `left-nav`, `navigation`, `nav`, `menu`
-   - Header variants: `navbar`, `nav-bar`, `header`, `top-bar`, `topbar`, `app-bar`
-   - Footer variants: `footer`, `bottom-bar`, `status-bar`
-3. For each group, verify consistency:
-   - **Position**: All instances are in approximately the same position (within 20px tolerance)
-   - **Dimensions**: All instances are approximately the same size (within 20px tolerance)
-   - If a "matching" section varies significantly in size/position, it may not be the same shell — exclude it from the group.
-
-A section is a **shared shell** if it appears in ≥50% of screens with consistent position and dimensions.
-
-### Step 3: Pick Representative Screens
-
-For each shared shell group:
-
-1. Pick the **first screen alphabetically** as the representative.
-2. Query the full section data from that screen:
-
-```bash
-$QUERY section "{RepresentativeScreen}" "{sectionName}"
-```
-
-3. Also read the screenshot of the representative screen for visual reference.
-
-### Step 4: Extract Shell HTML/CSS
-
-For each shared shell, generate a self-contained HTML fragment:
+For each shell in `shellMappings`, generate a self-contained HTML fragment using:
+- The `figmaSubtree` for content structure (nav items, logo, user info)
+- The `tokenCSS` for CSS custom property references
+- The `iconManifest` for Lucide icon names
+- The `designContext` for semantic color mapping
 
 **Sidebar example (`shells/sidebar.html`):**
 ```html
-<!-- Shell: sidebar | Source: Dashboard -->
+<!-- Shell: sidebar | Source: {representativeScreen} -->
 <nav class="shell-sidebar" style="
   position: fixed;
   left: 0;
   top: 0;
-  width: {width}px;
+  width: {bounds.width}px;
   height: 100vh;
   background: var(--color-surface);
   border-right: 1px solid var(--color-border);
@@ -87,104 +69,125 @@ For each shared shell, generate a self-contained HTML fragment:
   overflow-y: auto;
   z-index: 100;
 ">
-  <!-- Shell content here -->
+  <!-- Shell content extracted from Figma subtree -->
 </nav>
 ```
 
-**Rules for shell HTML:**
-- Use CSS custom properties from tokens (never hardcode colors, spacing, etc.)
-- Use inline styles on the shell root element for positioning
-- Include realistic content (nav items, logo, user info) from the Figma data
-- Icons: use Lucide icon names from the icon manifest
-- Mark the active nav item with a data attribute: `data-active="true"`
-- Include a `<!-- Shell: {name} | Source: {screen} -->` comment at the top
-
 **Navbar example (`shells/navbar.html`):**
 ```html
-<!-- Shell: navbar | Source: Dashboard -->
+<!-- Shell: navbar | Source: {representativeScreen} -->
 <header class="shell-navbar" style="
-  position: sticky;
-  top: 0;
-  height: {height}px;
+  height: {bounds.height}px;
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
   padding: 0 var(--spacing-6);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 50;
 ">
-  <!-- Shell content here -->
+  <!-- Shell content extracted from Figma subtree -->
 </header>
 ```
 
-### Step 5: Write layout-shells.json
+**Footer example (`shells/footer.html`):**
+```html
+<!-- Shell: footer | Source: {representativeScreen} -->
+<footer class="shell-footer" style="
+  height: {bounds.height}px;
+  background: var(--color-surface);
+  padding: 0 var(--spacing-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+">
+  <!-- Shell content extracted from Figma subtree -->
+</footer>
+```
 
-Write the shell definitions to `${OUTPUT_DIR}/layout-shells.json`:
+**Rules:**
+- Use CSS custom properties from tokens (never hardcode colors, spacing)
+- Use inline styles on the shell root element for positioning
+- Include realistic content from the Figma subtree data
+- Icons: use Lucide icon names from the icon manifest
+- Mark nav items with `data-screen="{ScreenName}"` for active state switching
+- Include a `<!-- Shell: {name} | Source: {screen} -->` comment
+- **Shell HTML fragments for navbar and footer must NOT include `position`, `top`/`left`/`right`/`bottom`, or `z-index`.** The sidebar fragment keeps `position: fixed` since it's always fixed. Navbar/footer positioning is applied by the screen composition step based on layout context.
+
+#### Design-Context-Aware Styling (IMPORTANT)
+
+Before generating shell HTML, read `designContext` from the package and apply these rules:
+
+1. **Glassmorphic sidebars**: Check `designContext` for glassmorphic/blur hints. If the sidebar uses backdrop blur or transparency:
+   - Use `backdrop-filter: blur(10px)` + `background: rgba(255, 255, 255, 0.8)` (NOT solid white)
+   - Or if the sidebar uses a dark gradient, use `background: var(--gradient-dark)` with white text
+
+2. **Transparent navbars**: If the navbar sits within the content area (not full-width), use transparent/translucent background, NOT opaque white. Check the Figma subtree background fills.
+
+3. **Auth page navbars**: If a shell key contains "-auth", the navbar likely has a pill/rounded shape:
+   - Use large `border-radius` (e.g., `35px`)
+   - Add `margin` to float it above the background
+   - Check for frosted glass appearance
+
+4. **Sidebar content**: Always include:
+   - Brand logo/name at top (from Figma subtree)
+   - Navigation items with correct screen names and icons
+   - Active state styling (gradient background on icon, bold text)
+   - Any utility card at the bottom (e.g., "Need Help?" with gradient background)
+
+5. **Footer variants**: App footer (simple one-line) vs auth footer (multi-row with social icons) should have different styling. Check the Figma subtree structure to determine which.
+
+### Step 3: Write layout-shells.json
 
 ```json
 {
   "$schema": "layout-shells-v1",
   "shells": {
-    "sidebar": {
-      "sourceScreen": "Dashboard",
-      "sectionName": "sidebar",
-      "position": "fixed-left",
-      "bounds": { "x": 0, "y": 0, "width": 273, "height": 900 },
-      "htmlFragment": "preview/layouts/shells/sidebar.html",
-      "screens": ["Dashboard", "Profile", "Billing", "Tables", "SignIn"],
-      "cssClass": "shell-sidebar",
+    "{shellKey}": {
+      "sourceScreen": "{representativeScreen}",
+      "sectionName": "{figmaSectionName}",
+      "position": "{position}",
+      "bounds": { ... },
+      "htmlFragment": "preview/layouts/shells/{shellKey}.html",
+      "screens": [...],
+      "cssClass": "shell-{shellKey}",
       "mainContentOffset": {
-        "marginLeft": "273px"
-      }
-    },
-    "navbar": {
-      "sourceScreen": "Dashboard",
-      "sectionName": "navbar",
-      "position": "sticky-top",
-      "bounds": { "x": 273, "y": 0, "width": 1167, "height": 60 },
-      "htmlFragment": "preview/layouts/shells/navbar.html",
-      "screens": ["Dashboard", "Profile", "Billing", "Tables"],
-      "cssClass": "shell-navbar",
-      "mainContentOffset": {}
+        "marginLeft": "{bounds.width}px"  // for fixed-left sidebar
+      },
+      "visionConfidence": {confidence}
     }
   },
-  "screenShellMap": {
-    "Dashboard": ["sidebar", "navbar"],
-    "Profile": ["sidebar", "navbar"],
-    "Billing": ["sidebar", "navbar"],
-    "Tables": ["sidebar", "navbar"],
-    "SignIn": [],
-    "SignUp": []
-  }
+  "screenShellMap": { ... }  // copy from package
 }
 ```
 
-**Key fields:**
-- `shells`: Each detected shell with its source, position, bounds, and which screens use it
-- `mainContentOffset`: CSS properties the `.main-content` container needs to accommodate this shell (e.g., `marginLeft` for a fixed sidebar)
-- `screenShellMap`: Quick lookup — which shells apply to each screen. Screens with no shells get an empty array.
+`mainContentOffset` rules:
+- `fixed-left` sidebar: `{ "marginLeft": "{width}px" }`
+- `fixed-right` sidebar: `{ "marginRight": "{width}px" }`
+- `fixed-top`/`sticky-top` navbar: `{}` (sticky doesn't need offset)
+- `fixed-bottom` footer: `{}` (usually no offset needed)
 
-### Step 6: Handle Edge Cases
+> **Note:** The screen agent uses the presence of a `fixed-left`/`fixed-right` sidebar to determine the page wrapper structure. See `extract-screen.md` Step 7 for the two canonical layout patterns (Sidebar Layout vs No-Sidebar Layout).
 
-- **Screens with no shared shells** (e.g., login/signup): `screenShellMap` entry is `[]`. These screens get full-page extraction in Phase 5b.
-- **Partial shell sharing** (e.g., only some screens have a footer): Include the shell but only list the screens that have it in `screens` array.
-- **Active state**: The sidebar nav item for the current screen should be marked. In the shell HTML, use `data-screen="{ScreenName}"` on each nav item so Phase 5b agents can set the active state.
+### Step 4: Handle Edge Cases
+
+- **No shells detected** (visionDetection.shellCount === 0): Write empty layout-shells.json with `"shells": {}` and all screens mapped to `[]`. This is valid — Phase 5b will extract everything inline.
+- **Vision failed but fallback worked**: Shells will have `confidence: 0.7` from name-matching. Proceed normally.
+- **Missing figmaSubtree**: Skip HTML generation for this shell, note in report.
 
 ## Verification
 
-Before completing, verify:
 - `${OUTPUT_DIR}/layout-shells.json` exists and is valid JSON
-- Each shell referenced in `shells` has a corresponding HTML fragment in `preview/layouts/shells/`
-- Every screen from `figma-essentials.json` appears in `screenShellMap`
+- Each shell in `shells` has a corresponding HTML fragment in `preview/layouts/shells/`
+- Every screen from the package appears in `screenShellMap`
 
 ## Report
 
 ```
 Done: Shell Detection
 ├── layout-shells.json
+├── Detection method: {vision-first | name-matching fallback | no shells}
 ├── Shells detected: {count}
-│   {for each shell: name (position) — used by N/M screens}
+│   {for each: name (position) — used by N screens, confidence={score}}
 ├── Screens with shells: {list}
 └── Screens without shells: {list}
 ```

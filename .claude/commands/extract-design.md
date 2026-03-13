@@ -18,29 +18,55 @@ Extract design tokens, component specs, and layout patterns from a Figma file.
 
 **You are a lean dispatcher.** Your job is to:
 1. Launch Task subagents for each phase
-2. Read `figma-essentials.json` for screen/component lists
-3. Report progress between phases
+2. Run Python scripts for data preparation steps
+3. Read `figma-essentials.json` for screen/component lists
+4. Report progress between phases
 
 **You must NOT:**
 - Read `.cache/figma-file.json` (2.5MB — will overflow context)
-- Execute extraction logic inline — ALL work is done by subagents
+- Execute extraction logic inline — ALL work is done by subagents or Python scripts
 - Read prompt files inline — subagents read their own prompts
 
 **Context budget:** Stay under ~10K tokens total orchestrator context.
 
+## Cost Tracking
+
+Track token usage across all phases. After each Task subagent completes, extract the `<usage>` block from its result (contains `total_tokens`, `tool_uses`, `duration_ms`). Keep a running list:
+
+```
+costs = []  # conceptual — maintain in your working memory
+```
+
+After each phase, append an entry:
+```json
+{ "phase": "1-connect", "model": "haiku", "tokens": 16780, "toolUses": 10, "durationMs": 110059 }
+```
+
+For parallel phases (e.g., Phase 3 tokens ×4), record each subagent separately:
+```json
+{ "phase": "3-tokens-colors", "model": "haiku", "tokens": 31798, "toolUses": 6, "durationMs": 39000 }
+```
+
+In Phase 7 (after sanity check), write the full cost summary to `extraction-meta.json` — see Phase 7 for details.
+
 ## Pipeline
 
 ```
-Pre-Flight: Init timestamped dir   → python3 init-extraction.py
-Phase 1: Connect & Screenshot      → Task subagent (sequential)
-Phase 2: Fingerprint               → Task subagent (sequential)
-Phase 3: Extract Tokens            → 4 parallel Task subagents (haiku)
-Phase 4: Components + Assets       → 2 parallel Task subagents
-Phase 5a: Detect & Extract Shells  → 1 Task subagent (sequential)
-Phase 5b: Extract Screen Content   → N parallel Task subagents (compose shells + content)
-Phase 6: Generate Index Files      → Task subagent (haiku)
-Phase 6b: Generate Design Reference → Task subagent (haiku)
-Phase 7: Sanity Check              → python3 file-ops.py
+Pre-Flight: python3 init-extraction.py
+Phase 1:    Connect & Screenshot      → Task subagent (haiku, ~3 turns)
+Phase 2:    Fingerprint               → Task subagent (opus, ~15 turns)
+Phase 3:    Extract Tokens            → 4 parallel Task subagents (haiku)
+            ↓ python3 prepare-icons-assets.py   ← replaces LLM agent
+            ↓ python3 prepare-components.py     ← pre-packages data
+Phase 4a:   Components                → Task subagent (sonnet, ~3 turns)
+Phase 4b:   Asset Download            → Task subagent (haiku, ~2 turns)
+            ↓ python3 prepare-shells.py         ← pre-packages data
+Phase 5a:   Shell HTML                → Task subagent (sonnet, ~5 turns)
+            ↓ python3 prepare-screen.py ×N      ← pre-packages per screen
+Phase 5b:   Extract Screen Content    → N parallel Task subagents (sonnet, ~5 turns each)
+Phase 6:    Generate Index Files      → Task subagent (haiku)
+Phase 6b:   Generate Design Reference → Task subagent (haiku)
+Phase 7:    Sanity Check              → python3 file-ops.py
 ```
 
 ## Pre-Flight
@@ -56,7 +82,7 @@ Set `SCRIPTS=.claude/skills/figma-extraction/scripts` for convenience in subsequ
 
 ## Phase 1: Connect & Analyze
 
-Launch a Task subagent:
+Launch a Task subagent (use `model: "haiku"`):
 
 ```
 Read the prompt file: .claude/skills/figma-extraction/prompts/connect.md
@@ -137,55 +163,89 @@ Read design-system-context.json first for semantic naming rules.
 
 **Wait for all 4 to complete before proceeding.**
 
-## Phase 4: Components + Icons/Assets (2 Parallel Tasks)
+## Data Preparation: Icons, Assets & Components
 
-Launch **both** of these as parallel Task subagents:
+After tokens complete, run three Python scripts inline (no LLM needed):
+
+### Prepare Icons & Assets
+
+```bash
+python3 ${SCRIPTS}/prepare-icons-assets.py \
+  --cache ${OUTPUT_DIR}/.cache/figma-file.json \
+  --output-dir ${OUTPUT_DIR}
+```
+
+This writes `assets/icon-manifest.json` and `assets/asset-manifest.json` directly. Report the summary to the user.
+
+### Prepare Components Package
+
+```bash
+python3 ${SCRIPTS}/prepare-components.py \
+  --cache ${OUTPUT_DIR}/.cache/figma-file.json \
+  --context ${OUTPUT_DIR}/design-system-context.json \
+  --output ${OUTPUT_DIR}/.cache/components-package.json
+```
+
+This pre-packages all component subtrees into one file for the component agent.
+
+## Phase 4: Components + Asset Download (2 Parallel Tasks)
+
+Launch **both** as parallel Task subagents:
 
 ### 4a: Extract Components
+
+Use `model: "sonnet"`:
 
 ```
 Read the prompt file: .claude/skills/figma-extraction/prompts/extract-components.md
 
 Execute it with:
-- cacheFilePath: ${OUTPUT_DIR}/.cache/figma-file.json
-- outputDir: ${OUTPUT_DIR}
+- OUTPUT_DIR: ${OUTPUT_DIR}
 
-Use the Figma query tool for component data:
-  python3 ${SCRIPTS}/figma-query.py --cache ${OUTPUT_DIR}/.cache/figma-file.json components
-  python3 ${SCRIPTS}/figma-query.py --cache ${OUTPUT_DIR}/.cache/figma-file.json component "<name>"
+The component data is pre-packaged at:
+  ${OUTPUT_DIR}/.cache/components-package.json
 
-Output: ${OUTPUT_DIR}/specs/components.md
+Read that single file and write: ${OUTPUT_DIR}/specs/components.md
+
+No Figma queries needed.
 ```
 
-### 4b: Extract Icons & Assets
+### 4b: Download Assets
 
-The orchestrator must read the `fileKey` from `${OUTPUT_DIR}/extraction-meta.json` (field: `figma.fileKey`) and pass it to this agent.
+Use `model: "haiku"`:
+
+The orchestrator must pass the `fileKey` from `extraction-meta.json`.
 
 ```
-Read the prompt files:
-  .claude/skills/figma-extraction/prompts/extract-icons.md
-  .claude/skills/figma-extraction/prompts/extract-assets.md
+Read the prompt file: .claude/skills/figma-extraction/prompts/extract-assets.md
 
 Execute with:
-- cacheFilePath: ${OUTPUT_DIR}/.cache/figma-file.json
-- outputDir: ${OUTPUT_DIR}
-- fileKey: ${FILE_KEY}
+- OUTPUT_DIR: ${OUTPUT_DIR}
+- FILE_KEY: ${FILE_KEY}
+- SCRIPTS: ${SCRIPTS}
 
-Use the Figma query tool for component data:
-  python3 ${SCRIPTS}/figma-query.py --cache ${OUTPUT_DIR}/.cache/figma-file.json components
-
-After writing asset-manifest.json (with hasOriginal: true on image-fill nodes),
-download images via script — DO NOT output image data yourself:
-  python3 ${SCRIPTS}/export-images.py --file-key "${FILE_KEY}" --manifest "${OUTPUT_DIR}/assets/asset-manifest.json" --output "${OUTPUT_DIR}/assets/images"
-
-Output: ${OUTPUT_DIR}/assets/icon-manifest.json, ${OUTPUT_DIR}/assets/asset-manifest.json, ${OUTPUT_DIR}/assets/images/
+The manifests are already created. Just download images.
 ```
 
 **Wait for both to complete before proceeding.**
 
-## Phase 5a: Detect & Extract Shells (1 Sequential Task)
+## Data Preparation: Shells
 
-Launch a single Task subagent to detect shared layout shells (sidebar, navbar, footer) across all screens:
+After Phase 4, run the shell preparation script:
+
+```bash
+python3 ${SCRIPTS}/prepare-shells.py \
+  --cache ${OUTPUT_DIR}/.cache/figma-file.json \
+  --screenshots-dir ${OUTPUT_DIR}/preview/layouts/screenshots/ \
+  --context ${OUTPUT_DIR}/design-system-context.json \
+  --output ${OUTPUT_DIR}/.cache/shells-package.json
+```
+
+Report the shell detection summary to the user.
+
+## Phase 5a: Extract Shells (1 Sequential Task)
+
+Launch a single Task subagent (use `model: "sonnet"`):
 
 ```
 Read the prompt file: .claude/skills/figma-extraction/prompts/extract-shells.md
@@ -193,45 +253,52 @@ Read the prompt file: .claude/skills/figma-extraction/prompts/extract-shells.md
 Execute it with:
 - OUTPUT_DIR: ${OUTPUT_DIR}
 
-Use the Figma query tool for data access:
-  python3 ${SCRIPTS}/figma-query.py --cache ${OUTPUT_DIR}/.cache/figma-file.json screen-layout "{ScreenName}"
-  python3 ${SCRIPTS}/figma-query.py --cache ${OUTPUT_DIR}/.cache/figma-file.json section "{ScreenName}" "<section-name>"
+The shell data is pre-packaged at:
+  ${OUTPUT_DIR}/.cache/shells-package.json
 
-DO NOT read the full cache file. Query screen layouts incrementally.
-
-Outputs:
+Read that single file + screenshots, then write:
   - ${OUTPUT_DIR}/layout-shells.json
   - ${OUTPUT_DIR}/preview/layouts/shells/*.html
+
+No Figma queries needed.
 ```
 
 **Wait for completion.** Verify `${OUTPUT_DIR}/layout-shells.json` exists.
 
-Report the shell detection summary to the user (which shells were found, which screens have them).
+Report the shell detection summary to the user.
+
+## Data Preparation: Screen Packages
+
+After Phase 5a, prepare per-screen data packages. For each screen from `figma-essentials.json`:
+
+```bash
+python3 ${SCRIPTS}/prepare-screen.py \
+  --cache ${OUTPUT_DIR}/.cache/figma-file.json \
+  --output-dir ${OUTPUT_DIR} \
+  --screen "{ScreenName}" \
+  --output ${OUTPUT_DIR}/.cache/screen-packages/{ScreenName}.json
+```
+
+Run these sequentially (they're fast — just JSON bundling, no API calls).
 
 ## Phase 5b: Extract Screen Content (N Parallel Tasks)
 
 Read screen list from `figma-essentials.json` (already loaded in "Read Essentials" step).
 
-For each screen, launch a parallel Task subagent:
+For each screen, launch a parallel Task subagent (use `model: "sonnet"`):
 
 ```
 Read the prompt file: .claude/skills/figma-extraction/prompts/extract-screen.md
 
-You are extracting the "{ScreenName}" screen (Figma ID: {screenId}).
+You are extracting the "{ScreenName}" screen.
 - OUTPUT_DIR: ${OUTPUT_DIR}
 - ScreenName: {ScreenName}
 
-Pre-built shells are available at ${OUTPUT_DIR}/layout-shells.json.
-Read it first and check screenShellMap["{ScreenName}"] to see which shells
-apply to this screen. For shell sections, use the pre-built HTML fragments
-from ${OUTPUT_DIR}/preview/layouts/shells/ instead of querying Figma.
+The screen data is pre-packaged at:
+  ${OUTPUT_DIR}/.cache/screen-packages/{ScreenName}.json
 
-Use the Figma query tool for NON-SHELL data access:
-  python3 ${SCRIPTS}/figma-query.py --cache ${OUTPUT_DIR}/.cache/figma-file.json screen-layout "{ScreenName}"
-  python3 ${SCRIPTS}/figma-query.py --cache ${OUTPUT_DIR}/.cache/figma-file.json section "{ScreenName}" "<section-name>"
-
-DO NOT read the full cache file. Query sections incrementally.
-DO NOT re-extract sections covered by shells.
+Read that single file + the screenshot, then write all 4 outputs.
+No Figma queries needed.
 
 Outputs:
   - ${OUTPUT_DIR}/specs/layouts/{ScreenName}.md
@@ -272,7 +339,7 @@ Output: ${OUTPUT_DIR}/design-reference.md
 
 **Wait for completion.** Verify `${OUTPUT_DIR}/design-reference.md` exists.
 
-## Phase 7: Sanity Check
+## Phase 7: Sanity Check & Cost Report
 
 Run inline using the file-ops script:
 
@@ -292,9 +359,53 @@ python3 ${SCRIPTS}/file-ops.py compare \
 
 If any required file is missing, report which phase failed.
 
+### Write Cost Summary
+
+Read `${OUTPUT_DIR}/extraction-meta.json`, add the `costs` field with all tracked phase data, and write it back. Use the Edit tool to add the field.
+
+The `costs` structure:
+```json
+{
+  "costs": {
+    "phases": [
+      { "phase": "1-connect", "model": "haiku", "tokens": 16780, "toolUses": 10, "durationMs": 110059 },
+      { "phase": "2-fingerprint", "model": "opus", "tokens": 39737, "toolUses": 15, "durationMs": 94759 },
+      { "phase": "3-tokens-colors", "model": "haiku", "tokens": 31798, "toolUses": 6, "durationMs": 39000 },
+      ...
+    ],
+    "totals": {
+      "totalTokens": 715098,
+      "byModel": {
+        "haiku": { "tokens": 274466, "agents": 7 },
+        "sonnet": { "tokens": 400895, "agents": 8 },
+        "opus": { "tokens": 39737, "agents": 1 }
+      },
+      "totalDurationMs": 842000,
+      "agentCount": 16
+    }
+  }
+}
+```
+
+Compute `totals` by summing across all phase entries. Group by model for the `byModel` breakdown.
+
+### Open Preview
+
 Then open the preview for human review:
 ```bash
 open ${OUTPUT_DIR}/preview/index.html
+```
+
+### Report to User
+
+Print a cost summary table:
+
+```
+## Cost Summary
+| Phase | Model | Tokens | Tools | Duration |
+|-------|-------|--------|-------|----------|
+| ... per phase row ... |
+| **Total** | | **{sum}** | **{sum}** | **{sum}** |
 ```
 
 ## Output Structure
@@ -307,7 +418,12 @@ design-system-YYYYMMDD-HHMMSS/     # Timestamped output directory
 ├── extraction-meta.json            # Sync metadata
 ├── layout-shells.json              # Shared shell definitions (Phase 5a)
 ├── .cache/
-│   └── figma-file.json             # Full Figma API response (2.5MB)
+│   ├── figma-file.json             # Full Figma API response (2.5MB)
+│   ├── components-package.json     # Pre-packaged component data
+│   ├── shells-package.json         # Pre-packaged shell data
+│   └── screen-packages/            # Pre-packaged per-screen data
+│       ├── Dashboard.json
+│       └── ...
 ├── tokens/
 │   ├── colors.css
 │   ├── typography.css
@@ -321,7 +437,8 @@ design-system-YYYYMMDD-HHMMSS/     # Timestamped output directory
 │       └── {Screen}.json           # Per-screen schema
 ├── assets/
 │   ├── icon-manifest.json
-│   └── asset-manifest.json
+│   ├── asset-manifest.json
+│   └── images/                     # Downloaded images (if any)
 └── preview/
     ├── index.html                  # Main dashboard
     ├── tokens.html                 # Token reference
@@ -340,10 +457,15 @@ design-system-latest -> design-system-YYYYMMDD-HHMMSS/  # Symlink
 
 ## Notes
 
+- **Source file quality matters** — "Preview" or presentation Figma files may contain pages as flattened image fills rather than structured nodes. Tokens extract fine, but screen layouts will only yield screenshots. Use the editable source file for full extraction.
 - Requires Figma Personal Access Token (see SKILL.md for setup)
 - Token extraction uses haiku model for cost savings
+- Component extraction uses sonnet model with pre-packaged data
+- Shell and screen extraction use sonnet model with pre-packaged data
+- Only fingerprinting uses opus (requires vision + design judgment)
 - Screen extraction runs in parallel — N screens = N concurrent agents
-- All agents use `figma-query.py` for data access — never read the full cache
+- Python scripts handle data preparation — no LLM needed for icon/asset detection
+- All agents read pre-packaged data — no figma-query calls needed
 - No LLM verification — human reviews previews directly
 - For updates after initial extraction, use `/sync` commands
 - All file operations use Python scripts — no inline curl/mkdir/bash needed

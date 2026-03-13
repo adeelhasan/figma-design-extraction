@@ -45,10 +45,7 @@ GET https://api.figma.com/v1/images/{fileKey}
 2. Download the PNG content
 3. Save to `preview/layouts/screenshots/{ScreenName}.png`
 
-Create the screenshots directory if it doesn't exist:
-```bash
-mkdir -p preview/layouts/screenshots
-```
+The screenshots directory is created by `init-extraction.py` during pre-flight — no need to create it manually.
 
 ## Step 2: Visual Section Inventory
 

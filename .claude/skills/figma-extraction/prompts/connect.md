@@ -11,54 +11,167 @@ If these tools are available, they must not be used. The extraction process foll
 
 ## Input
 - Figma URL (file, design, or prototype link)
-- Optional: specific page or node ID
+- OUTPUT_DIR: the timestamped output directory (created by init-extraction.py)
+- SCRIPTS: path to `.claude/skills/figma-extraction/scripts`
 
-## Authentication: Figma Access Token
+## Authentication
 
-The skill requires a Figma Personal Access Token. Check these locations **in order**:
+Token is resolved automatically by the Python scripts. They check (in order):
+1. `FIGMA_TOKEN` or `FIGMA_ACCESS_TOKEN` environment variable
+2. `FIGMA_ACCESS_TOKEN=xxx` in `.env.local` at project root
+3. `.claude/skills/figma-extraction/config/credentials.json`
 
-### Token Lookup Chain
+If no token is found, the script returns an error with setup instructions.
+
+## Process
+
+### Step 1: Parse URL
+The `fetch-figma-file.py` script handles URL parsing automatically. It accepts both formats:
+- `https://www.figma.com/file/{key}/{name}`
+- `https://www.figma.com/design/{key}/{name}`
+
+### Step 2: Fetch Figma File
 
 ```bash
-# 1. Environment variable (highest priority)
-$FIGMA_ACCESS_TOKEN
-
-# 2. Project .env.local file
-# Look for: FIGMA_ACCESS_TOKEN=xxx in .env.local at project root
-
-# 3. Skill config file
-# Look for: .claude/skills/figma-extraction/config/credentials.json
-# Format: { "figma": { "accessToken": "xxx" } }
+python3 ${SCRIPTS}/fetch-figma-file.py --url "${FIGMA_URL}" --output "${OUTPUT_DIR}"
 ```
 
-### Token Resolution Process
+This script:
+- Parses the URL to extract file key and optional node ID
+- Resolves the Figma token automatically
+- Calls the Figma REST API
+- Saves the full response to `${OUTPUT_DIR}/.cache/figma-file.json`
+- Returns JSON summary with file info, screens, and component sets
+
+Parse the JSON output to get:
+- `fileKey` — needed for screenshot export
+- `screens[]` — list of screen names, IDs, and dimensions
+- `analysis` — style counts, component count
+
+### Step 3: Report to User
+
+Output a clear summary of what was found:
+
+```
+Connected to Figma
+
+File: "{fileName}"
+Last modified: {relativeTime}
+
+What we found:
+-- Pages: {pageCount}
+-- Published Styles: Colors: {n}, Text: {n}, Effects: {n}
+-- Components: {componentSetCount} component sets
+-- Screens detected: {screenCount}
+   {screenName} ({dimensions})
+   ...
+
+Proceeding with extraction...
+```
+
+**Detect presentation/preview canvases:** Check each screen's dimensions. If a frame is significantly wider than typical screen widths (e.g., >2000px wide for a desktop layout, suggesting multiple pages side-by-side), include a warning in the summary:
+
+```
+⚠ Note: "{screenName}" ({width}x{height}) appears to be a presentation canvas
+  (multiple pages arranged side-by-side). Structured layout extraction may be
+  limited for this frame — it likely contains flattened image fills rather than
+  real component nodes. Tokens and other structured frames will still extract
+  correctly. For full layout extraction, use the editable source Figma file.
+```
+
+Also flag if the file name contains "(Preview)", "(Handoff)", or similar suffixes:
+
+```
+⚠ Note: This appears to be a preview/handoff file. It may contain flattened
+  image fills instead of editable component nodes. Tokens will extract correctly,
+  but screen layouts may be limited.
+```
+
+### Step 4: Export Screen Screenshots
+
+Use the export-images script to download screenshots of each screen frame:
 
 ```bash
-# Step 1: Check environment variable
-if [ -n "$FIGMA_ACCESS_TOKEN" ]; then
-  TOKEN="$FIGMA_ACCESS_TOKEN"
-
-# Step 2: Check .env.local
-elif [ -f ".env.local" ]; then
-  TOKEN=$(grep '^FIGMA_ACCESS_TOKEN=' .env.local | cut -d '=' -f2)
-
-# Step 3: Check skill config
-elif [ -f ".claude/skills/figma-extraction/config/credentials.json" ]; then
-  TOKEN=$(python3 -c "import json; print(json.load(open('.claude/skills/figma-extraction/config/credentials.json'))['figma']['accessToken'])")
-fi
-
-# Step 4: If no token found, show setup instructions
-if [ -z "$TOKEN" ]; then
-  # Display error with setup instructions (see below)
-fi
+python3 ${SCRIPTS}/export-images.py \
+  --file-key "${FILE_KEY}" \
+  --node-ids "${SCREEN_IDS}" \
+  --names "${SCREEN_NAMES}" \
+  --output "${OUTPUT_DIR}/preview/layouts/screenshots" \
+  --flat \
+  --scale 1
 ```
 
-### Token Not Found Error
+Where:
+- `SCREEN_IDS` is a comma-separated list of screen node IDs from Step 2 (e.g., `0:263,0:1777,0:2136`)
+- `SCREEN_NAMES` is a comma-separated list of screen names (e.g., `Dashboard,Tables,Billing`)
+- `--flat` saves directly to the screenshots dir (no category subdirs)
+- `--scale 1` for 1x resolution screenshots
 
-If no token is found in any location, display:
-
+Report screenshot status:
 ```
-Figma Access Token not found.
+Screenshots captured:
+-- Dashboard.png
+-- Tables.png
+-- Billing.png
+...
+```
+
+**Note:** If screenshot export fails for any frame, log the error and continue. The extraction can proceed without screenshots, but fingerprinting accuracy may be reduced.
+
+### Step 5: Generate Essentials File
+
+After caching the Figma API response, generate the compact essentials summary:
+
+```bash
+python3 ${SCRIPTS}/figma-query.py \
+  --cache ${OUTPUT_DIR}/.cache/figma-file.json essentials \
+  > ${OUTPUT_DIR}/figma-essentials.json
+```
+
+This produces `figma-essentials.json` (~5KB) — a table-of-contents with:
+- File metadata (name, version, lastModified)
+- Pages with their frames and screens listed
+- Design summary (unique colors, text styles, gradients, effects, radii, component count)
+
+**All downstream agents read this file instead of the full 2.5MB cache.**
+
+Verify the essentials file was created:
+```bash
+python3 -c "import json; d=json.load(open('${OUTPUT_DIR}/figma-essentials.json')); print(f'Essentials: {len(d[\"pages\"])} pages, {sum(len(p[\"screens\"]) for p in d[\"pages\"])} screens')"
+```
+
+### Step 6: Create Extraction Metadata
+
+Write `${OUTPUT_DIR}/extraction-meta.json` with initial metadata:
+```json
+{
+  "figma": {
+    "fileKey": "{fileKey}",
+    "fileName": "{fileName}",
+    "url": "{originalUrl}",
+    "lastModified": "{lastModified}"
+  },
+  "extraction": {
+    "startedAt": "{now}",
+    "version": "1.0.0",
+    "tool": "figma-extraction-skill"
+  },
+  "screens": {
+    "{ScreenName}": { "nodeId": "{id}", "dimensions": "{WxH}" }
+  },
+  "tokens": {},
+  "components": {}
+}
+```
+
+Note: Directory structure was already created by `init-extraction.py` in pre-flight. No need to create directories here.
+
+## Error Handling
+
+### Authentication Failed
+If `fetch-figma-file.py` returns `success: false` with a token error:
+```
+Could not connect to Figma.
 
 Please set up your token using ONE of these methods:
 
@@ -77,254 +190,10 @@ To get a token:
 1. Go to Figma Settings > Account > Personal access tokens
 2. Generate a new token
 3. Copy the token (starts with figd_)
-
-See: .claude/skills/figma-extraction/config/README.md for details.
 ```
 
-## URL Patterns
-
-```
-File URL:
-https://www.figma.com/file/{fileKey}/{fileName}
-
-Design URL:
-https://www.figma.com/design/{fileKey}/{fileName}
-
-With Node:
-...?node-id={nodeId}
-
-With Page:
-...?node-id={pageId}-0
-```
-
-## Process
-
-### Step 1: Parse URL
-Extract the file key from the URL:
-```
-https://www.figma.com/file/abc123xyz/MyDesign
-                            ^^^^^^^^^ 
-                            file key
-```
-
-If node-id parameter present, note it for targeted extraction.
-
-### Step 2: Analyze File Structure
-
-Gather high-level information about what's in the file. Each extraction step will do its own detailed traversal.
-
-#### 2a. Count Published Styles
-
-```typescript
-const styles = {
-  colors: Object.values(file.styles).filter(s => s.styleType === 'FILL').length,
-  text: Object.values(file.styles).filter(s => s.styleType === 'TEXT').length,
-  effects: Object.values(file.styles).filter(s => s.styleType === 'EFFECT').length
-};
-```
-
-#### 2b. Find Components and Screens
-
-Walk top-level frames in each page to identify:
-- Component sets (`type === 'COMPONENT_SET'`)
-- Screen-like frames (by size or name)
-
-```typescript
-function analyzePages(document: FigmaDocument): PageAnalysis[] {
-  return document.children.map(page => {
-    const components = [];
-    const screens = [];
-
-    for (const child of page.children) {
-      if (child.type === 'COMPONENT_SET') {
-        components.push({ name: child.name, variants: child.children?.length });
-      } else if (child.type === 'FRAME' && isScreenLike(child)) {
-        screens.push({ name: child.name, dimensions: getDimensions(child) });
-      }
-    }
-
-    return { name: page.name, components, screens };
-  });
-}
-
-function isScreenLike(node: FigmaNode): boolean {
-  const { width, height } = node.absoluteBoundingBox || {};
-  // Common screen widths (with tolerance)
-  const screenWidths = [320, 375, 390, 414, 428, 768, 834, 1024, 1280, 1440, 1920];
-  const isScreenWidth = screenWidths.some(w => Math.abs(width - w) < 30);
-  // Or has meaningful name
-  const hasScreenName = /page|screen|view|dashboard|home|login|signup|profile|settings|billing|table/i.test(node.name);
-  // Or is reasonably large
-  const isLargeFrame = width > 300 && height > 400;
-
-  return (isScreenWidth && height > 400) || hasScreenName || isLargeFrame;
-}
-```
-
-### Step 3: Report to User
-
-Output a clear summary of what was found:
-
-```
-✓ Connected to Figma
-
-File: "{fileName}"
-Last modified: {relativeTime}
-
-What we found:
-├── Pages: {pageCount}
-│   {{#each pages}}
-│   ├── {name} ({frameCount} frames)
-│   {{/each}}
-│
-├── Published Styles:
-│   ├── Colors: {colorCount} {{if colorCount > 0}}✓{{else}}⚠ none{{/if}}
-│   ├── Text: {textCount} {{if textCount > 0}}✓{{else}}⚠ none{{/if}}
-│   └── Effects: {effectCount} {{if effectCount > 0}}✓{{else}}(will infer){{/if}}
-│
-├── Components: {componentSetCount} component sets
-│   {{#each componentSets}}
-│   ├── {name} ({variantCount} variants)
-│   {{/each}}
-│
-└── Screens detected: {screenCount}
-    {{#each screens}}
-    ├── {name} ({dimensions})
-    {{/each}}
-
-Proceeding with extraction...
-```
-
-**Notes:**
-- If published styles are missing, extraction will scan nodes directly
-- If no component sets found, will look for standalone components
-- If screens not detected by size, will use name-based matching
-
-### Step 4: Export Screen Images (if --thorough)
-
-When the `--thorough` flag is passed, capture screenshots of each screen frame for visual analysis.
-
-#### 4a. Request Frame Images
-
-For each screen frame identified in Step 2b:
-
-```
-GET https://api.figma.com/v1/images/{fileKey}?ids={frameNodeIds}&format=png&scale=1
-```
-
-Where `frameNodeIds` is a comma-separated list of screen frame IDs.
-
-#### 4b. Download and Save Images
-
-```bash
-# Create screenshots directory
-mkdir -p design-system/preview/layouts/screenshots
-
-# For each frame in the response:
-# 1. Fetch the image URL from response.images[frameId]
-# 2. Download the PNG content
-# 3. Save to design-system/preview/layouts/screenshots/{ScreenName}.png
-```
-
-#### 4c. Visual Analysis
-
-For each screenshot:
-1. Analyze the image to identify all visible UI sections
-2. Count distinct cards, lists, tables, and other UI patterns
-3. Create a section inventory (see `visual-analysis.md` for details)
-4. Save inventory to `design-system/preview/layouts/data/{ScreenName}-inventory.json`
-
-The inventory serves as "ground truth" for validating extraction completeness.
-
-#### 4d. Report Screenshot Status
-
-```
-Screenshot capture (--thorough mode):
-├── Dashboard.png ✓ (8 sections identified)
-├── Tables.png ✓ (5 sections identified)
-├── Billing.png ✓ (10 sections identified)
-├── Profile.png ✓ (7 sections identified)
-├── Sign-In.png ✓ (4 sections identified)
-└── Sign-Up.png ✓ (5 sections identified)
-
-Visual inventories saved to preview/layouts/data/
-```
-
-**Note:** If screenshot export fails for any frame, log the error and continue with API-only extraction. The extraction can still proceed without visual verification.
-
-### Step 5: Initialize Output Directory
-
-Create directory structure at project root:
-```
-design-system/
-├── tokens/
-└── preview/
-    └── layouts/
-        ├── screenshots/    # (if --thorough)
-        └── data/           # (if --thorough)
-```
-
-Create initial `extraction-meta.json`:
-```json
-{
-  "figma": {
-    "fileKey": "{fileKey}",
-    "fileName": "{fileName}",
-    "url": "{originalUrl}",
-    "lastModified": "{lastModified}"
-  },
-  "extraction": {
-    "startedAt": "{now}",
-    "version": "1.0.0",
-    "tool": "figma-extraction-skill"
-  },
-  "tokens": {},
-  "components": {},
-  "screens": {}
-}
-```
-
-## Error Handling
-
-### Invalid URL
-```
-❌ Could not parse Figma URL.
-
-Expected formats:
-- https://www.figma.com/file/{key}/{name}
-- https://www.figma.com/design/{key}/{name}
-
-Please check the URL and try again.
-```
-
-### Authentication Failed
-```
-❌ Could not connect to Figma (401/403)
-
-Possible causes:
-1. Invalid or expired Personal Access Token
-2. Token doesn't have access to this file
-3. File requires specific permissions
-
-To fix:
-1. Check your token is set correctly (see Token Lookup Chain above)
-2. Ensure the file is shared with you in Figma
-3. Generate a new token at: Figma Settings > Account > Personal access tokens
-
-See: .claude/skills/figma-extraction/config/README.md for setup details.
-```
-
-### File Not Found
-```
-❌ Figma file not found (404)
-
-The file may have been:
-- Deleted
-- Moved to a different location
-- URL copied incorrectly
-
-Please verify the URL in Figma and try again.
-```
+### File Not Found / Access Denied
+If the script returns a 404 or 403 error, relay the error message to the user.
 
 ## Fallbacks
 
@@ -334,25 +203,25 @@ Different Figma files are organized differently. The extraction handles common v
 - **Mixed organization?** Components and screens can be on any page
 - **Non-standard screen sizes?** Name-based detection as fallback
 - **Empty pages?** Skipped automatically
+- **Presentation/preview canvases?** Frames wider than ~2000px are likely multi-page canvases with flattened image fills. Tokens still extract, but layouts will be image-only. Warn the user in the connect summary.
 
 The goal is to extract what's there, not fail on what's missing.
 
-## --thorough Flag
+## Query Tool
 
-The `--thorough` flag enables deeper extraction with visual verification:
+After this phase completes, all downstream agents use the query tool instead of reading the cache directly:
 
-| Feature | Standard | --thorough |
-|---------|----------|------------|
-| Screenshot capture | No | Yes |
-| Visual section inventory | No | Yes |
-| Recursive depth | 3 levels | 10 levels |
-| Pattern detection | Basic | Enhanced |
-| Verification pass | No | Yes |
+```bash
+# Token agents use:
+python3 ${SCRIPTS}/figma-query.py --cache ${OUTPUT_DIR}/.cache/figma-file.json colors
+python3 ${SCRIPTS}/figma-query.py --cache ${OUTPUT_DIR}/.cache/figma-file.json gradients
+python3 ${SCRIPTS}/figma-query.py --cache ${OUTPUT_DIR}/.cache/figma-file.json text-styles
+python3 ${SCRIPTS}/figma-query.py --cache ${OUTPUT_DIR}/.cache/figma-file.json effects
 
-Use `--thorough` when:
-- Extracting complex dashboards with nested sections
-- Fidelity is critical (design handoff)
-- Standard extraction missed content
+# Screen agents use:
+python3 ${SCRIPTS}/figma-query.py --cache ${OUTPUT_DIR}/.cache/figma-file.json screen-layout "ScreenName"
+python3 ${SCRIPTS}/figma-query.py --cache ${OUTPUT_DIR}/.cache/figma-file.json section "ScreenName" "sectionName"
+```
 
 ## Next Step
-Proceed to: `extract-colors.md`
+Proceed to: `design-system-fingerprint.md` (Phase 2)

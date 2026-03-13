@@ -1,0 +1,68 @@
+{
+  "$schema": "design-system-context-v1",
+  "$description": "Created by Phase 2 (Fingerprinting), consumed by token extraction agents.",
+
+  "figmaFile": "{{FIGMA_FILE_NAME}}",
+  "designSystemType": "{{soft-ui | material-3 | neumorphic | flat | glassmorphic | custom}}",
+  "confidence": 0.0,
+
+  "semanticColors": {
+    "primary": {
+      "hex": "#000000",
+      "role": "Brand primary, used in CTAs and accents",
+      "source": "{{Where detected: style name, component, etc.}}"
+    },
+    "secondary": { "hex": "#000000", "role": "Secondary actions, muted text" },
+    "success": { "hex": "#000000", "role": "Success states, confirmations" },
+    "warning": { "hex": "#000000", "role": "Warning states, cautions" },
+    "error": { "hex": "#000000", "role": "Error states, destructive actions" },
+    "info": { "hex": "#000000", "role": "Informational states, links" }
+  },
+
+  "gradientRules": {
+    "primaryAngle": "{{angle}}deg",
+    "semanticMapping": {
+      "gradient-primary": {
+        "angle": "{{angle}}deg",
+        "stops": ["#color1", "#color2"],
+        "usage": "Primary buttons, accent elements"
+      },
+      "gradient-dark": {
+        "angle": "{{angle}}deg",
+        "stops": ["#color1", "#color2"],
+        "usage": "Dark backgrounds"
+      }
+    }
+  },
+
+  "grayScaleConvention": "light-to-dark",
+  "grayScaleMapping": {
+    "gray-50": "#fafafa",
+    "gray-100": "#f4f4f5",
+    "gray-200": "#e4e4e7",
+    "gray-300": "#d4d4d8",
+    "gray-400": "#a1a1aa",
+    "gray-500": "#71717a",
+    "gray-600": "#52525b",
+    "gray-700": "#3f3f46",
+    "gray-800": "#27272a",
+    "gray-900": "#18181b"
+  },
+
+  "shadowStyle": {
+    "mode": "{{multi-layer | single | elevation}}",
+    "signature": "{{signature shadow CSS value}}",
+    "softVariant": "{{soft shadow CSS value}}"
+  },
+
+  "extractionHints": {
+    "colorMatching": { "tolerance": 5 },
+    "gradientMatching": { "angleTolerance": 10 }
+  },
+
+  "metadata": {
+    "createdAt": "{{ISO timestamp}}",
+    "screenshotsAnalyzed": 0,
+    "indicators": []
+  }
+}

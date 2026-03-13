@@ -1,53 +1,44 @@
-# Unified Screen Extraction Agent
+# Visual-First Screen Extraction Agent
 
 ## Purpose
 
-Extract layout spec AND generate HTML preview for a SINGLE screen in ONE session. This eliminates information loss between separate layout extraction and preview generation phases.
+Extract layout spec AND generate HTML preview for a SINGLE screen in ONE session using a visual-first approach. All data is pre-packaged — no Figma queries needed.
 
 **One agent per screen. N screens = N parallel agents.**
 
-## Inputs (read these yourself)
+## Inputs
 
-- Figma screenshot: `${OUTPUT_DIR}/preview/layouts/screenshots/{ScreenName}.png`
-- Essentials file: `${OUTPUT_DIR}/figma-essentials.json`
-- Design context: `${OUTPUT_DIR}/design-system-context.json`
-- Token CSS files: `${OUTPUT_DIR}/tokens/*.css`
-- Icon manifest: `${OUTPUT_DIR}/assets/icon-manifest.json`
-- Asset manifest: `${OUTPUT_DIR}/assets/asset-manifest.json`
-- **Shell definitions (if exists)**: `${OUTPUT_DIR}/layout-shells.json`
-- **Shell HTML fragments (if exists)**: `${OUTPUT_DIR}/preview/layouts/shells/*.html`
+### Primary: Screen Package (one file)
 
-### Figma Query Tool
-
-**DO NOT read the full cache file.** Use the query tool to fetch screen data incrementally:
-
-```bash
-QUERY="python3 .claude/skills/figma-extraction/scripts/figma-query.py --cache ${OUTPUT_DIR}/.cache/figma-file.json"
-
-# Step 1: Get top-level layout (~2-15KB)
-$QUERY screen-layout "{ScreenName}"
-
-# Step 2: Get individual sections as needed (~5-80KB each)
-$QUERY section "{ScreenName}" "sidebar"
-$QUERY section "{ScreenName}" "navbar"
-$QUERY section "{ScreenName}" "content"
-
-# Step 3: For large sections, drill into children
-$QUERY section "{ScreenName}" "content/Widget-1"
+Read the pre-packaged screen data:
+```
+${OUTPUT_DIR}/.cache/screen-packages/{ScreenName}.json
 ```
 
-Query incrementally — start with `screen-layout`, then fetch sections one at a time. Only fetch sub-sections if the parent section is too large.
+This single file contains:
+- `screenName` — the screen name
+- `screenshotPath` — path to Figma screenshot
+- `screenLayout` — top-level sections with bounds and child summaries
+- `sectionSubtrees` — full slim subtrees for all non-shell sections
+- `textContent` — pre-extracted text from each section (flat list of exact Figma text)
+- `sectionStyles` — pre-extracted, token-mapped CSS styles for every visual node per section
+- `tokenLookup` — CSS custom property name→value mapping for all tokens
+- `shellSections` — names of sections handled by shells (skip these)
+- `shellHTML` — pre-built shell HTML fragments keyed by shell name
+- `shellConfig` — which shells apply to this screen + shell definitions
+- `tokenCSS` — all token CSS files (colors.css, typography.css, etc.)
+- `designContext` — design system fingerprint
+- `icons` — icon manifest entries for this screen
+- `assets` — asset manifest entries for this screen
 
-### Pre-Built Shells (Phase 5a output)
+### Secondary: Screenshot (vision)
 
-**Before querying Figma**, check if `${OUTPUT_DIR}/layout-shells.json` exists. If it does:
+Read the Figma screenshot for visual analysis:
+```
+${OUTPUT_DIR}/preview/layouts/screenshots/{ScreenName}.png
+```
 
-1. Read it and look up `screenShellMap["{ScreenName}"]` to get this screen's shell list.
-2. For each shell name in the list, read the corresponding HTML fragment from `${OUTPUT_DIR}/preview/layouts/shells/{shell-name}.html`.
-3. **Skip querying Figma for shell sections.** Do NOT run `$QUERY section "{ScreenName}" "sidebar"` or similar for sections covered by shells. Only query the **content sections** that are NOT shells.
-4. Record shell metadata in the layout schema (see Step 3).
-
-If `layout-shells.json` does not exist, proceed with the full extraction as before (query all sections including sidebar/navbar/footer).
+**No Figma queries needed.** All data is pre-packaged in the screen package.
 
 ## Outputs (write all four)
 
@@ -58,7 +49,7 @@ If `layout-shells.json` does not exist, proceed with the full extraction as befo
 
 ## Process
 
-### Step 0: Visual Analysis (REQUIRED)
+### Step 1: Visual Analysis (REQUIRED FIRST)
 
 **Before parsing any JSON, READ the Figma screenshot** to understand the visual layout.
 
@@ -69,67 +60,105 @@ Identify:
 - Number of columns per row
 - Which sections span multiple columns or rows
 - Relative sizes (1/3, 1/2, 2/3, full-width)
+- Shell elements (sidebar, navbar) — these are pre-built, just note their position
 
-**Create a mental model of the grid before examining JSON.**
+**Create a mental model of the grid before examining structured data.**
 
-### Step 1: Query Screen Layout
+### Step 2: Read Screen Package
 
-Use the query tool to get the top-level structure:
+Read `${OUTPUT_DIR}/.cache/screen-packages/{ScreenName}.json`.
 
-```bash
-$QUERY screen-layout "{ScreenName}"
-```
+Cross-reference the visual model from Step 1 with the structured data:
+- `screenLayout.sections` confirms section names, bounds, and hierarchy
+- `sectionSubtrees` provides full content for each non-shell section
+- `shellConfig.screenShells` tells you which shells apply
 
-This returns section names, types, bounds, and first-level children (~2-15KB) — NOT the full subtree.
+### Content Fidelity Rules (CRITICAL)
 
-### Step 2: Extract Layout Structure
+The `textContent` field in the screen package contains ALL text exactly as it appears in Figma. You MUST:
 
-Using visual analysis from Step 0 and the screen-layout query, extract sections.
+1. **NEVER invent, replace, or paraphrase text content.** Use EXACTLY the text from `textContent`.
+2. **For names**: Use the exact name from the Figma data — never substitute with generic placeholders
+3. **For numbers/amounts**: Use the exact values — never round, simplify, or replace with different numbers
+4. **For dates**: Use the exact dates from the data — never shift to different months or years
+5. **For table data**: Use the exact rows, values, and labels from `textContent` and `sectionSubtrees`
+6. **If text is unclear**: Use the `characters` field from TEXT nodes in `sectionSubtrees` as ground truth
 
-**If pre-built shells are available:** Skip querying sections that are covered by shells (e.g., don't query "sidebar" or "navbar" if they're in `screenShellMap`). Only query the content sections.
+The `textContent` field provides a pre-extracted flat list of all text in each section. Cross-reference this with the screenshot to ensure nothing is missed or altered.
 
-For each non-shell section that needs detail, query it individually:
+### Token Usage Rules (MANDATORY)
 
-```bash
-$QUERY section "{ScreenName}" "content"    # May be large — check children first
-```
+The `tokenLookup` field maps token names to their CSS values. When generating HTML/CSS:
 
-For large sections, drill into specific children:
+1. **Font family**: Always use `var(--font-family-primary)`, NEVER `var(--font-family-sans)` or `system-ui`
+2. **Colors**: Always use `var(--color-*)` tokens, NEVER use `--gray-*` (Tailwind convention)
+3. **Gradients**: Always use `var(--gradient-*)`, NEVER hardcode gradient hex values inline
+4. **Font sizes**: Always use `var(--font-size-*)`, NEVER hardcode px values for fonts
+5. **Font weights**: Always use `var(--font-weight-*)`, NEVER hardcode numeric weights
+6. **Spacing**: Always use `var(--spacing-*)`, NEVER hardcode px for padding/margins/gaps
+7. **Effects**: Always use `var(--shadow-*)` and `var(--radius-*)`, NEVER hardcode shadows/radii
 
-```bash
-$QUERY section "{ScreenName}" "content/Widget-1"   # ~15-30KB per widget
-```
+**To find the right token**: Search `tokenLookup` for the hex value from the Figma data, then use that token name.
 
-#### Container Detection (REQUIRED before grid mapping)
+### Asset Image Rules (MANDATORY)
 
-Before mapping sections to grid positions, identify the **content container** — the shared parent of all non-sidebar, non-footer sections. Query its layout properties:
+The `assets` field in the screen package contains image entries for this screen. Each entry has:
+- `name` — Figma node name (e.g., "home-decor-1", "curved0")
+- `hasOriginal` — whether a real image was downloaded
+- `relativePath` — relative path from the HTML file to the image (e.g., `../../assets/images/photos/home-decor-1.png`)
+- `placeholder` — gradient fallback config
 
-```bash
-$QUERY section "{ScreenName}" "content"
-```
+**When `hasOriginal` is true and `relativePath` is present:**
+- Use `url('{relativePath}')` in CSS `background-image` or an `<img src="{relativePath}">` tag
+- Match the asset to the correct section by cross-referencing the name/dimensions with the screenshot
+- For hero banners/backgrounds: use as `background-image` with `background-size: cover`
+- For content images (cards, photos): use as `background` or `<img>` with appropriate sizing
 
-Extract the container's padding:
-- **Auto-layout frames**: Use `paddingLeft`, `paddingRight`, `paddingTop`, `paddingBottom` from the node summary.
-- **Non-auto-layout frames**: Infer padding as the gap between the container's bounding box and the bounds of the first/last child.
+**Only use gradient placeholders when `hasOriginal` is false.**
 
-Record this as a `contentArea` object in the layout schema (see Step 3). All subsequent grid-column calculations MUST use `contentArea.effectiveWidth` (= container width − left padding − right padding) as the denominator for column spans. This ensures every row's content spans the same width and edges align vertically.
+### Style Fidelity Rules (CRITICAL)
 
-Extract from the JSON:
+The `sectionStyles` field contains pre-extracted, token-mapped CSS properties for every visual node in each section. Each entry has:
+- `path` — node path within the section (e.g., `projects/Background`)
+- `role` — semantic role: `card-background`, `divider`, `button`, `avatar`, `card`, `badge`, `input`, `gradient-surface`, or `element`
+- `background` — token-mapped background (e.g., `var(--color-surface)` or `var(--gradient-primary)`)
+- `borderRadius` — token-mapped radius (e.g., `var(--radius-card)`)
+- `shadow` — token-mapped shadow (e.g., `var(--shadow-md)`)
+- `border` — border string (e.g., `1px solid var(--color-border-light)`)
+- `opacity` — opacity value if < 1.0
 
-1. **Identify major sections** — Top-level children of the screen frame
-2. **Detect layout type** — sidebar-content, dashboard-grid, split-screen, etc.
-3. **Extract grid configuration** — columns, gaps, margins from layoutGrids
-4. **Identify content container** — Shared parent of main content sections, with padding
-5. **Map sections to grid positions** — Using bounding boxes relative to `contentArea`, NOT absolute page coordinates
+**You MUST use `sectionStyles` as the primary source for CSS visual properties:**
 
-For each section, extract:
-- `id`, `name`, `type`, `pattern`
+1. **Match entries to HTML elements by `path`** — the path segments correspond to the Figma node hierarchy
+2. **Use `role` to understand element purpose:**
+   - `card-background`: apply `background`, `borderRadius`, `shadow` to the card's container div
+   - `divider`: use `border-bottom` with the specified color/weight, not a visible `<hr>` or background
+   - `button`: apply `background`, `borderRadius`, `shadow` to button elements
+   - `badge`/`avatar`/`input`: apply styles to the corresponding UI element
+   - `gradient-surface`: apply the gradient `background` to the surface element
+3. **Apply ALL non-null properties from each entry** — do not skip shadow, border, or opacity
+4. **Only use default/fallback values when no `sectionStyles` entry exists for an element**
+5. **Never guess shadow weights, border colors, or opacity** — if `sectionStyles` provides a value, use it exactly
+
+Example: if `sectionStyles` says a card has `"shadow": "var(--shadow-md)"` and `"borderRadius": "var(--radius-card)"`, your CSS must use exactly those tokens, not `var(--shadow-sm)` or a hardcoded radius.
+
+### Step 3: Extract Layout Structure
+
+Using the visual analysis + structured data:
+
+1. **Identify content container** — the shared parent of non-shell sections
+2. **Extract container padding** from auto-layout properties
+3. **Map sections to grid positions** using bounds relative to content area
+4. **Detect layout patterns** (sidebar-content, dashboard-grid, etc.)
+
+For each non-shell section, extract from `sectionSubtrees`:
+- `name`, `type`, `pattern`
 - `bounds` — { x, y, width, height }
 - `gridPosition` — { column, columnSpan, row, rowSpan }
-- `layout` — Auto-layout properties (mode, gap, padding)
-- `components` — Component instances used
+- `layout` — auto-layout properties (mode, gap, padding)
+- `components` — component instances used
 
-### Step 3: Generate Layout Schema (JSON)
+### Step 4: Generate Layout Schema (JSON)
 
 Write to: `${OUTPUT_DIR}/specs/layouts/{ScreenName}.json`
 
@@ -169,17 +198,17 @@ Write to: `${OUTPUT_DIR}/specs/layouts/{ScreenName}.json`
 }
 ```
 
-**`shells` field:** List the shell names from `layout-shells.json` that apply to this screen. If no shells exist, omit this field or set to `[]`.
+**`shells` field:** List the shell names from `shellConfig.screenShells`.
 
-### Step 4: Generate Layout Spec (Markdown)
+### Step 5: Generate Layout Spec (Markdown)
 
 Write to: `${OUTPUT_DIR}/specs/layouts/{ScreenName}.md`
 
 Include: frame metadata, grid system, ASCII structure diagram, sections table with grid positions, CSS grid template, components used, token usage.
 
-### Step 5: Extract Content Data
+### Step 6: Extract Content Data
 
-Extract text content from the screen for realistic previews.
+Extract text content from `sectionSubtrees` for realistic previews.
 
 Write to: `${OUTPUT_DIR}/preview/layouts/data/{ScreenName}.json`
 
@@ -192,26 +221,31 @@ Write to: `${OUTPUT_DIR}/preview/layouts/data/{ScreenName}.json`
 }
 ```
 
-### Step 6: Generate HTML Preview
+### Step 7: Generate HTML Preview
 
 Create a self-contained HTML file using:
-- Grid CSS from the schema (Step 3)
-- Token CSS files via `@import '../../tokens/*.css'`
-- Content data (Step 5)
-- Icons from icon-manifest.json via Lucide CDN
-- Asset placeholders from asset-manifest.json
-- **Pre-built shell HTML fragments** (if available from Phase 5a)
+- Grid CSS from the schema (Step 4)
+- Token CSS from `tokenCSS` in the package via `@import '../../tokens/*.css'`
+- Content data (Step 6)
+- Icons from `icons` in the package via Lucide CDN
+- **Downloaded images** from `assets` in the package (see Asset Image Rules below)
+- **Pre-built shell HTML fragments** from `shellHTML` in the package
 
-#### Shell Composition
+#### Shell Composition (CRITICAL — determines page structure)
 
-If `layout-shells.json` exists and this screen has shells:
+1. Read `shellConfig.screenShells` to get shell names for this screen
+2. Check if any shell has `position` starting with `fixed-left` or `fixed-right`
+3. Select layout pattern:
+   - Sidebar exists → **Sidebar Layout Pattern**
+   - No sidebar → **No-Sidebar Layout Pattern**
+4. Get each shell's HTML from `shellHTML["{shell-name}"]`
+5. **Strip any `position`, `top`, `left`, `right`, `bottom`, `z-index` from navbar/footer shell HTML inline styles** (the sidebar keeps its `position: fixed`). This ensures fragments don't conflict with the wrapper.
+6. Compose using the selected pattern below
+7. Set active nav item: find `data-screen="{ScreenName}"` and add active styling
 
-1. Read each shell HTML fragment from `${OUTPUT_DIR}/preview/layouts/shells/{shell-name}.html`
-2. Insert shell HTML into `<body>` **before** `<main class="main-content">`
-3. Apply `mainContentOffset` CSS from `layout-shells.json` to `.main-content` (e.g., `margin-left: 273px` for a fixed sidebar)
-4. Set the active nav item: in the sidebar shell HTML, find the nav item with `data-screen="{ScreenName}"` and add an active class/style
+If shells are NOT available, generate sidebar/navbar/footer HTML inline.
 
-If shells are NOT available, generate sidebar/navbar/footer HTML inline as before.
+#### Common `<head>` and base styles (shared by both patterns)
 
 ```html
 <!DOCTYPE html>
@@ -220,6 +254,9 @@ If shells are NOT available, generate sidebar/navbar/footer HTML inline as befor
   <meta charset="UTF-8">
   <meta name="viewport" content="width={dimensions.width}">
   <title>{ScreenName} - Layout Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <style>
     @import '../../tokens/colors.css';
@@ -229,14 +266,13 @@ If shells are NOT available, generate sidebar/navbar/footer HTML inline as befor
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: var(--font-family-sans, system-ui);
+      font-family: var(--font-family-primary);
       background: var(--color-background);
       color: var(--color-text-primary);
       width: {dimensions.width}px;
       min-height: {dimensions.height}px;
     }
-    /* mainContentOffset from layout-shells.json applied here */
-    .main-content { {gridCss}; {mainContentOffsetCss} }
+    .main-content { {gridCss}; align-items: stretch; }
     {sectionPositionCss}
     .section {
       background: var(--color-surface);
@@ -244,11 +280,75 @@ If shells are NOT available, generate sidebar/navbar/footer HTML inline as befor
       padding: var(--spacing-lg);
     }
     .row-span-2 { height: 100%; }
+
+    /* Grid row stretch: cards in shared rows fill equal height */
+    .main-content > section,
+    .main-content > div {
+      display: flex;
+      flex-direction: column;
+    }
+    .main-content > section > .card,
+    .main-content > div > .card {
+      flex: 1;
+    }
   </style>
 </head>
+```
+
+#### Pattern 1: Sidebar Layout (Dashboard, Tables, Billing, Profile, etc.)
+
+> **Use when:** `shellConfig.screenShells` includes a shell whose `position` starts with `fixed-left` or `fixed-right`.
+
+```html
 <body>
-  {shellsHtml}
-  <main class="main-content">{sectionsHtml}</main>
+  <!-- Sidebar: position: fixed is in the fragment -->
+  {sidebarShellHtml}
+
+  <!-- Page wrapper: flex column for navbar + content + footer -->
+  <div class="page-wrapper" style="
+    margin-left: {sidebar.bounds.width}px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  ">
+    <!-- Navbar: in normal document flow (scrolls with content) -->
+    {navbarShellHtml}
+
+    <!-- Main content: grows to fill available space -->
+    <main class="main-content" style="flex: 1;">
+      {sectionsHtml}
+    </main>
+
+    <!-- Footer: in normal document flow -->
+    {footerShellHtml}
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
+```
+
+#### Pattern 2: No-Sidebar Layout (SignIn, SignUp, etc.)
+
+> **Use when:** No shell has `position` starting with `fixed-left` or `fixed-right`.
+
+```html
+<body>
+  <!-- Navbar: sticky for auth/no-sidebar pages -->
+  <div style="position: sticky; top: 0; z-index: 50;">
+    {navbarShellHtml}
+  </div>
+
+  <main class="main-content">
+    {sectionsHtml}
+  </main>
+
+  {footerShellHtml}
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       if (typeof lucide !== 'undefined') lucide.createIcons();
@@ -263,8 +363,9 @@ If shells are NOT available, generate sidebar/navbar/footer HTML inline as befor
 - Row-spanning elements need `height: 100%`
 - Section order in JSON matches visual reading order
 - Token CSS imports use relative paths `../../tokens/`
-- **Shell HTML is included verbatim** — do not regenerate sidebar/navbar if shells exist
-- **Active state**: Update the shell's nav item for this screen to show as active
+- **Shell HTML is included verbatim** from the package — do not regenerate
+- **Active state**: Update the shell's nav item for this screen
+- **Grid row stretch**: When sections share a grid row, ensure cards fill equal height. Grid cell containers get `display: flex; flex-direction: column` and their card children get `flex: 1`.
 
 ## Verification
 
@@ -276,7 +377,7 @@ Before completing, verify all 4 outputs exist:
 
 ### Alignment Self-Check
 
-For each row in the layout schema, verify that `sum(columnSpan × columnWidth + gaps) = contentArea.effectiveWidth`. If any row differs by more than 8px, re-examine the grid assignments — the sections likely have inconsistent column calculations relative to the content container.
+For each row in the layout schema, verify that `sum(columnSpan × columnWidth + gaps) = contentArea.effectiveWidth`. If any row differs by more than 8px, re-examine the grid assignments.
 
 ## Report
 

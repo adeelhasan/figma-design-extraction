@@ -37,11 +37,18 @@ design-system/.cache/
 tmp/
 temp/
 
+# Backup of experimental work
+.backup/
+
 # Claude plans (personal, session-specific)
 .claude/plans/
 
 # Extraction outputs (timestamped, treat as build artifacts)
 design-system-*/
 
+# Symlink to latest extraction output
+design-system-latest
+
 # Keep the current design-system folder in git for now
 # (will be replaced by timestamped folders in future)
+__pycache__/
