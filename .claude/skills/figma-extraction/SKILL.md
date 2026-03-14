@@ -186,11 +186,23 @@ The Figma file may be a "Preview" or presentation file where pages are flattened
 /clean --all        # Also delete generated app pages
 ```
 
-## Related Commands
+## Command Status
 
-- `/extract-design [url]` — Full extraction
-- `/gen-component [name]` — Generate React component from spec
-- `/build-screen [name]` — Build screen from layout spec
-- `/preview-tokens` — Show token preview
-- `/sync` — Sync with Figma
-- `/clean` — Delete output
+| Command | Status | Notes |
+|---------|--------|-------|
+| `/extract-design <url>` | **Working** | Full 7-phase pipeline with cost tracking |
+| `/build-screen <name>` | **Working** | Translates HTML preview to React; supports `--all` |
+| `/gen-component <name>` | **Partial** | Generates components but lacks explicit design-system directory resolution (timestamped dirs vs symlink). Missing `--all` parallelism strategy. |
+| `/install-design-system` | **Partial** | References fixed `design-system/` path instead of `design-system-latest` symlink or timestamped dirs. |
+| `/preview-tokens` | **Stub** | Prompt references "React artifacts" which don't exist in CLI context. Should generate an HTML file and `open` it, like Phase 7 does. |
+| `/sync` | **Stub** | Describes hash-based diff and interactive selection UI, but no underlying implementation exists (no hash comparison scripts, no diff logic). |
+| `/sync-component <name>` | **Stub** | Same as `/sync` — no hash comparison or diff implementation. |
+| `/sync-screen <name>` | **Stub** | Same as `/sync` — no hash comparison or diff implementation. `--with-images` export logic is unimplemented. |
+| `/clean` | **Broken** | References `./scripts/clean-output.sh` which doesn't exist. Needs update for timestamped output directories. |
+
+### Status definitions
+
+- **Working** — Fully implemented and tested against real Figma files.
+- **Partial** — Core functionality works but has known gaps (see notes).
+- **Stub** — Prompt exists but underlying implementation is missing. Running the command will produce best-effort LLM behavior, not a reliable pipeline.
+- **Broken** — Will fail due to missing dependencies.

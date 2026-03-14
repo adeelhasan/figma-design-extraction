@@ -55,43 +55,57 @@ cd app && npm run dev
 
 ```
 my-design-system-project/
-├── design-system/              # Extracted design system (framework-neutral)
-│   ├── tokens/                 # CSS custom properties
-│   ├── specs/                  # Component & layout specifications
-│   ├── assets/                 # Icons & image manifests
-│   └── preview/                # HTML previews for human review
+├── design-system-YYYYMMDD-HHMMSS/  # Extraction output (timestamped)
+│   ├── tokens/                      # CSS custom properties
+│   ├── specs/                       # Component & layout specifications
+│   ├── assets/                      # Icons & image manifests
+│   └── preview/                     # HTML previews for human review
+├── design-system-latest -> ...      # Symlink to latest extraction
 │
-├── app/                        # Next.js application
-│   ├── design-system/          # Installed tokens (copy)
+├── app/                             # Next.js application
+│   ├── design-system/               # Installed tokens (copy)
 │   └── src/
-│       ├── app/                # Pages (built from layout specs)
-│       └── components/ui/      # Generated components
+│       ├── app/                     # Pages (built from layout specs)
+│       └── components/ui/           # Generated components
 │
 └── .claude/
-    ├── commands/               # Slash command definitions
-    └── skills/                 # Extraction pipeline & prompts
+    ├── commands/                    # Slash command definitions
+    └── skills/figma-extraction/     # Extraction pipeline
+        ├── SKILL.md                 # Pipeline docs & command status
+        ├── prompts/                 # Phase prompts
+        └── scripts/                 # Python data-prep scripts
 ```
 
 ## Commands
 
 ### Extract
 
-| Command | Description |
-|---------|-------------|
-| `/extract-design <url>` | Extract design system from Figma |
-| `/sync` | Sync changes from Figma |
-| `/sync --check` | Check for changes without applying |
-| `/preview-tokens` | Show token preview |
-| `/clean` | Delete extraction output |
+| Command | Description | Status |
+|---------|-------------|--------|
+| `/extract-design <url>` | Extract design system from Figma | Working |
+| `/sync` | Sync changes from Figma | Stub |
+| `/sync-component <name>` | Sync single component spec | Stub |
+| `/sync-screen <name>` | Sync single screen layout | Stub |
+| `/preview-tokens` | Show token preview | Stub |
+| `/clean` | Delete extraction output | Broken |
 
 ### Generate
 
-| Command | Description |
-|---------|-------------|
-| `/install-design-system [path]` | Copy tokens into app |
-| `/gen-component <name>` | Generate single component |
-| `/gen-component --all` | Generate all components |
-| `/build-screen <name>` | Build screen from layout spec |
+| Command | Description | Status |
+|---------|-------------|--------|
+| `/install-design-system [path]` | Copy tokens into app | Partial |
+| `/gen-component <name>` | Generate single component | Partial |
+| `/gen-component --all` | Generate all components | Partial |
+| `/build-screen <name>` | Build screen from layout spec | Working |
+
+### Status Key
+
+- **Working** — Fully implemented and tested against real Figma files
+- **Partial** — Core functionality works but has known gaps
+- **Stub** — Prompt exists but underlying implementation is missing
+- **Broken** — Will fail due to missing dependencies
+
+See [SKILL.md](.claude/skills/figma-extraction/SKILL.md#command-status) for detailed notes on each command.
 
 ## Extraction Pipeline
 
